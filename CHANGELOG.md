@@ -5,19 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v0.48.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.47.0) - 2026-05-05
+
+<small>[Compare with v0.47.0](https://github.com/engine-pi/engine-pi/compare/v0.47.0...v0.48.0)</small>
+
+### Added
+
+- Add more velocity setter and getter for the class Actor.
+
+### Changed
+
+- Rename all `*Track` classes into `*Music` classes.
+
 ## [v0.47.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.47.0) - 2026-04-19
 
 <small>[Compare with v0.46.0](https://github.com/engine-pi/engine-pi/compare/v0.46.0...v0.47.0)</small>
 
 ### Added
 
-- Add class `MultipleSoundsTrack`
-- Add attribute `jukebox` to the class `Controller`
-- Add default constructor to the actor `Line`
+- Add class `MultipleSoundsTrack`.
+- Add attribute `jukebox` to the class `Controller`.
+- Add default constructor to the actor `Line`.
 
 ### Fixed
 
-- Fixed linebreaks handling on Windows
+- Fixed linebreaks handling on Windows.
 
 ## [v0.46.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.46.0) - 2026-04-12
 
@@ -25,12 +37,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- Add new package `pi.actor.label`
+- Add new package `pi.actor.label`.
 
 ### Changed
 
-- Rename `FrameUpdateLister` into `FrameListener`
-- Refactor the class `ImageText` (former name `ImageFontText`)
+- Rename `FrameUpdateLister` into `FrameListener`.
+- Refactor the class `ImageText` (former name `ImageFontText`).
 
 ## [v0.45.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.45.0) - 2026-04-08
 
