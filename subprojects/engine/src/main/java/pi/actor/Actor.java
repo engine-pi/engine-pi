@@ -53,7 +53,6 @@ import pi.Controller;
 import pi.Layer;
 import pi.actor.label.Label;
 import pi.actor.label.LabelHandler;
-import pi.actor.label.TextLabel;
 import pi.animation.AnimationMode;
 import pi.animation.ValueAnimator;
 import pi.animation.interpolation.EaseInOutDouble;
@@ -151,7 +150,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     der Regel ein optimal gelegtes Rechteck parallel zu den Axen bei
      *     einem Rotationswinkel von 0 Grad.
      */
-    public Actor(Supplier<FixtureData> defaultFixtureSupplier)
+    protected Actor(Supplier<FixtureData> defaultFixtureSupplier)
     {
         physics = new NullHandler(new PhysicsData(
                 () -> Collections.singletonList(defaultFixtureSupplier.get())));
@@ -1695,7 +1694,10 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Wirkt eine Kraft auf den <i>Schwerpunkt</i> des Objekts.
+     * Wirkt eine <b>Kraft</b> auf den <i>Schwerpunkt</i> des Objekts.
+     *
+     * @param x Die in <b>x</b>-Richtung in <b>[N]</b>.
+     * @param y Die in <b>y</b>-Richtung in <b>[N]</b>.
      *
      * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
@@ -1704,14 +1706,14 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      */
     @API
-    public final Actor applyForce(double forceX, double forceY)
+    public final Actor applyForce(double x, double y)
     {
-        applyForce(new Vector(forceX, forceY));
+        applyForce(new Vector(x, y));
         return this;
     }
 
     /**
-     * Wirkt eine Kraft auf einem bestimmten <i>Punkt in der Welt</i>.
+     * Wirkt eine <b>Kraft</b> auf einem bestimmten <i>Punkt in der Welt</i>.
      *
      * @param force Kraft in <b>[N]</b>
      * @param globalPoint Ort auf der <i>Zeichenebene</i>, an dem die Kraft
@@ -1734,7 +1736,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Wirkt einen Impuls auf den <i>Schwerpunkt</i> des Objekts.
+     * Wirkt einen <b>Impuls</b> auf den <i>Schwerpunkt</i> des Objekts.
      *
      * <p>
      * Beispiele:
@@ -1772,7 +1774,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Wirkt einen Impuls auf den <i>Schwerpunkt</i> des Objekts.
+     * Wirkt einen <b>Impuls</b> auf den <i>Schwerpunkt</i> des Objekts.
      *
      * <p>
      * Beispiele:
@@ -1790,24 +1792,24 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * <li>Auto (2 t, 30 km/h): 16 000 Ns</li>
      * </ul>
      *
-     * @param impulseX Der Impuls in x-Richtung in <b>[Ns]</b> [(kg * m) / s],
-     *     der auf den Schwerpunkt wirken soll.
-     * @param impulseY Der Impuls in y-Richtung in <b>[Ns]</b> [(kg * m) / s],
-     *     der auf den Schwerpunkt wirken soll.
+     * @param x Der Impuls in x-Richtung in <b>[Ns]</b> [(kg * m) / s], der auf
+     *     den Schwerpunkt wirken soll.
+     * @param y Der Impuls in y-Richtung in <b>[Ns]</b> [(kg * m) / s], der auf
+     *     den Schwerpunkt wirken soll.
      *
      * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
      *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code actor.color(..).postion(..)}.
      */
-    public final Actor applyImpulse(double impulseX, double impulseY)
+    public final Actor applyImpulse(double x, double y)
     {
-        applyImpulse(new Vector(impulseX, impulseY));
+        applyImpulse(new Vector(x, y));
         return this;
     }
 
     /**
-     * Wirkt einen Impuls an einem bestimmten <i>Punkt in der Welt</i>.
+     * Wirkt einen <b>Impuls</b> an einem bestimmten <i>Punkt in der Welt</i>.
      *
      * <p>
      * Beispiele:

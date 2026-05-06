@@ -99,7 +99,7 @@ public class CollisionEvent<E extends Actor>
     }
 
     /**
-     * Gibt das {@link Actor}-Objekt aus, dass mit dem {@link Actor} kollidiert,
+     * Gibt die {@link Actor Figur} aus, die mit dem {@link Actor} kollidiert,
      * an dem der Listener angemeldet wurde.
      *
      * @return Das kollidierende {@link Actor}-Objekt. Das zweite Objekt der
@@ -147,9 +147,9 @@ public class CollisionEvent<E extends Actor>
     @Getter
     public Vector tangentNormal()
     {
-        WorldManifold worldManifold = CollisionEvent.worldManifold.get();
-        contact.getWorldManifold(worldManifold);
-        Vector normal = Vector.of(worldManifold.normal);
+        WorldManifold manifold = CollisionEvent.worldManifold.get();
+        contact.getWorldManifold(manifold);
+        Vector normal = Vector.of(manifold.normal);
         if (contact.fixtureA.getBody().getUserData() == colliding)
         {
             normal = normal.negate();
@@ -160,7 +160,7 @@ public class CollisionEvent<E extends Actor>
     /**
      * Gibt eine Liste von Berührungspunkten aus.
      *
-     * @return Eine Liste von aus Berührungspunkten. Die Liste kann keine, einen
+     * @return Eine Liste von Berührungspunkten. Die Liste kann keine, einen
      *     oder zwei Berührungspunkte enthalten.
      *
      * @throws IllegalStateException Wenn die Anzahl der Berührungspunkten
@@ -170,8 +170,8 @@ public class CollisionEvent<E extends Actor>
     @Getter
     public List<Vector> points()
     {
-        WorldManifold worldManifold = CollisionEvent.worldManifold.get();
-        contact.getWorldManifold(worldManifold);
+        WorldManifold manifold = CollisionEvent.worldManifold.get();
+        contact.getWorldManifold(manifold);
         int pointCount = contact.getManifold().pointCount;
         if (pointCount == 0)
         {
@@ -179,13 +179,12 @@ public class CollisionEvent<E extends Actor>
         }
         else if (pointCount == 1)
         {
-            return Collections
-                .singletonList(Vector.of(worldManifold.points[0]));
+            return Collections.singletonList(Vector.of(manifold.points[0]));
         }
         else if (pointCount == 2)
         {
-            return Arrays.asList(Vector.of(worldManifold.points[0]),
-                Vector.of(worldManifold.points[1]));
+            return Arrays.asList(Vector.of(manifold.points[0]),
+                Vector.of(manifold.points[1]));
         }
         else
         {

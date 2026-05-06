@@ -69,13 +69,13 @@ public final class Vector implements Cloneable
     public static final Vector LEFT = new Vector(-1, 0);
 
     /**
-     * Konstante für eine einfache Verschiebung nach oben (0, -1).
+     * Konstante für eine einfache Verschiebung nach oben (0, 1).
      */
     @API
     public static final Vector UP = new Vector(0, 1);
 
     /**
-     * Konstante für eine einfache Verschiebung nach unten (0, 1).
+     * Konstante für eine einfache Verschiebung nach unten (0, -1).
      */
     @API
     public static final Vector DOWN = new Vector(0, -1);

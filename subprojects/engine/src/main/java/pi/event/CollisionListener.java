@@ -66,7 +66,7 @@ public interface CollisionListener<E extends Actor>
 
     /**
      * Wird bei einer (korrekt angemeldeten) Instanz immer dann aufgerufen, wenn
-     * die Kollision eines hiermit angemeldeten Actors mit einem (relevanten)
+     * die Kollision eines hiermit angemeldeten Figur mit einem (relevanten)
      * {@link Actor}-Objekt beendet ist.
      *
      * @param collisionEvent Ein {@link CollisionEvent}-Objekt, dass alle

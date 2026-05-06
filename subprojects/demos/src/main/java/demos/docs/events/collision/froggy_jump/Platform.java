@@ -39,7 +39,7 @@ class Platform extends Rectangle implements CollisionListener<Frog>
     @Override
     public void onCollision(CollisionEvent<Frog> collisionEvent)
     {
-        double frogY = collisionEvent.colliding().anchor().y();
+        double frogY = collisionEvent.colliding().y();
         if (frogY < y())
         {
             collisionEvent.ignoreCollision();

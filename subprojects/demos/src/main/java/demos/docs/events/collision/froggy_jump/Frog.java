@@ -27,7 +27,6 @@ import java.awt.event.KeyEvent;
 import pi.Controller;
 import pi.actor.Image;
 import pi.event.FrameListener;
-import pi.graphics.geom.Vector;
 
 class Frog extends Image implements FrameListener
 {
@@ -65,7 +64,7 @@ class Frog extends Image implements FrameListener
             {
                 velocityX(0);
             }
-            applyForce(Vector.LEFT.multiply(600));
+            applyForce(-600, 0);
         }
         else if (Controller.isKeyPressed(KeyEvent.VK_D))
         {
@@ -73,7 +72,7 @@ class Frog extends Image implements FrameListener
             {
                 velocityX(0);
             }
-            applyForce(Vector.RIGHT.multiply(600));
+            applyForce(600, 0);
         }
         if (Math.abs(velocityX()) > MAX_SPEED)
         {
@@ -83,7 +82,7 @@ class Frog extends Image implements FrameListener
         if (isGrounded() && velocityY() <= 0 && jumpEnabled)
         {
             velocityY(0);
-            applyImpulse(Vector.UP.multiply(180));
+            applyImpulse(0, 180);
         }
     }
 }
