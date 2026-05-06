@@ -29,7 +29,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
-import java.util.logging.Logger;
 
 import org.jbox2d.callbacks.ContactImpulse;
 import org.jbox2d.callbacks.ContactListener;
@@ -43,6 +42,7 @@ import org.jbox2d.dynamics.Fixture;
 import org.jbox2d.dynamics.World;
 import org.jbox2d.dynamics.contacts.Contact;
 import org.jbox2d.dynamics.contacts.ContactEdge;
+
 import pi.Layer;
 import pi.actor.Actor;
 import pi.annotations.Getter;
@@ -55,6 +55,7 @@ import pi.physics.joints.JointBuilder;
 /**
  * Die WorldHandler-Klasse ist die (nicht objektgebundene) Middleware zwischen
  * der JBox2D Engine und der Engine Pi. Sie ist verantwortlich für:
+ *
  * <ul>
  * <li>Den globalen "World"-Parameter aus der JBox2D Engine.</li>
  * <li>Übersetzung zwischen JB2D-Vektoren (SI-Basiseinheiten) und denen der
@@ -63,9 +64,6 @@ import pi.physics.joints.JointBuilder;
  */
 public class WorldHandler implements ContactListener
 {
-    private static final Logger log = Logger
-        .getLogger(WorldHandler.class.getName());
-
     public static final int CATEGORY_PASSIVE = 1;
 
     public static final int CATEGORY_STATIC = 2;
@@ -151,10 +149,14 @@ public class WorldHandler implements ContactListener
     }
 
     /**
-     * Assertion-Methode, die sicherstellt, dass die (JBox2D-)World der gerade
-     * nicht im World-Step ist. Dies ist wichtig für die Manipulation von Actors
-     * (Manipulation vieler physikalischen Eigenschaften während des World-Steps
-     * führt zu Inkonsistenzen).
+     * Stellt sicher, dass sich die (JBox2D-)World <b>nicht</b> gerade im
+     * <b>World-Step</b> befindet.
+     *
+     * <p>
+     * Dies ist wichtig für die Manipulation von Actors (Manipulation vieler
+     * physikalischen Eigenschaften während des World-Steps führt zu
+     * Inkonsistenzen).
+     * </p>
      *
      * @throws RuntimeException Wenn die World sich gerade im World-Step
      *     befindet. Ist dies nicht der Fall, passiert nichts (und es wird keine
@@ -167,7 +169,7 @@ public class WorldHandler implements ContactListener
     {
         if (world().isLocked())
         {
-            throw new RuntimeException(
+            throw new IllegalStateException(
                     "Die Operation kann nicht während des World-Step ausgeführt werden. "
                             + "Ggf. mit Controller.afterWorldStep wrappen.");
         }
@@ -232,9 +234,12 @@ public class WorldHandler implements ContactListener
     }
 
     /**
-     * Fügt einen {@link Contact Kontakt} der Blacklist hinzu. {@link Contact
-     * Kontakt}e in der Blacklist werden bis zur Trennung nicht aufgelöst. Der
-     * Kontakt wird nach endContact wieder entfernt.
+     * Fügt einen {@link Contact Kontakt} der Blacklist hinzu.
+     *
+     * <p>
+     * {@link Contact Kontakt}e in der Blacklist werden bis zur Trennung nicht
+     * aufgelöst. Der Kontakt wird nach endContact wieder entfernt.
+     * </p>
      *
      * @hidden
      */
@@ -274,15 +279,15 @@ public class WorldHandler implements ContactListener
         if (b1 == b2)
         {
             // Gleicher Body, don't care
-            log.severe("Inter-Body Collision!");
-            return;
+            throw new IllegalStateException("Inter-Body Collision!");
         }
         /*
          * ~~~~~~~~~~~~~~~~~~~~~~~ TEIL I : Spezifische Checkups
          * ~~~~~~~~~~~~~~~~~~~~~~~
          */
         // Sortieren der Bodies.
-        Body lower, higher;
+        Body lower;
+        Body higher;
         if (b1.hashCode() == b2.hashCode())
         {
             // Hashes sind gleich (blöde Sache!) -> beide Varianten probieren.
@@ -455,7 +460,7 @@ public class WorldHandler implements ContactListener
     }
 
     /**
-     * Speichert ein Korrespondierendes Body-Objekt
+     * Speichert ein korrespondierendes Body-Objekt
      */
     private static class Checkup<E extends Actor>
     {
@@ -550,11 +555,11 @@ public class WorldHandler implements ContactListener
             Body b2 = collider.physicsHandler().body();
             if (b1 == null || b2 == null)
             {
-                log.severe(
-                    "Kollision: Eine Figur ohne physikalischen Body wurde zur Kollisionsüberwachung angemeldet.");
-                return;
+                throw new IllegalStateException(
+                        "Kollision: Eine Figur ohne physikalischen Body wurde zur Kollisionsüberwachung angemeldet.");
             }
-            Body lower, higher;
+            Body lower;
+            Body higher;
             if (b1.hashCode() < b2.hashCode())
             {
                 lower = b1;
