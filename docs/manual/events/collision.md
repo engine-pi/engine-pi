@@ -157,7 +157,7 @@ In jedem Frame wird die Bewegung des Frosches in dreierlei hinsicht kontrolliert
   zuvor auf 0 gesetzt, um ein langsames Abbremsen zu verhindern. Das ermöglicht
   schnelle Reaktion auf Nutzereingabe und ein besseres Spielgefühl. Zusätzlich
   wird seine Geschwindigkeit auf die Konstante `MAX_SPEED` begrenzt.
-- Teil C: Springe, wenn möglich: Mit der Funktion `isGrounded()` bietet die
+- Teil C: Springe, wenn möglich: Mit der Methode `isGrounded()` bietet die
   Engine einen einfachen Test, um sicherzustellen, dass der Frosch Boden unter
   den Füßen hat. Wenn dies gegeben ist, wird ein Sprungimpuls auf den Frosch
   angewandt. Zuvor wird die vertikale Komponente seiner Geschwindigkeit auf 0
