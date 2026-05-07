@@ -166,6 +166,7 @@ nav:
           - manual/java/overloading.md
           - manual/java/packages.md
           - manual/java/super.md
+          - manual/java/generics.md
 
       - Entwicklung:
           - manual/dev/index.md

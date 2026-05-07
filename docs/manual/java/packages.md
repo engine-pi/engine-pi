@@ -16,7 +16,6 @@ der Paketname:
 
     de.pirckheimer_gymnasium.engine_pi
 
-
 [^docs-oracle]: https://docs.oracle.com/javase/specs/jls/se21/html/jls-6.html#d5e8762
 
     # Package Names and Module Names
