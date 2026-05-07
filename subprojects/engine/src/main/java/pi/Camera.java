@@ -262,14 +262,128 @@ public final class Camera
     }
 
     /**
-     * Setzt einen Kameraverzug. Der Standardwert hierfür ist
-     * <code>(0, 0)</code>.
+     * Gibt den Verzug der Kamera aus.
+     *
+     * @return Der aktuelle Verzug der Kamera.
+     *
+     * @see #offset(Vector)
+     */
+    @API
+    @Getter
+    public Vector offset()
+    {
+        return offset;
+    }
+
+    /**
+     * Setzt einen Kamera<b>verzug</b> durch Angabe der <b>x</b>- und
+     * <b>y</b>-Richtung.
+     *
+     * <p>
+     * Der Standardwert hierfür ist <code>(0, 0)</code>.
+     * </p>
      *
      * <p>
      * Der Verzug ist ein Vektor, um den der {@link #actorInFocus Fokus}
-     * verschoben wird. Das heißt, dass eine Figur im Fokus um 100 Pixel tiefer
+     * verschoben wird. Das heißt, dass eine Figur im Fokus um 10 Meter tiefer
      * als im absoluten Bildzentrum liegt, wenn der Fokus-Verzug mit folgender
-     * Methode gesetzt wurde: <code>camera.offset(new Vector(0, -100));</code>
+     * Methode gesetzt wurde: <code>camera.offset(new Vector(0, -10));</code>
+     * </p>
+     *
+     * @param x Die <b>x</b>-Richtung, um den ab sofort die Kamera vom Zentrum
+     *     des Fokus verschoben wird.
+     * @param y Die <b>y</b>-Richtung, um den ab sofort die Kamera vom Zentrum
+     *     des Fokus verschoben wird.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code camera.offset(..).focus(..)}.
+     *
+     * @since 0.49.0
+     */
+    @API
+    @Setter
+    public Camera offset(double x, double y)
+    {
+        return offset(new Vector(x, y));
+    }
+
+    /**
+     * Setzt einen Kamera<b>verzug</b> in <b>x</b>-Richtung.
+     *
+     * <p>
+     * Der Standardwert hierfür ist <code>(0, 0)</code>.
+     * </p>
+     *
+     * <p>
+     * Der Verzug ist ein Vektor, um den der {@link #actorInFocus Fokus}
+     * verschoben wird. Das heißt, dass eine Figur im Fokus um 10 Meter tiefer
+     * als im absoluten Bildzentrum liegt, wenn der Fokus-Verzug mit folgender
+     * Methode gesetzt wurde: <code>camera.offset(new Vector(0, -10));</code>
+     * </p>
+     *
+     * @param x Die <b>x</b>-Richtung, um den ab sofort die Kamera vom Zentrum
+     *     des Fokus verschoben wird.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code camera.offset(..).focus(..)}.
+     *
+     * @since 0.49.0
+     */
+    @API
+    @Setter
+    public Camera offsetX(double x)
+    {
+        return offset(x, 0);
+    }
+
+    /**
+     * Setzt einen Kamera<b>verzug</b> in <b>y</b>-Richtung.
+     *
+     * <p>
+     * Der Standardwert hierfür ist <code>(0, 0)</code>.
+     * </p>
+     *
+     * <p>
+     * Der Verzug ist ein Vektor, um den der {@link #actorInFocus Fokus}
+     * verschoben wird. Das heißt, dass eine Figur im Fokus um 10 Meter tiefer
+     * als im absoluten Bildzentrum liegt, wenn der Fokus-Verzug mit folgender
+     * Methode gesetzt wurde: <code>camera.offset(new Vector(0, -10));</code>
+     * </p>
+     *
+     * @param y Die <b>y</b>-Richtung, um den ab sofort die Kamera vom Zentrum
+     *     des Fokus verschoben wird.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code camera.offset(..).focus(..)}.
+     *
+     * @since 0.49.0
+     */
+    @API
+    @Setter
+    public Camera offsetY(double y)
+    {
+        return offset(0, y);
+    }
+
+    /**
+     * Setzt einen Kamera<b>verzug</b> durch Angabe eines {@link Vector
+     * Vektors}.
+     *
+     * <p>
+     * Der Standardwert hierfür ist <code>(0, 0)</code>.
+     * </p>
+     *
+     * <p>
+     * Der Verzug ist ein Vektor, um den der {@link #actorInFocus Fokus}
+     * verschoben wird. Das heißt, dass eine Figur im Fokus um 10 Meter tiefer
+     * als im absoluten Bildzentrum liegt, wenn der Fokus-Verzug mit folgender
+     * Methode gesetzt wurde: <code>camera.offset(new Vector(0, -10));</code>
      * </p>
      *
      * @param offset Der Vektor, um den ab sofort die Kamera vom Zentrum des
@@ -286,20 +400,6 @@ public final class Camera
     {
         this.offset = offset;
         return this;
-    }
-
-    /**
-     * Gibt den Verzug der Kamera aus.
-     *
-     * @return Der aktuelle Verzug der Kamera.
-     *
-     * @see #offset(Vector)
-     */
-    @API
-    @Getter
-    public Vector offset()
-    {
-        return offset;
     }
 
     /**

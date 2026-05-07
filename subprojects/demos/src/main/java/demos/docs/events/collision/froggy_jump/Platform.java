@@ -32,8 +32,8 @@ class Platform extends Rectangle implements CollisionListener<Frog>
     {
         super(width, height);
         makeStatic();
-        addCollisionListener(Frog.class, this);
         color("brown");
+        addCollisionListener(Frog.class, this);
     }
 
     @Override
