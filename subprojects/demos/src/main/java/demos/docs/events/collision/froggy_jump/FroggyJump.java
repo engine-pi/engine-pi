@@ -26,7 +26,6 @@ import pi.Camera;
 import pi.Controller;
 import pi.Random;
 import pi.Scene;
-import pi.graphics.geom.Vector;
 
 public class FroggyJump extends Scene
 {
@@ -44,7 +43,7 @@ public class FroggyJump extends Scene
         gravityOfEarth();
         Camera camera = camera();
         camera.focus(frog);
-        camera.offset(new Vector(0, 4));
+        camera.offsetY(4);
         makePlatforms(10);
         makePlatformsDeluxe(40);
     }
