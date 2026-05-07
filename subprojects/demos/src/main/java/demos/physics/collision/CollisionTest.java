@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos;
+package demos.physics.collision;
 
 import pi.Controller;
 import pi.Scene;
@@ -39,7 +39,7 @@ public class CollisionTest extends Scene
         // wall.position.set(200, -200);
         add(wall, ball);
         ball.addCollisionListener(wall,
-            (collisionEvent) -> System.out.println("COLLISION"));
+            collisionEvent -> System.out.println("COLLISION"));
         if (ball.overlaps(wall))
         {
             System.out.println("OVERLAP");

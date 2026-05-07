@@ -80,7 +80,7 @@ public class BodyHandler implements PhysicsHandler
             WorldHandler worldHandler)
     {
         this.worldHandler = worldHandler;
-        this.body = physicsData.createBody(worldHandler, actor);
+        body = physicsData.createBody(worldHandler, actor);
         bodyType(physicsData.bodyType());
     }
 
@@ -467,14 +467,14 @@ public class BodyHandler implements PhysicsHandler
     @Override
     public boolean isGrounded()
     {
-        if (this.bodyType() != BodyType.DYNAMIC)
+        if (bodyType() != BodyType.DYNAMIC)
         {
-            throw new RuntimeException(
-                    "Der Steh-Test ist nur für dynamische Objekte definiert");
+            throw new UnsupportedOperationException(
+                    "Der Steh-Test ist nur für dynamische Objekte definiert!");
         }
         AABB bodyBounds = aabb();
-        // Test-AABB: Should be a rectangle right below the body
-        // Minimal height, width of the body
+        // Test-AABB: Ein Rechteckt direkt unterhalt des Körper mit einer
+        // minimalen Höhe und der Breite des Körpers
         AABB testAABB = new AABB();
         final double epsilon = 0.0001;
         testAABB.lowerBound.set(bodyBounds.lowerBound.x,
@@ -499,14 +499,13 @@ public class BodyHandler implements PhysicsHandler
     {
         synchronized (worldHandler)
         {
-            PhysicsData physicsData = this.physicsData();
             for (Fixture fixture = body.fixtureList; fixture != null; fixture = fixture.next)
             {
                 body.destroyFixture(fixture);
             }
             for (FixtureData fixtureData : fixtures.get())
             {
-                body.createFixture(fixtureData.createFixtureDef(physicsData));
+                body.createFixture(fixtureData.createFixtureDef(physicsData()));
             }
         }
     }
@@ -534,8 +533,8 @@ public class BodyHandler implements PhysicsHandler
         for (ContactEdge contact = body
             .getContactList(); contact != null; contact = contact.next)
         {
-            // Contact exists with other Body. Next, check if they are actually
-            // touching
+            // Es besteht Kontakt zu einem anderen Körper. Prüfe als Nächstes,
+            // ob sie sich tatsächlich berühren.
             if (contact.contact.isTouching())
             {
                 contacts.add(new CollisionEvent<>(contact.contact,

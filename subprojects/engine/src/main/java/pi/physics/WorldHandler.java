@@ -47,6 +47,7 @@ import pi.Layer;
 import pi.actor.Actor;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
+import pi.annotations.Setter;
 import pi.event.CollisionEvent;
 import pi.event.CollisionListener;
 import pi.physics.joints.Joint;
@@ -54,10 +55,14 @@ import pi.physics.joints.JointBuilder;
 
 /**
  * Die WorldHandler-Klasse ist die (nicht objektgebundene) Middleware zwischen
- * der JBox2D Engine und der Engine Pi. Sie ist verantwortlich für:
+ * der JBox2D-Engine und der Engine Pi.
+ *
+ * <p>
+ * Sie ist verantwortlich für:
+ * </p>
  *
  * <ul>
- * <li>Den globalen "World"-Parameter aus der JBox2D Engine.</li>
+ * <li>Den globalen "World"-Parameter aus der JBox2D-Engine.</li>
  * <li>Übersetzung zwischen JB2D-Vektoren (SI-Basiseinheiten) und denen der
  * Engine (Zeichengrößen)</li>
  * </ul>
@@ -93,13 +98,12 @@ public class WorldHandler implements ContactListener
     private final World world;
 
     /**
-     * Hashmap, die alle spezifisch angegebenen Actor-Actor
-     * Kollisionsüberwachungen innehat.
+     * Alle spezifisch angegebenen Actor-Actor Kollisionsüberwachungen innehat.
      */
     private final Map<Body, List<Checkup<? extends Actor>>> specificCollisionListeners = new ConcurrentHashMap<>();
 
     /**
-     * Hashmap, die sämtliche allgemeinen CollisionListener-Listener innehat.
+     * Sämtliche allgemeinen CollisionListener innehat.
      */
     private final Map<Body, List<CollisionListener<Actor>>> generalCollisonListeners = new HashMap<>();
 
@@ -138,7 +142,8 @@ public class WorldHandler implements ContactListener
         return world;
     }
 
-    public void setWorldPaused(boolean worldPaused)
+    @Setter
+    public void worldPaused(boolean worldPaused)
     {
         this.worldPaused = worldPaused;
     }
@@ -249,7 +254,8 @@ public class WorldHandler implements ContactListener
         contactsToIgnore
             .add(new FixturePair(contact.fixtureA, contact.fixtureB));
     }
-    /* ____________ CONTACT LISTENER INTERFACE ____________ */
+
+    /* ContactListener interface */
 
     @Override
     public void beginContact(Contact contact)
@@ -272,6 +278,7 @@ public class WorldHandler implements ContactListener
      * @hidden
      */
     @Internal
+    @SuppressWarnings("squid:S3776")
     private void processContact(final Contact contact, boolean isBegin)
     {
         final Body b1 = contact.getFixtureA().getBody();
@@ -334,17 +341,19 @@ public class WorldHandler implements ContactListener
                 }
             }
         }
+
         /*
          * ~~~~~~~~~~~~~~~~~~~~~~~ TEIL II : Allgemeine Checkups
          * ~~~~~~~~~~~~~~~~~~~~~~~
          */
+
         generalCheckup(b1, b2, contact, isBegin);
         generalCheckup(b2, b1, contact, isBegin);
+
         if (!isBegin)
         {
             // Contact ist beendet -> Set Enabled and remove from blacklist
             contact.setEnabled(true);
-            // System.out.println("REMOVE");
             removeFromBlacklist(contact);
         }
     }
@@ -412,7 +421,7 @@ public class WorldHandler implements ContactListener
     @Override
     public void postSolve(Contact contact, ContactImpulse contactImpulse)
     {
-        // Ignore that shit.
+        // Wir ignorieren diese Methode
     }
 
     @Getter
@@ -420,6 +429,7 @@ public class WorldHandler implements ContactListener
     {
         return layer;
     }
+
     /* ____________ On-Request Collision Checkups ____________ */
 
     /**
@@ -446,14 +456,11 @@ public class WorldHandler implements ContactListener
         for (ContactEdge contact = a
             .getContactList(); contact != null; contact = contact.next)
         {
-            if (contact.other == b)
+            if (contact.other == b && contact.contact.isTouching())
             {
-                // Contact exists with other Body. Next, check if they are
-                // actually touching
-                if (contact.contact.isTouching())
-                {
-                    return true;
-                }
+                // Es besteht Kontakt zu einem anderen Körper. Prüfe als
+                // Nächstes, ob sie sich tatsächlich berühren.
+                return true;
             }
         }
         return false;
@@ -550,7 +557,7 @@ public class WorldHandler implements ContactListener
     public static <E extends Actor> void addSpecificCollisionListener(
             Actor actor, E collider, CollisionListener<E> listener)
     {
-        addMountListener(actor, collider, (worldHandler) -> {
+        addMountListener(actor, collider, worldHandler -> {
             Body b1 = actor.physicsHandler().body();
             Body b2 = collider.physicsHandler().body();
             if (b1 == null || b2 == null)
@@ -581,9 +588,8 @@ public class WorldHandler implements ContactListener
      * @hidden
      */
     @Internal
-    public static <JointType extends org.jbox2d.dynamics.joints.Joint, Wrapper extends Joint<JointType>> Wrapper createJoint(
-            Actor a, Actor b, JointBuilder<JointType> jointBuilder,
-            Wrapper wrapper)
+    public static <J extends org.jbox2d.dynamics.joints.Joint, W extends Joint<J>> W createJoint(
+            Actor a, Actor b, JointBuilder<J> jointBuilder, W wrapper)
     {
         List<Runnable> releaseCallbacks = addMountListener(a,
             b,

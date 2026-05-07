@@ -405,9 +405,10 @@ public class Layer implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Fügt einen oder mehrere {@link Actor}-Objekte der Ebene hinzu.
+     * Fügt eine oder mehrere {@link Actor Figuren} der Ebene hinzu.
      *
-     * @param actors Ein oder mehrere {@link Actor}-Objekte.
+     * @param actors Eine oder mehrere {@link Actor Figuren}, die zur Ebene
+     *     hinzugefügt werden soll.
      */
     @API
     public void add(Actor... actors)
@@ -422,7 +423,7 @@ public class Layer implements KeyStrokeListenerRegistration,
                     if (actor.layer() != this)
                     {
                         throw new IllegalArgumentException(
-                                "Ein Actor kann nur an einem Layer gleichzeitig angemeldet sein");
+                                "Eine Figur kann nur an einer Ebene gleichzeitig angemeldet sein!");
                     }
                     else
                     {

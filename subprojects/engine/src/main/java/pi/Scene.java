@@ -625,7 +625,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     @Setter
     public void physicsPaused(boolean worldPaused)
     {
-        layer.worldHandler().setWorldPaused(worldPaused);
+        layer.worldHandler().worldPaused(worldPaused);
     }
 
     /**

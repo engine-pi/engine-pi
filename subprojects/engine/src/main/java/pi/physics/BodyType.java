@@ -90,6 +90,7 @@ public enum BodyType
      * @see Actor#makeStatic()
      */
     STATIC,
+
     /**
      * <b>Dynamische</b> Objekte verhalten sich wie Objekte der Newtonschen
      * Mechanik. Sie können Kräfte auf sich wirken lassen und interagieren
@@ -99,6 +100,7 @@ public enum BodyType
      * @see Actor#makeDynamic()
      */
     DYNAMIC,
+
     /**
      * <b>Kinematische</b> Objekte können eine Geschwindigkeit haben, aber
      * reagieren nicht auf Kräfte. Sie kollidieren (im Sinne der Physics) nur
@@ -108,6 +110,7 @@ public enum BodyType
      * @see Actor#makeKinematic()
      */
     KINEMATIC,
+
     /**
      * <b>Sensoren</b> nehmen nicht an der Physiksimulation teil. Sie werden von
      * der Physics so behandelt, <i>als wären sie nicht da</i>. Sie generieren
@@ -117,6 +120,7 @@ public enum BodyType
      * @see Actor#makeSensor()
      */
     SENSOR,
+
     /**
      * <b>Partikel</b> nehmen wie Sensoren <b>nicht an der Physiksimulation</b>
      * teil, sie generieren trotzdem Kollisionsereignisse. Dieser Typ ist
