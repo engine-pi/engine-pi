@@ -62,7 +62,7 @@ import pi.physics.joints.JointBuilder;
  * </p>
  *
  * <ul>
- * <li>Den globalen "World"-Parameter aus der JBox2D-Engine.</li>
+ * <li>Den globalen {@link World}-Parameter aus der JBox2D-Engine.</li>
  * <li>Übersetzung zwischen JB2D-Vektoren (SI-Basiseinheiten) und denen der
  * Engine (Zeichengrößen)</li>
  * </ul>
@@ -98,12 +98,12 @@ public class WorldHandler implements ContactListener
     private final World world;
 
     /**
-     * Alle spezifisch angegebenen Actor-Actor Kollisionsüberwachungen innehat.
+     * Alle spezifisch angegebenen Actor-Actor Kollisionsüberwachungen.
      */
     private final Map<Body, List<Checkup<? extends Actor>>> specificCollisionListeners = new ConcurrentHashMap<>();
 
     /**
-     * Sämtliche allgemeinen CollisionListener innehat.
+     * Sämtliche allgemeinen CollisionListener.
      */
     private final Map<Body, List<CollisionListener<Actor>>> generalCollisonListeners = new HashMap<>();
 
@@ -257,6 +257,20 @@ public class WorldHandler implements ContactListener
 
     /* ContactListener interface */
 
+    /**
+     * Informationen zu einer Kollision sind in einem {@link Contact}-Objekt
+     * enthalten. Es gibt zwei Herangehensweisen, um diese
+     * {@link Contact}-Objekte von JBox2D abzurufen:
+     *
+     * <ul>
+     * <li>Über eine Liste: {@link World#getContactList()}</li>
+     * <li>Über einen Listener: {@link ContactListener}
+     * ({@link World#setContactListener(ContactListener)})</li>
+     * </ul>
+     *
+     * @see <a href=
+     *     "https://www.iforce2d.net/b2dtut/collision-anatomy">iforce2d-Tutorial</a>
+     */
     @Override
     public void beginContact(Contact contact)
     {
@@ -267,6 +281,47 @@ public class WorldHandler implements ContactListener
     public void endContact(Contact contact)
     {
         processContact(contact, false);
+    }
+
+    @Override
+    public void preSolve(Contact contact, Manifold manifold)
+    {
+        for (FixturePair ignoredPair : contactsToIgnore)
+        {
+            if (ignoredPair.matches(contact.fixtureA, contact.fixtureB))
+            {
+                contact.setEnabled(false);
+            }
+        }
+    }
+
+    /**
+     * Wird aufgerufen, nachdem die Kollisionsreaktion berechnet und angewendet
+     * wurde.
+     *
+     * <p>
+     * Dies ist nützlich, um Impulse zu überprüfen. Hinweis: Das
+     * Kontakt-Manifold enthält nicht die Impulse zum Zeitpunkt des Aufpralls;
+     * diese können beliebig groß ausfallen, wenn der Teilschritt klein ist.
+     * Daher wird der Impuls explizit in einer separaten Datenstruktur
+     * bereitgestellt. Hinweis: Diese Funktion wird nur für Kontakte aufgerufen,
+     * die sich berühren, fest sind und aktiv sind.
+     * </p>
+     *
+     * <p>
+     * Eine häufige Anwendung dieser Informationen besteht darin zu überprüfen,
+     * ob die Stärke der Kollisionsreaktion einen bestimmten Schwellenwert
+     * überschritten hat – beispielsweise, um festzustellen,ob ein Pfeil beim
+     * Aufprall im Ziel stecken bleiben soll.
+     * </p>
+     *
+     * @see <a href=
+     *     "https://www.iforce2d.net/b2dtut/collision-anatomy">iforce2d-Tutorial</a>
+     */
+    @Override
+    public void postSolve(Contact contact, ContactImpulse contactImpulse)
+    {
+        // Wir ignorieren diese Methode
     }
 
     /**
@@ -288,10 +343,9 @@ public class WorldHandler implements ContactListener
             // Gleicher Body, don't care
             throw new IllegalStateException("Inter-Body Collision!");
         }
-        /*
-         * ~~~~~~~~~~~~~~~~~~~~~~~ TEIL I : Spezifische Checkups
-         * ~~~~~~~~~~~~~~~~~~~~~~~
-         */
+
+        /* TEIL I : Spezifische Checkups */
+
         // Sortieren der Bodies.
         Body lower;
         Body higher;
@@ -379,13 +433,14 @@ public class WorldHandler implements ContactListener
      * @hidden
      */
     @Internal
-    private void generalCheckup(Body act, Body col, Contact contact,
+    private void generalCheckup(Body actor, Body colliding, Contact contact,
             final boolean isBegin)
     {
-        List<CollisionListener<Actor>> list = generalCollisonListeners.get(act);
+        List<CollisionListener<Actor>> list = generalCollisonListeners
+            .get(actor);
         if (list != null)
         {
-            Actor other = (Actor) col.getUserData();
+            Actor other = (Actor) colliding.getUserData();
             if (other == null)
             {
                 return; // Is null on async removals
@@ -404,24 +459,6 @@ public class WorldHandler implements ContactListener
                 }
             }
         }
-    }
-
-    @Override
-    public void preSolve(Contact contact, Manifold manifold)
-    {
-        for (FixturePair ignoredPair : contactsToIgnore)
-        {
-            if (ignoredPair.matches(contact.fixtureA, contact.fixtureB))
-            {
-                contact.setEnabled(false);
-            }
-        }
-    }
-
-    @Override
-    public void postSolve(Contact contact, ContactImpulse contactImpulse)
-    {
-        // Wir ignorieren diese Methode
     }
 
     @Getter
@@ -640,27 +677,28 @@ public class WorldHandler implements ContactListener
 
     private static class FixturePair
     {
-        private final Fixture f1;
+        private final Fixture fixtureA;
 
-        private final Fixture f2;
+        private final Fixture fixtureB;
 
-        public FixturePair(Fixture b1, Fixture b2)
+        public FixturePair(Fixture fixtureA, Fixture fixtureB)
         {
-            this.f1 = b1;
-            this.f2 = b2;
+            this.fixtureA = fixtureA;
+            this.fixtureB = fixtureB;
         }
 
         /**
          * Prüft dieses Body-Tupel auf Referenzgleichheit mit einem weiteren.
          *
-         * @param a Body A
-         * @param b Body B
+         * @param otherA Body A
+         * @param otherB Body B
          *
          * @return this == (A|B)
          */
-        public boolean matches(Fixture a, Fixture b)
+        public boolean matches(Fixture otherA, Fixture otherB)
         {
-            return (f1 == a && f2 == b) || (f1 == b && f2 == a);
+            return (fixtureA == otherA && fixtureB == otherB)
+                    || (fixtureA == otherB && fixtureB == otherA);
         }
     }
 }

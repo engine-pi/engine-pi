@@ -27,9 +27,8 @@
  *
  * <p>
  * In der Engine Alpha wurde jbox2d über ein lokales JAR-Repository eingebunden.
- * Wir verwenden einen eigenen
- * <a href="https://github.com/engine-pi/jbox2d">Fork</a>, der über das <a href=
- * "https://central.sonatype.com/artifact/de.pirckheimer-gymnasium/jbox2d">Maven
+ * Wir verwenden einen eigenen Fork, der über das <a href=
+ * "https://central.sonatype.com/artifact/de.pirckheimer-gymnasium/jbox2d-library">Maven
  * Central Repository</a> abrufbar ist.
  * </p>
  *

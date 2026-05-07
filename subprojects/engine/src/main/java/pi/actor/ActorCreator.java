@@ -33,6 +33,19 @@ import pi.graphics.geom.Bounds;
 public class ActorCreator
 {
     /**
+     * Dieser private Konstruktor dient dazu, den öffentlichen Konstruktor zu
+     * verbergen. Dadurch ist es nicht möglich, Instanzen dieser Klasse zu
+     * erstellen.
+     *
+     * @throws UnsupportedOperationException Falls eine Instanz der Klasse
+     *     erzeugt wird.
+     */
+    private ActorCreator()
+    {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
      * <b>Erzeugt</b> einen <b>Käfig</b> bestehend aus vier Rechtecken um den
      * sichtbaren Kamera-Bereich einer Szene und fügt diese vier Rechtecke in
      * eine Szene ein.
@@ -59,12 +72,11 @@ public class ActorCreator
         Rectangle left = new Rectangle(1, bounds.height());
         left.anchor(bounds.xLeft() - 1, bounds.yBottom());
 
-        Group<Rectangle> group = new Group<Rectangle>(top, right, bottom, left);
+        Group<Rectangle> group = new Group<>(top, right, bottom, left);
 
         group.forEach(actor -> actor.restitution(1).makeStatic());
 
         group.addToScene(scene);
         return group;
     }
-
 }
