@@ -4,6 +4,29 @@
     Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/Collision
 
+Zu diesem Tutorial gibt es ein
+[Repository](https://github.com/engine-pi/froggy-jump) in the
+[Engine-Pi-Github-Organsiation](https://github.com/engine-pi/froggy-jump).
+
+Die einzelnen Entwicklungsstadien sind in folgenden Git-Branches hinterlegt:
+
+1. [blank](https://github.com/engine-pi/froggy-jump/tree/blank):
+   Die Projektstruktur, die leere Hauptklasse `FroggyJump` ist angelegt, sowie
+   die zwei benötigten Grafikdateien sind dem Repository hinzugefügt.
+1. [basic](https://github.com/engine-pi/froggy-jump/tree/basic):
+   10 vertikal übereinander positionierte Plattformen, der Frosch kann horizonal
+   bewegt werden, der Frosch springt automatisch von den Plattformen ab.
+1. [jump-through](https://github.com/engine-pi/froggy-jump/tree/jump-through):
+   Frosch kann durch die Plattformen hindurchspringen.
+1. [platforms-deluxe](https://github.com/engine-pi/froggy-jump/tree/platforms-deluxe)
+   Zufällig angeordnete Plattformen, die nach oben hin immer mehr Abstand zu
+   einander aufweisen.
+1. [spike-balls](https://github.com/engine-pi/froggy-jump/tree/spike-balls):
+   Eisenkugeln mit Stacheln fallen auf den Frosch, falls er den Kugeln zu nahe kommt.
+1. [death-scene](https://github.com/engine-pi/froggy-jump/tree/death-scene) bzw. [final](https://github.com/engine-pi/froggy-jump/tree/final):
+   Wird der Frosch von einer Stachelkugel getroffen, erscheint eine Szene,
+   die den Tod des Frosches verkündet.
+
 ## Spielkonzept und grundlegender Aufbau
 
 Ein Frosch soll fröhlich durch das Spiel springen und sich vom Boden abstoßen,
@@ -13,116 +36,131 @@ wenn immer er die Chance dazu hat.
 
 {{ image('docs/events/collision/Frog.png', 'Dieser Frosch soll durch das Spiel springen') }}
 
-In der Scene `FroggyJump` kann der Spieler ein
-Objekt der Klasse `Frog` steuern. Zusätzlich geben Objekte der Klasse `Platform`
-halt.
+In der Szene `FroggyJump` kann der Spieler eine Figur der Klasse `Frog` steuern.
+Zusätzlich geben Figuren der Klasse `Platform` Halt.
 
 Damit ergibt sich das Codegerüst für das Spiel:
 
-<!-- ```java
+```java
+import pi.Camera;
+import pi.Controller;
+import pi.Scene;
+import pi.graphics.geom.Vector;
+
 public class FroggyJump extends Scene
 {
     private Frog frog;
+
+    private static final double PLATFORM_HEIGHT = 0.5;
 
     public FroggyJump()
     {
         frog = new Frog();
         add(frog);
-        setGravity(Vector.DOWN.multiply(10));
-        Camera camera = getCamera();
-        camera.setFocus(frog);
-        camera.setOffset(new Vector(0, 4));
-        makeLevel(40);
+        gravityOfEarth();
+        Camera camera = camera();
+        camera.focus(frog);
+        camera.offset(new Vector(0, 4));
         makePlatforms(10);
     }
 
-    private void makePlatforms(int heightLevel)
+    private void makePlatforms(int count)
     {
-        for (int i = 0; i < heightLevel; i++)
+        for (int i = 0; i < count; i++)
         {
-            Platform platform = new Platform(5, 1);
-            platform.setPosition(0, i * 4);
+            Platform platform = new Platform(5, PLATFORM_HEIGHT);
+            platform.anchor(0, (double) i * 4);
             add(platform);
         }
     }
+
+    public static void main(String[] args)
+    {
+        Controller.instantMode(false);
+        Controller.start(new FroggyJump(), 400, 600);
+    }
 }
+```
 
-class Frog extends Image implements Listener
+```java
+import java.awt.event.KeyEvent;
+
+import pi.Controller;
+import pi.actor.Image;
+import pi.event.FrameListener;
+
+class Frog extends Image implements FrameListener
 {
-    private boolean canJump = true;
+    private boolean jumpEnabled = true;
 
-    private static double MAX_SPEED = 4;
+    private static final double MAX_SPEED = 4;
 
     public Frog()
     {
-        super("froggy/Frog.png", 25);
+        super("images/Frog.png");
+        pixelPerMeter(25);
         makeDynamic();
-        setRotationLocked(true);
+        rotationLocked(true);
     }
 
-    public void setJumpEnabled(boolean jumpEnabled)
+    public void jumpEnabled(boolean jumpEnabled)
     {
-        this.canJump = jumpEnabled;
-    }
-
-    public void kill()
-    {
-        Controller.transitionToScene(new DeathScreen());
+        this.jumpEnabled = jumpEnabled;
     }
 
     @Override
     public void onFrame(double pastTime)
     {
-        Vector velocity = this.getVelocity();
-        // A: Die Blickrichtung des Frosches steuern
-        if (velocity.getX() < 0)
-        {
-            setFlipHorizontal(true);
-        }
-        else
-        {
-            setFlipHorizontal(false);
-        }
-        // B: Horizontale Bewegung steuern
+        // Die Blickrichtung des Frosches steuern
+        flippedHorizontally(velocityX() < 0);
+
+        // Die horizontale Bewegung steuern
         if (Controller.isKeyPressed(KeyEvent.VK_A))
         {
-            if (velocity.getX() > 0)
+            if (velocityX() > 0)
             {
-                setVelocity(new Vector(0, velocity.getY()));
+                velocityX(0);
             }
-            applyForce(Vector.LEFT.multiply(600));
+            applyForce(-600, 0);
         }
         else if (Controller.isKeyPressed(KeyEvent.VK_D))
         {
-            if (velocity.getX() < 0)
+            if (velocityX() < 0)
             {
-                setVelocity(new Vector(0, velocity.getY()));
+                velocityX(0);
             }
-            applyForce(Vector.RIGHT.multiply(600));
+            applyForce(600, 0);
         }
-        if (Math.abs(velocity.getX()) > MAX_SPEED)
+
+        // Die horizontale Geschwindigkeit begrenzen
+        if (Math.abs(velocityX()) > MAX_SPEED)
         {
-            setVelocity(new Vector(MAX_SPEED * Math.signum(velocity.getX()),
-                    velocity.getY()));
+            velocityX(MAX_SPEED * Math.signum(velocityX()));
         }
-        // C: Wenn möglich den Frosch springen lassen
-        if (isGrounded() && velocity.getY() <= 0 && canJump)
+
+        // Wenn möglich den Frosch springen lassen
+        if (isGrounded() && velocityY() <= 0 && jumpEnabled)
         {
-            setVelocity(new Vector(velocity.getX(), 0));
-            applyImpulse(Vector.UP.multiply(180));
+            velocityY(0);
+            applyImpulse(0, 180);
         }
     }
 }
+```
 
-class Platform extends Rectangle implements CollisionListener<Frog>
+```java
+import pi.actor.Rectangle;
+
+class Platform extends Rectangle
 {
     public Platform(double width, double height)
     {
         super(width, height);
         makeStatic();
+        color("brown");
     }
 }
-``` -->
+```
 
 {{ image('docs/events/collision/FrogTutorial1.gif', 'Der Frosch kann sich bewegen, knallt aber unangenehmerweise noch gegen die Decke') }}
 
