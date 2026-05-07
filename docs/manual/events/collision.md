@@ -239,7 +239,7 @@ class Platform extends Rectangle implements CollisionListener<Frog>
 
 {{ code('docs/events/collision/froggy_jump/FroggyJump.java', 25) }}
 
-{{ code('docs/events/collision/froggy_jump/DeathScreen.java', 25) }}
+{{ code('docs/events/collision/froggy_jump/DeathScene.java', 25) }}
 
 {{ code('docs/events/collision/froggy_jump/Frog.java', 25) }}
 
