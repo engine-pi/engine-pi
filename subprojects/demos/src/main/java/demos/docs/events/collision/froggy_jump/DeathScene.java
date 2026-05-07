@@ -29,9 +29,9 @@ import pi.Scene;
 import pi.actor.Text;
 import pi.event.KeyStrokeListener;
 
-class DeathScreen extends Scene implements KeyStrokeListener
+class DeathScene extends Scene implements KeyStrokeListener
 {
-    public DeathScreen()
+    public DeathScene()
     {
         Text message = new Text("You Died. Press any button to try again");
         message.height(.6);

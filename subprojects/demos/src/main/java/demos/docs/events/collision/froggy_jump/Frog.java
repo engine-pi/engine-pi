@@ -49,7 +49,7 @@ class Frog extends Image implements FrameListener
 
     public void kill()
     {
-        Controller.transitionToScene(new DeathScreen());
+        Controller.transitionToScene(new DeathScene());
     }
 
     @Override
