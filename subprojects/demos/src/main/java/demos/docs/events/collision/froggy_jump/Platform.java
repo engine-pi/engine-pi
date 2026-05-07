@@ -37,19 +37,19 @@ class Platform extends Rectangle implements CollisionListener<Frog>
     }
 
     @Override
-    public void onCollision(CollisionEvent<Frog> collisionEvent)
+    public void onCollision(CollisionEvent<Frog> event)
     {
-        double frogY = collisionEvent.colliding().y();
-        if (frogY < y())
+        Frog frog = event.colliding();
+        if (frog.y() < y())
         {
-            collisionEvent.ignoreCollision();
-            collisionEvent.colliding().jumpEnabled(false);
+            event.ignoreCollision();
+            frog.jumpEnabled(false);
         }
     }
 
     @Override
-    public void onCollisionEnd(CollisionEvent<Frog> collisionEvent)
+    public void onCollisionEnd(CollisionEvent<Frog> event)
     {
-        collisionEvent.colliding().jumpEnabled(true);
+        event.colliding().jumpEnabled(true);
     }
 }

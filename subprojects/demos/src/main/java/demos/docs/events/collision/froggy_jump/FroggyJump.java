@@ -45,13 +45,13 @@ public class FroggyJump extends Scene
         Camera camera = camera();
         camera.focus(frog);
         camera.offset(new Vector(0, 4));
-        makeLevel(40);
         makePlatforms(10);
+        makeMultiplePlatforms(40);
     }
 
-    private void makePlatforms(int heightLevel)
+    private void makePlatforms(int count)
     {
-        for (int i = 0; i < heightLevel; i++)
+        for (int i = 0; i < count; i++)
         {
             Platform platform = new Platform(5, PLATFORM_HEIGHT);
             platform.anchor(0, (double) i * 4);
@@ -59,9 +59,9 @@ public class FroggyJump extends Scene
         }
     }
 
-    private void makeLevel(int heightLevel)
+    private void makeMultiplePlatforms(int count)
     {
-        for (int i = 0; i < heightLevel; i++)
+        for (int i = 0; i < count; i++)
         {
             int numPlatforms = Random.range(2) + 1;
             for (int j = 0; j < numPlatforms; j++)
@@ -76,7 +76,7 @@ public class FroggyJump extends Scene
             {
                 for (int j = 0; j < Random.range(3); j++)
                 {
-                    SpikeBall.setupSpikeBall(Random.range() * (4 + j) * i,
+                    SpikeBall.create(Random.range() * (4 + j) * i,
                         Random.range() * 4 + 0.5 + 5 * i,
                         layer());
                 }

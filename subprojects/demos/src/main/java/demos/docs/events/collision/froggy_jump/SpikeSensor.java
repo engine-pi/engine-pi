@@ -41,7 +41,7 @@ class SpikeSensor extends Rectangle implements CollisionListener<Frog>
     }
 
     @Override
-    public void onCollision(CollisionEvent<Frog> collisionEvent)
+    public void onCollision(CollisionEvent<Frog> event)
     {
         ball.gravityScale(1);
     }

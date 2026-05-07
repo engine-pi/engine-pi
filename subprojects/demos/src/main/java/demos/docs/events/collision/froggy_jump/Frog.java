@@ -55,9 +55,10 @@ class Frog extends Image implements FrameListener
     @Override
     public void onFrame(double pastTime)
     {
-        // A: Die Blickrichtung des Frosches steuern
+        // Die Blickrichtung des Frosches steuern
         flippedHorizontally(velocityX() < 0);
-        // B: Horizontale Bewegung steuern
+
+        // Die horizontale Bewegung steuern
         if (Controller.isKeyPressed(KeyEvent.VK_A))
         {
             if (velocityX() > 0)
@@ -74,11 +75,14 @@ class Frog extends Image implements FrameListener
             }
             applyForce(600, 0);
         }
+
+        // Die horizontale Geschwindigkeit begrenzen
         if (Math.abs(velocityX()) > MAX_SPEED)
         {
             velocityX(MAX_SPEED * Math.signum(velocityX()));
         }
-        // C: Wenn möglich den Frosch springen lassen
+
+        // Wenn möglich den Frosch springen lassen
         if (isGrounded() && velocityY() <= 0 && jumpEnabled)
         {
             velocityY(0);

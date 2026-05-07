@@ -37,7 +37,7 @@ class SpikeBall extends Image implements CollisionListener<Frog>
         addCollisionListener(Frog.class, this);
     }
 
-    public static SpikeBall setupSpikeBall(double x, double y, Layer layer)
+    public static SpikeBall create(double x, double y, Layer layer)
     {
         SpikeBall ball = new SpikeBall();
         ball.center(x, y);
@@ -48,8 +48,8 @@ class SpikeBall extends Image implements CollisionListener<Frog>
     }
 
     @Override
-    public void onCollision(CollisionEvent<Frog> collisionEvent)
+    public void onCollision(CollisionEvent<Frog> event)
     {
-        collisionEvent.colliding().kill();
+        event.colliding().kill();
     }
 }
