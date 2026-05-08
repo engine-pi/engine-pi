@@ -884,8 +884,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
 
     /**
      * Meldet einen neuen {@link CollisionListener} an, der auf alle Kollisionen
-     * zwischen {@link Actor dieser} Figur und einer <b>einzelnen</b> {@link Actor
-     * collider}-Figur reagiert.
+     * zwischen {@link Actor dieser} Figur und einer <b>einzelnen</b>
+     * {@link Actor collider}-Figur reagiert.
      *
      * @param <E> Typ-Parameter. Sollte im Regelfall exakt die Klasse von
      *     <code>collider</code> sein. Dies ermöglicht die Nutzung von
@@ -914,8 +914,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
 
     /**
      * Meldet einen neuen {@link CollisionListener} an, der auf alle Kollisionen
-     * zwischen {@link Actor dieser} Figur und einer {@link Actor Klasse} anderen
-     * Figuren reagiert.
+     * zwischen {@link Actor dieser} Figur und einer {@link Actor Klasse}
+     * anderen Figuren reagiert.
      *
      * @param <E> Der Datentyp der anderen Figur.
      *
@@ -961,9 +961,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Meldet einen neuen {@link CollisionListener} an, der auf alle
-     * Kollisionen reagiert, die {@link Actor dieser} Figur mit seiner Umwelt
-     * erlebt.
+     * Meldet einen neuen {@link CollisionListener} an, der auf alle Kollisionen
+     * reagiert, die {@link Actor dieser} Figur mit seiner Umwelt erlebt.
      *
      * @param listener Der Listener, der bei Kollisionen informiert werden soll,
      *     die der <b>ausführende Actor</b> mit allen anderen Objekten der Szene
