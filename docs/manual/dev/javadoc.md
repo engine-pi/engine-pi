@@ -110,6 +110,7 @@ Mehrzeilig:
 | Actor                            | Figur                                                  |
 | BodyType                         | Verhalten einer Figur in der physikalischen Simulation |
 | Bounds                           | Schranken, Abgrenzung                                  |
+| BroadPhase                       | breite Phase                                           |
 | Controller                       | Steuerung                                              |
 | DistanceJoint                    | Stabverbindung                                         |
 | Fixture                          | Halterung, Kollisionsform                              |

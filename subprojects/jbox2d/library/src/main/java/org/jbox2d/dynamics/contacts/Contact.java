@@ -74,7 +74,6 @@ public abstract class Contact
 
     public int flags;
 
-    //
     /**
      * World pool and list pointers.
      */

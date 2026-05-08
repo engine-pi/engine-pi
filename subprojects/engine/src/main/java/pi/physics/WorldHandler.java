@@ -271,18 +271,87 @@ public class WorldHandler implements ContactListener
      * @see <a href=
      *     "https://www.iforce2d.net/b2dtut/collision-anatomy">iforce2d-Tutorial</a>
      */
+
+    /**
+     * Broad Phase vs. Narrow Phase
+     *
+     * <p>
+     * Rechenintensive Tests lassen sich durch Begrenzungsvolumen schon einmal
+     * minimieren, jedoch muss noch immer jedes Objekt mit jedem getestet
+     * werden. Um dieses Problem der vielen potentiellen Kollisionen zu lösen,
+     * unterteilt man die Kollisionserkennung in zwei Phasen, die broad Phase
+     * (weite/breite Phase) und narrow Phase (engen Phase).
+     * </p>
+     *
+     * https://opus4.kobv.de/opus4-uni-koblenz/frontdoor/deliver/index/docId/907/file/Bachelorarbeit_RigidBody_Physik_Engine_mit_Kollisionserkennung_auf_der_GPU_Daniel_KeAelheim_2015.pdf
+     */
+
+    /**
+     * Wird aufgerufen, wenn zwei Halterungen ({@link Fixture}) beginnen sich zu
+     * berühren.
+     *
+     * @param contact Der Kontakt zwischen zwei Halterungen ({@link Fixture}. In
+     *     der Broad Phase besteht für jedes überlappende AABB ein Kontakt (es
+     *     sei denn, es wurde gefiltert). Daher kann es vorkommen, dass ein
+     *     Kontakt-Objekt existiert, das keine Kontaktpunkte aufweist.
+     */
+    @SuppressWarnings("squid:S8491")
     @Override
     public void beginContact(Contact contact)
     {
         processContact(contact, true);
     }
 
+    /**
+     * Wird aufgerufen, wenn zwei Halterungen ({@link Fixture} keinen Kontakt
+     * mehr haben.
+     *
+     * @param contact Der Kontakt zwischen zwei Halterungen ({@link Fixture}. In
+     *     der Broad Phase besteht für jedes überlappende AABB ein Kontakt (es
+     *     sei denn, es wurde gefiltert). Daher kann es vorkommen, dass ein
+     *     Kontakt-Objekt existiert, das keine Kontaktpunkte aufweist.
+     */
     @Override
     public void endContact(Contact contact)
     {
         processContact(contact, false);
     }
 
+    /**
+     * Wird aufgerufen, nachdem ein Kontakt aktualisiert wurde.
+     *
+     * <p>
+     * Dies ermöglicht es Ihnen, einen Kontakt zu inspizieren, bevor er an den
+     * Solver übergeben wird. Bei sorgfältiger Vorgehensweise können Sie das
+     * Kontakt-Manifold modifizieren (z. B. den Kontakt deaktivieren). Es wird
+     * eine Kopie des alten Manifolds bereitgestellt, damit Sie Änderungen
+     * erkennen können.
+     * </p>
+     *
+     * <ul>
+     *
+     * <li>Hinweis: Diese Methode wird nur für aktive (awake) Körper
+     * aufgerufen.</li>
+     *
+     * <li>Hinweis: Diese Methode wird auch dann aufgerufen, wenn die Anzahl der
+     * Kontaktpunkte null beträgt.</li>
+     *
+     * <li>Hinweis: Diese Methode wird nicht für Sensoren aufgerufen.</li>
+     *
+     * <li>Hinweis: Wenn Sie die Anzahl der Kontaktpunkte auf null setzen,
+     * erhalten Sie keinen EndContact-Callback. Möglicherweise erhalten Sie
+     * jedoch im nächsten Schritt einen BeginContact-Callback.</li>
+     *
+     * <li>Hinweis: Der Parameter `oldManifold` wird gepoolt; es handelt sich
+     * daher bei jedem Callback innerhalb desselben Threads um dasselbe
+     * Objekt.</li>
+     * </ul>
+     *
+     * @param contact Der Kontakt zwischen zwei Halterungen ({@link Fixture}. In
+     *     der Broad Phase besteht für jedes überlappende AABB ein Kontakt (es
+     *     sei denn, es wurde gefiltert). Daher kann es vorkommen, dass ein
+     *     Kontakt-Objekt existiert, das keine Kontaktpunkte aufweist.
+     */
     @Override
     public void preSolve(Contact contact, Manifold manifold)
     {
@@ -305,15 +374,18 @@ public class WorldHandler implements ContactListener
      * diese können beliebig groß ausfallen, wenn der Teilschritt klein ist.
      * Daher wird der Impuls explizit in einer separaten Datenstruktur
      * bereitgestellt. Hinweis: Diese Funktion wird nur für Kontakte aufgerufen,
-     * die sich berühren, fest sind und aktiv sind.
+     * die sich berühren, fest und aktiv sind.
      * </p>
      *
      * <p>
-     * Eine häufige Anwendung dieser Informationen besteht darin zu überprüfen,
-     * ob die Stärke der Kollisionsreaktion einen bestimmten Schwellenwert
-     * überschritten hat – beispielsweise, um festzustellen,ob ein Pfeil beim
-     * Aufprall im Ziel stecken bleiben soll.
+     * Der Impule kann beispielsweise verwendet werden, um festzustellen, ob ein
+     * Pfeil beim Aufprall im Ziel stecken bleiben soll.
      * </p>
+     *
+     * @param contact Der Kontakt zwischen zwei Halterungen ({@link Fixture}. In
+     *     der Broad Phase besteht für jedes überlappende AABB ein Kontakt (es
+     *     sei denn, es wurde gefiltert). Daher kann es vorkommen, dass ein
+     *     Kontakt-Objekt existiert, das keine Kontaktpunkte aufweist.
      *
      * @see <a href=
      *     "https://www.iforce2d.net/b2dtut/collision-anatomy">iforce2d-Tutorial</a>
