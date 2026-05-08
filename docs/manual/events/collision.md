@@ -1,4 +1,21 @@
-# `CollisionListener` (Kollisionen-Erkennung)[^engine-alpha-wiki:collision]
+# `CollisionListener` (Kollisionen-Erkennung)
+
+!!! info "Methoden"
+
+    Die Klasse {{ javadoc('pi.actor.Actor') }} bietet drei überladene Methoden
+    an, um {{ javadoc('pi.event.CollisionListener') }} zu registrieren:
+
+    - {{ javadoc('pi.actor.Actor#addCollisionListener(E,pi.event.CollisionListener)',
+     'addCollisionListener(E collider, CollisionListener&lt;E&gt; listener)') }}:
+     Kollision zwischen **dieser** Figur und einer **einzelnen** collider-Figur.
+    - {{ javadoc('pi.actor.Actor#addCollisionListener(java.lang.Class,pi.event.CollisionListener)',
+      'addCollisionListener(Class&lt;E&gt;clazz, CollisionListener&lt;E&gt; listener)') }}:
+      Kollision zwischen **dieser** Figur und einer **Klasse** anderen Figuren.
+    - {{ javadoc('pi.actor.Actor#addCollisionListener(pi.event.CollisionListener)',
+      'addCollisionListener(CollisionListener&lt;E&gt; listener)') }}:
+      Kollision zwischen **dieser** Figur und **allen** anderen Figuren.
+
+## Tutorial: FroggyJump[^engine-alpha-wiki:collision]
 
 [^engine-alpha-wiki:collision]:
     Der Abschnitt stammt aus dem
@@ -28,7 +45,7 @@ Die einzelnen Entwicklungsstadien sind in folgenden Git-Branches hinterlegt:
    von einer Stachelkugel getroffen, erscheint eine Szene, die seinen Tod
    verkündet.
 
-## Spielkonzept und grundlegender Aufbau
+### Spielkonzept und grundlegender Aufbau
 
 Ein Frosch soll fröhlich durch das Spielfeld hüpfen und sich immer dann vom
 Boden abstoßen, wenn sich die Gelegenheit dazu bietet.
@@ -42,7 +59,7 @@ Zusätzlich bieten Figuren der Klasse `Platform` Halt.
 
 Damit ergibt sich das Codegerüst für das Spiel:
 
-### Klasse `FroggyJump`
+#### Klasse `FroggyJump`
 
 ```java
 import pi.Camera;
@@ -87,7 +104,7 @@ public class FroggyJump extends Scene
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/events/collision/froggy_jump/FroggyJump.java -->
 
-### Klasse `Frog`
+#### Klasse `Frog`
 
 ```java
 import java.awt.event.KeyEvent;
@@ -157,7 +174,7 @@ class Frog extends Image implements FrameListener
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/events/collision/froggy_jump/Frog.java -->
 
-### Klasse `Platform`
+#### Klasse `Platform`
 
 ```java
 import pi.actor.Rectangle;
@@ -179,7 +196,7 @@ class Platform extends Rectangle
 
 Ein paar Erklärungen zum Codegerüst für `FroggyJump`:
 
-## Physikalische Eigenschaften
+### Physikalische Eigenschaften
 
 Wie im Physics-Tutorial beschrieben, werden die physikalischen Eigenschaften der
 Spielobjekte und ihrer Umgebung bestimmt:
@@ -192,14 +209,14 @@ Spielobjekte und ihrer Umgebung bestimmt:
 - In der Szene `FroggyJump` wird die Schwerkraft der Erde simuliert. Sie wird
   mit der Methode `#!java gravityOfEarth()` gesetzt.
 
-## Bewegung des Frosches
+### Bewegung des Frosches
 
 Die Bewegung des Frosches wird in jedem Frame kontrolliert. Wie im Game Loop
 Tutorial beschrieben, wird hierzu das Interface `Listener` genutzt.
 
 In jedem Einzelbild wird die Bewegung des Frosches kontrolliert:
 
-### Blickrichtung des Frosches
+#### Blickrichtung des Frosches
 
 Das Bild des Frosches wird gespiegelt, falls er sich nach links bewegt.
 
@@ -209,7 +226,7 @@ flippedHorizontally(velocityX() < 0);
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/events/collision/froggy_jump/Frog.java -->
 
-### Horizontale Bewegung des Frosches
+#### Horizontale Bewegung des Frosches
 
 Jedes Einzelbild, in dem der Spieler den Frosch (per Tastendruck) nach links
 oder rechts steuern möchte, wird eine Bewegungskraft auf den Frosch angewendet.
@@ -239,7 +256,6 @@ else if (Controller.isKeyPressed(KeyEvent.VK_D))
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/events/collision/froggy_jump/Frog.java -->
 
-
 Zusätzlich wird seine Geschwindigkeit auf die Konstante `#!java MAX_SPEED`
 begrenzt.
 
@@ -252,7 +268,7 @@ if (Math.abs(velocityX()) > MAX_SPEED)
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/events/collision/froggy_jump/Frog.java -->
 
-### Springe, wenn möglich
+#### Springe, wenn möglich
 
 Mit der Methode {{ javadoc('pi.actor.Actor#isGrounded()', 'isGrounded()') }}
 bietet die Engine einen einfachen Test, um sicherzustellen, dass der Frosch
@@ -269,7 +285,7 @@ if (isGrounded() && velocityY() <= 0 && jumpEnabled)
 }
 ```
 
-## Die Kamera folgt dem Frosch
+### Die Kamera folgt dem Frosch
 
 Der Frosch soll stets sichtbar bleiben. Hierzu werden zwei Funktionen der
 Engine-Kamera genutzt:
@@ -287,7 +303,7 @@ camera.focus(frog);
 camera.offsetY(4);
 ```
 
-## Durch Platformen Springen: Kollisionen kontrollieren
+### Durch Platformen Springen: Kollisionen kontrollieren
 
 Das Interface {{ javadoc('pi.event.CollisionListener') }} wurde bereits in
 seiner grundlegenden Form im Nutzereingabe-Tutorial benutzt.
@@ -340,13 +356,11 @@ class Platform extends Rectangle implements CollisionListener<Frog>
 }
 ``` -->
 
-## Kompletter Code
+### Kompletter Code
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/events/collision/froggy_jump/FroggyJump.java -->
 
-
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/events/collision/froggy_jump/package-info.java -->
-
 
 {{ code('docs/events/collision/froggy_jump/FroggyJump.java', 25) }}
 

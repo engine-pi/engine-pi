@@ -595,7 +595,7 @@ public class WorldHandler implements ContactListener
         /**
          * Erstellt das Checkup-Objekt
          *
-         * @param listener Das aufzurufende KR
+         * @param listener Das aufzurufende CollisionListener
          * @param body Der zweite Body für den Checkup
          * @param collidingActor Der zugehörige Collider für diesen Checkup
          */

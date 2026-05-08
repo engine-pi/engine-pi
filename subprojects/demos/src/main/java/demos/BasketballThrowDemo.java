@@ -45,7 +45,8 @@ public class BasketballThrowDemo extends Scene
         gravityOfEarth();
         camera().meter(100);
         Vector ballPosition = new Vector(-1.7, 0.5);
-        layer().add(ball = new Ball(ballPosition.x(), ballPosition.y()));
+        ball = new Ball(ballPosition.x(), ballPosition.y());
+        layer().add(ball);
         layer().add(new Wall(-6, -4.5, 12, 1));
         layer().add(new Wall(-6, 3.5, 12, 1));
         layer().add(new Wall(-6.5, -4.5, 1, 9));
