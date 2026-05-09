@@ -73,7 +73,7 @@ public class FroggyJump extends Scene
      * </p>
      *
      * @param countLevels Auf wie vielen Ebenen neue Plattformen erstellt werden
-     *     sollen. Eine neue Ebene nach oben im Spielfeld eingebaut.
+     *     sollen. Eine neue Ebene wird oben im Spielfeld eingebaut.
      */
     private void makePlatformsDeluxe(int countLevels)
     {

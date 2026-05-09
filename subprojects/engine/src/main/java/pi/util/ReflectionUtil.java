@@ -31,6 +31,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -65,11 +67,31 @@ public final class ReflectionUtil
         throw new UnsupportedOperationException();
     }
 
+    /**
+     * Liefert ein Feld des angegebenen Typs anhand seines Namens.
+     *
+     * @param cls Der Typ, in dem nach dem Feld gesucht wird.
+     * @param fieldName Der Name des gesuchten Feldes.
+     *
+     * @return Das gefundene Feld oder {@code null}, falls kein passendes Feld
+     *     existiert.
+     */
     public static <T> Field getField(Class<T> cls, final String fieldName)
     {
         return getField(cls, fieldName, true);
     }
 
+    /**
+     * Liefert ein Feld des angegebenen Typs anhand seines Namens und kann dabei
+     * optional auch Oberklassen durchsuchen.
+     *
+     * @param cls Der Typ, in dem nach dem Feld gesucht wird.
+     * @param fieldName Der Name des gesuchten Feldes.
+     * @param recursive Gibt an, ob auch Oberklassen durchsucht werden sollen.
+     *
+     * @return Das gefundene Feld oder {@code null}, falls kein passendes Feld
+     *     gefunden wurde.
+     */
     public static <T> Field getField(Class<T> cls, final String fieldName,
             boolean recursive)
     {
@@ -98,6 +120,15 @@ public final class ReflectionUtil
         return null;
     }
 
+    /**
+     * Liest den Wert eines statischen Feldes aus.
+     *
+     * @param cls Der Typ, der das statische Feld enthält.
+     * @param fieldName Der Name des statischen Feldes.
+     *
+     * @return Der Wert des Feldes oder {@code null}, falls das Feld nicht
+     *     gelesen werden kann.
+     */
     @SuppressWarnings("unchecked")
     public static <V> V getStaticValue(Class<?> cls, String fieldName)
     {
@@ -118,14 +149,15 @@ public final class ReflectionUtil
     }
 
     /**
-     * Recursively gets all fields of the specified type, respecting parent
-     * classes.
+     * Ermittelt rekursiv alle Felder des angegebenen Typs und berücksichtigt
+     * dabei auch Oberklassen.
      *
-     * @param fields The list containing all fields.
-     * @param type The type to retrieve the fields from.
+     * @param fields Die Liste, in die alle gefundenen Felder eingetragen
+     *     werden.
+     * @param type Der Typ, dessen Felder ermittelt werden sollen.
      *
-     * @return All fields of the specified type, including the fields of the
-     *     parent classes.
+     * @return Alle Felder des angegebenen Typs einschließlich der Felder der
+     *     Oberklassen.
      */
     public static List<Field> getAllFields(List<Field> fields, Class<?> type)
     {
@@ -141,15 +173,16 @@ public final class ReflectionUtil
     }
 
     /**
-     * Recursively gets a method by the specified name respecting the parent
-     * classes and the parameters of the declaration.
+     * Ermittelt rekursiv eine Methode anhand ihres Namens und ihrer
+     * Parametertypen und berücksichtigt dabei auch Oberklassen.
      *
-     * @param name The name of the method.
-     * @param type The type on which to search for the method.
-     * @param parameterTypes The types of the parameters defined by the method
-     *     declaration.
+     * @param name Der Name der Methode.
+     * @param type Der Typ, auf dem nach der Methode gesucht wird.
+     * @param parameterTypes Die in der Methodensignatur definierten
+     *     Parametertypen.
      *
-     * @return The found method or null if no such method exists.
+     * @return Die gefundene Methode oder {@code null}, falls keine passende
+     *     Methode existiert.
      */
     public static Method getMethod(String name, Class<?> type,
             Class<?>... parameterTypes)
@@ -171,6 +204,18 @@ public final class ReflectionUtil
         return method;
     }
 
+    /**
+     * Setzt den Wert eines Feldes über einen Setter oder direkt per
+     * Feldzugriff.
+     *
+     * @param cls Der Typ, der das zu setzende Feld enthält.
+     * @param instance Die Instanz, auf der der Wert gesetzt werden soll.
+     * @param fieldName Der Name des Feldes.
+     * @param value Der neue Wert.
+     *
+     * @return {@code true}, wenn der Wert erfolgreich gesetzt wurde,
+     *     andernfalls {@code false}.
+     */
     public static <T, C> boolean setValue(Class<C> cls, Object instance,
             final String fieldName, final T value)
     {
@@ -183,13 +228,14 @@ public final class ReflectionUtil
                 {
                     method.setAccessible(true);
                 }
-                // set the new value with the setter
+                // Setzt den neuen Wert ueber den Setter.
                 method.invoke(instance, value);
                 return true;
             }
             else
             {
-                // if no setter is present, try to set the field directly
+                // Falls kein Setter vorhanden ist, wird das Feld direkt
+                // gesetzt.
                 for (final Field field : cls.getDeclaredFields())
                 {
                     if (field.getName().equals(fieldName)
@@ -221,6 +267,18 @@ public final class ReflectionUtil
         return false;
     }
 
+    /**
+     * Setzt ein Enum-Feld anhand seines String-Werts.
+     *
+     * @param cls Der Typ, der das Feld enthält.
+     * @param instance Die Instanz, auf der der Wert gesetzt werden soll.
+     * @param field Das Enum-Feld.
+     * @param propertyName Der Name der Eigenschaft.
+     * @param value Die textuelle Repräsentation der Enum-Konstante.
+     *
+     * @return {@code true}, wenn eine passende Enum-Konstante gefunden und
+     *     gesetzt wurde, andernfalls {@code false}.
+     */
     public static <T> boolean setEnumPropertyValue(Class<T> cls,
             Object instance, final Field field, String propertyName,
             String value)
@@ -242,6 +300,15 @@ public final class ReflectionUtil
         return false;
     }
 
+    /**
+     * Liefert den Setter zu einem Feldnamen.
+     *
+     * @param cls Der Typ, dessen Setter durchsucht werden.
+     * @param fieldName Der Name des Feldes.
+     *
+     * @return Die passende Setter-Methode oder {@code null}, falls kein Setter
+     *     gefunden wurde.
+     */
     public static <T> Method getSetter(Class<T> cls, final String fieldName)
     {
         for (final Method method : getSetters(cls))
@@ -255,15 +322,21 @@ public final class ReflectionUtil
         return null;
     }
 
+    /**
+     * Liefert alle oeffentlichen Setter-Methoden eines Typs.
+     *
+     * @param cls Der Typ, dessen Setter ermittelt werden.
+     *
+     * @return Eine unveraenderliche Sammlung aller gefundenen Setter.
+     */
     public static <T> Collection<Method> getSetters(Class<T> cls)
     {
         Collection<Method> methods = new ArrayList<>();
 
         for (final Method method : cls.getMethods())
         {
-            // method must start with "set" and have only one parameter,
-            // matching the
-            // specified fieldType
+            // Ein Setter beginnt mit "set" und besitzt genau einen
+            // Parameter.
             if (method.getName().toLowerCase().startsWith("set")
                     && method.getParameters().length == 1)
             {
@@ -274,6 +347,15 @@ public final class ReflectionUtil
         return Collections.unmodifiableCollection(methods);
     }
 
+    /**
+     * Prueft, ob ein Typ der Wrapper-Typ eines primitiven Typs ist.
+     *
+     * @param primitive Der primitive Typ.
+     * @param potentialWrapper Der moegliche Wrapper-Typ.
+     *
+     * @return {@code true}, wenn {@code potentialWrapper} der passende
+     *     Wrapper-Typ zu {@code primitive} ist, andernfalls {@code false}.
+     */
     public static <T, C> boolean isWrapperType(Class<T> primitive,
             Class<C> potentialWrapper)
     {
@@ -330,19 +412,30 @@ public final class ReflectionUtil
         return false;
     }
 
+    /**
+     * Setzt ein Feld anhand einer String-Repräsentation und konvertiert den
+     * Wert passend zum Feldtyp.
+     *
+     * @param cls Der Typ, der das Feld enthält.
+     * @param instance Die Instanz, auf der der Wert gesetzt werden soll.
+     * @param fieldName Der Name des Feldes.
+     * @param value Der zu konvertierende String-Wert.
+     *
+     * @return {@code true}, wenn das Feld erfolgreich gesetzt wurde,
+     *     andernfalls {@code false}.
+     */
     public static <T> boolean setFieldValue(final Class<T> cls,
             final Object instance, final String fieldName, final String value)
     {
-        // if a setter is present, instance method will use it, otherwise it
-        // will
-        // directly try to set the field.
+        // Falls ein Setter vorhanden ist, wird er verwendet. Andernfalls wird
+        // direkt versucht, das Feld zu setzen.
         final Field field = getField(cls, fieldName);
         if (field == null)
         {
             return false;
         }
 
-        // final fields cannot be set
+        // final-Felder duerfen nicht geaendert werden.
         if (Modifier.isFinal(field.getModifiers()))
         {
             return false;
@@ -442,18 +535,24 @@ public final class ReflectionUtil
         return false;
     }
 
+    /**
+     * Liefert alle Methoden eines Typs, die mit einer bestimmten Annotation
+     * versehen sind.
+     *
+     * @param type Der zu durchsuchende Typ.
+     * @param annotation Die gesuchte Annotation.
+     *
+     * @return Alle annotierten Methoden des Typs und seiner Oberklassen.
+     */
     public static List<Method> getMethodsAnnotatedWith(final Class<?> type,
             final Class<? extends Annotation> annotation)
     {
         final List<Method> methods = new ArrayList<>();
         Class<?> clazz = type;
         while (clazz != Object.class)
-        { // need to iterated thought hierarchy in order to retrieve methods
-          // from above
-          // the current instance
-          // iterate though the list of methods declared in the class
-          // represented by class variable, and
-          // add those annotated with the specified annotation
+        {
+            // Die Hierarchie wird durchlaufen, damit auch Methoden aus
+            // Oberklassen beruecksichtigt werden.
             final List<Method> allMethods = new ArrayList<>(
                     Arrays.asList(clazz.getDeclaredMethods()));
             for (final Method method : allMethods)
@@ -463,26 +562,25 @@ public final class ReflectionUtil
                     methods.add(method);
                 }
             }
-            // move to the upper class in the hierarchy in search for more
-            // methods
+            // Wechselt zur Oberklasse, um weitere Methoden zu pruefen.
             clazz = clazz.getSuperclass();
         }
         return methods;
     }
 
     /**
-     * Gets the events for the specified type.
+     * Liefert die Ereignismethoden des angegebenen Typs.
      *
      * <p>
-     * This will search for all methods that have a parameter of type
-     * {@code EventListener} and match the LITIENGINE's naming conventions for
-     * event subscription (i.e. the method name starts with one of the prefixes
-     * "add" or "on".
+     * Hierzu werden alle Methoden gesucht, die einen Parameter vom Typ
+     * {@code EventListener} besitzen und den Namenskonventionen der LITIENGINE
+     * für Event-Registrierungen entsprechen, also mit einem der Präfixe "add"
+     * oder "on" beginnen.
      *
-     * @param type The type to inspect the events on.
+     * @param type Der Typ, dessen Ereignismethoden untersucht werden.
      *
-     * @return All methods on the specified type that are considered to be
-     *     events.
+     * @return Alle Methoden des angegebenen Typs, die als Ereignisse gewertet
+     *     werden.
      *
      * @see EventListener
      */
@@ -494,12 +592,9 @@ public final class ReflectionUtil
         final List<Method> events = new ArrayList<>();
         Class<?> clazz = type;
         while (clazz != Object.class)
-        { // need to iterated thought hierarchy in order to retrieve methods
-          // from above
-          // the current instance
-          // iterate though the list of methods declared in the class
-          // represented by class variable, and
-          // add those annotated with the specified annotation
+        {
+            // Die Hierarchie wird durchlaufen, damit auch Ereignismethoden aus
+            // Oberklassen beruecksichtigt werden.
             final List<Method> allMethods = new ArrayList<>(
                     Arrays.asList(clazz.getDeclaredMethods()));
             for (final Method method : allMethods)
@@ -516,16 +611,92 @@ public final class ReflectionUtil
                 }
             }
 
-            // move to the upper class in the hierarchy in search for more
-            // methods
+            // Wechselt zur Oberklasse, um weitere Methoden zu pruefen.
             clazz = clazz.getSuperclass();
         }
         return events;
     }
 
+    /**
+     * Liefert den Standardwert eines Typs.
+     *
+     * @param clazz Der Typ, für den der Standardwert ermittelt werden soll.
+     *
+     * @return Der Java-Standardwert des Typs, etwa {@code 0}, {@code false}
+     *     oder {@code null}.
+     */
     @SuppressWarnings("unchecked")
     public static <T> T getDefaultValue(Class<T> clazz)
     {
         return (T) Array.get(Array.newInstance(clazz, 1), 0);
+    }
+
+    /**
+     * Ermittelt den ersten generischen Typparameter eines Interfaces, das von
+     * einem Typ oder einer seiner Oberklassen beziehungsweise Oberinterfaces
+     * implementiert wird.
+     *
+     * @param clazz Der zu untersuchende Typ.
+     * @param interfaze Das Interface, dessen generischer Typparameter gesucht
+     *     wird.
+     *
+     * @return Der gefundene generische Typ oder {@code null}, falls kein
+     *     passender Typparameter ermittelt werden kann.
+     *
+     * @since 0.49.0
+     */
+    @SuppressWarnings("squid:S3776")
+    public static Type getGenericOfInterface(Class<?> clazz, Class<?> interfaze)
+    {
+        if (clazz == null || interfaze == null)
+        {
+            return null;
+        }
+
+        Type[] genericInterfaces = clazz.getGenericInterfaces();
+        for (Type genericInterface : genericInterfaces)
+        {
+            if (genericInterface instanceof ParameterizedType parameterizedType)
+            {
+                Type rawType = parameterizedType.getRawType();
+                if (rawType instanceof Class<?> rawClass
+                        && interfaze.isAssignableFrom(rawClass))
+                {
+                    Type[] genericTypes = parameterizedType
+                        .getActualTypeArguments();
+                    if (genericTypes.length > 0)
+                    {
+                        return genericTypes[0];
+                    }
+                }
+
+                if (rawType instanceof Class<?> rawClass)
+                {
+                    Type genericType = getGenericOfInterface(rawClass,
+                        interfaze);
+                    if (genericType != null)
+                    {
+                        return genericType;
+                    }
+                }
+            }
+            else if (genericInterface instanceof Class<?> interfaceClass)
+            {
+                Type genericType = getGenericOfInterface(interfaceClass,
+                    interfaze);
+                if (genericType != null)
+                {
+                    return genericType;
+                }
+            }
+        }
+
+        Class<?> superclass = clazz.getSuperclass();
+        if (superclass != null && !Object.class.equals(superclass))
+        {
+            return getGenericOfInterface(superclass, interfaze);
+        }
+
+        return null;
     }
 }

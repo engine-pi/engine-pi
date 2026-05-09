@@ -32,82 +32,144 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.lang.reflect.Type;
 import java.util.stream.Stream;
 
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import static pi.util.ReflectionUtil.getField;
+import static pi.util.ReflectionUtil.setValue;
+import static pi.util.ReflectionUtil.isWrapperType;
+import static pi.util.ReflectionUtil.getGenericOfInterface;
+
 class ReflectionUtilTests
 {
     @Test
-    void getField()
+    void testGetField()
     {
-        assertNotNull(ReflectionUtil.getField(TestImpl.class, "integerField"));
-        assertNotNull(ReflectionUtil.getField(ChildImpl.class, "integerField"));
-        assertNull(ReflectionUtil.getField(TestImpl.class, "nananananan"));
+        assertNotNull(getField(TestImpl.class, "integerField"));
+        assertNotNull(getField(ChildImpl.class, "integerField"));
+        assertNull(getField(TestImpl.class, "nananananan"));
     }
 
     @Test
-    void setValue()
+    void testSetValue()
     {
         var test = new TestImpl();
-        assertDoesNotThrow(() -> ReflectionUtil
-            .setValue(TestImpl.class, test, "integerField", 12));
+        assertDoesNotThrow(
+            () -> setValue(TestImpl.class, test, "integerField", 12));
         assertEquals(12, test.integerField);
     }
 
-    @ParameterizedTest
-    @MethodSource("getWrapperParameters")
-    void isWrapperTypeTrue(Class<?> primitive, Class<?> wrapper)
+    @Nested
+    class IsWrapperTypeTest
     {
-        // act
-        boolean isWrapper = ReflectionUtil.isWrapperType(primitive, wrapper);
+        @ParameterizedTest
+        @MethodSource("getWrapperParameters")
+        void isTrue(Class<?> primitive, Class<?> wrapper)
+        {
+            // act
+            boolean isWrapper = isWrapperType(primitive, wrapper);
 
-        // assert
-        assertTrue(isWrapper);
-    }
+            // assert
+            assertTrue(isWrapper);
+        }
 
-    @ParameterizedTest
-    @MethodSource("getNonWrapperParameters")
-    void isWrapperTypeFalse(Class<?> primitive, Class<?> wrapper)
-    {
-        // act
-        boolean isWrapper = ReflectionUtil.isWrapperType(primitive, wrapper);
+        @ParameterizedTest
+        @MethodSource("getNonWrapperParameters")
+        void isFalse(Class<?> primitive, Class<?> wrapper)
+        {
+            // act
+            boolean isWrapper = isWrapperType(primitive, wrapper);
 
-        // assert
-        assertFalse(isWrapper);
-    }
+            // assert
+            assertFalse(isWrapper);
+        }
 
-    private static Stream<Arguments> getWrapperParameters()
-    {
-        // arrange
-        return Stream.of(Arguments.of(boolean.class, Boolean.class),
-            Arguments.of(char.class, Character.class),
-            Arguments.of(byte.class, Byte.class),
-            Arguments.of(short.class, Short.class),
-            Arguments.of(int.class, Integer.class),
-            Arguments.of(long.class, Long.class),
-            Arguments.of(float.class, Float.class),
-            Arguments.of(double.class, Double.class),
-            Arguments.of(void.class, Void.class));
-    }
+        private static Stream<Arguments> getWrapperParameters()
+        {
+            // arrange
+            return Stream.of(Arguments.of(boolean.class, Boolean.class),
+                Arguments.of(char.class, Character.class),
+                Arguments.of(byte.class, Byte.class),
+                Arguments.of(short.class, Short.class),
+                Arguments.of(int.class, Integer.class),
+                Arguments.of(long.class, Long.class),
+                Arguments.of(float.class, Float.class),
+                Arguments.of(double.class, Double.class),
+                Arguments.of(void.class, Void.class));
+        }
 
-    private static Stream<Arguments> getNonWrapperParameters()
-    {
-        // arrange
-        return Stream.of(Arguments.of(Boolean.class, boolean.class),
-            Arguments.of(char.class, Byte.class));
+        private static Stream<Arguments> getNonWrapperParameters()
+        {
+            // arrange
+            return Stream.of(Arguments.of(Boolean.class, boolean.class),
+                Arguments.of(char.class, Byte.class));
+        }
+
     }
 
     private class TestImpl
     {
-        @SuppressWarnings("unused")
         private int integerField;
+    }
+
+    @Nested
+    class GetGenericOfInterfaceTest
+    {
+
+        @Test
+        void returnsGenericForMatchingInterface()
+        {
+            Type genericType = getGenericOfInterface(StringProcessor.class,
+                Processor.class);
+
+            assertEquals(String.class, genericType);
+        }
+
+        @Test
+        void returnsGenericForSuperclassImplementation()
+        {
+            Type genericType = getGenericOfInterface(
+                InheritedStringProcessor.class,
+                Processor.class);
+
+            assertEquals(String.class, genericType);
+        }
+
+        @Test
+        void returnsNullForNonMatchingInterface()
+        {
+            Type genericType = getGenericOfInterface(StringProcessor.class,
+                Runnable.class);
+
+            assertNull(genericType);
+        }
+
+        private interface Processor<T>
+        {
+        }
+
+        private static class StringProcessor
+                implements Processor<String>, Marker
+        {
+        }
+
+        private static class InheritedStringProcessor extends StringProcessor
+        {
+        }
     }
 
     private class ChildImpl extends TestImpl
     {
     }
+
+    private interface Marker
+    {
+    }
+
 }
