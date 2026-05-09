@@ -651,9 +651,103 @@ public class World
      * Take a time step. This performs collision detection, integration, and
      * constraint solution.
      *
+     * <p>
+     * Box2D uses a computational algorithm called an integrator. Integrators
+     * simulate the physics equations at discrete points of time. This goes
+     * along with the traditional game loop where we essentially have a flip
+     * book of movement on the screen. So we need to pick a time step for Box2D.
+     * Generally physics engines for games like a time step at least as fast as
+     * 60Hz or 1/60 seconds. You can get away with larger time steps, but you
+     * will have to be more careful about setting up the definitions for your
+     * world. We also don't like the time step to change much. A variable time
+     * step produces variable results, which makes it difficult to debug.
+     * </p>
+     *
+     * <p>
+     * In addition to the integrator, Box2D also uses a larger bit of code
+     * called a constraint solver. The constraint solver solves all the
+     * constraints in the simulation, one at a time. A single constraint can be
+     * solved perfectly. However, when we solve one constraint, we slightly
+     * disrupt other constraints. To get a good solution, we need to iterate
+     * over all constraints a number of times.
+     * </p>
+     *
+     * <p>
+     * There are two phases in the constraint solver: a velocity phase and a
+     * position phase. In the velocity phase the solver computes the impulses
+     * necessary for the bodies to move correctly. In the position phase the
+     * solver adjusts the positions of the bodies to reduce overlap and joint
+     * detachment. Each phase has its own iteration count. In addition, the
+     * position phase may exit iterations early if the errors are small.
+     * </p>
+     *
+     * <p>
+     * The suggested iteration count for Box2D is 8 for velocity and 3 for
+     * position. You can tune this number to your liking, just keep in mind that
+     * this has a trade-off between performance and accuracy. Using fewer
+     * iterations increases performance but accuracy suffers. Likewise, using
+     * more iterations decreases performance but improves the quality of your
+     * simulation.
+     * </p>
+     *
+     * <p>
+     * Note that the time step and the iteration count are completely unrelated.
+     * An iteration is not a sub-step. One solver iteration is a single pass
+     * over all the constraints within a time step. You can have multiple passes
+     * over the constraints within a single time step.
+     * </p>
+     *
+     * <p>
+     * Source: <a href=
+     * "https://box2d.org/doc_version_2_4/md__e_1_2github_2box2d__24_2docs_2hello.html">Box2D
+     * 2.4.1 Hello Box2D</a>
+     * </p>
+     *
+     * <p>
+     * To make a realistic looking simulation, you will generally set the
+     * timeStep value to match the number of times per second you will be
+     * calling the world's Step() function in your game.
+     * </p>
+     *
+     * <p>
+     * The velocity iterations and position iterations settings affect the way
+     * bodies will react when they collide. Typically in Box2D when a collision
+     * between two objects is detected, those objects are overlapping (stuck
+     * into other) and some calculation needs to be done to figure out how each
+     * body should move or rotate so that they are not overlapping any more.
+     * Making these values higher will give you a more correct simulation, at
+     * the cost of some performance.
+     * </p>
+     *
+     * <p>
+     * Firstly, these values are only relevant to collision resolution, so if
+     * nothing is colliding then they are not used at all. When two things
+     * collide, to resolve the collision (push both bodies so they don't overlap
+     * any more) they need to have their position and velocity changed. The need
+     * for changing the position should be obvious - this is to correct the
+     * overlap. The velocity also needs to be changed, for example to make sure
+     * that a ball bounces off a wall correctly, or to make something rotate if
+     * it is hit off-center.
+     * </p>
+     *
+     * <p>
+     * The exact details of which body should move where, what their new
+     * velocities should be, whether their angular velocity should also be
+     * affected etc, is handled by an iterative solver. This means that the
+     * calculation does not give you a perfect result the first time, but each
+     * time you do it the result gets more accurate.
+     * </p>
+     *
+     * <p>
+     * Source: <a href="https://www.iforce2d.net/b2dtut/worlds">iforce2d Box2D
+     * C++ tutorials - World settings</a>
+     * </p>
+     *
      * @param timeStep The amount of time to simulate, this should not vary.
-     * @param velocityIterations For the velocity constraint solver.
-     * @param positionIterations For the position constraint solver.
+     * @param velocityIterations The number of iterations in the velocity phase
+     *     of the constraint solver.
+     * @param positionIterations The number of iterations in the position phase
+     *     of the constraint solver.
      *
      * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_world.h#L94-L101
      */

@@ -87,13 +87,13 @@ public class WorldHandler implements ContactListener
     private final Layer layer;
 
     /**
-     * Gibt an, ob die World/Physics gerade pausiert sind.
+     * Gibt an, ob die {@link World} gerade pausiert sind.
      */
     private boolean worldPaused = false;
 
     /**
-     * Die World dieses Handlers. Hierin laufen globale Einstellungen (z.B.
-     * Schwerkraft) ein.
+     * Die {@link World} dieses Handlers. Hierin laufen globale Einstellungen
+     * (z.B. Schwerkraft) ein.
      */
     private final World world;
 
@@ -105,7 +105,7 @@ public class WorldHandler implements ContactListener
     /**
      * Sämtliche allgemeinen CollisionListener.
      */
-    private final Map<Body, List<CollisionListener<Actor>>> generalCollisonListeners = new HashMap<>();
+    private final Map<Body, List<CollisionListener<Actor>>> generalCollisonListeners = new ConcurrentHashMap<>();
 
     /**
      * Diese Liste enthält die (noch nicht beendeten) Kontakte, die nicht
@@ -188,15 +188,15 @@ public class WorldHandler implements ContactListener
         }
         synchronized (this)
         {
-            synchronized (this.world)
+            synchronized (world)
             {
-                // We use constant time frames for consistency
+                // Wir verwenden konstante Dauer
                 // https://gamedev.stackexchange.com/q/86609/38865
                 simulationAccumulator += pastTime;
                 while (simulationAccumulator >= STEP_TIME)
                 {
                     simulationAccumulator -= STEP_TIME;
-                    this.world.step((float) STEP_TIME, 6, 3);
+                    world.step((float) STEP_TIME, 6, 3);
                 }
             }
         }
@@ -542,6 +542,18 @@ public class WorldHandler implements ContactListener
     /* ____________ On-Request Collision Checkups ____________ */
 
     /**
+     * Durchsucht die Welt nach Halterungen (Fixtures), die sich möglicherweise
+     * mit dem angegebenen achsenparallelen Begrenzungsrahmen (AABB:
+     * axis-aligned bounding box AABB) überschneiden.
+     *
+     * @param aabb Der achsenparallele Begrenzungsrahmen (AABB: axis-aligned
+     *     bounding box AABB) durch den nach Überschneidungen mit Halterungen
+     *     (Fixtures) gesucht werden soll.
+     *
+     * @return Ein Feld/Array mit Halterungen (Fixtures), die sich
+     *     möglicherweise mit dem achsenparallelen Begrenzungsrahmen (AABB:
+     *     axis-aligned bounding box AABB) überschneiden.
+     *
      * @hidden
      */
     @Internal
@@ -553,6 +565,21 @@ public class WorldHandler implements ContactListener
     }
 
     /**
+     * Prüft, ob zwei {@link Body}-Objekte aktuell miteinander kollidieren.
+     *
+     * <p>
+     * Die Methode durchsucht die Kontaktliste von {@code a} nach einem Kontakt
+     * mit {@code b} und liefert nur dann {@code true}, wenn ein entsprechender
+     * Kontakt existiert und dieser tatsächlich als berührend
+     * ({@code isTouching()}) markiert ist.
+     * </p>
+     *
+     * @param a Der erste zu prüfende Körper.
+     * @param b Der zweite zu prüfende Körper.
+     *
+     * @return {@code true}, wenn beide Körper sich berühren, sonst
+     *     {@code false}.
+     *
      * @hidden
      */
     @Internal
@@ -565,10 +592,11 @@ public class WorldHandler implements ContactListener
         for (ContactEdge contact = a
             .getContactList(); contact != null; contact = contact.next)
         {
+            // Es besteht Kontakt zu einem anderen Körper. Prüfe als
+            // Nächstes, ob sie sich tatsächlich berühren.
             if (contact.other == b && contact.contact.isTouching())
             {
-                // Es besteht Kontakt zu einem anderen Körper. Prüfe als
-                // Nächstes, ob sie sich tatsächlich berühren.
+
                 return true;
             }
         }
@@ -711,6 +739,17 @@ public class WorldHandler implements ContactListener
     }
 
     /**
+     * Fügt Mount-Listener für zwei Figuren (Actors) hinzu und führt den
+     * Callback aus, sobald beide im selben {@link WorldHandler} gemountet sind.
+     *
+     * @param a Die erste Figur (Actor)
+     * @param b Die zweiter Figur (Actor)
+     * @param runnable Callback, der mit dem gemeinsamen {@link WorldHandler}
+     *     aufgerufen wird
+     *
+     * @return Liste mit Cleanup-Runnables zum Entfernen der registrierten
+     *     Listener
+     *
      * @hidden
      */
     @Internal
@@ -747,12 +786,32 @@ public class WorldHandler implements ContactListener
         return releases;
     }
 
+    /**
+     * Ein ungeordnetes Tupel aus zwei Halterungen (Fixtures).
+     *
+     * <p>
+     * Die Reihenfolge der Halterungen (Fixtures) ist für Vergleiche
+     * unerheblich.
+     * </p>
+     */
     private static class FixturePair
     {
+        /**
+         * Die erste Halterung (Fixture).
+         */
         private final Fixture fixtureA;
 
+        /**
+         * Die zweite Halterung (Fixture).
+         */
         private final Fixture fixtureB;
 
+        /**
+         * Erstellt ein neues Fixture-Tupel.
+         *
+         * @param fixtureA Die erste Halterung (Fixture).
+         * @param fixtureB Die zweite Halterung (Fixture).
+         */
         public FixturePair(Fixture fixtureA, Fixture fixtureB)
         {
             this.fixtureA = fixtureA;
@@ -760,12 +819,13 @@ public class WorldHandler implements ContactListener
         }
 
         /**
-         * Prüft dieses Body-Tupel auf Referenzgleichheit mit einem weiteren.
+         * Prüft dieses Fixture-Tupel auf Referenzgleichheit mit einem weiteren.
          *
-         * @param otherA Body A
-         * @param otherB Body B
+         * @param otherA Fixture A
+         * @param otherB Fixture B
          *
-         * @return this == (A|B)
+         * @return {@code true}, wenn beide Fixtures referenzgleich sind (in
+         *     beliebiger Reihenfolge), sonst {@code false}
          */
         public boolean matches(Fixture otherA, Fixture otherB)
         {

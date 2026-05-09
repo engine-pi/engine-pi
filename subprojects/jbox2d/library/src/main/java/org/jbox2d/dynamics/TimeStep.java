@@ -45,8 +45,14 @@ public class TimeStep
      */
     public float dtRatio;
 
+    /**
+     * The number of iterations in the velocity phase of the constraint solver.
+     */
     public int velocityIterations;
 
+    /**
+     * The number of iterations in the position phase of the constraint solver.
+     */
     public int positionIterations;
 
     public boolean warmStarting;
