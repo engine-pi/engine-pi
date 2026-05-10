@@ -62,6 +62,7 @@ import pi.physics.joints.JointBuilder;
  *
  * <ul>
  * <li>Den globalen {@link World}-Parameter aus der JBox2D-Engine.</li>
+ *
  * <li>Übersetzung zwischen JB2D-Vektoren (SI-Basiseinheiten) und denen der
  * Engine (Zeichengrößen)</li>
  * </ul>
@@ -130,7 +131,7 @@ public class WorldHandler implements ContactListener
     /**
      * Gibt den World-Parameter der Physics aus.
      *
-     * @return Der JB2D-World-Parameter der Welt.
+     * @return Der JBox2D-World-Parameter der Welt.
      *
      * @hidden
      */
@@ -407,73 +408,52 @@ public class WorldHandler implements ContactListener
     @SuppressWarnings("squid:S3776")
     private void processContact(final Contact contact, boolean isBegin)
     {
-        final Body b1 = contact.getFixtureA().getBody();
-        final Body b2 = contact.getFixtureB().getBody();
-        if (b1 == b2)
-        {
-            // Gleicher Body, don't care
-            throw new IllegalStateException("Inter-Body Collision!");
-        }
+
+        var bodies = BodySorter.fromContact(contact);
 
         /* TEIL I : Spezifische Checkups */
 
-        // Sortieren der Bodies.
-        Body lower;
-        Body higher;
-        if (b1.hashCode() == b2.hashCode())
+        if (bodies.areHashCodesEqual())
         {
             // Hashes sind gleich (blöde Sache!) -> beide Varianten probieren.
             List<Checkup<? extends Actor>> result1 = specificCollisionListeners
-                .get(b1);
+                .get(bodies.lower());
             if (result1 != null)
             {
                 for (Checkup<? extends Actor> c : result1)
                 {
-                    c.checkCollision(b2, contact, isBegin);
+                    c.checkCollision(bodies.higher(), contact, isBegin);
                 }
             }
             List<Checkup<? extends Actor>> result2 = specificCollisionListeners
-                .get(b2);
+                .get(bodies.higher());
             if (result2 != null)
             {
                 for (Checkup<? extends Actor> c : result2)
                 {
-                    c.checkCollision(b1, contact, isBegin);
+                    c.checkCollision(bodies.lower(), contact, isBegin);
                 }
             }
         }
         else
         {
-            if (b1.hashCode() < b2.hashCode())
-            {
-                // f1 < f2
-                lower = b1;
-                higher = b2;
-            }
-            else
-            {
-                // f1 > f2
-                lower = b2;
-                higher = b1;
-            }
             List<Checkup<? extends Actor>> result = specificCollisionListeners
-                .get(lower);
+                .get(bodies.lower());
             if (result != null)
             {
                 for (Checkup<? extends Actor> c : result)
                 {
-                    c.checkCollision(higher, contact, isBegin);
+                    c.checkCollision(bodies.higher(), contact, isBegin);
                 }
             }
         }
 
         /*
-         * ~~~~~~~~~~~~~~~~~~~~~~~ TEIL II : Allgemeine Checkups
-         * ~~~~~~~~~~~~~~~~~~~~~~~
+         * TEIL II : Allgemeine Checkups
          */
 
-        generalCheckup(b1, b2, contact, isBegin);
-        generalCheckup(b2, b1, contact, isBegin);
+        generalCheckup(bodies.lower(), bodies.higher(), contact, isBegin);
+        generalCheckup(bodies.higher(), bodies.lower(), contact, isBegin);
 
         if (!isBegin)
         {
@@ -694,28 +674,12 @@ public class WorldHandler implements ContactListener
             Actor actor, E collider, CollisionListener<E> listener)
     {
         addMountListener(actor, collider, worldHandler -> {
-            Body b1 = actor.physicsHandler().body();
-            Body b2 = collider.physicsHandler().body();
-            if (b1 == null || b2 == null)
-            {
-                throw new IllegalStateException(
-                        "Kollision: Eine Figur ohne physikalischen Body wurde zur Kollisionsüberwachung angemeldet.");
-            }
-            Body lower;
-            Body higher;
-            if (b1.hashCode() < b2.hashCode())
-            {
-                lower = b1;
-                higher = b2;
-            }
-            else
-            {
-                lower = b2;
-                higher = b1;
-            }
-            Checkup<E> checkup = new Checkup<>(listener, higher, collider);
+            var bodies = BodySorter.fromActors(actor, collider);
+            Checkup<E> checkup = new Checkup<>(listener, bodies.higher(),
+                    collider);
             worldHandler.specificCollisionListeners
-                .computeIfAbsent(lower, key -> new CopyOnWriteArrayList<>())
+                .computeIfAbsent(bodies.lower(),
+                    key -> new CopyOnWriteArrayList<>())
                 .add(checkup);
         });
     }
@@ -741,13 +705,13 @@ public class WorldHandler implements ContactListener
      * Fügt Mount-Listener für zwei Figuren (Actors) hinzu und führt den
      * Callback aus, sobald beide im selben {@link WorldHandler} gemountet sind.
      *
-     * @param a Die erste Figur (Actor)
-     * @param b Die zweiter Figur (Actor)
-     * @param runnable Callback, der mit dem gemeinsamen {@link WorldHandler}
-     *     aufgerufen wird
+     * @param a Die erste Figur (Actor).
+     * @param b Die zweiter Figur (Actor).
+     * @param runnable Ein Callback, der mit dem gemeinsamen
+     *     {@link WorldHandler} aufgerufen wird:
      *
-     * @return Liste mit Cleanup-Runnables zum Entfernen der registrierten
-     *     Listener
+     * @return Eine Liste mit Runnables zum Entfernen der registrierten
+     *     Listener.
      *
      * @hidden
      */
@@ -786,6 +750,109 @@ public class WorldHandler implements ContactListener
     }
 
     /**
+     * Sortiert die {@link Body Körper} nach ihrem Hashcode.
+     *
+     * @since 0.49.0
+     */
+    private static class BodySorter
+    {
+        private Body lower;
+
+        private Body higher;
+
+        /**
+         * Erzeugt einen neuen {@link Body Körper}-Sortierer.
+         *
+         * @param bodyA Der {@link Body Körper} A mit einem beliebigen Hashcode.
+         * @param bodyB Der {@link Body Körper} B mit einem beliebigen Hashcode.
+         *
+         * @throws IllegalArgumentException Falls eine Körper null ist.
+         * @throws IllegalArgumentException Falls Körper A und Körper B die
+         *     gleichen Objekte sind.
+         */
+        BodySorter(Body bodyA, Body bodyB)
+        {
+            if (bodyA == null || bodyB == null)
+            {
+                throw new IllegalArgumentException(
+                        "Kollision: Eine Figur ohne physikalischen Body wurde zur Kollisionsüberwachung angemeldet.");
+            }
+
+            if (bodyA == bodyB)
+            {
+                // Gleicher Body
+                throw new IllegalArgumentException(
+                        "Es fand eine Kollision mit dem gleichen Körper statt.");
+            }
+
+            if (bodyA.hashCode() < bodyB.hashCode())
+            {
+                lower = bodyA;
+                higher = bodyB;
+            }
+            else
+            {
+                lower = bodyB;
+                higher = bodyA;
+            }
+        }
+
+        /**
+         * Erzeugt einen neuen {@link Body Körper}-Sortierer durch Angabe eines
+         * {@link Contact Kontaktes}.
+         */
+        static BodySorter fromContact(Contact contact)
+        {
+            return new BodySorter(contact.getFixtureA().getBody(),
+                    contact.getFixtureB().getBody());
+        }
+
+        /**
+         * Erzeugt einen neuen {@link Body Körper}-Sortierer durch Angabe
+         * zweiter {@link Actor Figuren}.
+         */
+        static BodySorter fromActors(Actor actorA, Actor actorB)
+        {
+            return new BodySorter(actorA.physicsHandler().body(),
+                    actorB.physicsHandler().body());
+        }
+
+        /**
+         * Gibt den {@link Body Körper} mit dem kleinerem Hashcode zurück.
+         *
+         * @return Der {@link Body Körper} mit dem kleinerem Hashcode.
+         *
+         * @since 0.49.0
+         */
+        Body lower()
+        {
+            return lower;
+        }
+
+        /**
+         * Gibt den {@link Body Körper} mit dem größerem Hashcode zurück.
+         *
+         * @return Der {@link Body Körper} mit dem größerem Hashcode.
+         *
+         * @since 0.49.0
+         */
+        Body higher()
+        {
+            return higher;
+        }
+
+        /**
+         * Zwei unterschiedliche Objekte könnten denselben Hashcode haben.
+         *
+         * @since 0.49.0
+         */
+        boolean areHashCodesEqual()
+        {
+            return lower.hashCode() == higher.hashCode();
+        }
+    }
+
+    /**
      * Ein ungeordnetes Tupel aus zwei Halterungen (Fixtures).
      *
      * <p>
@@ -811,7 +878,7 @@ public class WorldHandler implements ContactListener
          * @param fixtureA Die erste Halterung (Fixture).
          * @param fixtureB Die zweite Halterung (Fixture).
          */
-        public FixturePair(Fixture fixtureA, Fixture fixtureB)
+        FixturePair(Fixture fixtureA, Fixture fixtureB)
         {
             this.fixtureA = fixtureA;
             this.fixtureB = fixtureB;
@@ -826,7 +893,7 @@ public class WorldHandler implements ContactListener
          * @return {@code true}, wenn beide Fixtures referenzgleich sind (in
          *     beliebiger Reihenfolge), sonst {@code false}
          */
-        public boolean matches(Fixture otherA, Fixture otherB)
+        boolean matches(Fixture otherA, Fixture otherB)
         {
             return (fixtureA == otherA && fixtureB == otherB)
                     || (fixtureA == otherB && fixtureB == otherA);
