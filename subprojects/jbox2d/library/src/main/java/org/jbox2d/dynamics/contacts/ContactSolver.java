@@ -781,6 +781,8 @@ public class ContactSolver
 
     /**
      * Sequential solver.
+     *
+     * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/src/dynamics/b2_contact_solver.cpp#L675-L752
      */
     public final boolean solvePositionConstraints()
     {
@@ -861,7 +863,11 @@ public class ContactSolver
         return minSeparation >= -3.0f * Settings.linearSlop;
     }
 
-    // Sequential position solver for position constraints.
+    /**
+     * Sequential position solver for position constraints.
+     *
+     * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/src/dynamics/b2_contact_solver.cpp#L754-L843
+     */
     public boolean solveTOIPositionConstraints(int toiIndexA, int toiIndexB)
     {
         float minSeparation = 0.0f;
@@ -965,6 +971,9 @@ public class ContactSolver
     }
 }
 
+/**
+ * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/src/dynamics/b2_contact_solver.cpp#L624-L673
+ */
 class PositionSolverManifold
 {
     public final Vec2 normal = new Vec2();

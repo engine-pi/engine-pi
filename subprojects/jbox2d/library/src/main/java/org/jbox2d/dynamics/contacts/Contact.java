@@ -41,6 +41,8 @@ import org.jbox2d.pooling.WorldPool;
  * contact object may exist that has no contact points.
  *
  * @author Daniel Murphy
+ *
+ * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_contact.h#L85-L384
  */
 public abstract class Contact
 {
@@ -148,8 +150,10 @@ public abstract class Contact
     }
 
     /**
-     * Get the contact manifold. Do not set the point count to zero. Instead,
-     * call Disable.
+     * Get the contact manifold. Do not modify the manifold unless you
+     * understand the internals of JBox2D.
+     *
+     * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_contact.h#L92-L95
      */
     public Manifold getManifold()
     {
@@ -158,6 +162,8 @@ public abstract class Contact
 
     /**
      * Get the world manifold.
+     *
+     * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_contact.h#L97-L98
      */
     public void getWorldManifold(WorldManifold worldManifold)
     {
@@ -173,8 +179,9 @@ public abstract class Contact
     }
 
     /**
-     * Is this contact touching
+     * Is this contact touching?
      *
+     * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_contact.h#L100-L101
      */
     public boolean isTouching()
     {
@@ -182,9 +189,18 @@ public abstract class Contact
     }
 
     /**
-     * Enable/disable this contact. This can be used inside the pre-solve
-     * contact listener. The contact is only disabled for the current time step
-     * (or sub-step in continuous collisions).
+     * Enable/disable this contact.
+     *
+     * <p>
+     * This can be used inside the pre-solve contact listener. The contact is
+     * only disabled for the current time step (or sub-step in continuous
+     * collisions).
+     * </p>
+     *
+     * @param flag {@code true} if the contact should be enable else
+     *     {@code false}.
+     *
+     * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_contact.h#L103-L106
      */
     public void setEnabled(boolean flag)
     {
@@ -201,6 +217,7 @@ public abstract class Contact
     /**
      * Has this contact been disabled?
      *
+     * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_contact.h#L108-L109
      */
     public boolean isEnabled()
     {
@@ -208,8 +225,9 @@ public abstract class Contact
     }
 
     /**
-     * Get the next contact in the world's contact list.
+     * Get the next contact in the world’s contact list.
      *
+     * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_contact.h#L111-L113
      */
     public Contact getNext()
     {
@@ -217,74 +235,138 @@ public abstract class Contact
     }
 
     /**
-     * Get the first fixture in this contact.
+     * Get fixture A in this contact.
      *
+     * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_contact.h#L115-L117
      */
     public Fixture getFixtureA()
     {
         return fixtureA;
     }
 
+    /**
+     * Get the child primitive index for fixture A.
+     *
+     * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_contact.h#L119-L120
+     */
     public int getChildIndexA()
     {
         return indexA;
     }
 
     /**
-     * Get the second fixture in this contact.
+     * Get fixture B in this contact.
      *
+     * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_contact.h#L122-L124
      */
     public Fixture getFixtureB()
     {
         return fixtureB;
     }
 
+    /**
+     * Get the child primitive index for fixture B.
+     *
+     * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_contact.h#L126-L127
+     */
     public int getChildIndexB()
     {
         return indexB;
     }
 
+    /**
+     * Override the default friction mixture. You can call this in
+     * {@link ContactListener#preSolve(Contact, Manifold)}. This value persists
+     * until set or reset.
+     *
+     * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_contact.h#L129-L131
+     */
     public void setFriction(float friction)
     {
         this.friction = friction;
     }
 
+    /**
+     * Get the friction.
+     *
+     * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_contact.h#L133-L134
+     */
     public float getFriction()
     {
         return friction;
     }
 
+    /**
+     * Reset the friction mixture to the default value.
+     *
+     * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_contact.h#L136-L137
+     */
     public void resetFriction()
     {
         friction = Contact.mixFriction(fixtureA.friction, fixtureB.friction);
     }
 
+    /**
+     * Override the default restitution mixture. You can call this in
+     * {@link ContactListener#preSolve(Contact, Manifold)}. The value persists
+     * until you set or reset.
+     *
+     * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_contact.h#L139-L141
+     */
     public void setRestitution(float restitution)
     {
         this.restitution = restitution;
     }
 
+    /**
+     * Get the restitution.
+     *
+     * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_contact.h#L143-L144
+     */
     public float getRestitution()
     {
         return restitution;
     }
 
+    /**
+     * Reset the restitution to the default value.
+     *
+     * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_contact.h#L146-L147
+     */
     public void resetRestitution()
     {
         restitution = Contact.mixRestitution(fixtureA.restitution,
             fixtureB.restitution);
     }
 
+    /**
+     * Set the desired tangent speed for a conveyor belt behavior. In meters per
+     * second.
+     *
+     * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_contact.h#L159-L160
+     */
     public void setTangentSpeed(float speed)
     {
         tangentSpeed = speed;
     }
 
+    /**
+     * Get the desired tangent speed. In meters per second.
+     *
+     * @return the desired tangent speed. In meters per second.
+     *
+     * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_contact.h#L162-L163
+     */
     public float getTangentSpeed()
     {
         return tangentSpeed;
     }
 
+    /**
+     * Evaluate this contact with your own manifold and transforms.
+     *
+     * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_contact.h#L165-L166
+     */
     public abstract void evaluate(Manifold manifold, Transform xfA,
             Transform xfB);
 
@@ -299,6 +381,7 @@ public abstract class Contact
     // djm pooling
     private final Manifold oldManifold = new Manifold();
 
+    @SuppressWarnings({ "squid:S3776", "java:S6541" })
     public void update(ContactListener listener)
     {
         oldManifold.set(manifold);

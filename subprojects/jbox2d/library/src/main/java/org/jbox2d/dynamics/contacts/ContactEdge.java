@@ -27,31 +27,44 @@ import org.jbox2d.dynamics.Body;
 
 /**
  * A contact edge is used to connect bodies and contacts together in a contact
- * graph where each body is a node and each contact is an edge. A contact edge
- * belongs to a doubly linked list maintained in each attached body. Each
- * contact has two contact nodes, one for each attached body.
+ * graph where each body is a node and each contact is an edge.
+ *
+ * <p>
+ * A contact edge belongs to a doubly linked list maintained in each attached
+ * body. Each contact has two contact nodes, one for each attached body.
+ * </p>
  *
  * @author Daniel Murphy
+ *
+ * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_contact.h#L72-L83
  */
 public class ContactEdge
 {
     /**
-     * provides quick access to the other body attached.
+     * Provides quick access to the other body attached.
+     *
+     * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_contact.h#L79
      */
     public Body other = null;
 
     /**
-     * the contact
+     * The contact.
+     *
+     * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_contact.h#L80
      */
     public Contact contact = null;
 
     /**
-     * the previous contact edge in the body's contact list
+     * The previous contact edge in the body’s contact list.
+     *
+     * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_contact.h#L81
      */
     public ContactEdge prev = null;
 
     /**
-     * the next contact edge in the body's contact list
+     * The next contact edge in the body’s contact list.
+     *
+     * @repolink https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_contact.h#L82
      */
     public ContactEdge next = null;
 }
