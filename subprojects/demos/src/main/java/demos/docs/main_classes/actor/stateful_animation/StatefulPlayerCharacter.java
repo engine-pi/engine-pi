@@ -27,7 +27,6 @@ import java.awt.event.KeyEvent;
 import pi.Controller;
 import pi.actor.Animation;
 import pi.actor.StatefulAnimation;
-import pi.actor.Text;
 import pi.event.FrameListener;
 import pi.event.KeyStrokeListener;
 import pi.graphics.geom.Vector;
@@ -47,14 +46,11 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
 
     private static final double JUMP_IMPULSE = 1100;
 
-    private Text text;
-
-    public StatefulPlayerCharacter(Text text)
+    public StatefulPlayerCharacter()
     {
         // Alle Bilder haben die Abmessung 64x64px und deshalb die gleiche
         // Breite und Höhe. Wir verwenden drei Meter.
         super(3, 3);
-        this.text = text;
         setupPlayerStates();
         setupAutomaticTransitions();
         setupPhysics();
@@ -97,13 +93,10 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
     {
         PlayerState state = state();
         if (state == PlayerState.IDLE || state == PlayerState.WALKING
-                || state == PlayerState.RUNNING)
+                || state == PlayerState.RUNNING && isGrounded())
         {
-            if (isGrounded())
-            {
-                applyImpulse(new Vector(0, JUMP_IMPULSE));
-                state(PlayerState.JUMPING);
-            }
+            applyImpulse(new Vector(0, JUMP_IMPULSE));
+            state(PlayerState.JUMPING);
         }
     }
 
@@ -112,7 +105,6 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
     {
         Vector velocity = velocity();
         PlayerState state = state();
-        text.content(state);
         if (velocity.y() < -THRESHOLD)
         {
             switch (state)
@@ -121,9 +113,7 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
                 state(PlayerState.MIDAIR);
                 break;
 
-            case IDLE:
-            case WALKING:
-            case RUNNING:
+            case IDLE, WALKING, RUNNING:
                 state(PlayerState.FALLING);
                 break;
 
@@ -165,13 +155,6 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
                 changeState(PlayerState.IDLE);
             }
         }
-        if (velocity.x() > 0)
-        {
-            flipHorizontal(false);
-        }
-        else if (velocity.x() < 0)
-        {
-            flipHorizontal(true);
-        }
+        flipHorizontal(velocity.x() < 0);
     }
 }

@@ -85,7 +85,8 @@ public class PhysicsData
     private Supplier<List<FixtureData>> fixtures;
 
     /**
-     * Erstellt ein Proxydatenset basierend auf einem JBox2D-Body
+     * Erstellt ein {@link PhysicsData Proxydatenset} basierend auf einem
+     * JBox2D-{@link Body}.
      *
      * @param body Der zu kopierende Körper.
      */

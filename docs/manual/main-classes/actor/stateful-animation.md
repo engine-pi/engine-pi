@@ -14,7 +14,8 @@
 
 ## Stateful Animations -->
 
-Mit der Figur {{ javadoc('pi.actor.StatefulAnimation') }} lassen sich komplexe Spielfiguren mit wenig Aufwand umsetzen.
+Mit der Figur {{ javadoc('pi.actor.StatefulAnimation') }} lassen sich komplexe
+Spielfiguren mit wenig Aufwand umsetzen.
 
 Nehmen wir dieses Beispiel:[^oop]
 
@@ -53,7 +54,9 @@ Die Zustände einer Figur werden in der Engine stets als [Aufzählungstyp
 implementiert. Dieser Aufzählungstyp definiert die Spielerzustände und speichert
 gleichzeitig die Dateipfade der zugehörigen GIF-Dateien.
 
-<!-- ```java
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/PlayerState.java -->
+
+```java
 public enum PlayerState
 {
     IDLE("idle"),
@@ -78,11 +81,7 @@ public enum PlayerState
                 + filename + "_anim.gif";
     }
 }
-``` -->
-
-<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/PlayerState.java -->
-
-{{ code('demos.docs.main_classes.actor.stateful_animation.PlayerState.java', start_line=27) }}
+```
 
 Ist beispielsweise das GIF des Zustandes
 `#!java JUMPING` gefragt, so ist es jederzeit mit `#!java JUMPING.gifFileLocation()`
@@ -93,17 +92,29 @@ erreichbar. Dies macht den Code deutlich wartbarer.
 Mit den definierten Zuständen in `#!java PlayerState` kann nun die Implementierung der
 eigentlichen Spielfigur beginnen:
 
-<!-- ```java
-public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
-        implements KeyStrokeListener, Listener
-{
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/StatefulPlayerCharacter.java -->
 
-    public StatefulPlayerCharacter(Text text)
+```java
+public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
+        implements KeyStrokeListener, FrameListener
+{
+    private static final double THRESHOLD = 0.01;
+
+    private static final double RUNNING_THRESHOLD = 10;
+
+    private static final double WALKING_THRESHOLD = 1;
+
+    private static final double MAX_SPEED = 20;
+
+    private static final double FORCE = 16000;
+
+    private static final double JUMP_IMPULSE = 1100;
+
+    public StatefulPlayerCharacter()
     {
         // Alle Bilder haben die Abmessung 64x64px und deshalb die gleiche
         // Breite und Höhe. Wir verwenden drei Meter.
         super(3, 3);
-        this.text = text;
         setupPlayerStates();
         setupAutomaticTransitions();
         setupPhysics();
@@ -113,9 +124,8 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
     {
         for (PlayerState state : PlayerState.values())
         {
-            Animation animationOfState = Animation
-                .createFromAnimatedGif(state.gifFileLocation(), 3, 3);
-            addState(state, animationOfState);
+            addState(state,
+                Animation.createFromAnimatedGif(state.gifFileLocation(), 3, 3));
         }
     }
 
@@ -134,11 +144,7 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
         linearDamping(0.3);
     }
 }
-``` -->
-
-<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/StatefulPlayerCharacter.java -->
-
-{{ code('docs/main_classes/actor/stateful_animation/StatefulPlayerCharacter.java', start_line=35, end_line=85) }}
+```
 
 In `#!java setupPlayerStates()` werden alle in `#!java PlayerState` definierten
 Zustände der Spielfigur eingepflegt, inklusive des Einladens der animierten
@@ -167,16 +173,14 @@ sie. In einer {{ javadoc('pi.Scene') }} bekommt sie einen Boden zum Laufen:
 Der Zwischenstand: Noch passiert nicht viel.
 ///
 
-<!--```java
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/StatefulAnimationDemo.java -->
+
+```java
 public class StatefulAnimationDemo extends Scene
 {
     public StatefulAnimationDemo()
     {
-        Text text = new Text("State");
-        text.anchor(-10, 5);
-        text.makeStatic();
-        add(text);
-        StatefulPlayerCharacter character = new StatefulPlayerCharacter(text);
+        StatefulPlayerCharacter character = new StatefulPlayerCharacter();
         setupGround();
         add(character);
         focus(character);
@@ -194,17 +198,29 @@ public class StatefulAnimationDemo extends Scene
         makeBall(5).center(15, 3);
     }
 
+    private Rectangle makePlatform(double width, double height)
+    {
+        Rectangle rectangle = new Rectangle(width, height);
+        rectangle.makeStatic();
+        add(rectangle);
+        return rectangle;
+    }
+
+    private Circle makeBall(double d)
+    {
+        Circle circle = new Circle(d);
+        circle.makeDynamic();
+        add(circle);
+        return circle;
+    }
+
     public static void main(String[] args)
     {
         Controller.instantMode(false);
         Controller.start(new StatefulAnimationDemo(), 1200, 820);
     }
 }
-```-->
-
-<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/StatefulAnimationDemo.java -->
-
-{{ code('docs/main_classes/actor/stateful_animation/StatefulAnimationDemo.java', start_line=36) }}
+```
 
 Die Figur bleibt im IDLE-Zustand hängen. Nun gilt es, die übrigen
 Zustandsübergänge zu implementieren.
@@ -229,24 +245,17 @@ Die Figur kann springen, aber nicht landen.
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/StatefulPlayerCharacter.java -->
 
-Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L92-L104](https://github.com/engine-pi/engine-pi/blob/f99a9f20e7d08584472978d54105162e3466672b/engine-pi-demos/src/main/java/pi_demos/stateful_animation/StatefulPlayerCharacter.java#L92-L104)
-
-{{ demo('tutorials/stateful_animation/StatefulPlayerCharacter', '90cfff6e267a902bc3783c2ce7d223558a7c1289', 'L92-L104') }}
-
 ```java
-private void attemptJump()
-{
-    PlayerState state = getCurrentState();
-    if (state == PlayerState.IDLE || state == PlayerState.WALKING
-            || state == PlayerState.RUNNING)
+    private void attemptJump()
     {
-        if (isGrounded())
+        PlayerState state = state();
+        if (state == PlayerState.IDLE || state == PlayerState.WALKING
+                || state == PlayerState.RUNNING && isGrounded())
         {
             applyImpulse(new Vector(0, JUMP_IMPULSE));
-            setState(PlayerState.JUMPING);
+            state(PlayerState.JUMPING);
         }
     }
-}
 ```
 
 ### Fallen und Landen
@@ -273,13 +282,14 @@ prüft in jedem Frame entsprechend unseres Zustandsübergangsdiagrammes:
 Die Figur hat jetzt einen vollen Sprungzyklus
 ///
 
-<!-- ```java
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/StatefulPlayerCharacter.java -->
+
+```java
     @Override
     public void onFrame(double pastTime)
     {
         Vector velocity = velocity();
         PlayerState state = state();
-        text.content(state);
         if (velocity.y() < -THRESHOLD)
         {
             switch (state)
@@ -288,9 +298,7 @@ Die Figur hat jetzt einen vollen Sprungzyklus
                 state(PlayerState.MIDAIR);
                 break;
 
-            case IDLE:
-            case WALKING:
-            case RUNNING:
+            case IDLE, WALKING, RUNNING:
                 state(PlayerState.FALLING);
                 break;
 
@@ -302,11 +310,8 @@ Die Figur hat jetzt einen vollen Sprungzyklus
         {
             state(PlayerState.LANDING);
         }
-``` -->
-
-<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/StatefulPlayerCharacter.java -->
-
-{{ code('demos.docs.main_classes.actor.stateful_animation.StatefulPlayerCharacter.java', start_line=110, end_line=137) }}
+    }
+```
 
 ### Player Movement
 
@@ -330,15 +335,13 @@ bereits folgende Reibung für die Figur aktiviert:
 Die Maximalgeschwindigkeit sowie die konstant wirkende Kraft setzen wir als
 Konstanten in der Klasse der Figur, um diese Werte schnell ändern zu können:
 
-<!-- ```java
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/StatefulPlayerCharacter.java -->
+
+```java
     private static final double MAX_SPEED = 20;
 
     private static final double FORCE = 16000;
-``` -->
-
-<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/StatefulPlayerCharacter.java -->
-
-{{ code('demos.docs.main_classes.actor.stateful_animation.StatefulPlayerCharacter.java', start_line=44, end_line=46) }}
+```
 
 Um die Kraft und die Geschwindigkeit frameweise zu implementieren, wird die
 Methode `#!java onFrame(double pastTime)` erweitert:
@@ -351,7 +354,9 @@ Zustandsänderung.
 
 In der Methode `#!java onFrame()`:
 
-<!-- ```java
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/StatefulPlayerCharacter.java -->
+
+```java
         if (Math.abs(velocity.x()) > MAX_SPEED)
         {
             velocity(new Vector(Math.signum(velocity.x()) * MAX_SPEED,
@@ -365,11 +370,7 @@ In der Methode `#!java onFrame()`:
         {
             applyForce(new Vector(FORCE, 0));
         }
-``` -->
-
-<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/StatefulPlayerCharacter.java -->
-
-{{ code('demos.docs.main_classes.actor.stateful_animation.StatefulPlayerCharacter.java', start_line=138, end_line=150) }}
+```
 
 ### Die Übergänge IDLE - WALKING - RUNNING
 
@@ -388,18 +389,16 @@ Zuständen nur vom Betrag ihrer Geschindigkeit ab:
 - Bewegt sich die Figur „schnell“, so ist sie `#!java RUNNING`.
 - Bewegt sich die Figur „gar nicht“, so ist sie `#!java IDLE`.
 
-Um die Begriffe *„langsam“* und *„schnell“* greifbar zu machen, ist einen Grenzwert
+Um die Begriffe _„langsam“_ und _„schnell“_ greifbar zu machen, ist einen Grenzwert
 nötig. Dazu definieren wir Konstanten in der Figur:
-
-<!-- ```java
-private static final double RUNNING_THRESHOLD = 10;
-
-private static final double WALKING_THRESHOLD = 1;
-``` -->
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/StatefulPlayerCharacter.java -->
 
-{{ code('demos.docs.main_classes.actor.stateful_animation.StatefulPlayerCharacter.java', start_line=40, end_line=42) }}
+```java
+private static final double RUNNING_THRESHOLD = 10;
+
+private static final double WALKING_THRESHOLD = 1;
+```
 
 Sobald sich die Figur mindestens 1 Meter pro Sekunde bewegt, zählt sie als `#!java WALKING`,
 sobald sie sich mindestens 10 Meter pro Sekunde bewegt (die Hälfte der maximalen
@@ -415,13 +414,15 @@ Die Figur ist mit ihren Zuständen und Übergängen
 vollständig implementiert.
 ///
 
-<!-- ```java
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/StatefulPlayerCharacter.java -->
+
+```java
+
     @Override
     public void onFrame(double pastTime)
     {
         Vector velocity = velocity();
         PlayerState state = state();
-        text.content(state);
         if (velocity.y() < -THRESHOLD)
         {
             switch (state)
@@ -430,9 +431,7 @@ vollständig implementiert.
                 state(PlayerState.MIDAIR);
                 break;
 
-            case IDLE:
-            case WALKING:
-            case RUNNING:
+            case IDLE, WALKING, RUNNING:
                 state(PlayerState.FALLING);
                 break;
 
@@ -474,24 +473,13 @@ vollständig implementiert.
                 changeState(PlayerState.IDLE);
             }
         }
-        if (velocity.x() > 0)
-        {
-            flipHorizontal(false);
-        }
-        else if (velocity.x() < 0)
-        {
-            flipHorizontal(true);
-        }
+        flipHorizontal(velocity.x() < 0);
     }
-``` -->
-
-<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/StatefulPlayerCharacter.java -->
-
-{{ code('demos.docs.main_classes.actor.stateful_animation.StatefulPlayerCharacter.java', start_line=110, end_line=176) }}
+```
 
 Die letzte Überprüfung der X-Geschwindigkeit dient dazu, die Bewegungsrichtung
 festzustellen. Mit dieser Info kann zum richtigen Zeitpunkt über
-`#!java setFlipHorizontal(boolean flip)` die Blickrichtung der Figur angepasst werden.
+`#!java flipHorizontal(boolean flip)` die Blickrichtung der Figur angepasst werden.
 
 <!-- ## Anregung zum Experimentieren
 

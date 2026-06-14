@@ -27,7 +27,6 @@ import java.util.ArrayList;
 
 import pi.Controller;
 import pi.Scene;
-import pi.actor.Text;
 import pi.Circle;
 import pi.Rectangle;
 import pi.physics.FixtureBuilder;
@@ -37,11 +36,7 @@ public class StatefulAnimationDemo extends Scene
 {
     public StatefulAnimationDemo()
     {
-        Text text = new Text("State");
-        text.anchor(-10, 5);
-        text.makeStatic();
-        add(text);
-        StatefulPlayerCharacter character = new StatefulPlayerCharacter(text);
+        StatefulPlayerCharacter character = new StatefulPlayerCharacter();
         setupGround();
         add(character);
         focus(character);
