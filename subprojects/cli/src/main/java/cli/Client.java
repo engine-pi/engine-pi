@@ -47,7 +47,8 @@ import picocli.CommandLine.PropertiesDefaultProvider;
  * @since 0.45.0
  */
 @Command(name = "cli", mixinStandardHelpOptions = true, description = "Engine Pi command line tools", subcommands = {
-    FileLinkChecker.class, Config.class, SyncAssetsCommand.class })
+        FileLinkChecker.class, Config.class, SyncAssetsCommand.class,
+        InitAssetsSubmoduleCommand.class })
 public class Client implements Runnable
 {
     @Override

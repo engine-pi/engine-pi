@@ -33,7 +33,7 @@ import picocli.CommandLine.Command;
 /**
  * Synchronisiert Ressourcen aus {@code assets/} in die Subprojekte.
  *
- * @since 0.48.0
+ * @since 0.49.0
  */
 @Command(name = "sync-assets", mixinStandardHelpOptions = true, description = "Syncs asset resources to subprojects using rsync")
 public class SyncAssetsCommand implements Callable<Integer>
@@ -65,8 +65,10 @@ public class SyncAssetsCommand implements Callable<Integer>
         for (SyncTarget target : TARGETS)
         {
             Path source = basePath.resolve(target.source()).normalize();
-            Path destination = basePath.resolve(target.destination()).normalize();
-            System.out.printf("Synchronizing: %s -> %s%n", target.source(),
+            Path destination = basePath.resolve(target.destination())
+                .normalize();
+            System.out.printf("Synchronizing: %s -> %s%n",
+                target.source(),
                 target.destination());
             try
             {
@@ -119,7 +121,9 @@ public class SyncAssetsCommand implements Callable<Integer>
             {
                 Path relative = source.relativize(file);
                 Path targetFile = destination.resolve(relative);
-                Files.copy(file, targetFile, StandardCopyOption.REPLACE_EXISTING,
+                Files.copy(file,
+                    targetFile,
+                    StandardCopyOption.REPLACE_EXISTING,
                     StandardCopyOption.COPY_ATTRIBUTES);
                 return FileVisitResult.CONTINUE;
             }
@@ -167,7 +171,8 @@ public class SyncAssetsCommand implements Callable<Integer>
     {
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         new SyncAssetsCommand().call();
     }
 }
