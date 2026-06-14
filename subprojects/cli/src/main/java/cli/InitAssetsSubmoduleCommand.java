@@ -65,13 +65,28 @@ public class InitAssetsSubmoduleCommand implements Callable<Integer>
 
                 if (initialized.isEmpty())
                 {
-                    System.out.println(
-                        "Submodule 'assets' was already initialized or is not configured.");
+                    System.out.println("Submodule '" + SUBMODULE_PATH
+                            + "' was already initialized or is not configured.");
                 }
                 else
                 {
                     System.out.println("Initialized submodule path(s): "
                             + String.join(", ", initialized));
+                }
+
+                Collection<String> updated = git.submoduleUpdate()
+                    .addPath(SUBMODULE_PATH)
+                    .call();
+
+                if (updated.isEmpty())
+                {
+                    System.out.println(
+                        "Submodule '" + SUBMODULE_PATH + "' was not updated.");
+                }
+                else
+                {
+                    System.out.println("Updated submodule path(s): "
+                            + String.join(", ", updated));
                 }
             }
             return 0;
@@ -82,5 +97,10 @@ public class InitAssetsSubmoduleCommand implements Callable<Integer>
                 "Failed to initialize 'assets' submodule: " + e.getMessage());
             return 1;
         }
+    }
+
+    public static void main(String[] args)
+    {
+        new InitAssetsSubmoduleCommand().call();
     }
 }
