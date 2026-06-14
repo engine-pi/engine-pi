@@ -123,9 +123,9 @@ cli *args:
 	mvn --projects de.pirckheimer-gymnasium:engine-pi-cli exec:java -Dexec.mainClass=cli.Client -Dexec.args="{{args}}"
 	# java -jar subprojects/cli/target/engine-pi-cli-0.1.0-jar-with-dependencies.jar {{args}}
 
-# Execute the cli command (subprojects/cli) with the main class 'cli.checklinks.FileLinkChecker' to check file links in the documentation.
+# Execute the cli command (subprojects/cli) with the main class 'cli.FileLinkChecker' to check file links in the documentation.
 check_file_links: (cli "check-file-links")
-	mvn --projects de.pirckheimer-gymnasium:engine-pi-cli exec:java -Dexec.mainClass=cli.checklinks.FileLinkChecker
+	mvn --projects de.pirckheimer-gymnasium:engine-pi-cli exec:java -Dexec.mainClass=cli.FileLinkChecker
 
 # Test the macros.py file using pytest and uv
 mkdocs_test:

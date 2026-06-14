@@ -20,7 +20,6 @@ package cli;
 
 import java.io.File;
 
-import cli.checklinks.FileLinkChecker;
 import cli.java2umltext.Client.Config;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
