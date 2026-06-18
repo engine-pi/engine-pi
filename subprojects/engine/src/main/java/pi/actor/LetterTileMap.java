@@ -38,7 +38,7 @@ import pi.annotations.Setter;
  *
  * @since 0.26.0
  */
-abstract class LetterTileMap
+public class LetterTileMap
 {
     HashMap<Character, Tile> tiles;
 
@@ -57,13 +57,13 @@ abstract class LetterTileMap
     int y;
 
     /**
-     * Die Breite des Kachelsatzes, d. h. die Anzahl der Kacheln in der
+     * Die <b>Breite</b> des Kachelsatzes, d. h. die Anzahl der Kacheln in der
      * x-Richtung.
      */
     public int width;
 
     /**
-     * Die Höhe des Kachelsatzes, d. h. die Anzahl der Kacheln in der
+     * Die <b>Höhe</b> des Kachelsatzes, d. h. die Anzahl der Kacheln in der
      * y-Richtung.
      */
     public int height;
@@ -89,21 +89,33 @@ abstract class LetterTileMap
 
     protected String extension;
 
+    /**
+     * @param width Die <b>Breite</b> des Kachelsatzes, d. h. die Anzahl der
+     *     Kacheln in der x-Richtung.
+     * @param height Die <b>Höhe</b> des Kachelsatzes, d. h. die Anzahl der
+     *     Kacheln in der y-Richtung.
+     */
     public LetterTileMap(int width, int height)
     {
         this(width, height, "", null);
     }
 
+    /**
+     * @param width Die <b>Breite</b> des Kachelsatzes, d. h. die Anzahl der
+     *     Kacheln in der x-Richtung.
+     * @param height Die <b>Höhe</b> des Kachelsatzes, d. h. die Anzahl der
+     *     Kacheln in der y-Richtung.
+     */
     public LetterTileMap(int width, int height, String pathPrefix)
     {
         this(width, height, pathPrefix, null);
     }
 
     /**
-     * @param width Die Breite des Kachelsatzes bzw. die Anzahl an Kacheln in
-     *     x-Richtung.
-     * @param height Die Höhe des Kachelsatzes bzw. die Anzahl an Kacheln in
-     *     y-Richtung.
+     * @param width Die <b>Breite</b> des Kachelsatzes, d. h. die Anzahl der
+     *     Kacheln in der x-Richtung.
+     * @param height Die <b>Höhe</b> des Kachelsatzes, d. h. die Anzahl der
+     *     Kacheln in der y-Richtung.
      * @param pathPrefix
      * @param extension Die Dateiendung der Bild-Dateien, die als Kacheln
      *     verwendet werden.
@@ -317,6 +329,7 @@ abstract class LetterTileMap
      *
      * @param y Die y-Position im Kachelgitter. 0 adressiert die erste,
      *     (oberste) Zeile.
+     * @param row Die Buchstabenabfolge für die Reihe y.
      */
     @Setter
     public final void row(int y, String row)
@@ -333,6 +346,7 @@ abstract class LetterTileMap
      *
      * @param x Die x-Position im Kachelgitter. 0 adressiert die erste, (ganz am
      *     linken Rand gelegene) Spalte.
+     * @param column Die Buchstabenabfolge für die Spalte x.
      */
     @Setter
     public final void column(int x, String column)

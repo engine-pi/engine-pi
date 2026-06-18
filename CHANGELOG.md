@@ -5,7 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [v0.48.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.47.0) - 2026-05-05
+## [v0.49.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.49.0) - 2026-06-18
+
+<small>[Compare with v0.48.0](https://github.com/engine-pi/engine-pi/compare/v0.48.0...v0.49.0)</small>
+
+### Changed
+
+- Make class `LetterTileMap` public and not abstract.
+
+## [v0.48.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.48.0) - 2026-05-05
 
 <small>[Compare with v0.47.0](https://github.com/engine-pi/engine-pi/compare/v0.47.0...v0.48.0)</small>
 
