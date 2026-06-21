@@ -115,7 +115,6 @@ public class TextStyleDemo extends Scene implements KeyStrokeListener
         bold.font(fontName).color(random);
         italic.font(fontName).color(random);
         boldItalic.font(fontName).color(random);
-
     }
 
     @Override
