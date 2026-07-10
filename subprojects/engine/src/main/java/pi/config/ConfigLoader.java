@@ -117,8 +117,8 @@ public class ConfigLoader
      * @param groupClass The class that provides the generic type for this
      *     method.
      *
-     * @return The configuration group of the specified type or null if none can
-     *     be found.
+     * @throws ConfigException wenn die Konfigurationsgruppe mit dem angegebenen
+     *     Präfix gefunden wird.
      */
     public <T extends ConfigGroup> T getGroup(final Class<T> groupClass)
     {
@@ -130,18 +130,20 @@ public class ConfigLoader
             }
         }
 
-        return null;
+        throw new ConfigException(
+                "Die Konfigurationsgruppe " + groupClass.getCanonicalName()
+                        + " ist noch nicht registriert worden.");
     }
 
     /**
      * Ruft eine Konfigurationsgruppe basierend auf ihrem Präfix ab.
      *
-     * @param prefix das Präfix der gesuchten Konfigurationsgruppe
+     * @param prefix Das Präfix der gesuchten Konfigurationsgruppe
      *
-     * @return die gefundene {@link ConfigGroup}
+     * @return Die gefundene {@link ConfigGroup}
      *
-     * @throws RuntimeException wenn keine Konfigurationsgruppe mit dem
-     *     angegebenen Präfix gefunden wird
+     * @throws ConfigException wenn keine Konfigurationsgruppe mit dem
+     *     angegebenen Präfix gefunden wird.
      */
     public ConfigGroup getGroup(final String prefix)
     {
@@ -161,7 +163,7 @@ public class ConfigLoader
             }
         }
 
-        throw new RuntimeException("Die Konfigurationsgruppe mit dem Präfix "
+        throw new ConfigException("Die Konfigurationsgruppe mit dem Präfix "
                 + prefix + " konnte nicht gefunden werden.");
     }
 
@@ -182,10 +184,7 @@ public class ConfigLoader
      */
     public void add(ConfigGroup... groups)
     {
-        for (ConfigGroup group : groups)
-        {
-            configurationGroups.add(group);
-        }
+        Collections.addAll(configurationGroups, groups);
     }
 
     /**
@@ -211,6 +210,9 @@ public class ConfigLoader
      * Ressourcenordner zu laden. Wenn keine vorhanden ist, erstellt es eine
      * neue Konfigurationsdatei im Anwendungsordner.
      * </p>
+     *
+     * @throws ConfigException Wenn das Laden der Konfigurationsdatei
+     *     fehlgeschlagen ist.
      */
     public void load()
     {
@@ -261,7 +263,9 @@ public class ConfigLoader
             }
             catch (IOException e)
             {
-                log.log(Level.SEVERE, e.getMessage(), e);
+                throw new ConfigException(
+                        "Das Laden der Konfigurationsdatei ist fehlgeschlagen: "
+                                + e.getMessage());
             }
         }
     }
@@ -272,6 +276,9 @@ public class ConfigLoader
      *
      * @see #path()
      * @see ConfigLoader#DEFAULT_CONFIGURATION_FILE_NAME
+     *
+     * @throws ConfigException Wenn das Speichern der Konfigurationsdatei
+     *     fehlgeschlagen ist.
      */
     public void save()
     {
@@ -288,9 +295,9 @@ public class ConfigLoader
         }
         catch (IOException e)
         {
-            log.log(Level.SEVERE,
-                "Failed to save configuration: " + e.getMessage(),
-                e);
+            throw new ConfigException(
+                    "Das Speichern der Konfigurationsdatei ist fehlgeschlagen: "
+                            + e.getMessage());
         }
     }
 
@@ -303,7 +310,7 @@ public class ConfigLoader
      * existiert, wird keine Aktion durchgeführt.
      * </p>
      *
-     * @throws RuntimeException falls beim Löschen der Datei ein Fehler auftritt
+     * @throws ConfigException falls beim Löschen der Datei ein Fehler auftritt
      */
     public void deleteConfigFile()
     {
@@ -313,8 +320,10 @@ public class ConfigLoader
         }
         catch (IOException e)
         {
-            throw new RuntimeException(
-                    "Failed to delete existing configuration file", e);
+
+            throw new ConfigException(
+                    "Das Löschen der existierenden Konfigurationsdatei ist fehlgeschlagen: "
+                            + e.getMessage());
         }
     }
 
@@ -330,7 +339,9 @@ public class ConfigLoader
         }
         catch (final IOException e)
         {
-            log.log(Level.SEVERE, e.getMessage(), e);
+            throw new ConfigException("Die Konfigurationsgruppe "
+                    + group.getClass().getCanonicalName()
+                    + " konnte nicht gespeichert werden: " + e.getMessage());
         }
     }
 
