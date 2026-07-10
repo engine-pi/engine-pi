@@ -100,18 +100,86 @@ assertFalse(config.coordinatesystem.labelsOnIntersections());
 
 Die Engine Pi bietet die Möglichkeit, auch eigene Konfigurationsgruppen zu
 definieren und dem {{ javadoc('pi.Controller#config') }}-Objekt
-hinzuzufügen.[^litiengine:configuration] Die Klasse {{
-javadoc('demos.docs.resources.config.MyConfigGroup') }} definierte eine
-Einstellmöglichkeit in Form eines Attributs mit dem Namen `myInt`. Die
-dazugehörenden Getter- und Setter-Methoden haben - wie in der Engine Pi üblich -
-kein `get`- bzw. `set`-Präfix:
+hinzuzufügen.[^litiengine:configuration]
+
+Im folgenden Beispiel definiert die Klasse {{
+javadoc('demos.docs.resources.config.MyConfigGroup') }} eine Einstellmöglichkeit
+in Form eines Attributs mit dem Namen `myInt`. Die dazugehörenden Getter- und
+Setter-Methoden haben - wie in der Engine Pi üblich - kein `get`- bzw.
+`set`-Präfix:
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/resources/config/MyConfigGroup.java -->
 
-{{ code('demos.docs.resources.config.MyConfigGroup', from_import=True) }}
+```java
+import pi.annotations.Getter;
+import pi.annotations.Setter;
+import pi.config.ConfigGroup;
+import pi.config.ConfigGroupInfo;
+
+@ConfigGroupInfo(prefix = "custom_")
+public class MyConfigGroup extends ConfigGroup
+{
+    private int myInt = 23;
+
+    @Getter
+    public int myInt()
+    {
+        return myInt;
+    }
+
+    @Setter
+    public void myInt(int myInt)
+    {
+        set("myInt", myInt);
+    }
+}
+```
+
+Im Setter sollte die Methode {{
+javadoc('pi.config.ConfigGroup#set(java.lang.String,T)', 'set(String,T)') }}
+(`#!java set("myInt", myInt);`) anstatt des Zuweisungsoperator (`#!java
+this.myInt = myInt;`) verwendet werden, damit der {{
+javadoc('pi.config.ConfigurationChangedListener') }} benachrichtigt werden kann.
+
+Die Annotationen `#!java @Getter` und `#!java @Setter` sind nicht zwingend
+notwendig, die Annotation `#!java @ConfigGroupInfo` jedoch schon. Die Annotation
+`@ConfigGroupInfo(prefix = "custom_")` bewirkt, dass das Attribut `#!java myInt` als
+`custom_myInt` in die Properties-Datei geschrieben wird.
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/resources/config/CustomConfigGroupDemo.java -->
 
-{{ code('demos.docs.resources.config.CustomConfigGroupDemo', from_import=True) }}
+```java
+import static pi.Controller.config;
+
+import pi.Controller;
+import pi.Scene;
+import pi.Text;
+
+public class CustomConfigGroupDemo extends Scene
+{
+    static
+    {
+        MyConfigGroup custom = new MyConfigGroup();
+        config.add(custom);
+        custom.myInt(42);
+    }
+
+    public CustomConfigGroupDemo()
+    {
+        MyConfigGroup custom = config.getGroup(MyConfigGroup.class);
+        // Oder:
+        // MyConfigGroup custom = (MyConfigGroup) config.getGroup("custom_");
+        add(new Text(custom.myInt()).center(0, 0));
+    }
+
+    public static void main(String[] args)
+    {
+        config.game.instantMode(false);
+        config.graphics.pixelPerMeter(512);
+        Controller.start(new CustomConfigGroupDemo());
+    }
+}
+```
+
 
 [^litiengine:configuration]: https://litiengine.com/docs/configuration/

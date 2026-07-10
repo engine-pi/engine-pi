@@ -30,15 +30,15 @@ public class MyConfigGroup extends ConfigGroup
 {
     private int myInt = 23;
 
-    @Setter
+    @Getter
     public int myInt()
     {
         return myInt;
     }
 
-    @Getter
+    @Setter
     public void myInt(int myInt)
     {
-        this.myInt = myInt;
+        set("myInt", myInt);
     }
 }

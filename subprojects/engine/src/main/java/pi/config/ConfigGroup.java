@@ -30,7 +30,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.nio.file.Path;
 import java.util.Collection;
-import java.util.EventListener;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -56,7 +55,7 @@ public abstract class ConfigGroup
     private final String prefix;
 
     /**
-     * Erstellt eine neue Instanz der Klasse {@code ConfigGroup}.
+     * Erstellt eine neue Instanz der Klasse {@link ConfigGroup}.
      */
     protected ConfigGroup()
     {
@@ -130,7 +129,7 @@ public abstract class ConfigGroup
      *
      * @param properties Die zu befüllenden Properties.
      */
-    @SuppressWarnings("java:S3011")
+    @SuppressWarnings({ "java:S3011", "java:S135" })
     protected void storeProperties(final Properties properties)
     {
         try
@@ -212,24 +211,5 @@ public abstract class ConfigGroup
                 throw new ConfigException(e);
             }
         }
-    }
-
-    /**
-     * Dieses Listener-Interface empfängt Ereignisse, wenn sich eine
-     * Konfigurationseigenschaft geändert hat.
-     *
-     * @see ConfigGroup#onChanged(ConfigurationChangedListener)
-     */
-    @FunctionalInterface
-    public interface ConfigurationChangedListener extends EventListener
-    {
-        /**
-         * Wird aufgerufen, wenn eine Konfigurationseigenschaft über die Methode
-         * {@link ConfigGroup#set(String, Object)} geändert wurde.
-         *
-         * @param event Das Ereignis mit den Informationen zur
-         *     Eigenschaftsänderung.
-         */
-        void configurationChanged(PropertyChangeEvent event);
     }
 }

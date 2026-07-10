@@ -35,7 +35,6 @@ import java.lang.reflect.Method;
 
 import org.junit.jupiter.api.Test;
 
-import pi.config.ConfigGroup.ConfigurationChangedListener;
 import pi.util.ReflectionUtil;
 
 class ConfigGroupTest

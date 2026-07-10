@@ -45,7 +45,6 @@ public class CustomConfigGroupDemo extends Scene
 
     public static void main(String[] args)
     {
-
         config.game.instantMode(false);
         config.graphics.pixelPerMeter(512);
         Controller.start(new CustomConfigGroupDemo());
