@@ -41,7 +41,7 @@ import pi.annotations.Setter;
  *
  * @since 0.42.0
  */
-@ConfigGroupInfo(prefix = "debug_", debug = true)
+@ConfigGroupInfo(prefix = "debug_")
 public class DebugConfig extends ConfigGroup
 {
     DebugConfig()

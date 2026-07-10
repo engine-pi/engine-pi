@@ -25,7 +25,6 @@
  */
 package pi.config;
 
-import pi.util.ReflectionUtil;
 import java.beans.PropertyChangeEvent;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -34,13 +33,14 @@ import java.util.Collection;
 import java.util.EventListener;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import pi.util.ReflectionUtil;
 
 /**
- * This class contains some basic functionality for all setting groups. It gets
- * the SettingsGroupInfo annotation and reads out the prefix that is used when
- * reading/ writing the settings into a property file.
+ * Diese Klasse enthält grundlegende Funktionalität für alle
+ * Einstellungsgruppen. Sie liest die {@link ConfigGroupInfo}-Annotation aus und
+ * ermittelt den Präfix, der beim Lesen und Schreiben der Einstellungen in eine
+ * Properties-Datei verwendet wird.
  *
  * @author Steffen Wilke
  * @author Matthias Wilke
@@ -50,16 +50,13 @@ import java.util.logging.Logger;
 @ConfigGroupInfo
 public abstract class ConfigGroup
 {
-    private static final Logger log = Logger
-        .getLogger(ConfigGroup.class.getName());
-
     private final Collection<ConfigurationChangedListener> listeners = ConcurrentHashMap
         .newKeySet();
 
     private final String prefix;
 
     /**
-     * Initializes a new instance of the {@code ConfigurationGroup} class.
+     * Erstellt eine neue Instanz der Klasse {@code ConfigGroup}.
      */
     protected ConfigGroup()
     {
@@ -69,54 +66,54 @@ public abstract class ConfigGroup
     }
 
     /**
-     * Adds the specified configuration changed listener to receive events about
-     * any configuration property that changed.
+     * Fügt den angegebenen Listener hinzu, der Ereignisse über geänderte
+     * Konfigurationseigenschaften empfängt.
      *
      * <p>
-     * The event is supported for any property that uses the
-     * {@link #set(String, Object)} method to set the field value.
+     * Das Ereignis wird für jede Eigenschaft unterstützt, die die Methode
+     * {@link #set(String, Object)} zum Setzen des Feldwerts verwendet.
      * </p>
      *
      * <p>
-     * The event will provide you with the fieldName of the called setter (e.g.
-     * "debug" for the "setDebug" call).
+     * Das Ereignis liefert den Feldnamen des aufgerufenen Setters (z.B. "debug"
+     * für den Aufruf von "setDebug").
      * </p>
      *
-     * @param listener The listener to add.
+     * @param listener Der hinzuzufügende Listener.
      *
      * @see ConfigGroup#set(String, Object)
      */
     public void onChanged(ConfigurationChangedListener listener)
     {
-        this.listeners.add(listener);
+        listeners.add(listener);
     }
 
     /**
-     * Removes the specified configuration changed listener.
+     * Entfernt den angegebenen Listener.
      *
-     * @param listener The listener to remove.
+     * @param listener Der zu entfernende Listener.
      */
     public void removeListener(ConfigurationChangedListener listener)
     {
-        this.listeners.remove(listener);
+        listeners.remove(listener);
     }
 
     /**
-     * Gets the prefix for the configuration group.
+     * Gibt den Präfix der Konfigurationsgruppe zurück.
      *
-     * @return The prefix for the configuration group, or an empty string if the
-     *     prefix is null.
+     * @return Der Präfix der Konfigurationsgruppe, oder ein leerer String,
+     *     falls der Präfix {@code null} ist.
      */
     public String getPrefix()
     {
-        return this.prefix != null ? this.prefix : "";
+        return prefix != null ? prefix : "";
     }
 
     /**
-     * Initializes a property by its key and value.
+     * Initialisiert eine Eigenschaft anhand ihres Schlüssels und Werts.
      *
-     * @param key The key of the property.
-     * @param value The value of the property.
+     * @param key Der Schlüssel der Eigenschaft.
+     * @param value Der Wert der Eigenschaft.
      */
     protected void initializeByProperty(final String key, final String value)
     {
@@ -125,18 +122,20 @@ public abstract class ConfigGroup
     }
 
     /**
-     * Store properties. By default, it is supported to store the following
-     * types: boolean, int, double, float, String and enum values. If you need
-     * to store any other object, you should overwrite this method as well as
-     * the initializeProperty method and implement a custom approach.
+     * Speichert die Eigenschaften. Standardmäßig werden folgende Typen
+     * unterstützt: boolean, int, double, float, String und Enum-Werte. Für
+     * andere Objekte sollte diese Methode sowie
+     * {@link #initializeByProperty(String, String)} überschrieben und ein
+     * eigener Ansatz implementiert werden.
      *
-     * @param properties the properties
+     * @param properties Die zu befüllenden Properties.
      */
+    @SuppressWarnings("java:S3011")
     protected void storeProperties(final Properties properties)
     {
         try
         {
-            for (Field field : this.getClass().getDeclaredFields())
+            for (Field field : getClass().getDeclaredFields())
             {
                 if (Modifier.isFinal(field.getModifiers())
                         || Modifier.isStatic(field.getModifiers()))
@@ -145,7 +144,7 @@ public abstract class ConfigGroup
                 }
 
                 field.setAccessible(true); // Ensure field is accessible
-                String propertyKey = this.getPrefix() + field.getName();
+                String propertyKey = getPrefix() + field.getName();
                 Object value = field.get(this);
 
                 if (value == null)
@@ -172,18 +171,19 @@ public abstract class ConfigGroup
         }
         catch (IllegalAccessException e)
         {
-            log.log(Level.SEVERE, e.getMessage(), e);
+            throw new ConfigException(e);
         }
     }
 
     /**
-     * Use this method to set configuration properties if you want to support
-     * {@code configurationChanged} for your property.
+     * Setzt eine Konfigurationseigenschaft und löst dabei das
+     * {@code configurationChanged}-Ereignis aus.
      *
-     * @param <T> The type of the value to set.
-     * @param fieldName The name of the field to set.
-     * @param value The value to set.
+     * @param <T> Der Typ des zu setzenden Werts.
+     * @param fieldName Der Name des zu setzenden Felds.
+     * @param value Der zu setzende Wert.
      */
+    @SuppressWarnings("java:S3011")
     protected <T> void set(String fieldName, T value)
     {
         Field field = ReflectionUtil.getField(this.getClass(), fieldName, true);
@@ -202,22 +202,21 @@ public abstract class ConfigGroup
                         fieldName, currentValue, value);
                 field.set(this, value);
 
-                for (ConfigurationChangedListener listener : this.listeners)
+                for (ConfigurationChangedListener listener : listeners)
                 {
                     listener.configurationChanged(event);
                 }
             }
             catch (IllegalArgumentException | IllegalAccessException e)
             {
-                log.log(Level.SEVERE, e.getMessage(), e);
-                throw new RuntimeException(e);
+                throw new ConfigException(e);
             }
         }
     }
 
     /**
-     * This listener interface receives events when any property of the
-     * configuration changed.
+     * Dieses Listener-Interface empfängt Ereignisse, wenn sich eine
+     * Konfigurationseigenschaft geändert hat.
      *
      * @see ConfigGroup#onChanged(ConfigurationChangedListener)
      */
@@ -225,11 +224,11 @@ public abstract class ConfigGroup
     public interface ConfigurationChangedListener extends EventListener
     {
         /**
-         * Invoked when a property of the configuration has been changed using
-         * the {@link ConfigGroup#set(String, Object)} method to support this
-         * event.
+         * Wird aufgerufen, wenn eine Konfigurationseigenschaft über die Methode
+         * {@link ConfigGroup#set(String, Object)} geändert wurde.
          *
-         * @param event The property changed event.
+         * @param event Das Ereignis mit den Informationen zur
+         *     Eigenschaftsänderung.
          */
         void configurationChanged(PropertyChangeEvent event);
     }

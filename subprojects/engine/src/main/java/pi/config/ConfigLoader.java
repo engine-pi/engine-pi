@@ -64,10 +64,10 @@ public class ConfigLoader
     private final Path path;
 
     /**
-     * Initializes a new instance of the {@code Configuration} class.
+     * Erstellt eine neue Instanz der Klasse {@code ConfigLoader}.
      *
-     * @param configurationGroups The configuration groups managed by this
-     *     instance.
+     * @param configurationGroups Die von dieser Instanz verwalteten
+     *     Konfigurationsgruppen.
      */
     public ConfigLoader(final ConfigGroup... configurationGroups)
     {
@@ -75,14 +75,14 @@ public class ConfigLoader
     }
 
     /**
-     * Constructs a new instance of the {@code Configuration} class using the
-     * specified file name. This constructor converts the provided file name
-     * string into a {@code Path} object and delegates the initialization to
-     * another constructor.
+     * Erstellt eine neue Instanz der Klasse {@link ConfigLoader} mit dem
+     * angegebenen Dateinamen. Dieser Konstruktor wandelt den übergebenen
+     * Dateinamen-String in ein {@link Path}-Objekt um und delegiert die
+     * Initialisierung an einen anderen Konstruktor.
      *
-     * @param path The path of the file from which to load the settings.
-     * @param configurationGroups The configuration groups managed by this
-     *     instance.
+     * @param path Der Pfad der Datei, aus der die Einstellungen geladen werden.
+     * @param configurationGroups Die von dieser Instanz verwalteten
+     *     Konfigurationsgruppen.
      */
     public ConfigLoader(final String path,
             final ConfigGroup... configurationGroups)
@@ -91,11 +91,11 @@ public class ConfigLoader
     }
 
     /**
-     * Initializes a new instance of the {@code Configuration} class.
+     * Erstellt eine neue Instanz der Klasse {@link ConfigLoader}.
      *
-     * @param path The path of the file from which to load the settings.
-     * @param configurationGroups The configuration groups managed by this
-     *     instance.
+     * @param path Der Pfad der Datei, aus der die Einstellungen geladen werden.
+     * @param configurationGroups Die von dieser Instanz verwalteten
+     *     Konfigurationsgruppen.
      */
     public ConfigLoader(final Path path,
             final ConfigGroup... configurationGroups)
@@ -109,12 +109,12 @@ public class ConfigLoader
     }
 
     /**
-     * Gets the strongly typed configuration group if it was previously added to
-     * the configuration.
+     * Gibt die typisierte Konfigurationsgruppe zurück, sofern sie zuvor zur
+     * Konfiguration hinzugefügt wurde.
      *
-     * @param <T> The type of the config group.
-     * @param groupClass The class that provides the generic type for this
-     *     method.
+     * @param <T> Der Typ der Konfigurationsgruppe.
+     * @param groupClass Die Klasse, die den generischen Typ für diese Methode
+     *     bereitstellt.
      *
      * @throws ConfigException wenn die Konfigurationsgruppe mit dem angegebenen
      *     Präfix gefunden wird.
@@ -167,9 +167,9 @@ public class ConfigLoader
     }
 
     /**
-     * Gets all {@code ConfigurationGroups} from the configuration.
+     * Gibt alle {@link ConfigGroup}s der Konfiguration zurück.
      *
-     * @return All config groups.
+     * @return Alle Konfigurationsgruppen.
      */
     public List<ConfigGroup> getConfigurationGroups()
     {
@@ -273,8 +273,9 @@ public class ConfigLoader
     }
 
     /**
-     * Saves this configuration to a file with the specified name of this
-     * instance (engine-pi.properties is the engines default config file).
+     * Speichert diese Konfiguration in eine Datei mit dem für diese Instanz
+     * festgelegten Namen (engine-pi.properties ist die
+     * Standard-Konfigurationsdatei der Engine).
      *
      * @see #path()
      * @see ConfigLoader#DEFAULT_CONFIGURATION_FILE_NAME
