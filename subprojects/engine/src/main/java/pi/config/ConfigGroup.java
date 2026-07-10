@@ -58,8 +58,6 @@ public abstract class ConfigGroup
 
     private final String prefix;
 
-    private boolean debug;
-
     /**
      * Initializes a new instance of the {@code ConfigurationGroup} class.
      */
@@ -68,7 +66,6 @@ public abstract class ConfigGroup
         final ConfigGroupInfo info = this.getClass()
             .getAnnotation(ConfigGroupInfo.class);
         this.prefix = info.prefix();
-        this.debug = info.debug();
     }
 
     /**
@@ -116,26 +113,6 @@ public abstract class ConfigGroup
     }
 
     /**
-     * Checks if debug mode is enabled.
-     *
-     * @return true if debug mode is enabled, false otherwise.
-     */
-    public boolean isDebug()
-    {
-        return debug;
-    }
-
-    /**
-     * Sets the debug mode.
-     *
-     * @param debug true to enable debug mode, false to disable.
-     */
-    public void setDebug(boolean debug)
-    {
-        this.set("debug", debug);
-    }
-
-    /**
      * Initializes a property by its key and value.
      *
      * @param key The key of the property.
@@ -143,9 +120,8 @@ public abstract class ConfigGroup
      */
     protected void initializeByProperty(final String key, final String value)
     {
-        final String propertyName = key.substring(this.getPrefix().length());
-        ReflectionUtil
-            .setFieldValue(this.getClass(), this, propertyName, value);
+        final String propertyName = key.substring(getPrefix().length());
+        ReflectionUtil.setFieldValue(getClass(), this, propertyName, value);
     }
 
     /**

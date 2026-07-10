@@ -48,8 +48,6 @@ public class CustomConfigGroupDemo extends Scene
 
         config.game.instantMode(false);
         config.graphics.pixelPerMeter(512);
-
-        // config.save();
         Controller.start(new CustomConfigGroupDemo());
     }
 }

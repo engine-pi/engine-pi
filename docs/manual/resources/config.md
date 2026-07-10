@@ -35,8 +35,8 @@ coordinatesystem_linesNMeter=-1
 coordinatesystem_labelsOnIntersections=false
 ```
 
-Die einzelnen Einstellmöglichkeiten sind in Konfigurationsgruppen, die jeweils ein Präfix haben,
-organisiert:
+Die einzelnen Einstellmöglichkeiten sind in Konfigurationsgruppen, die jeweils
+ein Präfix haben, organisiert:
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/config/Configuration.java -->
 

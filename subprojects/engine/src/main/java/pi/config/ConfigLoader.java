@@ -39,13 +39,12 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import pi.Controller;
 import pi.annotations.Getter;
 import pi.resources.ResourceLoader;
 
 /**
- * Konfigurationsklasse, die mehrere Konfigurationsgruppen verwaltet und das
- * Laden und Speichern von Einstellungen übernimmt.
+ * Eine <b>Konfigurations</b>klasse, die mehrere Konfigurationsgruppen verwaltet
+ * und das <b>Laden</b> und <b>Speichern</b> von Einstellungen übernimmt.
  *
  * @author Steffen Wilke
  * @author Matthias Wilke
@@ -177,14 +176,20 @@ public class ConfigLoader
         return configurationGroups;
     }
 
+    // Go to
+    // file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/resources/config/MyConfigGroup.java
+
     /**
-     * Adds the specified configuration group to the configuration.
+     * <b>Fügt</b> die angegeben Konfigurationsgruppen zur Konfiguration hinzu.
      *
-     * @param groups The group to add.
+     * @param groups Die Konfigurationsgruppen, die zur Konfiguration
+     *     hinzugefügt werden sollen.
      */
     public void add(ConfigGroup... groups)
     {
         Collections.addAll(configurationGroups, groups);
+        // load();
+        // save();
     }
 
     /**
@@ -202,13 +207,10 @@ public class ConfigLoader
     }
 
     /**
-     * Versucht, die Konfiguration aus der Datei im Anwendungsordner zu
-     * <b>laden</b>.
+     * <b>Lädt</b> die Konfiguration aus der Datei im Anwendungsordner.
      *
      * <p>
-     * Wenn keine vorhanden ist, versucht es, die Datei aus einem beliebigen
-     * Ressourcenordner zu laden. Wenn keine vorhanden ist, erstellt es eine
-     * neue Konfigurationsdatei im Anwendungsordner.
+     * Ist keine Konfigurationsdatei vorhanden, wir einen neue Datei erstellt.
      * </p>
      *
      * @throws ConfigException Wenn das Laden der Konfigurationsdatei
@@ -244,7 +246,7 @@ public class ConfigLoader
         }
         catch (IOException e)
         {
-            log.log(Level.SEVERE, e.getMessage(), e);
+            throw new ConfigException(e);
         }
 
         if (Files.exists(path()))
@@ -287,11 +289,12 @@ public class ConfigLoader
         try (OutputStream out = Files.newOutputStream(path(),
             StandardOpenOption.CREATE_NEW))
         {
-            getConfigurationGroups().stream()
-                .filter(group -> Controller.isDebug() || !group.isDebug())
+            getConfigurationGroups()
                 .forEach(group -> storeConfigurationGroup(out, group));
 
-            log.log(Level.CONFIG, "Configuration {0} saved", path());
+            log.log(Level.CONFIG,
+                "Die Konfiguration wurde in die Datei {0} gespeichert.",
+                path());
         }
         catch (IOException e)
         {
