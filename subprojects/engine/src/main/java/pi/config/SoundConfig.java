@@ -25,6 +25,8 @@
  */
 package pi.config;
 
+import pi.annotations.API;
+import pi.annotations.ChainableMethod;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
 
@@ -43,12 +45,17 @@ import pi.annotations.Setter;
 public class SoundConfig extends ConfigGroup
 {
     /**
-     * Constructs a new SoundConfiguration with default volume settings.
+     * Erzeugt eine neue {@code SoundConfig} mit den Standardwerten für die
+     * Lautstärke.
      */
     SoundConfig()
     {
-        this.soundVolume(0.5);
-        this.musicVolume(0.5);
+        super();
+        // Der Konstruktor sollte nicht auf „public“ gesetzt werden, sondern
+        // „package private“ bleiben, damit die Konfigurationsgruppe nur in
+        // diesem Paket instanziert werden kann.
+        soundVolume(0.5);
+        musicVolume(0.5);
     }
 
     /* soundVolume */
@@ -56,10 +63,11 @@ public class SoundConfig extends ConfigGroup
     private double soundVolume;
 
     /**
-     * Gets the current sound volume.
+     * Gibt die aktuelle <b>Lautstärke für Soundeffekte</b> zurück.
      *
-     * @return the sound volume.
+     * @return Die <b>Lautstärke für Soundeffekte</b>.
      */
+    @API
     @Getter
     public double soundVolume()
     {
@@ -67,14 +75,17 @@ public class SoundConfig extends ConfigGroup
     }
 
     /**
-     * Sets the sound volume.
+     * Setzt die <b>Lautstärke für Soundeffekte</b>.
      *
-     * @param soundVolume the new sound volume.
+     * @param soundVolume Die neue <b>Lautstärke für Soundeffekte</b>.
      */
+    @API
     @Setter
-    public void soundVolume(final double soundVolume)
+    @ChainableMethod
+    public SoundConfig soundVolume(final double soundVolume)
     {
         set("soundVolume", soundVolume);
+        return this;
     }
 
     /* musicVolume */
@@ -82,10 +93,11 @@ public class SoundConfig extends ConfigGroup
     private double musicVolume;
 
     /**
-     * Gets the current music volume.
+     * Gibt die aktuelle <b>Musiklautstärke</b> zurück.
      *
-     * @return the music volume.
+     * @return Die <b>Musiklautstärke</b>.
      */
+    @API
     @Getter
     public double musicVolume()
     {
@@ -93,13 +105,16 @@ public class SoundConfig extends ConfigGroup
     }
 
     /**
-     * Sets the music volume.
+     * Setzt die <b>Musiklautstärke</b>.
      *
-     * @param musicVolume the new music volume.
+     * @param musicVolume Die neue <b>Musiklautstärke</b>.
      */
+    @API
     @Setter
-    public void musicVolume(final double musicVolume)
+    @ChainableMethod
+    public SoundConfig musicVolume(final double musicVolume)
     {
         set("musicVolume", musicVolume);
+        return this;
     }
 }

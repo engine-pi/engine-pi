@@ -443,8 +443,8 @@ public record Bounds(double x, double y, double width, double height)
      * @see #height ()
      */
     @Override
-    @Getter
     @API
+    @Getter
     public double y()
     {
         return y;
@@ -516,8 +516,8 @@ public record Bounds(double x, double y, double width, double height)
      * @see #height()
      */
     @Override
-    @Getter
     @API
+    @Getter
     public double width()
     {
         return width;
@@ -549,8 +549,8 @@ public record Bounds(double x, double y, double width, double height)
      * @see #width()
      */
     @Override
-    @Getter
     @API
+    @Getter
     public double height()
     {
         return height;
@@ -579,8 +579,8 @@ public record Bounds(double x, double y, double width, double height)
      * @return die <b>Position</b> des {@link Bounds}-Rechtecks, beschrieben
      *     durch den Punkt der linken unteren Ecke dieses Objekts.
      */
-    @Getter
     @API
+    @Getter
     public Vector position()
     {
         return new Vector(x, y);

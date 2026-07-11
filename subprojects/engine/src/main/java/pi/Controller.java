@@ -1266,8 +1266,8 @@ public class Controller
      *
      * @since 0.42.0
      */
-    @Setter
     @API
+    @Setter
     public static void instantMode(boolean instantMode)
     {
         config.game.instantMode(instantMode);
@@ -1282,8 +1282,8 @@ public class Controller
      *
      * @since 0.42.0
      */
-    @Setter
     @API
+    @Setter
     public static void windowDimension(int windowWidth, int windowHeight)
     {
         config.graphics.windowDimension(windowWidth, windowHeight);

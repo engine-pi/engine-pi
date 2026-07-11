@@ -57,7 +57,7 @@ particle.bodyType(PARTICLE)
 ```
 ### Anordnung der Getter und Setter im Quellcode
 
-1. Attribute
+1. Attribut
 2. Getter
 3. Setter
 

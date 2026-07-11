@@ -35,11 +35,12 @@ import java.util.Properties;
 import java.util.TreeSet;
 
 /**
- * A custom implementation of the Properties class that sorts the keys and
- * strips the first line of comments when storing.
+ * Eine benutzerdefinierte Implementierung der Klasse {@link Properties}, die
+ * die Schlüssel sortiert und beim Speichern die erste Kommentarzeile entfernt.
  *
  * @author Steffen Wilke
  * @author Matthias Wilke
+ * @author Josef Friedrich
  *
  * @since 0.42.0
  */
@@ -49,10 +50,10 @@ class CleanProperties extends Properties
     private static final long serialVersionUID = 7567765340218227372L;
 
     /**
-     * Returns an enumeration of the keys in this property list, sorted in
-     * ascending order.
+     * Gibt eine Enumeration der Schlüssel in dieser Property-Liste zurück,
+     * aufsteigend sortiert.
      *
-     * @return an enumeration of the keys in this property list.
+     * @return Eine Enumeration der Schlüssel in dieser Property-Liste.
      */
     @Override
     public synchronized Enumeration<Object> keys()
@@ -61,15 +62,16 @@ class CleanProperties extends Properties
     }
 
     /**
-     * Writes this property list (key and element pairs) in this Properties
-     * table to the output stream in a format suitable for loading into a
-     * Properties table using the load method. This implementation strips the
-     * first line of comments.
+     * Schreibt diese Property-Liste (Schlüssel-Wert-Paare) dieser
+     * {@link Properties}-Tabelle in einem Format in den Ausgabestrom, das mit
+     * der Methode {@code load} wieder in eine {@link Properties}-Tabelle
+     * geladen werden kann. Diese Implementierung entfernt die erste
+     * Kommentarzeile.
      *
-     * @param out an output stream.
-     * @param comments a description of the property list.
+     * @param out ein Ausgabestrom.
+     * @param comments eine Beschreibung der Property-Liste.
      *
-     * @throws IOException if an I/O error occurs.
+     * @throws IOException falls ein I/O-Fehler auftritt.
      */
     @Override
     public void store(final OutputStream out, final String comments)
@@ -79,16 +81,17 @@ class CleanProperties extends Properties
     }
 
     /**
-     * A custom FilterOutputStream that strips the first line of output.
+     * Ein benutzerdefinierter {@link FilterOutputStream}, der die erste
+     * Ausgabezeile entfernt.
      */
     private static class StripFirstLineStream extends FilterOutputStream
     {
         private boolean firstlineseen = false;
 
         /**
-         * Constructs a new StripFirstLineStream.
+         * Erzeugt einen neuen {@link StripFirstLineStream}.
          *
-         * @param out the underlying output stream.
+         * @param out Der zugrunde liegende Ausgabestrom.
          */
         public StripFirstLineStream(final OutputStream out)
         {
@@ -96,12 +99,12 @@ class CleanProperties extends Properties
         }
 
         /**
-         * Writes the specified byte to this output stream. This implementation
-         * skips the first line.
+         * Schreibt das angegebene Byte in diesen Ausgabestrom. Diese
+         * Implementierung überspringt die erste Zeile.
          *
-         * @param b the byte to be written.
+         * @param b Das zu schreibende Byte.
          *
-         * @throws IOException if an I/O error occurs.
+         * @throws IOException Falls ein I/O-Fehler auftritt.
          */
         @Override
         public void write(final int b) throws IOException
@@ -117,14 +120,15 @@ class CleanProperties extends Properties
         }
 
         /**
-         * Writes len bytes from the specified byte array starting at offset off
-         * to this output stream. This implementation skips the first line.
+         * Schreibt {@code len} Bytes aus dem angegebenen Byte-Array beginnend
+         * bei Offset {@code off} in diesen Ausgabestrom. Diese Implementierung
+         * überspringt die erste Zeile.
          *
-         * @param b the data.
-         * @param off the start offset in the data.
-         * @param len the number of bytes to write.
+         * @param b Die Daten.
+         * @param off Der Start-Offset in den Daten.
+         * @param len Die Anzahl der zu schreibenden Bytes.
          *
-         * @throws IOException if an I/O error occurs.
+         * @throws IOException Falls ein I/O-Fehler auftritt.
          */
         @Override
         public void write(byte[] b, int off, int len) throws IOException

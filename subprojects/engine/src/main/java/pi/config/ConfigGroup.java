@@ -37,9 +37,13 @@ import pi.util.ReflectionUtil;
 
 /**
  * Diese Klasse enthält grundlegende Funktionalität für alle
- * Einstellungsgruppen. Sie liest die {@link ConfigGroupInfo}-Annotation aus und
- * ermittelt den Präfix, der beim Lesen und Schreiben der Einstellungen in eine
+ * Einstellungsgruppen.
+ *
+ * <p>
+ * Sie liest die {@link ConfigGroupInfo}-Annotation aus und ermittelt den
+ * Präfix, der beim Lesen und Schreiben der Einstellungen in eine
  * Properties-Datei verwendet wird.
+ * </p>
  *
  * @author Steffen Wilke
  * @author Matthias Wilke

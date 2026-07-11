@@ -29,6 +29,7 @@ import java.awt.Dimension;
 
 import pi.Camera;
 import pi.annotations.API;
+import pi.annotations.ChainableMethod;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.graphics.geom.Direction;
@@ -87,8 +88,8 @@ public class GraphicsConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Getter
     @API
+    @Getter
     public int windowWidth()
     {
         return windowWidth;
@@ -106,8 +107,9 @@ public class GraphicsConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Setter
     @API
+    @Setter
+    @ChainableMethod
     public GraphicsConfig windowWidth(int windowWidth)
     {
         set("windowWidth", windowWidth);
@@ -130,8 +132,8 @@ public class GraphicsConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Getter
     @API
+    @Getter
     public int windowHeight()
     {
         return windowHeight;
@@ -149,8 +151,9 @@ public class GraphicsConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Setter
     @API
+    @Setter
+    @ChainableMethod
     public GraphicsConfig windowHeight(int windowHeight)
     {
         set("windowHeight", windowHeight);
@@ -197,8 +200,8 @@ public class GraphicsConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Getter
     @API
+    @Getter
     public Direction windowPosition()
     {
         return windowPosition;
@@ -230,8 +233,9 @@ public class GraphicsConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Setter
     @API
+    @Setter
+    @ChainableMethod
     public GraphicsConfig windowPosition(Direction windowPosition)
     {
         set("windowPosition", windowPosition);
@@ -252,8 +256,8 @@ public class GraphicsConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Getter
     @API
+    @Getter
     public double pixelPerMeter()
     {
         return pixelPerMeter;
@@ -271,8 +275,9 @@ public class GraphicsConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Setter
     @API
+    @Setter
+    @ChainableMethod
     public GraphicsConfig pixelPerMeter(double pixelPerMeter)
     {
         set("pixelPerMeter", pixelPerMeter);
@@ -298,8 +303,8 @@ public class GraphicsConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Getter
     @API
+    @Getter
     public double zoomChange()
     {
         return zoomChange;
@@ -319,8 +324,9 @@ public class GraphicsConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Setter
     @API
+    @Setter
+    @ChainableMethod
     public GraphicsConfig zoomChange(double zoomChange)
     {
         set("zoomChange", zoomChange);
@@ -342,8 +348,8 @@ public class GraphicsConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Getter
     @API
+    @Getter
     public int framerate()
     {
         return framerate;
@@ -361,8 +367,9 @@ public class GraphicsConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Setter
     @API
+    @Setter
+    @ChainableMethod
     public GraphicsConfig framerate(int framerate)
     {
         set("framerate", framerate);
@@ -383,8 +390,8 @@ public class GraphicsConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Getter
     @API
+    @Getter
     public String colorScheme()
     {
         return colorScheme;
@@ -402,8 +409,9 @@ public class GraphicsConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Setter
     @API
+    @Setter
+    @ChainableMethod
     public GraphicsConfig colorScheme(String colorScheme)
     {
         set("colorScheme", colorScheme);
@@ -433,8 +441,8 @@ public class GraphicsConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Getter
     @API
+    @Getter
     public int pixelMultiplication()
     {
         return pixelMultiplication;
@@ -466,8 +474,9 @@ public class GraphicsConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Setter
     @API
+    @Setter
+    @ChainableMethod
     public GraphicsConfig pixelMultiplication(int pixelMultiplication)
     {
         set("pixelMultiplication", pixelMultiplication);
@@ -493,8 +502,8 @@ public class GraphicsConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Getter
     @API
+    @Getter
     public int screenRecordingNFrames()
     {
         return screenRecordingNFrames;
@@ -514,8 +523,9 @@ public class GraphicsConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Setter
     @API
+    @Setter
+    @ChainableMethod
     public GraphicsConfig screenRecordingNFrames(int screenRecordingNFrames)
     {
         set("screenRecordingNFrames", screenRecordingNFrames);
@@ -533,8 +543,8 @@ public class GraphicsConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Getter
     @API
+    @Getter
     public Dimension windowDimension()
     {
         return new Dimension(windowWidth, windowHeight);
@@ -556,8 +566,9 @@ public class GraphicsConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Setter
     @API
+    @Setter
+    @ChainableMethod
     public GraphicsConfig windowDimension(int windowWidth, int windowHeight)
     {
         set("windowWidth", windowWidth);

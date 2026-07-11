@@ -25,6 +25,8 @@
  */
 package pi.config;
 
+import pi.annotations.ChainableMethod;
+
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/resources/config.md
 
 class ConfigException extends RuntimeException
@@ -174,6 +176,7 @@ public class Configuration extends ConfigLoader
      *
      * @since 0.45.0
      */
+    @ChainableMethod
     public Configuration reload(boolean hard)
     {
         reset(hard);
@@ -188,6 +191,7 @@ public class Configuration extends ConfigLoader
      *
      * @since 0.45.0
      */
+    @ChainableMethod
     public Configuration reload()
     {
         return reload(false);

@@ -264,8 +264,8 @@ public class SceneInfoOverlay
      *
      * @since 0.42.0
      */
-    @Setter
     @API
+    @Setter
     @ChainableMethod
     public SceneInfoOverlay title(Object title)
     {
@@ -304,8 +304,8 @@ public class SceneInfoOverlay
      *
      * @since 0.42.0
      */
-    @Setter
     @API
+    @Setter
     @ChainableMethod
     public SceneInfoOverlay subtitle(Object subtitle)
     {
@@ -343,8 +343,8 @@ public class SceneInfoOverlay
      *
      * @since 0.42.0
      */
-    @Setter
     @API
+    @Setter
     @ChainableMethod
     public SceneInfoOverlay description(Object... description)
     {
@@ -394,8 +394,8 @@ public class SceneInfoOverlay
      *
      * @since 0.42.0
      */
-    @Setter
     @API
+    @Setter
     @ChainableMethod
     public SceneInfoOverlay help(Object... help)
     {
@@ -430,8 +430,8 @@ public class SceneInfoOverlay
      *
      * @since 0.42.0
      */
-    @Setter
     @API
+    @Setter
     @ChainableMethod
     public SceneInfoOverlay textColor(Color textColor)
     {
@@ -469,8 +469,8 @@ public class SceneInfoOverlay
      *     gekettete Setter festgelegt werden können, z.B.
      *     {@code info().title(..).subtitle(..)}.
      */
-    @Setter
     @API
+    @Setter
     @ChainableMethod
     public SceneInfoOverlay hAlign(HAlign hAlign)
     {
@@ -488,8 +488,8 @@ public class SceneInfoOverlay
      *     gekettete Setter festgelegt werden können, z.B.
      *     {@code info().title(..).subtitle(..)}.
      */
-    @Setter
     @API
+    @Setter
     @ChainableMethod
     public SceneInfoOverlay vAlign(VAlign vAlign)
     {

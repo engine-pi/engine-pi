@@ -240,6 +240,7 @@ public class DebugConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
+    @API
     public boolean toogleShowPositions()
     {
         actorCoordinates = !actorCoordinates;

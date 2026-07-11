@@ -660,8 +660,8 @@ public final class Camera
      *
      * @return Die aktuelle Drehung.
      */
-    @Getter
     @API
+    @Getter
     public double rotation()
     {
         return rotation;

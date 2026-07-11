@@ -188,8 +188,6 @@ public class ConfigLoader
     public void add(ConfigGroup... groups)
     {
         Collections.addAll(configurationGroups, groups);
-        // load();
-        // save();
     }
 
     /**

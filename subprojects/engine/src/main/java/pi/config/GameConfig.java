@@ -19,6 +19,7 @@
 package pi.config;
 
 import pi.annotations.API;
+import pi.annotations.ChainableMethod;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
 
@@ -68,8 +69,8 @@ public class GameConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Getter
     @API
+    @Getter
     public boolean instantMode()
     {
         return instantMode;
@@ -89,8 +90,9 @@ public class GameConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Setter
     @API
+    @Setter
+    @ChainableMethod
     public GameConfig instantMode(boolean instantMode)
     {
         set("instantMode", instantMode);

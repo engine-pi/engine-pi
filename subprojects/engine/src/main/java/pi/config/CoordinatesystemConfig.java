@@ -19,6 +19,7 @@
 package pi.config;
 
 import pi.annotations.API;
+import pi.annotations.ChainableMethod;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
 
@@ -60,8 +61,8 @@ public class CoordinatesystemConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Getter
     @API
+    @Getter
     public int linesNMeter()
     {
         return linesNMeter;
@@ -82,8 +83,9 @@ public class CoordinatesystemConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Setter
     @API
+    @Setter
+    @ChainableMethod
     public CoordinatesystemConfig linesNMeter(int linesNMeter)
     {
         set("linesNMeter", linesNMeter);
@@ -107,8 +109,8 @@ public class CoordinatesystemConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Getter
     @API
+    @Getter
     public boolean labelsOnIntersections()
     {
         return labelsOnIntersections;
@@ -130,8 +132,9 @@ public class CoordinatesystemConfig extends ConfigGroup
      *
      * @since 0.42.0
      */
-    @Setter
     @API
+    @Setter
+    @ChainableMethod
     public CoordinatesystemConfig labelsOnIntersections(
             boolean labelsOnIntersections)
     {
