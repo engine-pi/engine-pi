@@ -127,7 +127,7 @@ class ConfigLoaderTest
     class DeleteConfigFileTest
     {
         @Test
-        void whenFileExists() throws IOException
+        void whenFileExists()
         {
             config = new ConfigLoader();
             config.load();
@@ -151,7 +151,7 @@ class ConfigLoaderTest
         }
 
         @Test
-        void multipleTimes() throws IOException
+        void multipleTimes()
         {
             config = new ConfigLoader();
             config.load();
