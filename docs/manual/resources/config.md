@@ -148,12 +148,15 @@ notwendig, die Annotation `#!java @ConfigGroupInfo` jedoch schon. Die Annotation
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/resources/config/CustomConfigGroupDemo.java -->
 
+Benutzerdefinierte Konfigurationsgruppen müssen mit Hilfe der Methode {{
+javadoc('pi.config.ConfigLoader#add(pi.config.ConfigGroup...)',
+'add(ConfigGroup...)') }} erst zum statischen Singleton-config-Objekt
+hinzugefügt werden.
+
 ```java
 import static pi.Controller.config;
 
-import pi.Controller;
 import pi.Scene;
-import pi.Text;
 
 public class CustomConfigGroupDemo extends Scene
 {
@@ -161,25 +164,34 @@ public class CustomConfigGroupDemo extends Scene
     {
         MyConfigGroup custom = new MyConfigGroup();
         config.add(custom);
-        custom.myInt(42);
-    }
-
-    public CustomConfigGroupDemo()
-    {
-        MyConfigGroup custom = config.getGroup(MyConfigGroup.class);
-        // Oder:
-        // MyConfigGroup custom = (MyConfigGroup) config.getGroup("custom_");
-        add(new Text(custom.myInt()).center(0, 0));
-    }
-
-    public static void main(String[] args)
-    {
-        config.game.instantMode(false);
-        config.graphics.pixelPerMeter(512);
-        Controller.start(new CustomConfigGroupDemo());
     }
 }
 ```
 
+Dann kann die Konfigurationsgruppe über die Methoden
+{{ javadoc('pi.config.ConfigLoader#getGroup(java.lang.Class)', 'getGroup(Class)') }}
+
+```java
+MyConfigGroup custom = config.getGroup(MyConfigGroup.class);
+System.out.println(custom.myInt());
+```
+
+oder {{ javadoc('pi.config.ConfigLoader#getGroup(java.lang.String)', 'getGroup(String)') }}
+
+```java
+MyConfigGroup custom = (MyConfigGroup) config.getGroup("custom_");
+System.out.println(custom.myInt());
+```
+
+wieder abgerufen werden.
+
+Damit die benutzerdefinierte Konfigurationsgruppen in die
+`engine-pi.properties`-Datei geschrieben werden, muss {{
+javadoc('pi.config.ConfigLoader#save()') }} aufgerufen werden.
+
+```java
+import static pi.Controller.config;
+config.save();
+```
 
 [^litiengine:configuration]: https://litiengine.com/docs/configuration/

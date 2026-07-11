@@ -108,6 +108,9 @@ public class ConfigLoader
         }
     }
 
+    // Go to
+    // file:///data/school/repos/inf/java/engine-pi/docs/manual/resources/config.md
+
     /**
      * Gibt die typisierte Konfigurationsgruppe zurück, sofern sie zuvor zur
      * Konfiguration hinzugefügt wurde.
@@ -133,6 +136,9 @@ public class ConfigLoader
                 "Die Konfigurationsgruppe " + groupClass.getCanonicalName()
                         + " ist noch nicht registriert worden.");
     }
+
+    // Go to
+    // file:///data/school/repos/inf/java/engine-pi/docs/manual/resources/config.md
 
     /**
      * Ruft eine Konfigurationsgruppe basierend auf ihrem Präfix ab.
@@ -180,10 +186,14 @@ public class ConfigLoader
     // Go to
     // file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/resources/config/MyConfigGroup.java
 
+    // Go to
+    // file:///data/school/repos/inf/java/engine-pi/docs/manual/resources/config.md
+
     /**
-     * <b>Fügt</b> die angegeben Konfigurationsgruppen zur Konfiguration hinzu.
+     * <b>Fügt</b> die angegeben <b>Konfigurationsgruppen</b> zur Konfiguration
+     * <b>hinzu</b>.
      *
-     * @param groups Die Konfigurationsgruppen, die zur Konfiguration
+     * @param groups Die <b>Konfigurationsgruppen</b>, die zur Konfiguration
      *     hinzugefügt werden sollen.
      */
     public void add(ConfigGroup... groups)
