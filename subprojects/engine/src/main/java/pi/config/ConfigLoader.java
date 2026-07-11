@@ -121,7 +121,7 @@ public class ConfigLoader
      */
     public <T extends ConfigGroup> T getGroup(final Class<T> groupClass)
     {
-        for (final ConfigGroup group : getConfigurationGroups())
+        for (final ConfigGroup group : configurationGroups())
         {
             if (group.getClass().equals(groupClass))
             {
@@ -146,7 +146,7 @@ public class ConfigLoader
      */
     public ConfigGroup getGroup(final String prefix)
     {
-        for (final ConfigGroup group : getConfigurationGroups())
+        for (final ConfigGroup group : configurationGroups())
         {
 
             final ConfigGroupInfo info = group.getClass()
@@ -171,7 +171,8 @@ public class ConfigLoader
      *
      * @return Alle Konfigurationsgruppen.
      */
-    public List<ConfigGroup> getConfigurationGroups()
+    @Getter
+    public List<ConfigGroup> configurationGroups()
     {
         return configurationGroups;
     }
@@ -288,7 +289,7 @@ public class ConfigLoader
         try (OutputStream out = Files.newOutputStream(path(),
             StandardOpenOption.CREATE_NEW))
         {
-            getConfigurationGroups()
+            configurationGroups()
                 .forEach(group -> storeConfigurationGroup(out, group));
 
             log.log(Level.CONFIG,
@@ -329,6 +330,22 @@ public class ConfigLoader
         }
     }
 
+    /**
+     * Speichert die übergebene Konfigurationsgruppe im angegebenen
+     * Ausgabestrom.
+     *
+     * <p>
+     * Die Eigenschaften der Gruppe werden zuerst in ein
+     * {@link CleanProperties}-Objekt geschrieben und anschließend zusammen mit
+     * einem Kommentar in den {@link OutputStream} serialisiert.
+     * </p>
+     *
+     * @param out Der Ausgabestrom, in den die Eigenschaften geschrieben werden.
+     * @param group Die zu speichernde Konfigurationsgruppe.
+     *
+     * @throws ConfigException falls die Konfigurationsgruppe nicht gespeichert
+     *     werden kann.
+     */
     private static void storeConfigurationGroup(final OutputStream out,
             final ConfigGroup group)
     {
@@ -336,7 +353,7 @@ public class ConfigLoader
         {
             final Properties groupProperties = new CleanProperties();
             group.storeProperties(groupProperties);
-            groupProperties.store(out, group.getPrefix() + "SETTINGS");
+            groupProperties.store(out, group.prefix() + "SETTINGS");
             out.flush();
         }
         catch (final IOException e)
@@ -359,24 +376,37 @@ public class ConfigLoader
      * @param out Der {@link OutputStream}, in den die Konfigurationsgruppen
      *     geschrieben werden sollen.
      *
-     * @see #getConfigurationGroups()
+     * @see #configurationGroups()
      * @see #storeConfigurationGroup(OutputStream, ConfigGroup)
      */
     private void createDefaultSettingsFile(final OutputStream out)
     {
-        for (final ConfigGroup group : getConfigurationGroups())
+        for (final ConfigGroup group : configurationGroups())
         {
             storeConfigurationGroup(out, group);
         }
     }
 
+    /**
+     * Initialisiert alle registrierten Konfigurationsgruppen anhand der
+     * übergebenen Eigenschaften.
+     *
+     * <p>
+     * Für jeden Schlüssel wird geprüft, ob er mit dem Präfix einer
+     * Konfigurationsgruppe beginnt. Trifft dies zu, wird die jeweilige Gruppe
+     * mit Schlüssel und Wert initialisiert.
+     * </p>
+     *
+     * @param properties Die geladenen Eigenschaften aus der
+     *     Konfigurationsdatei.
+     */
     private void initializeSettingsByProperties(final Properties properties)
     {
         for (final String key : properties.stringPropertyNames())
         {
-            for (final ConfigGroup group : getConfigurationGroups())
+            for (final ConfigGroup group : configurationGroups())
             {
-                if (key.startsWith(group.getPrefix()))
+                if (key.startsWith(group.prefix()))
                 {
                     group.initializeByProperty(key,
                         properties.getProperty(key));

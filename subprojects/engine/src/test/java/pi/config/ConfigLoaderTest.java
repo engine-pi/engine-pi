@@ -74,7 +74,7 @@ class ConfigLoaderTest
         config.load();
 
         assertEquals(group, config.getGroup(group.getClass()));
-        assertEquals("test-prefix", group.getPrefix());
+        assertEquals("test-prefix", group.prefix());
         assertEquals(group, config.getGroup("test-prefix"));
     }
 

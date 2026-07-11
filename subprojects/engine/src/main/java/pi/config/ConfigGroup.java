@@ -33,6 +33,7 @@ import java.util.Collection;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
+import pi.annotations.Getter;
 import pi.util.ReflectionUtil;
 
 /**
@@ -107,7 +108,8 @@ public abstract class ConfigGroup
      * @return Der Präfix der Konfigurationsgruppe, oder ein leerer String,
      *     falls der Präfix {@code null} ist.
      */
-    public String getPrefix()
+    @Getter
+    public String prefix()
     {
         return prefix != null ? prefix : "";
     }
@@ -120,7 +122,7 @@ public abstract class ConfigGroup
      */
     protected void initializeByProperty(final String key, final String value)
     {
-        final String propertyName = key.substring(getPrefix().length());
+        final String propertyName = key.substring(prefix().length());
         ReflectionUtil.setFieldValue(getClass(), this, propertyName, value);
     }
 
@@ -147,7 +149,7 @@ public abstract class ConfigGroup
                 }
 
                 field.setAccessible(true); // Ensure field is accessible
-                String propertyKey = getPrefix() + field.getName();
+                String propertyKey = prefix() + field.getName();
                 Object value = field.get(this);
 
                 if (value == null)
