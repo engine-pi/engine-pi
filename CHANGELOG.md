@@ -15,7 +15,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- Remove debug mode of the config groups.
+- Remove the debug mode of the config groups.
+- Rename `ConfigLoader#add(ConfigGroup...)` into `ConfigLoader#addGroup(ConfigGroup...)`
+- The properties file is automatically loaded when a config group is added.
 
 ## [v0.49.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.49.0) - 2026-06-18
 

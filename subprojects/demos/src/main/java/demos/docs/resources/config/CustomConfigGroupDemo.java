@@ -31,7 +31,7 @@ public class CustomConfigGroupDemo extends Scene
     static
     {
         MyConfigGroup custom = new MyConfigGroup();
-        config.add(custom);
+        config.addGroup(custom);
         custom.myInt(42);
     }
 

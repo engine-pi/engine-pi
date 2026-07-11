@@ -149,8 +149,8 @@ notwendig, die Annotation `#!java @ConfigGroupInfo` jedoch schon. Die Annotation
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/resources/config/CustomConfigGroupDemo.java -->
 
 Benutzerdefinierte Konfigurationsgruppen müssen mit Hilfe der Methode {{
-javadoc('pi.config.ConfigLoader#add(pi.config.ConfigGroup...)',
-'add(ConfigGroup...)') }} erst zum statischen Singleton-config-Objekt
+javadoc('pi.config.ConfigLoader#addGroup(pi.config.ConfigGroup...)',
+'addGroup(ConfigGroup...)') }} erst zum statischen Singleton-config-Objekt
 hinzugefügt werden.
 
 ```java
@@ -163,7 +163,7 @@ public class CustomConfigGroupDemo extends Scene
     static
     {
         MyConfigGroup custom = new MyConfigGroup();
-        config.add(custom);
+        config.addGroup(custom);
     }
 }
 ```

@@ -43,18 +43,9 @@ class ConfigException extends RuntimeException
 }
 
 /**
- * Diese Klasse enthält alle Standard-{@link ConfigGroup Konfigurationsgruppen},
- * die von der <b>Engine</b> Pi bereitgestellt werden.
- *
- * <p>
- * Darüber hinaus kann diese Klasse zum Registrieren und Verwalten von
- * benutzerdefinierten {@link ConfigGroup Konfigurationsgruppen} verwendet
- * werden.
- * </p>
- *
- * @see ConfigGroup
- * @see ConfigLoader#add(ConfigGroup...)
- * @see ConfigLoader#getGroup(Class)
+ * Singleton/Einzelner-Instanz der Konfiguration, die alle
+ * Standard-{@link ConfigGroup Konfigurationsgruppen}, der <b>Engine</b>
+ * enthält.
  *
  * @author Steffen Wilke
  * @author Matthias Wilke
@@ -106,7 +97,7 @@ public class Configuration extends ConfigLoader
         sound = new SoundConfig();
         debug = new DebugConfig();
         coordinatesystem = new CoordinatesystemConfig();
-        add(game, graphics, sound, debug, coordinatesystem);
+        addGroup(game, graphics, sound, debug, coordinatesystem);
     }
 
     /**
@@ -125,7 +116,6 @@ public class Configuration extends ConfigLoader
         if (configuration == null)
         {
             configuration = new Configuration();
-            configuration.load();
         }
         return configuration;
     }

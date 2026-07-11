@@ -59,7 +59,7 @@ public class ConfigLoader
 
     private static final String DEFAULT_CONFIGURATION_FILE_NAME = "engine-pi.properties";
 
-    private final List<ConfigGroup> configurationGroups;
+    private final List<ConfigGroup> groups;
 
     private final Path path;
 
@@ -101,10 +101,10 @@ public class ConfigLoader
             final ConfigGroup... configurationGroups)
     {
         this.path = path;
-        this.configurationGroups = new ArrayList<>();
+        this.groups = new ArrayList<>();
         if (configurationGroups != null && configurationGroups.length > 0)
         {
-            Collections.addAll(this.configurationGroups, configurationGroups);
+            Collections.addAll(this.groups, configurationGroups);
         }
     }
 
@@ -124,7 +124,7 @@ public class ConfigLoader
      */
     public <T extends ConfigGroup> T getGroup(final Class<T> groupClass)
     {
-        for (final ConfigGroup group : configurationGroups())
+        for (final ConfigGroup group : groups())
         {
             if (group.getClass().equals(groupClass))
             {
@@ -152,7 +152,7 @@ public class ConfigLoader
      */
     public ConfigGroup getGroup(final String prefix)
     {
-        for (final ConfigGroup group : configurationGroups())
+        for (final ConfigGroup group : groups())
         {
 
             final ConfigGroupInfo info = group.getClass()
@@ -173,14 +173,14 @@ public class ConfigLoader
     }
 
     /**
-     * Gibt alle {@link ConfigGroup}s der Konfiguration zurück.
+     * Gibt alle {@link ConfigGroup Konfigurationsgruppen} zurück.
      *
      * @return Alle Konfigurationsgruppen.
      */
     @Getter
-    public List<ConfigGroup> configurationGroups()
+    public List<ConfigGroup> groups()
     {
-        return configurationGroups;
+        return groups;
     }
 
     // Go to
@@ -190,15 +190,31 @@ public class ConfigLoader
     // file:///data/school/repos/inf/java/engine-pi/docs/manual/resources/config.md
 
     /**
-     * <b>Fügt</b> die angegeben <b>Konfigurationsgruppen</b> zur Konfiguration
-     * <b>hinzu</b>.
+     * <b>Fügt</b> die angegeben <b>Konfigurationsgruppen</b> zu dieser
+     * Konfigurationsinstanz <b>hinzu</b>.
      *
-     * @param groups Die <b>Konfigurationsgruppen</b>, die zur Konfiguration
-     *     hinzugefügt werden sollen.
+     * <p>
+     * Eine bereits vorhandene {@code properties}-Datei wird dabei geladen.
+     * {@link #save()} muss jedoch manuell ausgeführt werden, falls
+     * aktualisierte Werte in die {@code properties}-Datei gespeichert werden
+     * sollen.
+     * </p>
+     *
+     * @param groups Die <b>Konfigurationsgruppen</b>, die zu dieser
+     *     Konfigurationsinstanz hinzugefügt werden sollen.
      */
-    public void add(ConfigGroup... groups)
+    public void addGroup(ConfigGroup... groups)
     {
-        Collections.addAll(configurationGroups, groups);
+        Collections.addAll(this.groups, groups);
+        // Gruppen, die später hinzugefügt werden, haben in der
+        // engine-pi.properties-Datei eventuell schon Werte gespeichert. Diese
+        // müssen noch geladen werden.
+        load();
+
+        // Speichern sollte manuell ausgeführt werden.
+        // Würden wir in dieser Methode save() ausführen, gehen Werte von
+        // Gruppen verloren, die erst später hinzugefügt wurden.
+        // save();
     }
 
     /**
@@ -299,8 +315,7 @@ public class ConfigLoader
         try (OutputStream out = Files.newOutputStream(path(),
             StandardOpenOption.CREATE_NEW))
         {
-            configurationGroups()
-                .forEach(group -> storeConfigurationGroup(out, group));
+            groups().forEach(group -> storeConfigurationGroup(out, group));
 
             log.log(Level.CONFIG,
                 "Die Konfiguration wurde in die Datei {0} gespeichert.",
@@ -386,12 +401,12 @@ public class ConfigLoader
      * @param out Der {@link OutputStream}, in den die Konfigurationsgruppen
      *     geschrieben werden sollen.
      *
-     * @see #configurationGroups()
+     * @see #groups()
      * @see #storeConfigurationGroup(OutputStream, ConfigGroup)
      */
     private void createDefaultSettingsFile(final OutputStream out)
     {
-        for (final ConfigGroup group : configurationGroups())
+        for (final ConfigGroup group : groups())
         {
             storeConfigurationGroup(out, group);
         }
@@ -414,7 +429,7 @@ public class ConfigLoader
     {
         for (final String key : properties.stringPropertyNames())
         {
-            for (final ConfigGroup group : configurationGroups())
+            for (final ConfigGroup group : groups())
             {
                 if (key.startsWith(group.prefix()))
                 {

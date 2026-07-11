@@ -28,7 +28,16 @@ import pi.config.ConfigGroupInfo;
 @ConfigGroupInfo(prefix = "custom_")
 public class MyConfigGroup extends ConfigGroup
 {
-    private int myInt = 23;
+    MyConfigGroup()
+    {
+        super();
+        // Der Konstruktor sollte nicht auf „public“ gesetzt werden, sondern
+        // „package private“ bleiben, damit die Konfigurationsgruppe nur in
+        // diesem Paket instanziert werden kann.
+        myInt(23);
+    }
+
+    private int myInt;
 
     @Getter
     public int myInt()
