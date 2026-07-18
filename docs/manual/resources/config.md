@@ -194,4 +194,39 @@ import static pi.Controller.config;
 config.save();
 ```
 
+# Eigene `*.properties` Datei nutzen
+
+Folgendes Code-Beispiel erzeugt eine Properties-Datei mit dem Namen
+`custom-config-loader.properties`:
+
+```java
+import static pi.Controller.config;
+
+import pi.Controller;
+import pi.Scene;
+import pi.Text;
+import pi.config.ConfigLoader;
+
+public class ConfigLoaderDemo extends Scene
+{
+    public ConfigLoaderDemo()
+    {
+        ConfigLoader customConfig = new ConfigLoader(
+                "custom-config-loader.properties");
+        MyConfigGroup custom = new MyConfigGroup();
+        customConfig.addGroup(custom);
+        custom.myInt(42);
+        customConfig.save();
+        add(new Text(custom.myInt()).center(0, 0));
+    }
+
+    public static void main(String[] args)
+    {
+        config.game.instantMode(false);
+        config.graphics.pixelPerMeter(512);
+        Controller.start(new ConfigLoaderDemo());
+    }
+}
+```
+
 [^litiengine:configuration]: https://litiengine.com/docs/configuration/

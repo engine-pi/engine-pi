@@ -35,8 +35,9 @@ site/
 
 __pycache__/
 
-config.properties
-engine-pi.properties
+*.properties
+
+!./engine-pi.properties
 
 *.log
 *.log.*
