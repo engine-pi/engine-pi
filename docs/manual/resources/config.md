@@ -199,6 +199,8 @@ config.save();
 Folgendes Code-Beispiel erzeugt eine Properties-Datei mit dem Namen
 `custom-config-loader.properties`:
 
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/resources/config/ConfigLoaderDemo.java -->
+
 ```java
 import static pi.Controller.config;
 
