@@ -53,8 +53,10 @@ class ConfigException extends RuntimeException
  *
  * @since 0.42.0
  */
-public class Configuration extends ConfigLoader
+public class EngineConfiguration extends ConfigLoader
 {
+    private static final String DEFAULT_CONFIGURATION_FILE_NAME = "engine-pi.properties";
+
     /**
      * Verwaltet die Einstellungsmöglichkeiten mit Bezug zu einem <b>Spiel</b>
      * oder Projekt.
@@ -83,15 +85,15 @@ public class Configuration extends ConfigLoader
      */
     public final CoordinatesystemConfig coordinatesystem;
 
-    private static Configuration configuration;
+    private static EngineConfiguration configuration;
 
     /**
      * Der Konstruktor ist auf privat gesetzt, damit nach dem
      * Singleton/Einzelner-Entwurfsmuster nur eine Instanz erzeugt werden kann.
      */
-    private Configuration()
+    private EngineConfiguration()
     {
-        super();
+        super(DEFAULT_CONFIGURATION_FILE_NAME);
         game = new GameConfig();
         graphics = new GraphicsConfig();
         sound = new SoundConfig();
@@ -111,11 +113,11 @@ public class Configuration extends ConfigLoader
      *
      * @since 0.42.0
      */
-    public static Configuration getInstance()
+    public static EngineConfiguration getInstance()
     {
         if (configuration == null)
         {
-            configuration = new Configuration();
+            configuration = new EngineConfiguration();
         }
         return configuration;
     }
@@ -162,12 +164,12 @@ public class Configuration extends ConfigLoader
      *     Konfigurationsdatei zu löschen; {@code false}, um nur die
      *     Konfiguration neu zu laden
      *
-     * @return Die neu geladene {@link Configuration}-Instanz.
+     * @return Die neu geladene {@link EngineConfiguration}-Instanz.
      *
      * @since 0.45.0
      */
     @ChainableMethod
-    public Configuration reload(boolean hard)
+    public EngineConfiguration reload(boolean hard)
     {
         reset(hard);
         return getInstance();
@@ -177,12 +179,12 @@ public class Configuration extends ConfigLoader
      * Dies ist eine Convenience-Methode, die {@link #reload(boolean)} mit dem
      * Wert {@code false} aufruft.
      *
-     * @return Die neu geladene {@link Configuration}-Instanz.
+     * @return Die neu geladene {@link EngineConfiguration}-Instanz.
      *
      * @since 0.45.0
      */
     @ChainableMethod
-    public Configuration reload()
+    public EngineConfiguration reload()
     {
         return reload(false);
     }

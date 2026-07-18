@@ -38,7 +38,7 @@ coordinatesystem_labelsOnIntersections=false
 Die einzelnen Einstellmöglichkeiten sind in Konfigurationsgruppen, die jeweils
 ein Präfix haben, organisiert:
 
-<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/config/Configuration.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/config/EngineConfiguration.java -->
 
 - `game_`: {{ javadoc('pi.config.GameConfig') }}
 - `graphics_`: {{ javadoc('pi.config.GraphicsConfig') }}
@@ -64,7 +64,7 @@ import static pi.Controller.config;
 config.graphics.windowWidth()
 ```
 
-<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/config/ConfigurationTest.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/config/EngineConfigurationTest.java -->
 
 Das folgende Codebeispiel testet alle Einstellmöglichkeit mit den Standardwerten:
 

@@ -57,22 +57,9 @@ public class ConfigLoader
     private static final Logger log = Logger
         .getLogger(ConfigLoader.class.getName());
 
-    private static final String DEFAULT_CONFIGURATION_FILE_NAME = "engine-pi.properties";
-
     private final List<ConfigGroup> groups;
 
     private final Path path;
-
-    /**
-     * Erstellt eine neue Instanz der Klasse {@code ConfigLoader}.
-     *
-     * @param configurationGroups Die von dieser Instanz verwalteten
-     *     Konfigurationsgruppen.
-     */
-    public ConfigLoader(final ConfigGroup... configurationGroups)
-    {
-        this(DEFAULT_CONFIGURATION_FILE_NAME, configurationGroups);
-    }
 
     /**
      * Erstellt eine neue Instanz der Klasse {@link ConfigLoader} mit dem
@@ -301,9 +288,6 @@ public class ConfigLoader
      * Speichert diese Konfiguration in eine Datei mit dem für diese Instanz
      * festgelegten Namen (engine-pi.properties ist die
      * Standard-Konfigurationsdatei der Engine).
-     *
-     * @see #path()
-     * @see ConfigLoader#DEFAULT_CONFIGURATION_FILE_NAME
      *
      * @throws ConfigException Wenn das Speichern der Konfigurationsdatei
      *     fehlgeschlagen ist.

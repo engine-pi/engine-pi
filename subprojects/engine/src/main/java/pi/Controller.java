@@ -39,7 +39,7 @@ import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
-import pi.config.Configuration;
+import pi.config.EngineConfiguration;
 import pi.config.GameConfig;
 import pi.debug.LogSetup;
 import pi.debug.MainAnimation;
@@ -93,6 +93,7 @@ import pi.resources.sound.SoundContainer;
  *
  * @since 0.42.0
  */
+@SuppressWarnings("java:S6539")
 public class Controller
 {
     static
@@ -132,7 +133,8 @@ public class Controller
      *
      * @since 0.42.0
      */
-    public static final Configuration config = Configuration.getInstance();
+    public static final EngineConfiguration config = EngineConfiguration
+        .getInstance();
 
     /**
      * Ein <b>Speicher</b> für <b>Farben</b> des Datentyps {@link java.awt.Color

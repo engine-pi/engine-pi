@@ -33,15 +33,15 @@ import pi.graphics.geom.Direction;
 /**
  * @author Josef Friedrich
  */
-class ConfigurationTest
+class EngineConfigurationTest
 {
-    Configuration config;
+    EngineConfiguration config;
 
     @BeforeEach
     void setUp()
     {
-        Configuration.reset(true);
-        config = Configuration.getInstance();
+        EngineConfiguration.reset(true);
+        config = EngineConfiguration.getInstance();
     }
 
     @Test
@@ -82,9 +82,9 @@ class ConfigurationTest
         @Test
         void hardDeletesConfigFile()
         {
-            Configuration config1 = Configuration.getInstance();
-            Configuration.reset(true);
-            Configuration config2 = Configuration.getInstance();
+            EngineConfiguration config1 = EngineConfiguration.getInstance();
+            EngineConfiguration.reset(true);
+            EngineConfiguration config2 = EngineConfiguration.getInstance();
 
             assertNotEquals(config1, config2);
         }
@@ -92,9 +92,9 @@ class ConfigurationTest
         @Test
         void softKeepsConfigFile()
         {
-            Configuration config1 = Configuration.getInstance();
-            Configuration.reset(false);
-            Configuration config2 = Configuration.getInstance();
+            EngineConfiguration config1 = EngineConfiguration.getInstance();
+            EngineConfiguration.reset(false);
+            EngineConfiguration config2 = EngineConfiguration.getInstance();
 
             assertNotEquals(config1, config2);
         }
@@ -102,9 +102,9 @@ class ConfigurationTest
         @Test
         void withoutParameterIsDefault()
         {
-            Configuration config1 = Configuration.getInstance();
-            Configuration.reset();
-            Configuration config2 = Configuration.getInstance();
+            EngineConfiguration config1 = EngineConfiguration.getInstance();
+            EngineConfiguration.reset();
+            EngineConfiguration config2 = EngineConfiguration.getInstance();
 
             assertNotEquals(config1, config2);
         }
@@ -112,9 +112,9 @@ class ConfigurationTest
         @Test
         void makesInstanceNull()
         {
-            Configuration.getInstance();
-            Configuration.reset(false);
-            assertNotNull(Configuration.getInstance());
+            EngineConfiguration.getInstance();
+            EngineConfiguration.reset(false);
+            assertNotNull(EngineConfiguration.getInstance());
         }
     }
 }

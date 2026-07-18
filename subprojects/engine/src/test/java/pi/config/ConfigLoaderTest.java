@@ -42,6 +42,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import pi.util.FileUtil;
+import static pi.util.FileUtil.createTmpFile;
 
 class ConfigLoaderTest
 {
@@ -70,7 +71,7 @@ class ConfigLoaderTest
     {
         final TestConfigurationGroup group = new TestConfigurationGroup();
 
-        config = new ConfigLoader(group);
+        config = new ConfigLoader(createTmpFile(), group);
         config.load();
 
         assertEquals(group, config.getGroup(group.getClass()));
@@ -81,7 +82,7 @@ class ConfigLoaderTest
     @Test
     void defaultFileCreation()
     {
-        config = new ConfigLoader();
+        config = new ConfigLoader(FileUtil.createTmpFile());
         config.load();
 
         assertTrue(Files.exists(config.path()));
@@ -103,7 +104,7 @@ class ConfigLoaderTest
     void fieldInitialization()
     {
         final TestConfigurationGroup group = new TestConfigurationGroup();
-        config = new ConfigLoader(group);
+        config = new ConfigLoader(createTmpFile(), group);
 
         config.load();
         final TestConfigurationGroup configGroup = config
@@ -129,7 +130,7 @@ class ConfigLoaderTest
         @Test
         void whenFileExists()
         {
-            config = new ConfigLoader();
+            config = new ConfigLoader(createTmpFile());
             config.load();
             assertTrue(Files.exists(config.path()));
 
@@ -153,7 +154,7 @@ class ConfigLoaderTest
         @Test
         void multipleTimes()
         {
-            config = new ConfigLoader();
+            config = new ConfigLoader(createTmpFile());
             config.load();
 
             config.deleteConfigFile();
