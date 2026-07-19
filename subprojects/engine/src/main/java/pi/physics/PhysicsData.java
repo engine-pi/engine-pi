@@ -140,9 +140,6 @@ public class PhysicsData
             data.globalRestitution(body.fixtureList.restitution);
         }
 
-        data.globalDensity(body.fixtureList.density);
-        data.globalFriction(body.fixtureList.friction);
-        data.globalRestitution(body.fixtureList.restitution);
         data.rotationLocked(body.isFixedRotation());
         data.gravityScale(body.gravityScale);
         data.x(body.getPosition().x);
