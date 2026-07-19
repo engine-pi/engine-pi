@@ -30,6 +30,8 @@ import javax.sound.sampled.LineUnavailableException;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
 
+import static pi.Controller.config;
+
 /**
  * Ermöglicht die Steuerung der Musikwiedergabe.
  *
@@ -45,7 +47,7 @@ public class MusicPlayback extends Playback
         super(music.format());
         this.music = music;
         musicVolume = createVolumeControl();
-        musicVolume.set(1);
+        musicVolume.set(config.sound.musicVolume());
     }
 
     @Override
@@ -82,7 +84,7 @@ public class MusicPlayback extends Playback
     @Setter
     void musicVolume(double volume)
     {
-        musicVolume.set((float) volume);
+        musicVolume.set(volume);
     }
 
     /**

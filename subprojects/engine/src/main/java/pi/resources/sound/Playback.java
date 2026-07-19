@@ -247,7 +247,7 @@ public abstract class Playback implements Runnable
     @Setter
     public void volume(double volume)
     {
-        masterVolume.set((float) volume);
+        masterVolume.set(volume);
     }
 
     public VolumeControl createVolumeControl()
@@ -364,7 +364,7 @@ public abstract class Playback implements Runnable
      */
     public class VolumeControl implements AutoCloseable
     {
-        private volatile float value = 1f;
+        private volatile double value = 1.0;
 
         private VolumeControl()
         {
@@ -375,7 +375,7 @@ public abstract class Playback implements Runnable
          *
          * @return The value of this control.
          */
-        public float get()
+        public double get()
         {
             return value;
         }
@@ -385,7 +385,7 @@ public abstract class Playback implements Runnable
          *
          * @param value The value to be set.
          */
-        public void set(float value)
+        public void set(double value)
         {
             if (value < 0f)
             {
@@ -400,7 +400,7 @@ public abstract class Playback implements Runnable
         {
             // clean up the instance without affecting the volume
             Playback.this.miscVolume.accumulateAndGet(
-                Float.floatToRawIntBits(this.value),
+                Float.floatToRawIntBits((float) this.value),
                 (a, b) -> Float.floatToRawIntBits(
                     Float.intBitsToFloat(a) * Float.intBitsToFloat(b)));
         }

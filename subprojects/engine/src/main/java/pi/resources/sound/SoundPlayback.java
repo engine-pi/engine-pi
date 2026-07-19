@@ -26,6 +26,7 @@
 package pi.resources.sound;
 
 import javax.sound.sampled.LineUnavailableException;
+import static pi.Controller.config;
 
 /**
  * A {@code SoundPlayback} implementation for the playback of sound effects.
@@ -45,6 +46,7 @@ public class SoundPlayback extends Playback
         super(sound.format());
         this.loop = loop;
         this.sound = sound;
+        volume(config.sound.soundVolume());
     }
 
     @Override
