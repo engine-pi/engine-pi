@@ -94,6 +94,52 @@ public class PhysicsData
     {
         PhysicsData data = new PhysicsData(extractFixturesFromBody(body));
         // Global Fixture Vals are blindly taken from first Fixture
+        if (body.fixtureList == null)
+        {
+            // Wird ein Umriss mit Actor#fixture neu gesetzt, so ist
+            // body.fixtureList null
+
+            // Go to
+            // file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/text/TextContentUpdateDemo.java
+
+            // Fehler:
+            // Exception in thread "pi.main" java.lang.RuntimeException:
+            // java.lang.NullPointerException: Cannot read field "density"
+            // because "body.fixtureList" is null
+            // at pi.loop.GameLoop.run(GameLoop.java:245)
+            // at pi.Controller.run(Controller.java:540)
+            // at java.base/java.lang.Thread.run(Thread.java:840)
+            // Caused by: java.lang.NullPointerException: Cannot read field
+            // "density" because "body.fixtureList" is null
+            // at pi.physics.PhysicsData.fromBody(PhysicsData.java:111)
+            // at pi.physics.BodyHandler.physicsData(BodyHandler.java:520)
+            // at pi.physics.BodyHandler.fixtures(BodyHandler.java:508)
+            // at pi.actor.Actor.fixtures(Actor.java:864)
+            // at pi.actor.Actor.fixture(Actor.java:843)
+            // at pi.actor.BoxActor.update(BoxActor.java:505)
+            // at pi.actor.TextActor.content(TextActor.java:98)
+            // at
+            // demos.docs.main_classes.actor.text.TextContentUpdateDemo.lambda$0(TextContentUpdateDemo.java:39)
+            // at
+            // pi.event.FrameListenerRegistration.lambda$1(FrameListenerRegistration.java:196)
+            // at
+            // pi.event.PeriodicTaskExecutor.onFrame(PeriodicTaskExecutor.java:377)
+            // at pi.Scene.lambda$2(Scene.java:826)
+            // at pi.event.EventListeners.invoke(EventListeners.java:138)
+            // at pi.Scene.invokeFrameListeners(Scene.java:825)
+            // at pi.loop.GameLoop.run(GameLoop.java:209)
+
+            data.globalDensity(DEFAULT_DENSITY);
+            data.globalFriction(DEFAULT_FRICTION);
+            data.globalRestitution(DEFAULT_RESTITUTION);
+        }
+        else
+        {
+            data.globalDensity(body.fixtureList.density);
+            data.globalFriction(body.fixtureList.friction);
+            data.globalRestitution(body.fixtureList.restitution);
+        }
+
         data.globalDensity(body.fixtureList.density);
         data.globalFriction(body.fixtureList.friction);
         data.globalRestitution(body.fixtureList.restitution);
