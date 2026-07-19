@@ -4,7 +4,7 @@
     <parent>
         <groupId>de.pirckheimer-gymnasium</groupId>
         <artifactId>engine-pi-project</artifactId>
-        <version>0.51.0</version>
+        <version>0.52.0</version>
         <relativePath>../../..</relativePath>
     </parent>
     <artifactId>jbox2d-testbed</artifactId>

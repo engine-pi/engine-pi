@@ -7,12 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [v0.52.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.52.0) - 2026-07-19
 
-<small>[Compare with v0.50.0](https://github.com/engine-pi/engine-pi/compare/v0.51.0...v0.52.0)</small>
+<small>[Compare with v0.51.0](https://github.com/engine-pi/engine-pi/compare/v0.51.0...v0.52.0)</small>
 
 ### Fixed
 
-- Fix a null pointer exception when updating text content (again).
-
+- Remove leftover lines from last fix (null pointer exception when updating text content).
 
 ## [v0.51.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.51.0) - 2026-07-19
 
