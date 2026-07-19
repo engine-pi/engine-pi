@@ -32,6 +32,8 @@ import pi.resources.font.FontContainer;
  * <p>
  * Alle Schriftarten auf einmal zu laden ist sehr langsam.
  * </p>
+ *
+ * @author Josef Friedrich
  */
 public class TextAllSystemFontsDemo extends Scene implements KeyStrokeListener
 {
@@ -45,11 +47,17 @@ public class TextAllSystemFontsDemo extends Scene implements KeyStrokeListener
      */
     private int page;
 
+    /**
+     * Die Namensliste der Systemschriftarten.
+     */
     private String[] systemFonts;
 
+    /**
+     * Die aktuellen Schriftarten einer Seite.
+     */
     private Text[] fonts;
 
-    private final int fontsCountPerPage = 10;
+    private static final int FONTS_COUNT_PER_PAGE = 10;
 
     public TextAllSystemFontsDemo()
     {
@@ -58,7 +66,7 @@ public class TextAllSystemFontsDemo extends Scene implements KeyStrokeListener
                 "Mit den Pfeiltasten (nach oben, nach unten) durch alle Schriftarten blättern.");
         Text heading = new Text("Alle System-Schriftarten");
         heading.height(2).anchor(-10, 6).color("black");
-        fonts = new Text[fontsCountPerPage];
+        fonts = new Text[FONTS_COUNT_PER_PAGE];
         add(heading);
         systemFonts = FontContainer.systemFonts();
         setFontsOfCurrentPage();
@@ -75,14 +83,14 @@ public class TextAllSystemFontsDemo extends Scene implements KeyStrokeListener
             }
         }
 
-        pageCount = systemFonts.length / fontsCountPerPage;
-        int startIndex = page * fontsCountPerPage;
+        pageCount = systemFonts.length / FONTS_COUNT_PER_PAGE;
+        int startIndex = page * FONTS_COUNT_PER_PAGE;
         int x = 0;
-        for (int i = startIndex; i < startIndex + fontsCountPerPage; i++)
+        for (int i = startIndex; i < startIndex + FONTS_COUNT_PER_PAGE; i++)
         {
             String fontName = systemFonts[i];
             Text text = (Text) new Text(fontName).font(fontName);
-            text.anchor(-10, -1 * x + 3);
+            text.anchor(-10, -1.0 * x + 3);
             text.color("black");
             fonts[x] = text;
             x++;

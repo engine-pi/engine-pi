@@ -24,6 +24,9 @@ import pi.Controller;
 import pi.Scene;
 import pi.actor.Polygon;
 
+/**
+ * @author Josef Friedrich
+ */
 public class ActorRotationDemo extends Scene
 {
     public ActorRotationDemo()
@@ -44,6 +47,7 @@ public class ActorRotationDemo extends Scene
 
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         Controller.start(new ActorRotationDemo());
     }
 }

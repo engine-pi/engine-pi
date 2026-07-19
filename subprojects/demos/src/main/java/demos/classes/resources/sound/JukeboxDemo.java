@@ -37,6 +37,8 @@ import pi.resources.sound.Music;
 
 /**
  * Demonstriert die Klasse <b>Jukebox</b>.
+ *
+ * @author Josef Friedrich
  */
 public class JukeboxDemo extends AudioDebugScene implements KeyStrokeListener
 {
@@ -58,22 +60,19 @@ public class JukeboxDemo extends AudioDebugScene implements KeyStrokeListener
         levelMusic = loadLoopedTrack("game-level-music.mp3");
     }
 
-    public Sound loadSound(String fileName)
-            throws IOException, UnsupportedAudioFileException
+    public Sound loadSound(String fileName) throws IOException
     {
         String filePath = "sounds/" + fileName;
         return new Sound(ResourceLoader.loadAsStream(filePath),
                 Path.of(filePath).toUri().toURL());
     }
 
-    public Music loadSinglePlayTrack(String fileName)
-            throws IOException, UnsupportedAudioFileException
+    public Music loadSinglePlayTrack(String fileName) throws IOException
     {
         return new SinglePlayMusic(loadSound(fileName));
     }
 
-    public Music loadLoopedTrack(String fileName)
-            throws IOException, UnsupportedAudioFileException
+    public Music loadLoopedTrack(String fileName) throws IOException
     {
         return new LoopedMusic(loadSound(fileName));
     }

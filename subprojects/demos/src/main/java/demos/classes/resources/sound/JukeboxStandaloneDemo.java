@@ -20,6 +20,9 @@ package demos.classes.resources.sound;
 
 import pi.resources.sound.Jukebox;
 
+/**
+ * @author Josef Friedrich
+ */
 public class JukeboxStandaloneDemo
 {
     public JukeboxStandaloneDemo()

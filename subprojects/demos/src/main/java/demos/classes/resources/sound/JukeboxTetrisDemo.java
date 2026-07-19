@@ -70,6 +70,9 @@ class Player
     }
 }
 
+/**
+ * @author Josef Friedrich
+ */
 public class JukeboxTetrisDemo extends AudioDebugScene
         implements KeyStrokeListener
 {

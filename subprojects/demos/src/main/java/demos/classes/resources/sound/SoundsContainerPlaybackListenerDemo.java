@@ -27,6 +27,9 @@ import pi.resources.sound.MusicPlayback;
 import pi.resources.sound.PlaybackListener;
 import pi.resources.sound.SoundEvent;
 
+/**
+ * @author Josef Friedrich
+ */
 public class SoundsContainerPlaybackListenerDemo extends AudioDebugScene
 {
     public SoundsContainerPlaybackListenerDemo() throws MalformedURLException

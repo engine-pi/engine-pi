@@ -20,7 +20,10 @@ package demos.classes.resources.color;
 
 import pi.Circle;
 
-public class ColorConfig
+/**
+ * @author Josef Friedrich
+ */
+public class ColorConfigDemo
 {
     public static void main(String[] args)
     {

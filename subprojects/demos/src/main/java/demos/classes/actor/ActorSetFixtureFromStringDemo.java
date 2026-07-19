@@ -4,6 +4,9 @@ import pi.Controller;
 import pi.Scene;
 import pi.actor.Image;
 
+/**
+ * @author Josef Friedrich
+ */
 public class ActorSetFixtureFromStringDemo extends Scene
 {
     public ActorSetFixtureFromStringDemo()

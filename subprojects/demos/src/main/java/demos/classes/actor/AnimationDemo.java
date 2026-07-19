@@ -16,6 +16,8 @@ import pi.event.KeyStrokeListener;
  * eine Figur. Über die Tasten 1-5 kann die Dauer eingetellt werden, wie lange
  * die Einzelbilder angezeigt werden.
  * </p>
+ *
+ * @author Josef Friedrich
  */
 public class AnimationDemo extends Scene implements KeyStrokeListener
 {
@@ -69,6 +71,7 @@ public class AnimationDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         Controller.start(new AnimationDemo());
     }
 

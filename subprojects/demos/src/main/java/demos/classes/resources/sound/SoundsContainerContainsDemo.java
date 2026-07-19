@@ -26,6 +26,9 @@ import java.net.URL;
 import pi.Controller;
 import pi.resources.sound.Sound;
 
+/**
+ * @author Josef Friedrich
+ */
 public class SoundsContainerContainsDemo extends AudioDebugScene
 {
     public SoundsContainerContainsDemo() throws MalformedURLException

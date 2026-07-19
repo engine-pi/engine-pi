@@ -32,12 +32,11 @@ import pi.resources.sound.Sound;
 import pi.resources.sound.SoundEvent;
 
 /**
- *
+ * @author Josef Friedrich
  */
 public class PlaybackListenerDemo extends AudioDebugScene
         implements KeyStrokeListener
 {
-
     MusicPlayback playback;
 
     public PlaybackListenerDemo()

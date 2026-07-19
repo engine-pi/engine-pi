@@ -23,6 +23,8 @@ import pi.resources.sound.Sound;
 
 /**
  * Demonstiert die Klasse {@link Sound}.
+ *
+ * @author Josef Friedrich
  */
 public class SoundDemo extends AudioDebugScene
 {
