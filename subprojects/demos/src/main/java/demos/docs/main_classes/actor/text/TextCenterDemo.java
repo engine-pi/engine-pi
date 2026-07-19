@@ -1,7 +1,7 @@
 /*
  * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
  *
- * Copyright (c) 2026 Josef Friedrich and contributors.
+ * Copyright (c) 2024 Josef Friedrich and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,31 +20,44 @@ package demos.docs.main_classes.actor.text;
 
 import pi.Controller;
 import pi.Scene;
-import pi.Text;
+import pi.actor.Text;
 
-public class TextContentUpdateDemo extends Scene
+/**
+ * Demonstiert die Methode {@link pi.actor.Actor#center()} der Figur
+ * <b>Text</b>.
+ *
+ * @author Josef Friedrich
+ *
+ * @since 0.52.0
+ */
+public class TextCenterDemo extends Scene
 {
     private Text text;
 
-    private int counter;
+    private String loadingDots = "";
 
-    public TextContentUpdateDemo()
+    public TextCenterDemo()
     {
-        info().title("Demo um Textinhalt zu setzen.")
-            .description(
-                "Die Methode Text.content(String) wird mehrmals hintereinander aufgerufen.");
+        info()
+            .title("Demo um die center-Methode bei der Figur Text zu testen.");
 
-        text = new Text("initial");
+        text = new Text("loading");
         add(text);
+        text.center(0, 0);
 
-        // Ergab einen Fehler
-        repeat(1, () -> text.content("Update " + ++counter));
+        repeat(1, () -> {
+            text.center(0, 0);
+            text.content("loading " + loadingDots);
+            loadingDots = loadingDots + ".";
+        });
         backgroundColor("#666666");
+
     }
 
     public static void main(String[] args)
     {
         Controller.instantMode(false);
-        Controller.start(new TextContentUpdateDemo());
+        Controller.debug();
+        Controller.start(new TextCenterDemo());
     }
 }
