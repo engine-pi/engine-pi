@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v0.51.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.51.0) - 2026-07-19
+
+<small>[Compare with v0.50.0](https://github.com/engine-pi/engine-pi/compare/v0.50.0...v0.51.0)</small>
+
+### Fixed
+
+- Fix a null pointer exception when updating text content.
+- The configuration values `config.sound.musicVolume()` and `config.sound.soundVolume()` were not taken into account.
+
 ## [v0.50.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.50.0) - 2026-07-11
 
 <small>[Compare with v0.49.0](https://github.com/engine-pi/engine-pi/compare/v0.49.0...v0.50.0)</small>
