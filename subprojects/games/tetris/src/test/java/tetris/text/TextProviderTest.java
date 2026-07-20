@@ -117,6 +117,5 @@ class TextProviderTest
             assertEquals(8, text.image().getWidth());
             assertEquals(8, text.image().getHeight());
         }
-
     }
 }

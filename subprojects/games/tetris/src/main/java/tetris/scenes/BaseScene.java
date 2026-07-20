@@ -32,7 +32,9 @@ public class BaseScene extends Scene
 {
     static
     {
-        config.graphics.pixelMultiplication(5);
+        // Funktioniert nur mit 4
+        // Sonst stimmt die Größe des ImageTextes nicht mit dem Bilder überein
+        config.graphics.pixelMultiplication(4);
     }
 
     /**
@@ -47,10 +49,8 @@ public class BaseScene extends Scene
             background = ImageLoader
                 .get("images/fullscreen/" + imageFilename + ".png");
             // Wir setzten alle Hintergrundbilder auf die Position (-2, 0),
-            // damit
-            // im Hauptspiel die linke untere Ecke des Blockrasters an der
-            // Position
-            // (0,0) steht.
+            // damit im Hauptspiel die linke untere Ecke des Blockrasters an der
+            // Position (0,0) steht.
             // Dadurch stimmen die Engine-Pi-Koordination mit den Indexen im
             // zweidimensionen Block-Array überein.
             background.anchor(-2, 0);
