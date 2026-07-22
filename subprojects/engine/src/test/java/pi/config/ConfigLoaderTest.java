@@ -34,6 +34,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
 
 import org.junit.jupiter.api.AfterEach;
@@ -122,6 +123,50 @@ class ConfigLoaderTest
         assertEquals("", configGroup.getTestWithNoSetter());
         assertArrayEquals(new String[] { "test", "testicle" },
             configGroup.getTestStringArray());
+    }
+
+    @Test
+    void onChangedRegistersListenerOnAllGroups()
+    {
+        GraphicsConfig graphics = new GraphicsConfig();
+        SoundConfig sound = new SoundConfig();
+        config = new ConfigLoader(createTmpFile(), graphics, sound);
+
+        AtomicInteger changeEvents = new AtomicInteger(0);
+        ConfigurationChangedListener listener = event -> changeEvents
+            .incrementAndGet();
+
+        ConfigurationChangedListener returnedListener = config
+            .onChanged(listener);
+
+        graphics.windowWidth(123);
+        sound.soundVolume(0.25);
+
+        assertEquals(listener, returnedListener);
+        assertEquals(2, changeEvents.get());
+    }
+
+    @Test
+    void removeListenerRemovesFromAllGroups()
+    {
+        GraphicsConfig graphics = new GraphicsConfig();
+        SoundConfig sound = new SoundConfig();
+        config = new ConfigLoader(createTmpFile(), graphics, sound);
+
+        AtomicInteger changeEvents = new AtomicInteger(0);
+        ConfigurationChangedListener listener = event -> changeEvents
+            .incrementAndGet();
+
+        config.onChanged(listener);
+        graphics.windowWidth(321);
+        sound.soundVolume(0.75);
+        assertEquals(2, changeEvents.get());
+
+        config.removeListener(listener);
+        graphics.windowWidth(400);
+        sound.soundVolume(0.1);
+
+        assertEquals(2, changeEvents.get());
     }
 
     @Nested

@@ -70,8 +70,8 @@ public abstract class ConfigGroup
     }
 
     /**
-     * Fügt den angegebenen Listener hinzu, der Ereignisse über geänderte
-     * Konfigurationseigenschaften empfängt.
+     * <b>Fügt</b> den angegebenen <b>Beobachter</b>, der Ereignisse über
+     * geänderte Konfigurationseigenschaften empfängt, <b>hinzu</b>.
      *
      * <p>
      * Das Ereignis wird für jede Eigenschaft unterstützt, die die Methode
@@ -80,22 +80,30 @@ public abstract class ConfigGroup
      *
      * <p>
      * Das Ereignis liefert den Feldnamen des aufgerufenen Setters (z.B. "debug"
-     * für den Aufruf von "setDebug").
+     * für den Aufruf von "debug()").
      * </p>
      *
-     * @param listener Der hinzuzufügende Listener.
+     * @param listener Der hinzuzufügende Beobachter.
+     *
+     * @return Der hinzugefügte Beobachter. Falls der Beobachter als
+     *     Lambda-Funktion angegeben wird, dann kann er mit diesem Rückgabewert
+     *     in eine Variable bzw. Attirubte gespeichert werden. Dieser kann dann
+     *     mit der {@link #removeListener(ConfigurationChangedListener)}-Methode
+     *     entfernt werden.
      *
      * @see ConfigGroup#set(String, Object)
      */
-    public void onChanged(ConfigurationChangedListener listener)
+    public ConfigurationChangedListener onChanged(
+            ConfigurationChangedListener listener)
     {
         listeners.add(listener);
+        return listener;
     }
 
     /**
-     * Entfernt den angegebenen Listener.
+     * <b>Entfernt</b> den angegebenen <b>Beobachter</b>.
      *
-     * @param listener Der zu entfernende Listener.
+     * @param listener Der zu entfernende <b>Beobachter</b>.
      */
     public void removeListener(ConfigurationChangedListener listener)
     {

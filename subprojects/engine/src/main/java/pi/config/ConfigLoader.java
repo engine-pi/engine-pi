@@ -423,4 +423,50 @@ public class ConfigLoader
             }
         }
     }
+
+    /**
+     * <b>Fügt</b> den angegebenen <b>Beobachter</b>, der Ereignisse über
+     * geänderte Konfigurationseigenschaften empfängt, zu allen
+     * Konfigurationsgruppen <b>hinzu</b>.
+     *
+     * <p>
+     * Das Ereignis wird für jede Eigenschaft unterstützt, die die Methode
+     * {@link ConfigGroup#set(String, Object)} zum Setzen des Feldwerts
+     * verwendet.
+     * </p>
+     *
+     * <p>
+     * Das Ereignis liefert den Feldnamen des aufgerufenen Setters (z.B. "debug"
+     * für den Aufruf von "debug()").
+     * </p>
+     *
+     * @param listener Der hinzuzufügende Beobachter.
+     *
+     * @return Der hinzugefügte Beobachter. Falls der Beobachter als
+     *     Lambda-Funktion angegeben wird, dann kann er mit diesem Rückgabewert
+     *     in eine Variable bzw. Attirubte gespeichert werden. Dieser kann dann
+     *     mit der {@link #removeListener(ConfigurationChangedListener)}-Methode
+     *     entfernt werden.
+     *
+     * @see ConfigGroup#onChanged(ConfigurationChangedListener)
+     */
+    public ConfigurationChangedListener onChanged(
+            ConfigurationChangedListener listener)
+    {
+        groups.forEach(group -> group.onChanged(listener));
+        return listener;
+    }
+
+    /**
+     * <b>Entfernt</b> den angegebenen <b>Beobachter</b> von allen
+     * Konfigurationsgruppen.
+     *
+     * @param listener Der zu entfernende <b>Beobachter</b>.
+     *
+     * @see ConfigGroup#removeListener(ConfigurationChangedListener)
+     */
+    public void removeListener(ConfigurationChangedListener listener)
+    {
+        groups.forEach(group -> group.removeListener(listener));
+    }
 }
