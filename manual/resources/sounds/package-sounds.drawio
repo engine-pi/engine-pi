@@ -1,0 +1,95 @@
+<mxfile host="65bd71144e">
+    <diagram name="Page-1" id="h_UgNbJwjDetw83gG8Xm">
+        <mxGraphModel dx="721" dy="751" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1400" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="wukAx4RVvmS52rYi7j3k-549" value="" style="startArrow=block;startSize=16;startFill=0;endArrow=none;rounded=0;edgeStyle=elbowEdgeStyle;elbow=vertical;" parent="1" source="17" target="15" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="351.5" y="180.5625" as="sourcePoint"/>
+                        <mxPoint x="163.5" y="305.34000000000015" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="wukAx4RVvmS52rYi7j3k-554" value="" style="startArrow=block;startSize=16;startFill=0;endArrow=none;rounded=0;edgeStyle=elbowEdgeStyle;elbow=vertical;" parent="1" source="17" target="16" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="351.5" y="180.5625" as="sourcePoint"/>
+                        <mxPoint x="614.9999999999995" y="330" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5" value="" style="startArrow=block;startSize=16;startFill=0;endArrow=none;rounded=0;edgeStyle=elbowEdgeStyle;elbow=vertical;dashed=1;" parent="1" source="9" target="10" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="463.00000000000045" y="458.11" as="sourcePoint"/>
+                        <mxPoint x="84" y="508.11" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="590" y="478.11"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="6" value="" style="startArrow=block;startSize=16;startFill=0;endArrow=none;rounded=0;edgeStyle=elbowEdgeStyle;elbow=vertical;dashed=1;" parent="1" source="9" target="11" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="463.00000000000045" y="458.11" as="sourcePoint"/>
+                        <mxPoint x="465" y="508.11" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="7" value="" style="startArrow=block;startSize=16;startFill=0;endArrow=none;rounded=0;edgeStyle=elbowEdgeStyle;elbow=vertical;dashed=1;" parent="1" source="9" target="12" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="491.5" y="448.9999999999999" as="sourcePoint"/>
+                        <mxPoint x="818.5" y="518.11" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="9" value="&lt;div&gt;&lt;font&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/font&gt;&lt;/div&gt;&lt;font&gt;Music&lt;/font&gt;" style="html=1;whiteSpace=wrap;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="1" vertex="1">
+                    <mxGeometry x="410" y="390" width="110" height="49" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="&lt;font&gt;IntroMusic&lt;/font&gt;" style="html=1;whiteSpace=wrap;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="1" vertex="1">
+                    <mxGeometry x="648.5" y="518.11" width="110" height="49" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="&lt;font&gt;SinglePlayMusic&lt;/font&gt;" style="html=1;whiteSpace=wrap;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="518.11" width="110" height="49" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="&lt;font&gt;LoopedMusic&lt;/font&gt;" style="html=1;whiteSpace=wrap;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="518.11" width="110" height="49" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="&lt;font&gt;MultipleSoundsMusic&lt;/font&gt;" style="html=1;whiteSpace=wrap;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="518.11" width="130" height="49" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="" style="startArrow=block;startSize=16;startFill=0;endArrow=none;rounded=0;edgeStyle=elbowEdgeStyle;elbow=vertical;dashed=1;" parent="1" source="9" target="13" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="800" y="458.11" as="sourcePoint"/>
+                        <mxPoint x="980" y="537.11" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="15" value="&lt;font&gt;SoundPlayback&lt;/font&gt;" style="html=1;whiteSpace=wrap;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="180" width="110" height="49" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="&lt;font&gt;MusicPlayback&lt;/font&gt;" style="html=1;whiteSpace=wrap;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="180" width="110" height="49" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="&lt;div&gt;&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;Playback&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;{abstract}&lt;/span&gt;&lt;/div&gt;" style="html=1;whiteSpace=wrap;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="50" width="110" height="49" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="SoundContainer" style="html=1;whiteSpace=wrap;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="1" vertex="1">
+                    <mxGeometry x="590" y="70" width="110" height="49" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="Sound" style="html=1;whiteSpace=wrap;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="1" vertex="1">
+                    <mxGeometry x="590" y="210" width="110" height="49" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="&lt;font face=&quot;Cantarell&quot;&gt;&amp;lt;&amp;lt;contains&amp;gt;&amp;gt;&lt;/font&gt;" style="endArrow=none;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=elbowEdgeStyle;endFill=0;rounded=0;elbow=vertical;" parent="1" source="18" target="19" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="720" y="110" as="sourcePoint"/>
+                        <mxPoint x="880" y="110" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="29" value="&lt;font face=&quot;Cantarell&quot;&gt;1&lt;/font&gt;" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;" parent="28" connectable="0" vertex="1">
+                    <mxGeometry x="-1" relative="1" as="geometry">
+                        <mxPoint x="15" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="30" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;0..n&lt;/font&gt;" style="edgeLabel;resizable=0;html=1;align=right;verticalAlign=top;" parent="28" connectable="0" vertex="1">
+                    <mxGeometry x="1" relative="1" as="geometry">
+                        <mxPoint x="-5" y="-30" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
