@@ -222,4 +222,21 @@ config.save();
 
 ## Beobachter bei Konfigurationsänderungen
 
+Die Engine Pi bietet die Möglichkeit, {{
+javadoc('pi.config.ConfigurationChangedListener', 'Beobachter / Listener') }}
+zu registrieren. Diese werden informiert, wenn Konfigurationswerte geändert
+werden.
+
+Die Verwaltung der Beobachter für *alle* registrierten Konfigurationsgruppen
+erfolgt über die folgenden Methoden:
+
+- {{ javadoc('pi.config.ConfigLoader#onChanged(pi.config.ConfigurationChangedListener)') }}
+- {{ javadoc('pi.config.ConfigLoader#removeListener(pi.config.ConfigurationChangedListener)') }}
+
+Beobachter für *eine* Konfigurationsgruppe lassen sich mit diesem Methoden an-
+und abmelden.
+
+- {{ javadoc('pi.config.ConfigGroup#onChanged(pi.config.ConfigurationChangedListener)') }}
+- {{ javadoc('pi.config.ConfigGroup#removeListener(pi.config.ConfigurationChangedListener)') }}
+
 [^litiengine:configuration]: https://litiengine.com/docs/configuration/
