@@ -2,6 +2,8 @@
 
 {{ static_import_admonition('config') }}
 
+## Java-Properties-Datei `engine-pi.properties`
+
 Die Standardeinstellungen der Engine Pi können mithilfe einer
 Konfigurationsdatei names `engine-pi.properties` verändert werden. Dabei handelt
 es sich um eine
@@ -34,6 +36,8 @@ debug_useANSIcolors=false
 coordinatesystem_linesNMeter=-1
 coordinatesystem_labelsOnIntersections=false
 ```
+
+## Konfigurationsgruppen der Engine
 
 Die einzelnen Einstellmöglichkeiten sind in Konfigurationsgruppen, die jeweils
 ein Präfix haben, organisiert:
@@ -194,41 +198,28 @@ import static pi.Controller.config;
 config.save();
 ```
 
-# Eigene `*.properties` Datei nutzen
+## Eigene `*.properties` Datei nutzen
 
-Folgendes Code-Beispiel erzeugt eine Properties-Datei mit dem Namen
-`custom-config-loader.properties`:
+Die der Engine eigenen Konfigurationen werden in einer Datei mit dem Namen
+`engine-pi.properties` verwaltet. Zu dieser Datei können eigene Konfigurationen
+hinzugefügt werden. Bei größeren Projekten bietet es sich an, eine eigene
+Properties-Datei zu verwenden. Mithilfe der Klasse {{
+javadoc('pi.config.ConfigLoader') }} können eigene Konfigurationsgruppen in
+einer separaten Datei verwaltet werden. Als erstes Argument im Konstruktor kann
+der Dateipfad entweder als Zeichenkette oder als Pfad angegeben werden. Das
+folgende Code-Beispiel erzeugt eine Properties-Datei mit dem Namen
+`custom.properties`:
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/resources/config/ConfigLoaderDemo.java -->
 
 ```java
-import static pi.Controller.config;
-
-import pi.Controller;
-import pi.Scene;
-import pi.Text;
-import pi.config.ConfigLoader;
-
-public class ConfigLoaderDemo extends Scene
-{
-    public ConfigLoaderDemo()
-    {
-        ConfigLoader customConfig = new ConfigLoader(
-                "custom-config-loader.properties");
-        MyConfigGroup custom = new MyConfigGroup();
-        customConfig.addGroup(custom);
-        custom.myInt(42);
-        customConfig.save();
-        add(new Text(custom.myInt()).center(0, 0));
-    }
-
-    public static void main(String[] args)
-    {
-        config.game.instantMode(false);
-        config.graphics.pixelPerMeter(512);
-        Controller.start(new ConfigLoaderDemo());
-    }
-}
+ConfigLoader config = new ConfigLoader("custom.properties");
+MyConfigGroup group = new MyConfigGroup();
+config.addGroup(group);
+group.myInt(42);
+config.save();
 ```
+
+## Beobachter bei Konfigurationsänderungen
 
 [^litiengine:configuration]: https://litiengine.com/docs/configuration/
