@@ -95,115 +95,6 @@ public class ConfigLoader
         }
     }
 
-    // Go to
-    // file:///data/school/repos/inf/java/engine-pi/docs/manual/resources/config.md
-
-    /**
-     * Gibt die typisierte Konfigurationsgruppe zurück, sofern sie zuvor zur
-     * Konfiguration hinzugefügt wurde.
-     *
-     * @param <T> Der Typ der Konfigurationsgruppe.
-     * @param groupClass Die Klasse, die den generischen Typ für diese Methode
-     *     bereitstellt.
-     *
-     * @throws ConfigException wenn die Konfigurationsgruppe mit dem angegebenen
-     *     Präfix gefunden wird.
-     */
-    public <T extends ConfigGroup> T getGroup(final Class<T> groupClass)
-    {
-        for (final ConfigGroup group : groups())
-        {
-            if (group.getClass().equals(groupClass))
-            {
-                return groupClass.cast(group);
-            }
-        }
-
-        throw new ConfigException(
-                "Die Konfigurationsgruppe " + groupClass.getCanonicalName()
-                        + " ist noch nicht registriert worden.");
-    }
-
-    // Go to
-    // file:///data/school/repos/inf/java/engine-pi/docs/manual/resources/config.md
-
-    /**
-     * Ruft eine Konfigurationsgruppe basierend auf ihrem Präfix ab.
-     *
-     * @param prefix Das Präfix der gesuchten Konfigurationsgruppe
-     *
-     * @return Die gefundene {@link ConfigGroup}
-     *
-     * @throws ConfigException wenn keine Konfigurationsgruppe mit dem
-     *     angegebenen Präfix gefunden wird.
-     */
-    public ConfigGroup getGroup(final String prefix)
-    {
-        for (final ConfigGroup group : groups())
-        {
-
-            final ConfigGroupInfo info = group.getClass()
-                .getAnnotation(ConfigGroupInfo.class);
-            if (info == null)
-            {
-                continue;
-            }
-
-            if (info.prefix().equals(prefix))
-            {
-                return group;
-            }
-        }
-
-        throw new ConfigException("Die Konfigurationsgruppe mit dem Präfix "
-                + prefix + " konnte nicht gefunden werden.");
-    }
-
-    /**
-     * Gibt alle {@link ConfigGroup Konfigurationsgruppen} zurück.
-     *
-     * @return Alle Konfigurationsgruppen.
-     */
-    @Getter
-    public List<ConfigGroup> groups()
-    {
-        return groups;
-    }
-
-    // Go to
-    // file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/resources/config/MyConfigGroup.java
-
-    // Go to
-    // file:///data/school/repos/inf/java/engine-pi/docs/manual/resources/config.md
-
-    /**
-     * <b>Fügt</b> die angegeben <b>Konfigurationsgruppen</b> zu dieser
-     * Konfigurationsinstanz <b>hinzu</b>.
-     *
-     * <p>
-     * Eine bereits vorhandene {@code properties}-Datei wird dabei geladen.
-     * {@link #save()} muss jedoch manuell ausgeführt werden, falls
-     * aktualisierte Werte in die {@code properties}-Datei gespeichert werden
-     * sollen.
-     * </p>
-     *
-     * @param groups Die <b>Konfigurationsgruppen</b>, die zu dieser
-     *     Konfigurationsinstanz hinzugefügt werden sollen.
-     */
-    public void addGroup(ConfigGroup... groups)
-    {
-        Collections.addAll(this.groups, groups);
-        // Gruppen, die später hinzugefügt werden, haben in der
-        // engine-pi.properties-Datei eventuell schon Werte gespeichert. Diese
-        // müssen noch geladen werden.
-        load();
-
-        // Speichern sollte manuell ausgeführt werden.
-        // Würden wir in dieser Methode save() ausführen, gehen Werte von
-        // Gruppen verloren, die erst später hinzugefügt wurden.
-        // save();
-    }
-
     /**
      * Ruft den <b>Pfad</b> der Datei ab, in der diese Konfiguration gespeichert
      * ist.
@@ -337,6 +228,115 @@ public class ConfigLoader
                     "Das Löschen der existierenden Konfigurationsdatei ist fehlgeschlagen: "
                             + e.getMessage());
         }
+    }
+
+    /**
+     * Gibt alle {@link ConfigGroup Konfigurationsgruppen} zurück.
+     *
+     * @return Alle Konfigurationsgruppen.
+     */
+    @Getter
+    public List<ConfigGroup> groups()
+    {
+        return groups;
+    }
+
+    // Go to
+    // file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/resources/config/MyConfigGroup.java
+
+    // Go to
+    // file:///data/school/repos/inf/java/engine-pi/docs/manual/resources/config.md
+
+    /**
+     * <b>Fügt</b> die angegeben <b>Konfigurationsgruppen</b> zu dieser
+     * Konfigurationsinstanz <b>hinzu</b>.
+     *
+     * <p>
+     * Eine bereits vorhandene {@code properties}-Datei wird dabei geladen.
+     * {@link #save()} muss jedoch manuell ausgeführt werden, falls
+     * aktualisierte Werte in die {@code properties}-Datei gespeichert werden
+     * sollen.
+     * </p>
+     *
+     * @param groups Die <b>Konfigurationsgruppen</b>, die zu dieser
+     *     Konfigurationsinstanz hinzugefügt werden sollen.
+     */
+    public void addGroup(ConfigGroup... groups)
+    {
+        Collections.addAll(this.groups, groups);
+        // Gruppen, die später hinzugefügt werden, haben in der
+        // engine-pi.properties-Datei eventuell schon Werte gespeichert. Diese
+        // müssen noch geladen werden.
+        load();
+
+        // Speichern sollte manuell ausgeführt werden.
+        // Würden wir in dieser Methode save() ausführen, gehen Werte von
+        // Gruppen verloren, die erst später hinzugefügt wurden.
+        // save();
+    }
+
+    // Go to
+    // file:///data/school/repos/inf/java/engine-pi/docs/manual/resources/config.md
+
+    /**
+     * Gibt die typisierte Konfigurationsgruppe zurück, sofern sie zuvor zur
+     * Konfiguration hinzugefügt wurde.
+     *
+     * @param <T> Der Typ der Konfigurationsgruppe.
+     * @param groupClass Die Klasse, die den generischen Typ für diese Methode
+     *     bereitstellt.
+     *
+     * @throws ConfigException wenn die Konfigurationsgruppe mit dem angegebenen
+     *     Präfix gefunden wird.
+     */
+    public <T extends ConfigGroup> T getGroup(final Class<T> groupClass)
+    {
+        for (final ConfigGroup group : groups())
+        {
+            if (group.getClass().equals(groupClass))
+            {
+                return groupClass.cast(group);
+            }
+        }
+
+        throw new ConfigException(
+                "Die Konfigurationsgruppe " + groupClass.getCanonicalName()
+                        + " ist noch nicht registriert worden.");
+    }
+
+    // Go to
+    // file:///data/school/repos/inf/java/engine-pi/docs/manual/resources/config.md
+
+    /**
+     * Ruft eine Konfigurationsgruppe basierend auf ihrem Präfix ab.
+     *
+     * @param prefix Das Präfix der gesuchten Konfigurationsgruppe
+     *
+     * @return Die gefundene {@link ConfigGroup}
+     *
+     * @throws ConfigException wenn keine Konfigurationsgruppe mit dem
+     *     angegebenen Präfix gefunden wird.
+     */
+    public ConfigGroup getGroup(final String prefix)
+    {
+        for (final ConfigGroup group : groups())
+        {
+
+            final ConfigGroupInfo info = group.getClass()
+                .getAnnotation(ConfigGroupInfo.class);
+            if (info == null)
+            {
+                continue;
+            }
+
+            if (info.prefix().equals(prefix))
+            {
+                return group;
+            }
+        }
+
+        throw new ConfigException("Die Konfigurationsgruppe mit dem Präfix "
+                + prefix + " konnte nicht gefunden werden.");
     }
 
     /**
