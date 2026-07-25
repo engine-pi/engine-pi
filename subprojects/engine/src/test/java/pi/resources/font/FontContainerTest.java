@@ -30,14 +30,14 @@ class FontContainerTest
     void loadFromResources()
     {
         var font = container.get("fonts/Cantarell-Bold.ttf");
-        assertEquals(font.getName(), "Cantarell Bold");
+        assertEquals("Cantarell Bold", font.getName());
     }
 
     @Test
     void loadSystemFonts()
     {
         var font = container.get("DejaVu Serif");
-        assertEquals(font.getName(), "DejaVu Serif");
+        assertEquals("DejaVu Serif", font.getName());
     }
 
     @Test
@@ -89,6 +89,6 @@ class FontContainerTest
             ResourceLoadException.class,
             () -> container.get("xxx"));
         assertEquals("Die Ressource konnte nicht geladen werden: xxx",
-            exception.getMessage());;
+            exception.getMessage());
     }
 }

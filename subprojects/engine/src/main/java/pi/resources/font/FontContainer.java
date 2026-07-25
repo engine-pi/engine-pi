@@ -36,6 +36,7 @@ import java.net.URL;
 
 import pi.annotations.API;
 import pi.annotations.Getter;
+import pi.resources.ResourceLoadException;
 import pi.resources.ResourceLoader;
 import pi.resources.ResourcesContainer;
 
@@ -73,7 +74,8 @@ public final class FontContainer extends ResourcesContainer<Font>
      * dem System vorhanden ist.
      * </p>
      */
-    public static final String[] systemFonts;
+    private static final String[] systemFonts;
+
     static
     {
         systemFonts = ge.getAvailableFontFamilyNames();
@@ -134,6 +136,7 @@ public final class FontContainer extends ResourcesContainer<Font>
      *
      * @return Die Schriftart.
      */
+    @Override
     public Font get(String name)
     {
         if (isSystemFont(name))
@@ -286,7 +289,7 @@ public final class FontContainer extends ResourcesContainer<Font>
         {
             if (fontStream == null)
             {
-                throw new RuntimeException(String.format(
+                throw new ResourceLoadException(String.format(
                     "Die Schrift %s konnte nicht geladen werden.",
                     resourceName));
             }
@@ -294,7 +297,7 @@ public final class FontContainer extends ResourcesContainer<Font>
         }
         catch (final FontFormatException | IOException e)
         {
-            throw new RuntimeException(
+            throw new ResourceLoadException(
                     String.format("Die Schrift %s konnte nicht geladen werden.",
                         resourceName));
         }
