@@ -35,44 +35,44 @@ class FontContainerTest
 {
     // Nicht von Controller importieren, da die Tests auf Github headless
     // laufen.
-    FontContainer container = Resources.fonts;
+    FontContainer fonts = Resources.fonts;
 
     @BeforeEach
     @AfterEach
     void clear()
     {
-        container.clear();
+        fonts.clear();
     }
 
     @Test
     void loadFromResources()
     {
-        var font = container.get("fonts/Cantarell-Bold.ttf");
+        var font = fonts.get("fonts/Cantarell-Bold.ttf");
         assertEquals("Cantarell Bold", font.getName());
     }
 
     @Test
     void loadSystemFonts()
     {
-        var font = container.get("DejaVu Serif");
+        var font = fonts.get("DejaVu Serif");
         assertEquals("DejaVu Serif", font.getName());
     }
 
     @Test
     void defaultFont()
     {
-        var font = container.defaultFont(FontStyle.PLAIN);
+        var font = fonts.defaultFont(FontStyle.PLAIN);
         assertEquals("Cantarell Regular", font.getName());
+        assertEquals("Cantarell", font.getFamily());
         assertEquals(0, font.getStyle());
     }
 
     @Nested
-    class DefaultTest
+    class DefaultFontStyleTest
     {
-
         private int getStyle(FontStyle style)
         {
-            return container.defaultFont(style).getStyle();
+            return fonts.defaultFont(style).getStyle();
         }
 
         @Test
@@ -105,7 +105,7 @@ class FontContainerTest
     {
         ResourceLoadException exception = assertThrows(
             ResourceLoadException.class,
-            () -> container.get("xxx"));
+            () -> fonts.get("xxx"));
         assertEquals("Die Ressource konnte nicht geladen werden: xxx",
             exception.getMessage());
     }

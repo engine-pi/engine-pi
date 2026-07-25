@@ -2,22 +2,27 @@
 
 {{ static_import_admonition('fonts') }}
 
+## Klasse `Font`
+
 Die Klasse {{ javadoc('java.desktop:java.awt.Font') }} beschreibt in Java, wie
-Text dargestellt werden soll. Ein `Font`-Objekt speichert vor allem drei Dinge:
+Text dargestellt werden soll. Ein {{ javadoc('java.desktop:java.awt.Font')
+}}-Objekt speichert vor allem drei Dinge:
 
 - die Schriftfamilie, zum Beispiel `Serif`, `SansSerif` oder `Monospaced`
 - den Stil, also normal, fett oder kursiv
 - die Größe in Punkten
 
 In Engine Pi werden Schriftarten an mehreren Stellen verwendet, zum Beispiel bei
-{{ javadoc('pi.actor.Text') }} oder im {{ javadoc('pi.resources.font.FontContainer') }}.
-Deshalb ist es sinnvoll, die AWT-Klasse `Font` zuerst als normale Java-Klasse zu
-verstehen.
+{{ javadoc('pi.actor.Text') }} oder im {{
+javadoc('pi.resources.font.FontContainer') }}. Deshalb ist es sinnvoll, die
+[AWT](https://de.wikipedia.org/wiki/Abstract_Window_Toolkit)-Klasse {{
+javadoc('java.desktop:java.awt.Font', 'Font') }} zuerst als normale Java-Klasse
+zu verstehen.
 
-## Eine Schriftart erzeugen
+### Eine Schriftart erzeugen
 
-Ein `Font`-Objekt wird meist mit dem Konstruktor
-{{ javadoc('java.desktop:java.awt.Font#Font(java.lang.String,int,int)', 'Font(String name, int style, int size)') }}
+Ein {{ javadoc('java.desktop:java.awt.Font') }}-Objekt wird meist mit dem Konstruktor
+{{ javadoc('java.desktop:java.awt.Font#<init>(java.lang.String,int,int)', 'Font(String name, int style, int size)') }}
 erzeugt:
 
 ```java
@@ -28,24 +33,22 @@ Font titleFont = new Font("Serif", Font.BOLD, 24);
 
 Die drei Argumente bedeuten:
 
-- `"Serif"`: Name oder Familie der Schrift
-- `Font.BOLD`: Stil
-- `24`: Größe in Punkt
+- `#!java "Serif"`: Name oder Familie der Schrift
+- `#!java Font.BOLD`: Stil
+- `#!java 24`: Größe in Punkt
 
 Typische Familiennamen sind:
 
 - {{ javadoc('java.desktop:java.awt.Font#SERIF') }}
 - {{ javadoc('java.desktop:java.awt.Font#SANS_SERIF') }}
 - {{ javadoc('java.desktop:java.awt.Font#MONOSPACED') }}
-- {{ javadoc('java.desktop:java.awt.Font#DIALOG') }}
-- {{ javadoc('java.desktop:java.awt.Font#DIALOG_INPUT') }}
 
 Sie funktionieren systemübergreifend zuverlässiger als frei gewählte
 Schriftnamen.
 
-## Schriftstile
+### Schriftstile
 
-Die Klasse `Font` kennt die Stilkonstanten:
+Die Klasse {{ javadoc('java.desktop:java.awt.Font') }} kennt die Stilkonstanten:
 
 - {{ javadoc('java.desktop:java.awt.Font#PLAIN') }}: normaler Text
 - {{ javadoc('java.desktop:java.awt.Font#BOLD') }}: fetter Text
@@ -57,7 +60,7 @@ Fett und kursiv können kombiniert werden:
 Font emphasis = new Font("SansSerif", Font.BOLD | Font.ITALIC, 18);
 ```
 
-## Informationen über eine Schriftart auslesen
+### Informationen über eine Schriftart auslesen
 
 Viele Eigenschaften lassen sich direkt abfragen:
 
@@ -80,9 +83,9 @@ Wichtig ist der Unterschied zwischen `getFamily()` und `getName()`:
 
 Je nach Betriebssystem können sich die Ergebnisse leicht unterscheiden.
 
-## Eine vorhandene Schriftart anpassen
+### Eine vorhandene Schriftart anpassen
 
-`Font`-Objekte sind unveränderlich. Methoden wie
+{{ javadoc('java.desktop:java.awt.Font') }}-Objekte sind unveränderlich. Methoden wie
 {{ javadoc('java.desktop:java.awt.Font#deriveFont(float)') }} oder
 {{ javadoc('java.desktop:java.awt.Font#deriveFont(int,float)') }} erzeugen daher
 immer ein neues Objekt:
@@ -107,16 +110,16 @@ import java.awt.Font;
 import pi.Text;
 
 Text text = new Text("Hallo Welt")
-		.font(new Font(Font.SERIF, Font.BOLD, 18))
-		.height(4);
+    .font(new Font(Font.SERIF, Font.BOLD, 18))
+    .height(4);
 ```
 
 Oft reicht in Engine Pi auch einfach der Name einer Systemschrift:
 
 ```java
 Text text = new Text("Hallo Welt")
-		.font("Arial")
-		.style(1);
+    .font("Arial")
+    .style(1);
 ```
 
 Die Zahl `1` steht hier für fett. Etwas typsicherer ist die Variante mit
@@ -126,27 +129,26 @@ Die Zahl `1` steht hier für fett. Etwas typsicherer ist die Variante mit
 import pi.resources.font.FontStyle;
 
 Text text = new Text("Hallo Welt")
-		.font("Arial")
-		.style(FontStyle.BOLD);
+    .font("Arial")
+    .style(FontStyle.BOLD);
 ```
 
 ## Schriftarten über den Font-Container laden
 
 Engine Pi verwaltet Schriftarten über den
 {{ javadoc('pi.resources.font.FontContainer') }}. Er ist über
-{{ javadoc('pi.Controller#fonts()', 'Controller.fonts()') }} erreichbar.
+{{ javadoc('pi.Controller#fonts', 'Controller.fonts') }} erreichbar.
 
 Einige typische Beispiele:
 
 ```java
+import static pi.Controller.fonts;
 import java.awt.Font;
 
-import pi.Controller;
-
-Font arial = Controller.fonts().get("Arial");
-Font arialBold = Controller.fonts().get("Arial", Font.BOLD);
-Font arialLarge = Controller.fonts().get("Arial", 22);
-Font arialBoldLarge = Controller.fonts().get("Arial", Font.BOLD, 22);
+Font arial = fonts.get("Arial");
+Font arialBold = fonts.get("Arial", Font.BOLD);
+Font arialLarge = fonts.get("Arial", 22);
+Font arialBoldLarge = fonts.get("Arial", Font.BOLD, 22);
 ```
 
 Außerdem gibt es Hilfsmethoden für Systemschriftarten:
@@ -162,36 +164,26 @@ System vorhanden ist.
 ## Standardschrift der Engine
 
 Engine Pi bringt eine eigene Standardschrift mit. Sie kann direkt über den
-Font-Container geladen werden:
+{{ javadoc('pi.resources.font.FontContainer') }} geladen werden:
+
+<!-- file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/resources/font/FontContainerTest.java -->
 
 ```java
+import static pi.Controller.fonts;
 import java.awt.Font;
-
-import pi.Controller;
 import pi.resources.font.FontStyle;
 
-Font regular = Controller.fonts().defaultFont();
-Font italic = Controller.fonts().defaultFont(FontStyle.ITALIC);
-Font bold = Controller.fonts().defaultFont(Font.BOLD);
+Font regular = fonts.defaultFont();
+
+// Schriftstil wird als Aufzählungstyp / Enumeration angegeben
+Font italic = fonts.defaultFont(FontStyle.ITALIC);
+
+// Schriftstil wird als Ganzzahl über die statischen Attribute der Klasse Fonts angegeben
+Font bold = fonts.defaultFont(Font.BOLD);
+
+// Schriftstil wird als Ganzzahl angegeben
+Font boldItalic = fonts.defaultFont(3);
 ```
 
 Das ist nützlich, wenn ein Projekt unabhängig von lokal installierten
 Systemschriftarten bleiben soll.
-
-## Typische Fehlerquellen
-
-- Nicht jede Schrift wie `"Arial"` ist auf jedem Betriebssystem installiert.
-- Die Größe eines `Font`-Objekts wird in Punkten angegeben, nicht in der
-	Weltgröße einer `Text`-Figur.
-- `Font.BOLD` und `Font.ITALIC` beeinflussen nur den Stil der Schrift, nicht
-	die Farbe oder Position des Textes.
-- Methoden wie `deriveFont(...)` verändern nicht das vorhandene Objekt,
-	sondern liefern eine neue Schriftart zurück.
-
-## Fazit
-
-Die Klasse {{ javadoc('java.desktop:java.awt.Font') }} ist die zentrale
-Java-Klasse für Schriftarten. Wer Familiennamen, Stilkonstanten und
-`deriveFont(...)` verstanden hat, kann Schriftarten auch in Engine Pi gezielt
-einsetzen, sei es direkt über `new Font(...)`, über den Namen einer
-Systemschrift oder über den {{ javadoc('pi.resources.font.FontContainer') }}.
