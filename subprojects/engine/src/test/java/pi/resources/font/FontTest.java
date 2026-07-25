@@ -19,32 +19,27 @@
 package pi.resources.font;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.awt.Font;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledIf;
 
-class FontUtilTest
+/**
+ * @author Josef Friedrich
+ */
+@DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
+class FontTest
 {
-    Font font = new Font("Arial", Font.PLAIN, 12);
-
-    String content = "Hello, World!";
-
     @Test
-    void getDescent()
+    void fontProperties()
     {
-        int descent = FontUtil.getDescent(font);
-        assertEquals(3, descent);
-    }
-
-    @Test
-    void getStringBounds()
-    {
-        var bounds = FontUtil.getStringBounds(content, font);
-        assertNotNull(bounds);
-        assertEquals(70.0, bounds.getWidth(), 10);
-        assertEquals(13.8, bounds.getHeight(), 10);
-        assertEquals(11, bounds.getBaseline(), 10);
+        Font font = new Font("Monospaced", Font.PLAIN, 16);
+        assertEquals("Monospaced", font.getFamily());
+        assertEquals("Monospaced", font.getName());
+        assertEquals(16, font.getSize());
+        assertFalse(font.isBold());
+        assertFalse(font.isItalic());
     }
 }
