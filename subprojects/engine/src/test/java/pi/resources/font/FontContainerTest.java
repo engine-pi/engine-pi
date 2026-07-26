@@ -19,7 +19,11 @@
 package pi.resources.font;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -65,6 +69,91 @@ class FontContainerTest
         assertEquals("Cantarell Regular", font.getName());
         assertEquals("Cantarell", font.getFamily());
         assertEquals(0, font.getStyle());
+    }
+
+    @Test
+    void isSystemFont()
+    {
+        String knownFontName = FontContainer.systemFonts()[0];
+        assertTrue(FontContainer.isSystemFont(knownFontName));
+        assertFalse(
+            FontContainer.isSystemFont("__definitely_not_a_system_font__"));
+    }
+
+    @Nested
+    class SystemFontsTest
+    {
+        @Test
+        void returnsClone()
+        {
+            String[] fontsA = FontContainer.systemFonts();
+            String[] fontsB = FontContainer.systemFonts();
+
+            assertNotNull(fontsA);
+            assertTrue(fontsA.length > 0);
+            assertNotEquals(fontsA, fontsB);
+
+            String original = fontsA[0];
+            fontsA[0] = "changed";
+            assertEquals(original, FontContainer.systemFonts()[0]);
+        }
+
+        @Test
+        void loadSystemFontByName()
+        {
+            String knownFontName = FontContainer.systemFonts()[0];
+            var font = FontContainer.loadSystemFontByName(knownFontName);
+
+            assertEquals(knownFontName, font.getFamily());
+            assertEquals(0, font.getStyle());
+            assertEquals(12, font.getSize());
+        }
+
+        @Test
+        void getByNameAndStyle()
+        {
+            String knownFontName = FontContainer.systemFonts()[0];
+            var font = fonts.get(knownFontName, 1);
+            assertEquals(1, font.getStyle());
+        }
+
+        @Test
+        void getByNameAndSize()
+        {
+            String knownFontName = FontContainer.systemFonts()[0];
+            var font = fonts.get(knownFontName, 22.5);
+            assertEquals(22.5f, font.getSize2D());
+        }
+
+        @Test
+        void getByNameStyleAndSize()
+        {
+            String knownFontName = FontContainer.systemFonts()[0];
+            var font = fonts.get(knownFontName, 3, 19.25);
+            assertEquals(3, font.getStyle());
+            assertEquals(19.25f, font.getSize2D());
+        }
+    }
+
+    @Nested
+    class DefaultFontTest
+    {
+        @Test
+        void defaultFontByInt()
+        {
+            var font = fonts.defaultFont(2);
+            assertEquals(2, font.getStyle());
+        }
+
+        @Test
+        void defaultFontWithoutArguments()
+        {
+            var plain = fonts.defaultFont(FontStyle.PLAIN);
+            var defaultFont = fonts.defaultFont();
+            assertEquals(plain.getName(), defaultFont.getName());
+            assertEquals(plain.getFamily(), defaultFont.getFamily());
+            assertEquals(plain.getStyle(), defaultFont.getStyle());
+        }
     }
 
     @Nested
