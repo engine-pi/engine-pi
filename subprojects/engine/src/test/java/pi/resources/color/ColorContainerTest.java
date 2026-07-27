@@ -133,7 +133,7 @@ class ColorContainerTest
             ResourceLoadException exception = assertThrows(
                 ResourceLoadException.class,
                 () -> container.get("xxx"));
-            assertEquals("Unbekannte Farbe: xxx", exception.getMessage());;
+            assertEquals("Unbekannte Farbe: xxx", exception.getMessage());
         }
     }
 }

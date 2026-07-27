@@ -18,6 +18,10 @@
  */
 package pi;
 
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -45,18 +49,16 @@ class RandomTest
                 }
             }
             int falseCount = iterations - trueCount;
-            assert trueCount > 0 : "Should have at least some true values";
-            assert falseCount > 0 : "Should have at least some false values";
-            assert Math.abs(trueCount - falseCount) < iterations * 0.2
-                    : "Distribution should be roughly 50/50";
+            assertTrue(trueCount > 0);
+            assertTrue(falseCount > 0);
+            assertTrue(Math.abs(trueCount - falseCount) < iterations * 0.2);
         }
 
         @Test
         void returnsBoolean()
         {
             boolean result = Random.toggle();
-            assert result == true || result == false
-                    : "toggle() should return a boolean value";
+            assertTrue(result == true || result == false);
         }
 
         @Test
@@ -65,8 +67,7 @@ class RandomTest
             for (int i = 0; i < 100; i++)
             {
                 boolean result = Random.toggle();
-                assert result == true || result == false
-                        : "Each call should return a valid boolean";
+                assertTrue(result == true || result == false);
             }
         }
 
@@ -90,8 +91,7 @@ class RandomTest
                     break;
                 }
             }
-            assert foundTrue : "Should eventually return true";
-            assert foundFalse : "Should eventually return false";
+            assertTrue(foundTrue);
         }
     }
 
@@ -102,16 +102,16 @@ class RandomTest
         void test1()
         {
             Vector v = Random.vector(0, 10, 0, 10);
-            assert v.x() >= 0 && v.x() <= 10 : "X component out of range";
-            assert v.y() >= 0 && v.y() <= 10 : "Y component out of range";
+            assertTrue(v.x() >= 0 && v.x() <= 10);
+            assertTrue(v.y() >= 0 && v.y() <= 10);
         }
 
         @Test
         void test2()
         {
             Vector v = Random.vector(-5, 5, -10, 10);
-            assert v.x() >= -5 && v.x() <= 5 : "X component out of range";
-            assert v.y() >= -10 && v.y() <= 10 : "Y component out of range";
+            assertTrue(v.x() >= -5 && v.x() <= 5);
+            assertTrue(v.y() >= -10 && v.y() <= 10);
         }
     }
 
@@ -124,8 +124,7 @@ class RandomTest
             for (int i = 0; i < 1000; i++)
             {
                 int result = Random.fontStyleAsInt();
-                assert result >= 0 && result < 4
-                        : "fontStyleAsInt() should return a value between 0 and 3 (inclusive)";
+                assertTrue(result >= 0 && result < 4);
             }
         }
 
@@ -140,8 +139,7 @@ class RandomTest
             }
             for (int i = 0; i < 4; i++)
             {
-                assert seen[i]
-                        : "Should generate all values 0-3 across multiple calls";
+                assertTrue(seen[i]);
             }
         }
 
@@ -151,8 +149,7 @@ class RandomTest
             for (int i = 0; i < 500; i++)
             {
                 int result = Random.fontStyleAsInt();
-                assert result >= 0 && result <= 3
-                        : "Each call should return a valid font style integer";
+                assertTrue(result >= 0 && result <= 3);
             }
         }
     }
@@ -164,15 +161,14 @@ class RandomTest
         void returnsNonNull()
         {
             FontStyle style = Random.fontStyleAsEnum();
-            assert style != null : "fontStyleAsEnum() should not return null";
+            assertNotNull(style);
         }
 
         @Test
         void returnsFontStyleEnum()
         {
             FontStyle style = Random.fontStyleAsEnum();
-            assert style instanceof FontStyle
-                    : "Should return a FontStyle enum value";
+            assertInstanceOf(FontStyle.class, style);
         }
 
         @Test
@@ -181,8 +177,7 @@ class RandomTest
             for (int i = 0; i < 100; i++)
             {
                 FontStyle style = Random.fontStyleAsEnum();
-                assert style != null
-                        : "Each call should return a valid FontStyle";
+                assertNotNull(style);
             }
         }
 
@@ -199,8 +194,7 @@ class RandomTest
                     break;
                 }
             }
-            assert foundStyles.size() > 1
-                    : "Should return different FontStyle values over multiple calls";
+            assertTrue(foundStyles.size() > 1);
         }
     }
 }

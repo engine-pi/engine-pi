@@ -29,7 +29,7 @@ class BoundsTest
     {
         Bounds bounds = new Bounds(0, 0, 1, 1);
         Vector vector = bounds.center();
-        assertEquals(vector.x(), 0.5, 0);
-        assertEquals(vector.y(), 0.5, 0);
+        assertEquals(0.5, vector.x(), 0);
+        assertEquals(0.5, vector.y(), 0);
     }
 }

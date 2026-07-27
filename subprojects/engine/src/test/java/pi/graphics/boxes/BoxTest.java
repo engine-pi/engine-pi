@@ -152,14 +152,16 @@ class BoxTest
     @Test
     void widthThrowsExceptionIfDefinedDimensionIsNotSupported()
     {
-        TestBox box = new TestBox(false);
-        assertThrows(IllegalArgumentException.class, () -> box.width(10));
+        TestBox boxDimensionNotSupported = new TestBox(false);
+        assertThrows(IllegalArgumentException.class,
+            () -> boxDimensionNotSupported.width(10));
     }
 
     @Test
     void heightThrowsExceptionIfDefinedDimensionIsNotSupported()
     {
-        TestBox box = new TestBox(false);
-        assertThrows(IllegalArgumentException.class, () -> box.height(10));
+        TestBox boxDimensionNotSupported = new TestBox(false);
+        assertThrows(IllegalArgumentException.class,
+            () -> boxDimensionNotSupported.height(10));
     }
 }

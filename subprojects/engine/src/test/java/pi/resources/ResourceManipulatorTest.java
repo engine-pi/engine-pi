@@ -28,7 +28,7 @@ class ResourceManipulatorTest
     @Test
     void doNotManipulateReturnNull()
     {
-        container.addManipulator((resourceName, image) -> {
+        container.addManipulator((name, image) -> {
             return null;
         });
         var image = container.get(resourceName);
@@ -38,7 +38,7 @@ class ResourceManipulatorTest
     @Test
     void manipulation()
     {
-        container.addManipulator((resourceName, image) -> {
+        container.addManipulator((name, image) -> {
             return ImageUtil.multiplyPixel(image, 2);
         });
         var image = container.get(resourceName);

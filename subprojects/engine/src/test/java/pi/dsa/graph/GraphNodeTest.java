@@ -37,33 +37,33 @@ class GraphNodeTest
     @Test
     void label()
     {
-        assertEquals(node.label(), "test");
+        assertEquals("test", node.label());
     }
 
     @Test
     void x()
     {
-        assertEquals(node.x(), 1.2);
+        assertEquals(1.2, node.x());
     }
 
     @Test
     void y()
     {
-        assertEquals(node.y(), 3.4);
+        assertEquals(3.4, node.y());
     }
 
     @Test
     void position()
     {
         Vector pos = node.position();
-        assertEquals(pos.x(), 1.2);
-        assertEquals(pos.y(), 3.4);
+        assertEquals(1.2, pos.x());
+        assertEquals(3.4, pos.y());
     }
 
     @Test
     void formattedLabel()
     {
-        assertEquals(node.formattedLabel(8), "test    ");
+        assertEquals("test    ", node.formattedLabel(8));
 
     }
 
@@ -71,7 +71,7 @@ class GraphNodeTest
     @Test
     void generateJavaCode()
     {
-        assertEquals(node.generateJavaCode(),
-            "g.addNode(\"test\", 1.20, 3.40);");
+        assertEquals("g.addNode(\"test\", 1.20, 3.40);",
+            node.generateJavaCode());
     }
 }

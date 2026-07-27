@@ -49,8 +49,8 @@ class TextTest
     @Test
     void nullContent()
     {
-        Text text = new Text(null);
-        assertNotNull(text);
+        Text nullText = new Text(null);
+        assertNotNull(nullText);
     }
 
     @Nested

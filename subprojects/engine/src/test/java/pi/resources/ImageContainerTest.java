@@ -315,6 +315,6 @@ class ImageContainerTest
             ResourceLoadException.class,
             () -> container.get("xxx"));
         assertEquals("Die Ressource konnte nicht geladen werden: xxx",
-            exception.getMessage());;
+            exception.getMessage());
     }
 }

@@ -33,31 +33,31 @@ class GraphEdgeTest
     @Test
     void from()
     {
-        assertEquals(edge.from().label(), "a");
+        assertEquals("a", edge.from().label());
     }
 
     @Test
     void to()
     {
-        assertEquals(edge.to().label(), "b");
+        assertEquals("b", edge.to().label());
     }
 
     @Test
     void weight()
     {
-        assertEquals(edge.weight(), 2);
+        assertEquals(2, edge.weight());
     }
 
     @Test
     void isDirected()
     {
-        assertEquals(edge.isDirected(), true);
+        assertEquals(true, edge.isDirected());
     }
 
     @Test
     void generateJavaCode()
     {
-        assertEquals(edge.generateJavaCode(),
-            "g.addEdge(\"b\", \"a\", 2, true);");
+        assertEquals("g.addEdge(\"b\", \"a\", 2, true);",
+            edge.generateJavaCode());
     }
 }

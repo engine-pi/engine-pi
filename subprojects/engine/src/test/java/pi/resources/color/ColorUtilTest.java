@@ -103,10 +103,10 @@ class ColorUtilTest
         void stringArray()
         {
             Color color = ColorUtil.decode(new String[] { "#ff0000ff" })[0];
-            assertEquals(color.getRed(), 255);
-            assertEquals(color.getGreen(), 0);
-            assertEquals(color.getBlue(), 0);
-            assertEquals(color.getAlpha(), 255);
+            assertEquals(255, color.getRed());
+            assertEquals(0, color.getGreen());
+            assertEquals(0, color.getBlue());
+            assertEquals(255, color.getAlpha());
         }
     }
 
@@ -194,7 +194,7 @@ class ColorUtilTest
     void changeHSB()
     {
         Color color = new Color(225, 0, 0);
-        assertEquals(new Color(225, 0, 0), ColorUtil.chanceHSB(color, (hsb) -> {
+        assertEquals(new Color(225, 0, 0), ColorUtil.chanceHSB(color, hsb -> {
             return hsb;
         }));
     }

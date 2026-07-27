@@ -40,7 +40,6 @@ class ColorSchemeTest
     @Test
     void name()
     {
-        ColorScheme scheme = new ColorScheme("Test Scheme");
         assertEquals("Test Scheme", scheme.name());
     }
 

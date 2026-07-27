@@ -19,7 +19,7 @@
 package pi.debug;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.jupiter.api.Test;
 
@@ -31,18 +31,18 @@ class VersionTest
     @Test
     void getJarName()
     {
-        assertEquals(Version.getJarName(), null);
+        assertEquals(null, Version.getJarName());
     }
 
     @Test
     void getVersion()
     {
-        assertTrue(Version.getVersion().length() > 0);
+        assertFalse(Version.getVersion().isEmpty());
     }
 
     @Test
     void getGitCommitIdAbbrev()
     {
-        assertEquals(Version.getGitCommitIdAbbrev().length(), 7);
+        assertEquals(7, Version.getGitCommitIdAbbrev().length());
     }
 }

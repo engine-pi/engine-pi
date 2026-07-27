@@ -91,7 +91,7 @@ class GraphArrayMatrixTest
         g.addNode("E", 4, 4);
         // Matrix wird vergrößert
         g.addNode("F", 5, 5);
-        assertEquals(g.nodeCount(), 6);
+        assertEquals(6, g.nodeCount());
     }
 
     @Test
@@ -120,22 +120,22 @@ class GraphArrayMatrixTest
         assertEquals(2, all.size());
 
         // ab
-        EdgesOfNodePair AB = all.get(0);
-        GraphNode[] nodes = AB.getNodes();
+        EdgesOfNodePair ab = all.get(0);
+        GraphNode[] nodes = ab.getNodes();
         // Muss sortiert sein, obwohl anders in die Matrix eingefügt.
         assertEquals("A", nodes[0].label());
         assertEquals("B", nodes[1].label());
-        assertEquals(10, AB.getWeight());
-        assertTrue(AB.isDirected());
+        assertEquals(10, ab.getWeight());
+        assertTrue(ab.isDirected());
 
         // ac
-        EdgesOfNodePair AC = all.get(1);
-        nodes = AC.getNodes();
+        EdgesOfNodePair ac = all.get(1);
+        nodes = ac.getNodes();
         // Muss sortiert sein, obwohl anders in die Matrix eingefügt.
         assertEquals("A", nodes[0].label());
         assertEquals("C", nodes[1].label());
-        assertEquals(1, AC.getWeight());
-        assertFalse(AC.isDirected());
+        assertEquals(1, ac.getWeight());
+        assertFalse(ac.isDirected());
     }
 
     @ExtendWith(EnLocale.class)
@@ -145,10 +145,11 @@ class GraphArrayMatrixTest
         g.addNode("A", 0, 0);
         g.addNode("B", 1, 1);
         g.addEdge("A", "B", 10, true);
-        assertEquals(g.generateJavaCode(), "// Anlegen der Knoten\n" + //
-                "g.addNode(\"A\", 0.00, 0.00);\n" + //
-                "g.addNode(\"B\", 1.00, 1.00);\n" + //
-                "// Anlegen der Kanten\n" + //
-                "g.addEdge(\"B\", \"A\", 10, true);");
+        assertEquals(g.generateJavaCode(), """
+                // Anlegen der Knoten
+                g.addNode("A", 0.00, 0.00);
+                g.addNode("B", 1.00, 1.00);
+                // Anlegen der Kanten
+                g.addEdge("B", "A", 10, true);""");
     }
 }

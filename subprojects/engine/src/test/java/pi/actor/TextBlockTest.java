@@ -50,8 +50,8 @@ class TextBlockTest
     @Test
     void nullContent()
     {
-        TextBlock text = new TextBlock(null);
-        assertNotNull(text);
+        TextBlock nullText = new TextBlock(null);
+        assertNotNull(nullText);
     }
 
     /**
