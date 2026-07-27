@@ -50,7 +50,7 @@ public final class SoundContainer extends ResourcesContainer<Sound>
      * @return The loaded Sound from the specified path.
      */
     @Override
-    protected Sound load(URL filePath) throws Exception
+    protected Sound load(URL filePath) throws ResourceLoadException
     {
         try (final InputStream is = ResourceLoader.get(filePath))
         {
@@ -60,6 +60,10 @@ public final class SoundContainer extends ResourcesContainer<Sound>
                         + " konnte nicht geladen werden.");
             }
             return new Sound(is, filePath);
+        }
+        catch (Exception e)
+        {
+            throw new ResourceLoadException(e);
         }
     }
 

@@ -537,7 +537,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
         return tryGet(name.getPath());
     }
 
-    protected abstract T load(URL name) throws Exception;
+    protected abstract T load(URL name) throws ResourceLoadException;
 
     /**
      * Ruft einen Alias für den angegebenen resourceName ab. Die Bereitstellung

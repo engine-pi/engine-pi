@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -119,12 +118,12 @@ class ResourcesContainerTest
         boolean throwOnLoad;
 
         @Override
-        protected TestResource load(URL name) throws Exception
+        protected TestResource load(URL name) throws ResourceLoadException
         {
             loadCount++;
             if (throwOnLoad)
             {
-                throw new IOException("load failed");
+                throw new ResourceLoadException("load failed");
             }
             return new TestResource("resource-" + loadCount);
         }

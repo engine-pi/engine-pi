@@ -69,6 +69,7 @@ import static pi.Controller.colors;
  * erstellt werden, ohne beim Szenenwechsel alle grafischen Objekte entfernen
  * und wieder neu erzeugen zu müssen.
  */
+@SuppressWarnings("java:S6539")
 public class Scene implements KeyStrokeListenerRegistration,
         MouseClickListenerRegistration, MouseScrollListenerRegistration,
         FrameListenerRegistration, RenderSource
@@ -199,9 +200,10 @@ public class Scene implements KeyStrokeListenerRegistration,
         synchronized (layers)
         {
             Collection<Future<?>> layerFutures = new ArrayList<>(layers.size());
-            for (Layer layer : layers)
+            for (Layer currentLayer : layers)
             {
-                Future<?> future = invoker.apply(() -> layer.step(pastTime));
+                Future<?> future = invoker
+                    .apply(() -> currentLayer.step(pastTime));
                 layerFutures.add(future);
             }
             for (Future<?> layerFuture : layerFutures)
@@ -258,9 +260,9 @@ public class Scene implements KeyStrokeListenerRegistration,
         final AffineTransform base = g.getTransform();
         synchronized (layers)
         {
-            for (Layer layer : layers)
+            for (Layer currentLayer : layers)
             {
-                layer.render(g, camera, width, height);
+                currentLayer.render(g, camera, width, height);
                 g.setTransform(base);
             }
         }
@@ -435,12 +437,12 @@ public class Scene implements KeyStrokeListenerRegistration,
     private void renderJoints(Graphics2D g)
     {
         // Display Joints
-        for (Layer layer : layers)
+        for (Layer currentLayer : layers)
         {
-            Joint j = layer.worldHandler().world().getJointList();
+            Joint j = currentLayer.worldHandler().world().getJointList();
             while (j != null)
             {
-                renderJoint(j, g, layer);
+                renderJoint(j, g, currentLayer);
                 j = j.getNext();
             }
         }
@@ -452,7 +454,8 @@ public class Scene implements KeyStrokeListenerRegistration,
     @Internal
     private static void renderJoint(Joint j, Graphics2D g, Layer layer)
     {
-        Vec2 anchorA = new Vec2(), anchorB = new Vec2();
+        Vec2 anchorA = new Vec2();
+        Vec2 anchorB = new Vec2();
         j.getAnchorA(anchorA);
         j.getAnchorB(anchorB);
         Vector aInPx = layer
@@ -648,7 +651,7 @@ public class Scene implements KeyStrokeListenerRegistration,
      * @param actors Ein oder mehrere {@link Actor}-Objekte.
      */
     @API
-    final public void add(Actor... actors)
+    public final void add(Actor... actors)
     {
         for (Actor actor : actors)
         {
@@ -662,7 +665,7 @@ public class Scene implements KeyStrokeListenerRegistration,
      * @param actors Ein oder mehrere {@link Actor}-Objekte.
      */
     @API
-    final public void remove(Actor... actors)
+    public final void remove(Actor... actors)
     {
         for (Actor actor : actors)
         {
@@ -708,9 +711,9 @@ public class Scene implements KeyStrokeListenerRegistration,
     public List<Actor> actors()
     {
         ArrayList<Actor> actors = new ArrayList<>();
-        for (Layer layer : layers)
+        for (Layer currentLayer : layers)
         {
-            actors.addAll(layer.actors());
+            actors.addAll(currentLayer.actors());
         }
         return actors;
     }
@@ -733,9 +736,9 @@ public class Scene implements KeyStrokeListenerRegistration,
     public List<Actor> addedActors()
     {
         ArrayList<Actor> actors = new ArrayList<>();
-        for (Layer layer : layers)
+        for (Layer currentLayer : layers)
         {
-            actors.addAll(layer.addedActors());
+            actors.addAll(currentLayer.addedActors());
         }
         return actors;
     }
@@ -826,9 +829,9 @@ public class Scene implements KeyStrokeListenerRegistration,
             frameUpdateListener -> frameUpdateListener.onFrame(pastTime));
         synchronized (layers)
         {
-            for (Layer layer : layers)
+            for (Layer currentLayer : layers)
             {
-                layer.invokeFrameListeners(pastTime);
+                currentLayer.invokeFrameListeners(pastTime);
             }
         }
     }

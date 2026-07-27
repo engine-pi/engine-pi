@@ -29,7 +29,6 @@ import static pi.Controller.config;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
@@ -54,9 +53,18 @@ public final class ImageContainer extends ResourcesContainer<BufferedImage>
      * @return Ein Bild vom Datentyp {@link BufferedImage}.
      */
     @Override
-    protected BufferedImage load(URL name) throws IOException
+    protected BufferedImage load(URL name) throws ResourceLoadException
     {
-        BufferedImage image = ImageIO.read(name);
+        BufferedImage image = null;
+        try
+        {
+            image = ImageIO.read(name);
+        }
+        catch (Exception e)
+        {
+            throw new ResourceLoadException(e);
+        }
+
         if (image == null)
         {
             throw new ResourceLoadException(
