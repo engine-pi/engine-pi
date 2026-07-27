@@ -67,11 +67,6 @@ public class Rectangle extends Actor
     private double height;
 
     /**
-     * Für abgerundete Ecken, Prozent der Abrundung der kleineren Seite
-     */
-    private double borderRadius;
-
-    /**
      * Erzeugt ein <b>Rechteck</b> durch Angabe der <b>Breite</b> und
      * <b>Höhe</b>.
      *
@@ -169,6 +164,11 @@ public class Rectangle extends Actor
         this.fixture(() -> FixtureBuilder.rectangle(width, height));
     }
 
+    /**
+     * Für abgerundete Ecken, Prozent der Abrundung der kleineren Seite
+     */
+    private double borderRadius;
+
     @API
     @Getter
     public double borderRadius()
@@ -178,15 +178,15 @@ public class Rectangle extends Actor
 
     @API
     @Setter
-    public void borderRadius(double percent)
+    public void borderRadius(double borderRadius)
     {
-        if (percent < 0 || percent > 1)
+        if (borderRadius < 0 || borderRadius > 1)
         {
             throw new IllegalArgumentException(
                     "Borderradius kann nur zwischen 0 und 1 sein. War "
-                            + percent);
+                            + borderRadius);
         }
-        this.borderRadius = percent;
+        this.borderRadius = borderRadius;
     }
 
     /**
@@ -206,14 +206,14 @@ public class Rectangle extends Actor
         }
         else
         {
-            int borderRadius = (int) (Math.min(width, height) * pixelPerMeter
+            int radius = (int) (Math.min(width, height) * pixelPerMeter
                     * this.borderRadius);
             g.fillRoundRect(0,
                 (int) (-height * pixelPerMeter),
                 (int) (width * pixelPerMeter),
                 (int) (height * pixelPerMeter),
-                borderRadius,
-                borderRadius);
+                radius,
+                radius);
         }
     }
 }

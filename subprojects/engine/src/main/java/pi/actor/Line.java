@@ -521,7 +521,7 @@ public class Line extends Actor
          */
         private End(Vector end, Vector opposite)
         {
-            this.end = end;
+            this.endPoint = end;
             this.opposite = opposite;
             update();
         }
@@ -531,7 +531,7 @@ public class Line extends Actor
         /**
          * Der Punkt am <b>Linienende</b> ohne Versatz.
          */
-        private Vector end;
+        private Vector endPoint;
 
         /**
          * Der Punkt am <b>Linienende</b> mit Versatz.
@@ -557,7 +557,7 @@ public class Line extends Actor
         @Internal
         End end(Vector end)
         {
-            this.end = end;
+            this.endPoint = end;
             update();
             return this;
         }
@@ -791,7 +791,7 @@ public class Line extends Actor
          * können oder einen Verzug des Linienendes zu berechnen.
          *
          * <p>
-         * Das {@link #end Linienende} ist dabei als
+         * Das {@link #endPoint Linienende} ist dabei als
          * {@link DirectedLineSegment#from() Ursprung} definiert.
          * </p>
          */
@@ -807,7 +807,7 @@ public class Line extends Actor
          */
         private void update()
         {
-            lineSegment = new DirectedLineSegment(end, opposite);
+            lineSegment = new DirectedLineSegment(endPoint, opposite);
             if (offset != 0)
             {
                 endWithOffset = lineSegment.fixedPoint(offset);
@@ -815,7 +815,7 @@ public class Line extends Actor
             }
             else
             {
-                endWithOffset = end;
+                endWithOffset = endPoint;
             }
         }
 
@@ -941,16 +941,16 @@ public class Line extends Actor
          */
         SQUARE(2);
 
-        private final int cap;
+        private final int capValue;
 
         Cap(int cap)
         {
-            this.cap = cap;
+            this.capValue = cap;
         }
 
         public int cap()
         {
-            return cap;
+            return capValue;
         }
     }
 
@@ -969,7 +969,7 @@ public class Line extends Actor
     public static void main(String[] args)
     {
         Controller.instantMode(false);
-        Controller.start((scene) -> {
+        Controller.start(scene -> {
             Line line = new Line(1, 1, 4, 5);
             line.color("grün");
             scene.add(line);

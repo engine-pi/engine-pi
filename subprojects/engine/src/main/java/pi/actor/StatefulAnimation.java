@@ -47,26 +47,26 @@ import pi.physics.FixtureBuilder;
  * sf.state("running");
  * }</pre>
  *
- * @param <State> Typ der Zustände, zwischen denen in der Animation gewechselt
+ * @param <T> Typ der Zustände, zwischen denen in der Animation gewechselt
  *     werden soll.
  *
  * @author Michael Andonie
  *
  * @see Animation
  */
-public class StatefulAnimation<State> extends Actor
+public class StatefulAnimation<T> extends Actor
 {
     /**
      * Speichert die Einzelbilder (= "Animation") zu jedem Zustand.
      */
-    private final Map<State, AnimationFrame[]> states = new ConcurrentHashMap<>();
+    private final Map<T, AnimationFrame[]> states = new ConcurrentHashMap<>();
 
     /**
      * Speichert den Übergang zum Folgezustand von jedem Zustand. Ordnet
      * standardmäßig jedem Zustand sich selbst als Folgezustand zu ("loop").
-     * Kann jedoch über {@link #stateTransition(State, State)} angepasst werden.
+     * Kann jedoch über {@link #stateTransition(T, T)} angepasst werden.
      */
-    private final Map<State, State> stateTransitions = new ConcurrentHashMap<>();
+    private final Map<T, T> stateTransitions = new ConcurrentHashMap<>();
 
     /**
      * Die aktuelle Animation.
@@ -150,7 +150,7 @@ public class StatefulAnimation<State> extends Actor
     /**
      * Der aktuelle Zustand.
      */
-    private State state = null;
+    private T state = null;
 
     /**
      * Fügt dieser Animation einen neuen Zustand zu hinzu.
@@ -163,11 +163,11 @@ public class StatefulAnimation<State> extends Actor
      * @see Animation
      */
     @API
-    public void addState(State state, Animation stateAnimation)
+    public void addState(T state, Animation stateAnimation)
     {
         if (states.containsKey(state))
         {
-            throw new RuntimeException(
+            throw new StatefulAnimationException(
                     "Zustandsname wird bereits in diesem Objekt genutzt: "
                             + state);
         }
@@ -191,15 +191,15 @@ public class StatefulAnimation<State> extends Actor
      *
      * @param state Der Name des Zustands, der gesetzt werden soll.
      *
-     * @see #changeState(State)
+     * @see #changeState(T)
      */
     @API
     @Setter
-    public void state(State state)
+    public void state(T state)
     {
         if (!states.containsKey(state))
         {
-            throw new RuntimeException(
+            throw new StatefulAnimationException(
                     "Zustand nicht nicht vorhanden: " + state);
         }
         index = 0;
@@ -218,10 +218,10 @@ public class StatefulAnimation<State> extends Actor
      *
      * @param state Der Name des Zustands, der gesetzt werden soll.
      *
-     * @see #state(State)
+     * @see #state(T)
      */
     @API
-    public void changeState(State state)
+    public void changeState(T state)
     {
         if (!state.equals(this.state))
         {
@@ -241,7 +241,7 @@ public class StatefulAnimation<State> extends Actor
      *     <code>stateName</code>.
      */
     @API
-    public boolean hasState(State state)
+    public boolean hasState(T state)
     {
         return states.containsKey(state);
     }
@@ -256,7 +256,7 @@ public class StatefulAnimation<State> extends Actor
      */
     @API
     @Getter
-    public State state()
+    public T state()
     {
         return state;
     }
@@ -379,17 +379,17 @@ public class StatefulAnimation<State> extends Actor
      */
     @API
     @Setter
-    public void stateTransition(State stateFrom, State stateTo)
+    public void stateTransition(T stateFrom, T stateTo)
     {
         if (!states.containsKey(stateFrom))
         {
-            throw new RuntimeException(
+            throw new StatefulAnimationException(
                     "Der Von-Zustand ist nicht in dieser Animation eingepflegt: "
                             + stateFrom);
         }
         if (!states.containsKey(stateTo))
         {
-            throw new RuntimeException(
+            throw new StatefulAnimationException(
                     "Der To-Zustand ist nicht in dieser Animation eingepflegt: "
                             + stateTo);
         }
@@ -413,11 +413,11 @@ public class StatefulAnimation<State> extends Actor
      */
     @API
     @Setter
-    public void frameDuration(State state, double frameDuration)
+    public void frameDuration(T state, double frameDuration)
     {
         if (!states.containsKey(state))
         {
-            throw new RuntimeException(
+            throw new StatefulAnimationException(
                     "Der Zustand ist nicht bekannt: " + state);
         }
         for (AnimationFrame frame : states.get(state))
@@ -447,7 +447,7 @@ public class StatefulAnimation<State> extends Actor
             {
                 // Animation cycle has ended. -> Transition to next state
                 index = 0;
-                State nextState = stateTransitions.get(state);
+                T nextState = stateTransitions.get(state);
                 AnimationFrame[] nextAnimation = states.get(nextState);
                 state = nextState;
                 animation = nextAnimation;

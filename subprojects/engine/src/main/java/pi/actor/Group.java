@@ -51,7 +51,6 @@ import pi.annotations.Getter;
  */
 public class Group<T extends Actor> implements Iterable<T>
 {
-
     /**
      * Erstellt eine neue Gruppe mit den angegebenen {@link Actor}-Objekten.
      *
