@@ -113,12 +113,12 @@ public class Animation extends Actor implements FrameListener
     /**
      * Wie lange ein Einzelbild bereits gezeigt wurde.
      */
-    private transient double currentTime;
+    private double currentTime;
 
     /**
      * Die Indexnummer des Einzelbilds, das aktuell gezeigt wird.
      */
-    private transient int currentIndex;
+    private int currentIndex;
 
     /**
      * Liste aller Runnable, die beim Abschließen der Schleife ausgeführt
@@ -131,7 +131,7 @@ public class Animation extends Actor implements FrameListener
         super(() -> {
             if (frames.length < 1)
             {
-                throw new RuntimeException(
+                throw new AnimationException(
                         "Eine Animation kann nicht mit einem leeren Frames-Array initialisiert werden.");
             }
             return FixtureBuilder.rectangle(width, height);
@@ -140,7 +140,7 @@ public class Animation extends Actor implements FrameListener
         {
             if (frame.duration() <= 0)
             {
-                throw new RuntimeException(
+                throw new AnimationException(
                         "Ein Frame muss länger als 0 Sekunden sein.");
             }
         }
@@ -219,7 +219,7 @@ public class Animation extends Actor implements FrameListener
     {
         if (!manualMode)
         {
-            throw new RuntimeException(
+            throw new AnimationException(
                     "Nur im manuellen Modus können die Einzelbilder direkt gesetzt werden.");
         }
         currentIndex = index;
@@ -384,18 +384,18 @@ public class Animation extends Actor implements FrameListener
     {
         if (frameDuration <= 0)
         {
-            throw new RuntimeException("Frame-Länge muss größer als 0 sein");
+            throw new AnimationException("Frame-Länge muss größer als 0 sein");
         }
         if (image.getWidth() % x != 0)
         {
-            throw new RuntimeException(String.format(
+            throw new AnimationException(String.format(
                 "Spritesheet hat nicht die richtigen Maße (Breite: %d) um es auf %d Elemente in getX-Richtung aufzuteilen.",
                 image.getWidth(),
                 x));
         }
         if (image.getHeight() % y != 0)
         {
-            throw new RuntimeException(String.format(
+            throw new AnimationException(String.format(
                 "Spritesheet hat nicht die richtigen Maße (Höhe: %d) um es auf %d Elemente in getY-Richtung aufzuteilen.",
                 image.getHeight(),
                 y));
@@ -492,7 +492,7 @@ public class Animation extends Actor implements FrameListener
     {
         if (frameDuration <= 0)
         {
-            throw new RuntimeException(
+            throw new AnimationException(
                     "Die Dauer, wie lange ein Einzelbild angezeigt wird, muss größer als 0 sein.");
         }
         Collection<AnimationFrame> frames = new LinkedList<>();
@@ -553,7 +553,7 @@ public class Animation extends Actor implements FrameListener
         File directory = ResourceLoader.loadAsFile(directoryPath);
         if (!directory.isDirectory())
         {
-            throw new RuntimeException(
+            throw new AnimationException(
                     "Der angegebene Pfad war kein Verzeichnis: "
                             + directoryPath);
         }
@@ -571,7 +571,7 @@ public class Animation extends Actor implements FrameListener
         allPaths.sort(Comparator.naturalOrder());
         if (allPaths.isEmpty())
         {
-            throw new RuntimeException("Konnte keine Bilder mit Präfix \""
+            throw new AnimationException("Konnte keine Bilder mit Präfix \""
                     + prefix + "\" im Verzeichnis \"" + directoryPath
                     + "\" finden.");
         }
@@ -597,7 +597,7 @@ public class Animation extends Actor implements FrameListener
         GifDecoder gifDecoder = new GifDecoder();
         if (!FileUtil.exists(filepath))
         {
-            throw new RuntimeException(
+            throw new AnimationException(
                     "Der Dateipfad existiert nicht: " + filepath);
         }
         gifDecoder.read(filepath);

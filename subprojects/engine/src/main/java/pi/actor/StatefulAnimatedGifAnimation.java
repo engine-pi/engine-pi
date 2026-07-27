@@ -21,15 +21,14 @@ package pi.actor;
 /**
  * Erzeugt eine Animation aus einer animierter GIF-Datei.
  *
- * @param <State> Typ der Zustände, zwischen denen in der Animation gewechselt
+ * @param <T> Typ der Zustände, zwischen denen in der Animation gewechselt
  *     werden soll.
  *
  * @author Josef Friedrich
  *
  * @since 0.27.0
  */
-public class StatefulAnimatedGifAnimation<State>
-        extends StatefulAnimation<State>
+public class StatefulAnimatedGifAnimation<T> extends StatefulAnimation<T>
 {
     /**
      * @param width Die Breite in Meter der animierten Figur.
@@ -44,7 +43,7 @@ public class StatefulAnimatedGifAnimation<State>
      * @param state Der Zustand, unter dem die Animation gespeichert wird.
      * @param filepath Der Dateipfad der GIF-Datei.
      */
-    public void addState(State state, String filepath)
+    public void addState(T state, String filepath)
     {
         addState(state,
             Animation.createFromAnimatedGif(filepath, width, height));

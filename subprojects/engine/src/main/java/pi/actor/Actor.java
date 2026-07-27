@@ -2730,6 +2730,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @hidden
      */
     @Internal
+    @SuppressWarnings(
+    { "java:S6541", "java:S3776" })
     public final void renderBasic(Graphics2D g, double pixelPerMeter)
     {
         if (!visible)
@@ -2792,8 +2794,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
                         Graphics2DUtil.drawText(g, anchorformatted(), 8, 5, 5);
                     }
                     // Hat die Figur eine Farbe, so wird als Umriss der
-                    // Komplementärfarbe
-                    // gewählt.
+                    // Komplementärfarbe gewählt.
                     g.setColor(complementaryColor());
                     if (fixture.shape instanceof PolygonShape polygonShape)
                     {

@@ -98,6 +98,7 @@ public class Image extends Actor
      * Unterklassen zu rekursiven Aufrufen ohne Abbruchbedingung kommen.
      * </p>
      */
+    @SuppressWarnings("java:S1700")
     protected BufferedImage image;
 
     /**
@@ -543,8 +544,8 @@ public class Image extends Actor
             throw new RuntimeException("Kein Bild gesetzt.");
         }
 
-        double widthPx = (double) image.getWidth();
-        double heightPx = (double) image.getHeight();
+        double widthPx = image.getWidth();
+        double heightPx = image.getHeight();
         color = ColorUtil.calculateAverage(image);
 
         if (definedWidth == 0 && definedHeight == 0)
@@ -621,6 +622,7 @@ public class Image extends Actor
     /**
      * @hidden
      */
+    @SuppressWarnings("java:S3599")
     public static void main(String[] args)
     {
         Controller.instantMode(false);
@@ -628,18 +630,18 @@ public class Image extends Actor
         {
             {
                 // Erzeugen mit Hilfe der createImage()-Methode.
-                Image image = new Image("logo/logo.png").pixelPerMeter(40);
-                image.center(0, 0);
-                add(image);
+                Image logo = new Image("logo/logo.png").pixelPerMeter(40);
+                logo.center(0, 0);
+                add(logo);
                 addKeyStrokeListener((event -> {
                     switch (event.getKeyCode())
                     {
                     case KeyEvent.VK_V ->
-                        System.out.println(image.toggleFlipVertically());
+                        System.out.println(logo.toggleFlipVertically());
                     case KeyEvent.VK_H ->
-                        System.out.println(image.toggleFlipHorizontally());
+                        System.out.println(logo.toggleFlipHorizontally());
                     }
-                    System.out.println(image);
+                    System.out.println(logo);
                 }));
             }
         });

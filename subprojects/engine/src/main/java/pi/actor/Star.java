@@ -206,6 +206,7 @@ public class Star extends Polygon
      * @hidden
      */
     @Internal
+    @Override
     public void update()
     {
         points(Star.calculateVectors(numPoints, radius, innerRadius));

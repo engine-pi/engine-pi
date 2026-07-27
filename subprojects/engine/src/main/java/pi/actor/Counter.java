@@ -110,11 +110,10 @@ public class Counter extends Text
         {
             if (template.indexOf("{counter}") == -1)
             {
-                throw new RuntimeException(
+                throw new CounterException(
                         "Die Zeichenkette enthält keinen Platzhalter {counter} für den Zähler.");
             }
-            content = template.replaceAll("\\{counter\\}",
-                String.valueOf(counter));
+            content = template.replace("{counter}", String.valueOf(counter));
 
         }
         else
@@ -140,6 +139,7 @@ public class Counter extends Text
     /**
      * Der <b>Zähler</b>, der den aktuellen Wert speichert.
      */
+    @SuppressWarnings("java:S1700")
     private int counter;
 
     /**
@@ -410,6 +410,7 @@ public class Counter extends Text
     /**
      * @hidden
      */
+    @SuppressWarnings("java:S3599")
     public static void main(String[] args)
     {
         Controller.instantMode(false);

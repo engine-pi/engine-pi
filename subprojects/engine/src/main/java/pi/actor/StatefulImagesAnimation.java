@@ -24,14 +24,14 @@ import java.awt.image.BufferedImage;
  * Eine animierte Figur mit mehreren Zuständen, deren Animationen durch Angabe
  * der <b>Einzelbilder</b> erzeugt wird.
  *
- * @param <State> Typ der Zustände, zwischen denen in der Animation gewechselt
+ * @param <T> Typ der Zustände, zwischen denen in der Animation gewechselt
  *     werden soll.
  *
  * @author Josef Friedrich
  *
  * @since 0.26.0
  */
-public class StatefulImagesAnimation<State> extends StatefulAnimation<State>
+public class StatefulImagesAnimation<T> extends StatefulAnimation<T>
 {
     /**
      * @param width Die Breite in Meter der animierten Figur.
@@ -54,8 +54,7 @@ public class StatefulImagesAnimation<State> extends StatefulAnimation<State>
      * @param images Die bereits in den Speicher geladenen Bilder, die als
      *     Einzelbilder verwendet werden sollen.
      */
-    public void addState(State state, double frameDuration,
-            BufferedImage... images)
+    public void addState(T state, double frameDuration, BufferedImage... images)
     {
         addState(state,
             Animation.createFromImages(frameDuration, width, height, images));
@@ -68,7 +67,7 @@ public class StatefulImagesAnimation<State> extends StatefulAnimation<State>
      * @param images Die bereits in den Speicher geladenen Bilder, die als
      *     Einzelbilder verwendet werden sollen.
      */
-    public void addState(State state, BufferedImage... images)
+    public void addState(T state, BufferedImage... images)
     {
         addState(state, frameDuration, images);
     }
@@ -82,7 +81,7 @@ public class StatefulImagesAnimation<State> extends StatefulAnimation<State>
      * @param filePaths Die einzelnen Dateipfade der zu verwendenden
      *     Einzelbilder.
      */
-    public void addState(State state, double frameDuration, String... filePaths)
+    public void addState(T state, double frameDuration, String... filePaths)
     {
         addState(state,
             Animation
@@ -96,7 +95,7 @@ public class StatefulImagesAnimation<State> extends StatefulAnimation<State>
      * @param filePaths Die einzelnen Dateipfade der zu verwendenden
      *     Einzelbilder.
      */
-    public void addState(State state, String... filePaths)
+    public void addState(T state, String... filePaths)
     {
         addState(state, frameDuration, filePaths);
     }

@@ -19,15 +19,14 @@
 package pi.actor;
 
 /**
- * @param <State> Typ der Zustände, zwischen denen in der Animation gewechselt
+ * @param <T> Typ der Zustände, zwischen denen in der Animation gewechselt
  *     werden soll.
  *
  * @author Josef Friedrich
  *
  * @since 0.27.0
  */
-public class StatefulSpritesheetAnimation<State>
-        extends StatefulAnimation<State>
+public class StatefulSpritesheetAnimation<T> extends StatefulAnimation<T>
 {
     /**
      * @param width Die Breite in Meter der animierten Figur.
@@ -46,7 +45,7 @@ public class StatefulSpritesheetAnimation<State>
      * @param x Die Anzahl an Sprites in x-Richtung.
      * @param y Die Anzahl an Sprites in y-Richtung.
      */
-    public void addState(State state, String filepath, int x, int y)
+    public void addState(T state, String filepath, int x, int y)
     {
         addState(state,
             Animation.createFromSpritesheet(frameDuration,
@@ -63,7 +62,7 @@ public class StatefulSpritesheetAnimation<State>
      * @param spriteWidth Die Breite des Sprites in Pixel.
      * @param spriteHeight Die Höhe des Sprites in Pixel.
      */
-    public void addState(State state, int spriteWidth, int spriteHeight,
+    public void addState(T state, int spriteWidth, int spriteHeight,
             String filePath)
     {
         addState(state,

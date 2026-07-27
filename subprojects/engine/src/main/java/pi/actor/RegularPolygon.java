@@ -66,7 +66,7 @@ public class RegularPolygon extends Polygon
     private static Vector[] vectors(int numSides, double radius)
     {
         Vector[] vectors = new Vector[numSides];
-        double angleStep = 360 / numSides;
+        double angleStep = 360.0 / numSides;
         for (int i = 0; i < numSides; ++i)
         {
             vectors[i] = Vector.ofAngle(i * angleStep
