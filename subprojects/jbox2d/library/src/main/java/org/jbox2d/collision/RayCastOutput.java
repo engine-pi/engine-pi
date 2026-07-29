@@ -26,26 +26,61 @@ package org.jbox2d.collision;
 import org.jbox2d.common.Vec2;
 
 /**
- * Ray-cast output data. The ray hits at p1 + fraction * (p2 - p1), where p1 and
- * p2 come from b2RayCastInput.
+ * Ray-cast result data.
+ *
+ * <p>
+ * If an intersection is found, the hit position can be reconstructed as
+ * {@code p1 + fraction * (p2 - p1)}, where {@code p1} and {@code p2} come from
+ * {@link RayCastInput}.
+ * </p>
+ *
+ * <p>
+ * This object stores only the hit fraction and surface normal. It does not
+ * store the hit point directly.
+ * </p>
+ *
+ * https://www.iforce2d.net/b2dtut/raycasting
  *
  * @author Daniel Murphy
  */
 public class RayCastOutput
 {
+    /**
+     * Surface normal at the intersection point.
+     *
+     * <p>
+     * This vector points away from the hit surface.
+     * </p>
+     */
     public final Vec2 normal;
 
+    /**
+     * Fraction along the input ray where the intersection occurs.
+     *
+     * <p>
+     * A value of {@code 0} is at {@code p1}; a value of {@code 1} is at
+     * {@code p2} when {@code maxFraction == 1}.
+     * </p>
+     */
     public float fraction;
 
+    /**
+     * Creates an empty ray-cast result.
+     */
     public RayCastOutput()
     {
         normal = new Vec2();
         fraction = 0;
     }
 
-    public void set(final RayCastOutput rco)
+    /**
+     * Copies all values from another ray-cast result.
+     *
+     * @param rayCastOutput The source result to copy from.
+     */
+    public void set(final RayCastOutput rayCastOutput)
     {
-        normal.set(rco.normal);
-        fraction = rco.fraction;
+        normal.set(rayCastOutput.normal);
+        fraction = rayCastOutput.fraction;
     }
 }
