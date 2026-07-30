@@ -60,7 +60,7 @@ public class ParticlesDemo extends Scene implements KeyStrokeListener
         right.restitution(15);
         add(right);
         addKeyStrokeListener(this);
-        repeat(1, (counter) -> createCircle(mousePosition(), Color.YELLOW));
+        repeat(1, counter -> createCircle(mousePosition(), Color.YELLOW));
         Rectangle r1 = new Rectangle(WIDTH, 10);
         r1.anchor(-WIDTH / 2.0, -HEIGHT / 2.0);
         Rectangle r2 = new Rectangle(10, HEIGHT);
@@ -78,7 +78,7 @@ public class ParticlesDemo extends Scene implements KeyStrokeListener
         r2.color(Color.DARK_GRAY);
         r3.color(Color.DARK_GRAY);
         r4.color(Color.DARK_GRAY);
-        r1.addCollisionListener((event) -> remove(event.colliding()));
+        r1.addCollisionListener(event -> remove(event.colliding()));
         gravity(new Vector(0, -600));
         camera().meter(1);
         left.animateColor(5, Color.YELLOW);
@@ -90,7 +90,7 @@ public class ParticlesDemo extends Scene implements KeyStrokeListener
     private void createCircle(Vector position, Color color)
     {
         Circle circle = new Circle(6);
-        FrameListener emitter = repeat(0.01, (counter) -> {
+        FrameListener emitter = repeat(0.01, counter -> {
             Circle particle = new Circle(3);
             particle.anchor(circle.center().subtract(new Vector(1, 1)));
             particle.color(Color.RED);

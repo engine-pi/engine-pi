@@ -1,5 +1,8 @@
 package demos.physics;
 
+import org.jbox2d.collision.RayCastInput;
+import org.jbox2d.collision.RayCastOutput;
+import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.Body;
 import org.jbox2d.dynamics.Fixture;
 
@@ -17,13 +20,20 @@ public class RayCastDemo extends Scene
         add(circle, rectangle);
 
         delay(0.1, () -> {
-            for (Body b = worldHandler().world().getBodyList(); b != null; b = b
-                .getNext())
+            for (Body body = worldHandler().world()
+                .getBodyList(); body != null; body = body.getNext())
             {
-                System.out.println(b);
-                for (Fixture f = b.getFixtureList(); f != null; f = f.getNext())
+                System.out.println(body);
+                for (Fixture fixture = body
+                    .getFixtureList(); fixture != null; fixture = fixture
+                        .getNext())
                 {
-                    System.out.println(f);
+                    System.out.println(fixture);
+                    RayCastInput in = new RayCastInput(new Vec2(0, 0), new Vec2(0, 1), 10);
+                    RayCastOutput out = new RayCastOutput();
+                    System.out.println(fixture.raycast(out, in, 0));
+                    System.out.println(out.fraction);
+                    System.out.println(out.normal);
                 }
             }
         });

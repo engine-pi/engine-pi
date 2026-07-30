@@ -45,12 +45,12 @@ import org.jbox2d.common.Vec2;
 public class RayCastInput
 {
     /**
-     * Start point of the ray.
+     * The start point of the ray.
      */
     public final Vec2 p1;
 
     /**
-     * End point used to define the ray direction.
+     * The end point used to define the ray direction.
      *
      * <p>
      * The direction vector is {@code (p2 - p1)}.
@@ -59,7 +59,7 @@ public class RayCastInput
     public final Vec2 p2;
 
     /**
-     * Maximum normalized distance along the ray to test for intersection.
+     * The maximum normalized distance along the ray to test for intersection.
      *
      * <p>
      * {@code 1} tests the full segment from {@code p1} to {@code p2}; smaller
@@ -76,6 +76,21 @@ public class RayCastInput
         p1 = new Vec2();
         p2 = new Vec2();
         maxFraction = 0;
+    }
+
+    /**
+     * Creates an ray-cast input.
+     *
+     * @param p1 The start point of the ray.
+     * @param p2 The end point used to define the ray direction.
+     * @param maxFraction The maximum normalized distance along the ray to test
+     *     for intersection.
+     */
+    public RayCastInput(Vec2 p1, Vec2 p2, float maxFraction)
+    {
+        this.p1 = p1;
+        this.p2 = p2;
+        this.maxFraction = maxFraction;
     }
 
     /**
