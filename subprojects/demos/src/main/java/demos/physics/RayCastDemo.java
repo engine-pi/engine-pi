@@ -29,7 +29,8 @@ public class RayCastDemo extends Scene
                         .getNext())
                 {
                     System.out.println(fixture);
-                    RayCastInput in = new RayCastInput(new Vec2(0, 0), new Vec2(0, 1), 10);
+                    RayCastInput in = new RayCastInput(new Vec2(0, 0),
+                            new Vec2(0, 1), 10);
                     RayCastOutput out = new RayCastOutput();
                     System.out.println(fixture.raycast(out, in, 0));
                     System.out.println(out.fraction);

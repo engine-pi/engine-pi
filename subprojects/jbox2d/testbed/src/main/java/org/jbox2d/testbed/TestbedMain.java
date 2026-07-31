@@ -19,19 +19,18 @@
 package org.jbox2d.testbed;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 
 import org.jbox2d.testbed.framework.AbstractTestbedController;
 import org.jbox2d.testbed.framework.AbstractTestbedController.MouseBehavior;
 import org.jbox2d.testbed.framework.AbstractTestbedController.UpdateBehavior;
 import org.jbox2d.testbed.framework.TestList;
 import org.jbox2d.testbed.framework.TestbedController;
-import org.jbox2d.testbed.framework.TestbedErrorHandler;
 import org.jbox2d.testbed.framework.TestbedModel;
 import org.jbox2d.testbed.framework.j2d.DebugDrawJ2D;
 import org.jbox2d.testbed.framework.j2d.TestPanelJ2D;
@@ -51,17 +50,10 @@ public class TestbedMain
         TestbedModel model = new TestbedModel();
         final AbstractTestbedController controller = new TestbedController(
                 model, UpdateBehavior.UPDATE_CALLED, MouseBehavior.NORMAL,
-                new TestbedErrorHandler()
-                {
-                    @Override
-                    public void serializationError(Exception e, String message)
-                    {
-                        JOptionPane.showMessageDialog(null,
-                            message,
-                            "Serialization Error",
-                            JOptionPane.ERROR_MESSAGE);
-                    }
-                });
+                (e, message) -> JOptionPane.showMessageDialog(null,
+                    message,
+                    "Serialization Error",
+                    JOptionPane.ERROR_MESSAGE));
         TestPanelJ2D panel = new TestPanelJ2D(model, controller);
         model.setPanel(panel);
         model.setDebugDraw(new DebugDrawJ2D(panel, true));
@@ -70,20 +62,15 @@ public class TestbedMain
         testbed.setTitle("JBox2D Testbed");
         testbed.setLayout(new BorderLayout());
         TestbedSidePanel side = new TestbedSidePanel(model, controller);
-        testbed.add((Component) panel, "Center");
+        testbed.add(panel, "Center");
         testbed.add(new JScrollPane(side), "East");
         testbed.pack();
         testbed.setVisible(true);
-        testbed.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        testbed.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         System.out.println(System.getProperty("java.home"));
-        SwingUtilities.invokeLater(new Runnable()
-        {
-            @Override
-            public void run()
-            {
-                controller.playTest(0);
-                controller.start();
-            }
+        SwingUtilities.invokeLater(() -> {
+            controller.playTest(0);
+            controller.start();
         });
     }
 }

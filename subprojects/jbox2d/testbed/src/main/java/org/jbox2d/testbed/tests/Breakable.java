@@ -150,7 +150,7 @@ public class Breakable extends TestbedTest
             doBreak = false;
         }
         // Cache velocities to improve movement on breakage.
-        if (broke == false)
+        if (!broke)
         {
             velocity.set(body1.getLinearVelocity());
             angularVelocity = body1.getAngularVelocity();

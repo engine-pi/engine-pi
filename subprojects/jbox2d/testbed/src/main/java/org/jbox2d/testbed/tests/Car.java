@@ -173,7 +173,7 @@ public class Car extends TestbedTest
             fd.friction = 0.6f;
             shape.set(new Vec2(-20.0f, 0.0f), new Vec2(20.0f, 0.0f));
             ground.createFixture(fd);
-            float hs[] = { 0.25f, 1.0f, 4.0f, 0.0f, 0.0f, -1.0f, -2.0f, -2.0f,
+            float[] hs = { 0.25f, 1.0f, 4.0f, 0.0f, 0.0f, -1.0f, -2.0f, -2.0f,
                     -1.25f, 0.0f };
             float x = 20.0f, y1 = 0.0f, dx = 5.0f;
             for (int i = 0; i < 10; ++i)
@@ -277,7 +277,7 @@ public class Car extends TestbedTest
         // Car
         {
             PolygonShape chassis = new PolygonShape();
-            Vec2 vertices[] = new Vec2[8];
+            Vec2[] vertices = new Vec2[8];
             vertices[0] = new Vec2(-1.5f, -0.5f);
             vertices[1] = new Vec2(1.5f, -0.5f);
             vertices[2] = new Vec2(1.5f, 0.0f);

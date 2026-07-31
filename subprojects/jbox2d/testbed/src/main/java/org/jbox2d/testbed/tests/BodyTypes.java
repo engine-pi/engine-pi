@@ -43,9 +43,9 @@ import org.jbox2d.testbed.framework.TestbedTest;
  */
 public class BodyTypes extends TestbedTest
 {
-    private final static long ATTACHMENT_TAG = 19;
+    private static final long ATTACHMENT_TAG = 19;
 
-    private final static long PLATFORM_TAG = 20;
+    private static final long PLATFORM_TAG = 20;
 
     Body attachment;
 

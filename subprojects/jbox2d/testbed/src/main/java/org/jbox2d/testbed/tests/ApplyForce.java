@@ -84,7 +84,7 @@ public class ApplyForce extends TestbedTest
             Transform xf1 = new Transform();
             xf1.q.set(0.3524f * MathUtils.PI);
             Rot.mulToOutUnsafe(xf1.q, new Vec2(1.0f, 0.0f), xf1.p);
-            Vec2 vertices[] = new Vec2[3];
+            Vec2[] vertices = new Vec2[3];
             vertices[0] = Transform.mul(xf1, new Vec2(-1.0f, 0.0f));
             vertices[1] = Transform.mul(xf1, new Vec2(1.0f, 0.0f));
             vertices[2] = Transform.mul(xf1, new Vec2(0.0f, 0.5f));
@@ -145,12 +145,6 @@ public class ApplyForce extends TestbedTest
                 getWorld().createJoint(jd);
             }
         }
-    }
-
-    @Override
-    public void keyPressed(char keyCar, int keyCode)
-    {
-        super.keyPressed(keyCar, keyCode);
     }
 
     @Override
