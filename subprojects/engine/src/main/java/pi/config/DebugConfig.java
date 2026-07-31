@@ -54,6 +54,7 @@ public class DebugConfig extends ConfigGroup
         renderActors(true);
         actorCoordinates(false);
         renderAABBs(false);
+        renderOBBs(false);
         useANSIcolors(false);
     }
 
@@ -247,15 +248,15 @@ public class DebugConfig extends ConfigGroup
         return actorCoordinates;
     }
 
-    /* */
+    /* renderAABBs */
 
     private boolean renderAABBs;
 
     /**
-     * Gibt die Einstellung, ob die <b>achsenparallelen Begrenzungsrahmen</b>
+     * Gibt die Einstellung, ob der <b>achsenparallelen Begrenzungsrahmen</b>
      * (AABB = axis-aligned bounding box) gezeichnet werden sollen, zurück.
      *
-     * @return Die Einstellung, ob die <b>achsenparallelen Begrenzungsrahmen</b>
+     * @return Die Einstellung, ob der <b>achsenparallelen Begrenzungsrahmen</b>
      *     (AABB = axis-aligned bounding box) gezeichnet werden sollen.
      *
      * @since 0.45.0
@@ -268,7 +269,7 @@ public class DebugConfig extends ConfigGroup
     }
 
     /**
-     * Setzt die Einstellung, ob die <b>achsenparallelen Begrenzungsrahmen</b>
+     * Setzt die Einstellung, ob der <b>achsenparallelen Begrenzungsrahmen</b>
      * (AABB = axis-aligned bounding box) gezeichnet werden sollen.
      *
      * @param renderAABBs die Einstellung, ob die <b>achsenparallelen
@@ -288,6 +289,50 @@ public class DebugConfig extends ConfigGroup
     public DebugConfig renderAABBs(boolean renderAABBs)
     {
         set("renderAABBs", renderAABBs);
+        return this;
+    }
+
+    /* renderOBBs */
+
+    private boolean renderOBBs;
+
+    /**
+     * Gibt die Einstellung, ob der <b>ausgerichtete Begrenzungsrahmen</b> (OBB
+     * = oriented bounding box) gezeichnet werden sollen, zurück.
+     *
+     * @return Die Einstellung, ob der <b>ausgerichtete Begrenzungsrahmen</b>
+     *     (OBB = oriented bounding box) gezeichnet werden sollen.
+     *
+     * @since 0.53.0
+     */
+    @API
+    @Getter
+    public boolean renderOBBs()
+    {
+        return renderOBBs;
+    }
+
+    /**
+     * Setzt die Einstellung, ob der <b>ausgerichtete Begrenzungsrahmen</b> (OBB
+     * = oriented bounding box) gezeichnet werden sollen.
+     *
+     * @param renderOBBs Die Einstellung, ob der <b>ausgerichtete
+     *     Begrenzungsrahmen</b> (OBB = oriented bounding box) gezeichnet werden
+     *     sollen.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
+     *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
+     *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
+     *     werden können, z.B. {@code debug.enabled(..).renderActors(..)}.
+     *
+     * @since 0.53.0
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public DebugConfig renderOBBs(boolean renderOBBs)
+    {
+        set("renderOBBs", renderOBBs);
         return this;
     }
 

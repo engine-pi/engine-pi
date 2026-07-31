@@ -2687,8 +2687,9 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Zeichnet die Axis-Aligned Bounding Box (AABB) dieses Actors als Rechteck
-     * in den angegebenen {@link Graphics2D}-Kontext.
+     * Zeichnet den <b>achsenparallelen Begrenzungsrahmen</b> (AABB =
+     * axis-aligned bounding box) dieser Figur als Rechteck in den angegebenen
+     * {@link Graphics2D}-Kontext.
      *
      * <p>
      * Die AABB wird aus der Physik-Komponente ermittelt, in

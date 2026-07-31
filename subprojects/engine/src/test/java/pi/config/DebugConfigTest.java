@@ -164,6 +164,31 @@ class DebugConfigTest
     }
 
     @Nested
+    class RenderOBBsTest
+    {
+        @Test
+        void defaultValue()
+        {
+            assertFalse(config.renderOBBs());
+        }
+
+        @Test
+        void setValue()
+        {
+            config.renderOBBs(true);
+            assertTrue(config.renderOBBs());
+            config.renderOBBs(false);
+            assertFalse(config.renderOBBs());
+        }
+
+        @Test
+        void chaining()
+        {
+            assertSame(config, config.renderOBBs(true));
+        }
+    }
+
+    @Nested
     class UseANSIcolorsTest
     {
         @Test
