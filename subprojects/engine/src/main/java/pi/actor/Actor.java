@@ -2433,9 +2433,9 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Gibt den <b>Winkel</b> aus, um den das Objekt derzeit <b>rotiert</b> ist.
+     * Gibt den <b>Winkel</b> aus, um die die Figur derzeit <b>rotiert</b> ist.
      *
-     * @return Der Winkel (in <b>Grad</b>), um den das Objekt derzeit rotiert
+     * @return Der Winkel (in <b>Grad</b>), um den die Figur derzeit rotiert
      *     ist. Jedes Objekt ist bei Initialisierung nicht rotiert
      *     ({@link #rotation()} gibt direkt ab Initialisierung <code>0</code>
      *     zurück).
@@ -2449,8 +2449,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
 
     /**
      * Setzt den Rotationswert des Objekts. Nach Erzeugung der Figur ist der
-     * Rotationswert 0. {@code setRotation(90)} dreht die Figur beispiels um 90
-     * Grad <b>gegen</b> den Uhrzeigersinn, {@code setRotation(-90)} um 90 Grad
+     * Rotationswert 0. {@code rotation(90)} dreht die Figur beispiels um 90
+     * Grad <b>gegen</b> den Uhrzeigersinn, {@code rotation(-90)} um 90 Grad
      * <b>im</b> Uhrzeigersinn.
      *
      * @param rotation Der Winkel (in <b>Grad</b>), um den das Objekt <b>von

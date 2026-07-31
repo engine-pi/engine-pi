@@ -32,9 +32,9 @@ import pi.debug.ToStringFormatter;
  * Ein <b>nicht-grafisches Rechteck</b> auf der Zeichenebene, das eine
  * allgemeine Fläche beschreibt.
  *
- * @param x Die {@code x}-Koordinate der <i>unteren linken Ecke</i> des
+ * @param x Die {@code x}-Koordinate der <i>linken unteren Ecke</i> des
  *     Rechtecks.
- * @param y Die {@code y}-Koordinate der <i>unteren linken Ecke</i> des
+ * @param y Die {@code y}-Koordinate der <i>linken unteren Ecke</i> des
  *     Rechtecks.
  * @param width Die <b>Breite</b> des Rechtecks.
  * @param height Die <b>Höhe</b> des Rechtecks.
@@ -114,7 +114,10 @@ public record Bounds(double x, double y, double width, double height)
     @API
     public Bounds smallestCommon(Bounds bounds)
     {
-        double x, y, dX, dY;
+        double x;
+        double y;
+        double dX;
+        double dY;
         x = Math.min(bounds.x, this.x);
         y = Math.min(bounds.y, this.y);
         if (bounds.x + bounds.width > this.x + this.width)
@@ -336,7 +339,8 @@ public record Bounds(double x, double y, double width, double height)
     @API
     public Bounds in(Bounds outer)
     {
-        double realX = this.x, realY = this.y;
+        double realX = this.x;
+        double realY = this.y;
         if (this.x < outer.x)
         {
             realX = outer.x;
