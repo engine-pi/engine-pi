@@ -16,7 +16,10 @@ public class RayCastDemo extends Scene
     public RayCastDemo()
     {
         Circle circle = new Circle(4);
+        circle.center(0, 0);
         Rectangle rectangle = new Rectangle(2, 4);
+
+        rectangle.center(5, 0);
         add(circle, rectangle);
 
         delay(0.1, () -> {
@@ -29,8 +32,9 @@ public class RayCastDemo extends Scene
                         .getNext())
                 {
                     System.out.println(fixture);
-                    RayCastInput in = new RayCastInput(new Vec2(0, 0),
-                            new Vec2(0, 1), 10);
+                    // Der Startpunkt darf nicht in dem Umriss liegen.
+                    RayCastInput in = new RayCastInput(new Vec2(-5, 0),
+                            new Vec2(0, 0), 10);
                     RayCastOutput out = new RayCastOutput();
                     System.out.println(fixture.raycast(out, in, 0));
                     System.out.println(out.fraction);
