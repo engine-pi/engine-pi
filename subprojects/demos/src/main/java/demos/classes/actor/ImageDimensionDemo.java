@@ -64,7 +64,7 @@ public class ImageDimensionDemo extends Scene implements KeyStrokeListener
         case KeyEvent.VK_3 -> traveler.pixelPerMeter(128);
         case KeyEvent.VK_W -> traveler.reset().width(5);
         case KeyEvent.VK_H -> traveler.reset().height(5);
-        case KeyEvent.VK_S -> traveler.reset().size(1, 5);
+        case KeyEvent.VK_S -> traveler.reset().size(10, 5);
         }
         System.out.println(traveler);
     }
