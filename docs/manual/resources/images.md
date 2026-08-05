@@ -4,9 +4,10 @@
 
 ## Bilder laden
 
-Über {{ javadoc('pi.Controller#images', 'Controller.images') }} bzw. den
-statischen Import `#!java import static pi.Controller.images;` werden Bilder als
-{{ javadoc('java.desktop:java.awt.image.BufferedImage') }} geladen.
+Über das statische Attribut {{ javadoc('pi.Controller#images',
+'Controller.images') }} bzw. den statischen Import `#!java import static
+pi.Controller.images;` werden Bilder als {{
+javadoc('java.desktop:java.awt.image.BufferedImage') }} geladen.
 
 ```java
 import static pi.Controller.images;
@@ -16,6 +17,15 @@ BufferedImage moon = images.get("moon.png");
 ```
 
 Der übergebene Name ist ein Ressourcenpfad relativ zum Ressourcenordner.
+
+## Die Klasse `BufferedImage`
+
+{{ javadoc('java.desktop:java.awt.image.BufferedImage') }} ist die
+Standardklasse in Java für Bilder im Speicher. Sie enthält die Pixel eines
+Bildes und ermöglicht es, Breite, Höhe und Farbwerte direkt auszulesen oder zu
+verarbeiten. In Engine Pi liefert der {{ javadoc('pi.resources.ImageContainer')
+}} Bilder genau in diesem Format, damit sie direkt in der Figur bzw. im Actor {{
+javadoc('pi.actor.Image') }} verwendet werden können.
 
 ## Pixel vervielfältigen
 
