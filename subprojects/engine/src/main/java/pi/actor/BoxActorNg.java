@@ -21,7 +21,6 @@ package pi.actor;
 import static pi.Controller.config;
 
 import java.awt.Graphics2D;
-import java.awt.geom.AffineTransform;
 
 import pi.annotations.API;
 import pi.annotations.ChainableMethod;

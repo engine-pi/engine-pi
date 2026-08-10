@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import static pi.util.MathUtil.round;
 
 import org.jspecify.annotations.Nullable;
 
@@ -154,21 +155,21 @@ public abstract class Box implements Iterable<Box>
 
     /* widthMeter */
 
-    protected double widthMeter;
+    protected double definedWidthMeter;
 
     @API
     @Getter
     public double widthMeter()
     {
-        return widthMeter;
+        return definedWidthMeter;
     }
 
     @API
     @Setter
     public Box widthMeter(double widthMeter)
     {
-        this.widthMeter = widthMeter;
-        this.widthMeter = (int) Math.round(widthMeter * pixelPerMeter);
+        this.definedWidthMeter = widthMeter;
+        this.definedWidth = round(widthMeter * pixelPerMeter);
         return this;
     }
 
@@ -226,21 +227,21 @@ public abstract class Box implements Iterable<Box>
 
     /* heightMeter */
 
-    protected double heightMeter;
+    protected double definedHeightMeter;
 
     @API
     @Getter
     public double heightMeter()
     {
-        return heightMeter;
+        return definedHeightMeter;
     }
 
     @API
     @Setter
     public Box heightMeter(double heightMeter)
     {
-        this.heightMeter = heightMeter;
-        this.definedHeight = (int) Math.round(heightMeter * pixelPerMeter);
+        this.definedHeightMeter = heightMeter;
+        this.definedHeight = round(heightMeter * pixelPerMeter);
         return this;
     }
 
@@ -439,7 +440,22 @@ public abstract class Box implements Iterable<Box>
     @Setter
     public Box pixelPerMeter(double pixelPerMeter)
     {
+        if (pixelPerMeter <= 0)
+        {
+            throw new IllegalArgumentException(
+                    "Der Wert für Pixel pro Meter darf nicht kleiner gleich 0 sein.");
+        }
+
         this.pixelPerMeter = pixelPerMeter;
+        if (definedHeightMeter > 0)
+        {
+            definedHeight = round(definedHeightMeter * pixelPerMeter);
+        }
+
+        if (definedWidthMeter > 0)
+        {
+            definedWidth = round(definedWidthMeter * pixelPerMeter);
+        }
         return this;
     }
 
@@ -819,11 +835,6 @@ public abstract class Box implements Iterable<Box>
             box.debug(depth + 1);
         }
         return this;
-    }
-
-    protected int round(double value)
-    {
-        return (int) Math.round(value);
     }
 
     /**

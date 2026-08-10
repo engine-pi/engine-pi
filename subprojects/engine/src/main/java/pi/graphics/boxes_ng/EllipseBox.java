@@ -52,6 +52,14 @@ public class EllipseBox extends LeafBox
         definedHeight = height;
     }
 
+    public EllipseBox(double width, double height)
+    {
+        super();
+        supportsDefinedDimension = true;
+        widthMeter(width);
+        heightMeter(height);
+    }
+
     /**
      * Setzt die <b>Breite</b> der Ellipse in Pixel.
      *
