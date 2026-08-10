@@ -65,6 +65,7 @@ public class EllipseBox extends LeafBox
      * @since 0.42.0
      */
     @Setter
+    @Override
     public EllipseBox width(int width)
     {
         definedWidth = width;
@@ -84,6 +85,7 @@ public class EllipseBox extends LeafBox
      * @since 0.42.0
      */
     @Setter
+    @Override
     public EllipseBox height(int height)
     {
         definedHeight = height;
@@ -169,7 +171,7 @@ public class EllipseBox extends LeafBox
         {
             Color oldColor = g.getColor();
             g.setColor(color);
-            g.fillOval(x, y, definedWidth, definedHeight);
+            g.fillOval(x, y + height, width, height);
             g.setColor(oldColor);
         }
     }
