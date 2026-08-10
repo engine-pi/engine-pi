@@ -63,8 +63,8 @@ public final class FixtureBuilder
      * beginnt immer bei (0|0) und die Breite und die Höhe ist parallel zu den
      * Koordinatenachsen.
      *
-     * @param width Die Breite der rechteckigen Form in Meter.
-     * @param height Die Höhe der rechteckigen Form in Meter.
+     * @param width Die <b>Breite</b> der rechteckigen Form in Meter.
+     * @param height Die <b>Höhe</b> der rechteckigen Form in Meter.
      */
     public static FixtureData rectangle(double width, double height)
     {
@@ -99,14 +99,15 @@ public final class FixtureBuilder
      *
      * <p>
      * JBox2D unterstützt keine echte Ellipsenform. Deshalb wird eine Ellipse
-     * mit einer frei wählbaren Anzahl an Punkten angenähert und im
-     * Begrenzungsrechteck zentriert.
+     * mit <b>8</b> Punkten angenähert und im Begrenzungsrechteck zentriert.
      * </p>
      *
-     * @param width Die Breite der Ellipse in Meter.
-     * @param height Die Höhe der Ellipse in Meter.
+     * @param width Die <b>Breite</b> der Ellipse in Meter.
+     * @param height Die <b>Höhe</b> der Ellipse in Meter.
      *
-     * @return Eine Fixture-Datenstruktur, die die Ellipse approximiert.
+     * @return Eine Halterung, die die Ellipse annähert.
+     *
+     * @since 0.53.0
      */
     public static FixtureData ellipse(double width, double height)
     {
@@ -122,31 +123,49 @@ public final class FixtureBuilder
      * Begrenzungsrechteck zentriert.
      * </p>
      *
-     * @param width Die Breite der Ellipse in Meter.
-     * @param height Die Höhe der Ellipse in Meter.
-     * @param points Die Anzahl der Polygonpunkte. Der Wert muss mindestens 3
-     *     betragen.
+     * @param width Die <b>Breite</b> der Ellipse in Meter.
+     * @param height Die <b>Höhe</b> der Ellipse in Meter.
+     * @param points Die <b>Anzahl</b> der Polygonpunkte. Der Wert muss
+     *     mindestens 3 betragen.
      *
-     * @return Eine Fixture-Datenstruktur, die die Ellipse annähert.
+     * @return Eine Halterung, die die Ellipse annähert.
      *
-     * @throws IllegalArgumentException Wenn {@code points} kleiner als 3 ist.
+     * @throws IllegalArgumentException Wenn {@code points} kleiner als 3 oder
+     *     größer als {@link Settings#maxPolygonVertices} ist.
+     *
+     * @since 0.53.0
      */
     public static FixtureData ellipse(double width, double height, int points)
     {
         if (points < 3 || points > Settings.maxPolygonVertices)
         {
-            throw new IllegalArgumentException("points muss zwischen 3 und "
-                    + Settings.maxPolygonVertices + " liegen.");
+            throw new IllegalArgumentException(
+                    "Der Eingabeparameter points muss zwischen 3 und "
+                            + Settings.maxPolygonVertices + " liegen.");
         }
 
         double halfWidth = width / 2.0;
         double halfHeight = height / 2.0;
 
         Vec2[] ellipsePoints = new Vec2[points];
+        // Der Vollwinkel 2π wird gleichmäßig auf alle Polygonpunkte verteilt.
         double angleStep = (Math.PI * 2) / points;
         for (int i = 0; i < points; i++)
         {
+            // Start bei -π/2 (unterster Punkt) und dann wird der Teilwinkel
+            // addiert, damit die Punkte die Ellipse umlaufen.
             double angle = -Math.PI / 2 + (i * angleStep);
+
+            // Parametergleichung der Ellipse
+            // (https://mathepedia.de/Parameterdarstellung.html):
+            // x = a * cos(t)
+            // y = b * sin(t)
+            // t: Winkelparameter zwischen 0 und 2π) (angle)
+            // a: Länge der großen Halbachse entlang der X-Achse (halfWidth)
+            // b: Länge der kleinen Halbachse entlang der Y-Achse (halfHeight)
+
+            // Durch +halfWidth/+halfHeight wird von der Ursprungslage in das
+            // Begrenzungsrechteck [0,width] × [0,height] verschoben.
             float x = (float) (halfWidth + Math.cos(angle) * halfWidth);
             float y = (float) (halfHeight + Math.sin(angle) * halfHeight);
             ellipsePoints[i] = new Vec2(x, y);
@@ -162,8 +181,8 @@ public final class FixtureBuilder
      * Erstellt die Umrissdaten, die eine Linie bzw. eine Kante zwischen zwei
      * Punkten darstellen.
      *
-     * @param point1 Der erste Punkt der Linie als Vector.
-     * @param point2 Der zweite Punkt der Linie als Vector.
+     * @param point1 Der erste Punkt der Linie als Vektor.
+     * @param point2 Der zweite Punkt der Linie als Vektor.
      *
      * @return Eine Umrissdaten, die die Linie repräsentiert.
      *
