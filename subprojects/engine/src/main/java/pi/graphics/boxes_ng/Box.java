@@ -450,11 +450,13 @@ public abstract class Box implements Iterable<Box>
         if (definedHeightMeter > 0)
         {
             definedHeight = round(definedHeightMeter * pixelPerMeter);
+            measured = false;
         }
 
         if (definedWidthMeter > 0)
         {
             definedWidth = round(definedWidthMeter * pixelPerMeter);
+            measured = false;
         }
         return this;
     }
@@ -502,7 +504,7 @@ public abstract class Box implements Iterable<Box>
      */
     public Box disable()
     {
-        this.disabled = true;
+        disabled = true;
         return this;
     }
 
@@ -753,8 +755,7 @@ public abstract class Box implements Iterable<Box>
     {
         if (this.pixelPerMeter != pixelPerMeter)
         {
-            this.pixelPerMeter = pixelPerMeter;
-            measured = false;
+            pixelPerMeter(pixelPerMeter);
         }
 
         if (!measured)

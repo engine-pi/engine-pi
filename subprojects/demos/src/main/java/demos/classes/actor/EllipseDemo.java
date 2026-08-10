@@ -1,7 +1,7 @@
 /*
  * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
  *
- * Copyright (c) 2026 Josef Friedrich and contributors.
+ * Copyright (c) 2024 Josef Friedrich and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,23 +16,36 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package pi.actor;
+package demos.classes.actor;
 
-import pi.graphics.boxes_ng.EllipseBox;
-import pi.physics.FixtureBuilder;
+import pi.Controller;
+import pi.Scene;
+import pi.actor.Ellipse;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/EllipseDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Ellipse.java
 
 /**
+ * Demonstriert die Figur <b>Ellipse</b> ({@link Ellipse}).
+ *
  * @author Josef Friedrich
  *
  * @since 0.53.0
  */
-public class Ellipse extends BoxActorNg<EllipseBox>
+public class EllipseDemo extends Scene
 {
-    public Ellipse(double width, double height)
+    Ellipse ellipse;
+
+    public EllipseDemo()
     {
-        super(new EllipseBox(width, height).color("green"));
-        fixture(() -> FixtureBuilder.ellipse(width, height, 16));
+        info().title("Demonstriert die Figur Ellipse");
+        ellipse = new Ellipse(2, 1);
+        add(ellipse);
+    }
+
+    public static void main(String[] args)
+    {
+        Controller.instantMode(false);
+        Controller.debug();
+        Controller.start(new EllipseDemo());
     }
 }

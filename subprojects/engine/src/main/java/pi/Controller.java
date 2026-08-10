@@ -110,7 +110,7 @@ public class Controller
                                                           // scaling on windows
         /*
          * damit die Umrisse zum Beispiel bei der Klasse Star richtig gezeichnet
-         * wird.
+         * werden.
          */
         Settings.maxPolygonVertices = 20;
 

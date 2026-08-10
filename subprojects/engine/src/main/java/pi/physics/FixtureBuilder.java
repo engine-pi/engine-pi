@@ -30,6 +30,7 @@ import org.jbox2d.collision.shapes.EdgeShape;
 import org.jbox2d.collision.shapes.PolygonShape;
 import org.jbox2d.collision.shapes.Shape;
 import org.jbox2d.common.Vec2;
+import org.jbox2d.common.Settings;
 import pi.graphics.geom.Vector;
 
 /**
@@ -91,6 +92,70 @@ public final class FixtureBuilder
         circleShape.p.set((float) mx, (float) my);
         circleShape.setRadius((float) radius);
         return new FixtureData(circleShape);
+    }
+
+    /**
+     * Erstellt eine <b>elliptische</b> Form als polygonale Näherung.
+     *
+     * <p>
+     * JBox2D unterstützt keine echte Ellipsenform. Deshalb wird eine Ellipse
+     * mit einer frei wählbaren Anzahl an Punkten angenähert und im
+     * Begrenzungsrechteck zentriert.
+     * </p>
+     *
+     * @param width Die Breite der Ellipse in Meter.
+     * @param height Die Höhe der Ellipse in Meter.
+     *
+     * @return Eine Fixture-Datenstruktur, die die Ellipse approximiert.
+     */
+    public static FixtureData ellipse(double width, double height)
+    {
+        return ellipse(width, height, 8);
+    }
+
+    /**
+     * Erstellt eine <b>elliptische</b> Form als polygonale Näherung.
+     *
+     * <p>
+     * JBox2D unterstützt keine echte Ellipsenform. Deshalb wird eine Ellipse
+     * mit einer frei wählbaren Anzahl an Punkten angenähert und im
+     * Begrenzungsrechteck zentriert.
+     * </p>
+     *
+     * @param width Die Breite der Ellipse in Meter.
+     * @param height Die Höhe der Ellipse in Meter.
+     * @param points Die Anzahl der Polygonpunkte. Der Wert muss mindestens 3
+     *     betragen.
+     *
+     * @return Eine Fixture-Datenstruktur, die die Ellipse annähert.
+     *
+     * @throws IllegalArgumentException Wenn {@code points} kleiner als 3 ist.
+     */
+    public static FixtureData ellipse(double width, double height, int points)
+    {
+        if (points < 3 || points > Settings.maxPolygonVertices)
+        {
+            throw new IllegalArgumentException("points muss zwischen 3 und "
+                    + Settings.maxPolygonVertices + " liegen.");
+        }
+
+        double halfWidth = width / 2.0;
+        double halfHeight = height / 2.0;
+
+        Vec2[] ellipsePoints = new Vec2[points];
+        double angleStep = (Math.PI * 2) / points;
+        for (int i = 0; i < points; i++)
+        {
+            double angle = -Math.PI / 2 + (i * angleStep);
+            float x = (float) (halfWidth + Math.cos(angle) * halfWidth);
+            float y = (float) (halfHeight + Math.sin(angle) * halfHeight);
+            ellipsePoints[i] = new Vec2(x, y);
+        }
+
+        PolygonShape shape = new PolygonShape();
+        shape.set(ellipsePoints, ellipsePoints.length);
+        shape.centroid.set(new Vec2((float) halfWidth, (float) halfHeight));
+        return new FixtureData(shape);
     }
 
     /**

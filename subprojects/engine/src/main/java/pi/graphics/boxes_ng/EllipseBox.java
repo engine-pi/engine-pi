@@ -26,6 +26,8 @@ import java.awt.Graphics2D;
 import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/EllipseDemo.java
+
 /**
  * Eine <b>Ellipse</b>.
  *
@@ -179,7 +181,7 @@ public class EllipseBox extends LeafBox
         {
             Color oldColor = g.getColor();
             g.setColor(color);
-            g.fillOval(x, y + height, width, height);
+            g.fillOval(x, y - height, width, height);
             g.setColor(oldColor);
         }
     }
