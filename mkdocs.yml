@@ -106,6 +106,7 @@ nav:
               - manual/main-classes/actor/animation.md
               - manual/main-classes/actor/circle.md
               - manual/main-classes/actor/counter.md
+              - manual/main-classes/actor/ellipse.md
               - manual/main-classes/actor/grid.md
               - manual/main-classes/actor/image-text.md
               - manual/main-classes/actor/image.md
