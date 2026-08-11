@@ -40,9 +40,7 @@ public class LineRandomDemo extends Scene
     {
         createRandomLines();
 
-        repeat(2, () -> {
-            createRandomLines();
-        });
+        repeat(2, this::createRandomLines);
         backgroundColor(colors.getSafe("#333333"));
     }
 

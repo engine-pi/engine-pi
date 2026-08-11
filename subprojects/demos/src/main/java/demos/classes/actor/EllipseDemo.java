@@ -20,6 +20,7 @@ package demos.classes.actor;
 
 import pi.Controller;
 import pi.Scene;
+import pi.actor.ActorCreator;
 import pi.actor.Ellipse;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Ellipse.java
@@ -38,7 +39,16 @@ public class EllipseDemo extends Scene
     public EllipseDemo()
     {
         info().title("Demonstriert die Figur Ellipse");
-        ellipse = new Ellipse(2, 1);
+
+        ActorCreator.createCage(this);
+
+        ellipse = new Ellipse(4, 2);
+
+        ellipse.anchor(3, 5)
+            .rotation(45)
+            .makeDynamic()
+            .applyForce(16000, 31000)
+            .restitution(1);
         add(ellipse);
     }
 

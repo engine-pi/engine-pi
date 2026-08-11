@@ -51,7 +51,7 @@ public class ActorCreator
      * eine Szene ein.
      *
      * <p>
-     * In diesem Käfig können z.B. dynamische Figuren dann abprallen.
+     * In diesem Käfig können dann z.B. dynamische Figuren abprallen.
      * </p>
      *
      * @since 0.45.0
