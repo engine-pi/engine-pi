@@ -26,7 +26,7 @@ import java.awt.Graphics2D;
 import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/EllipseDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Ellipse.java
 
 /**
  * Eine <b>Ellipse</b>.
@@ -76,10 +76,9 @@ public class EllipseBox extends LeafBox
      */
     @Setter
     @Override
-    public EllipseBox width(int width)
+    public EllipseBox width(double width)
     {
-        definedWidth = width;
-        return this;
+        return (EllipseBox) super.width(width);
     }
 
     /**
@@ -96,10 +95,10 @@ public class EllipseBox extends LeafBox
      */
     @Setter
     @Override
-    public EllipseBox height(int height)
+    public EllipseBox height(double height)
     {
-        definedHeight = height;
-        return this;
+        return (EllipseBox) super.height(height);
+
     }
 
     /**
@@ -181,7 +180,7 @@ public class EllipseBox extends LeafBox
         {
             Color oldColor = g.getColor();
             g.setColor(color);
-            g.fillOval(x, y - height, width, height);
+            g.fillOval(x(), y() - height(), width(), height());
             g.setColor(oldColor);
         }
     }

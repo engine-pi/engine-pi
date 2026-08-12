@@ -33,6 +33,14 @@ import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 import pi.graphics.boxes.GridBox;
 
+/*
+ * Die Attribute width, height, x und y etc sind als double repräsentiert,
+ * obwohl die Graphics2D-API nur Integer als Eingabeparameter repräsentiert.
+ * Dies ist notwendig, da die Koordinaten und Abmessungen auch in Metern
+ * angegeben werden können. So werden Rundungsfehler vermieden, wenn der
+ * pixelPerMeter-Wert geändert wird.
+ */
+
 /**
  * Eine <b>Box</b> beschreibt eine rechteckige grafische Fläche, die weitere
  * Kinder-Boxen enthalten kann.
@@ -108,14 +116,14 @@ public abstract class Box implements Iterable<Box>
      *
      * @since 0.40.0
      */
-    protected int width;
+    protected double width;
 
     /**
      * Die <b>gesetzte Breite</b> in Pixel. Im Gegensatz zu {@link #width} wird
      * dieses Attribut gesetzt und nicht durch {@link #calculateDimension()}
      * berechnet.
      */
-    protected int definedWidth;
+    protected double definedWidth;
 
     /**
      * Gibt die <b>Breite</b> der Box in Pixel zurück.
@@ -126,7 +134,17 @@ public abstract class Box implements Iterable<Box>
     @Getter
     public int width()
     {
-        return width;
+        return round(width);
+    }
+
+    /**
+     * @since 0.53.0
+     */
+    @API
+    @Getter
+    public double widthMeter()
+    {
+        return definedWidth / pixelPerMeter;
     }
 
     /**
@@ -141,7 +159,7 @@ public abstract class Box implements Iterable<Box>
      */
     @API
     @Setter
-    public Box width(int width)
+    public Box width(double width)
     {
         if (!supportsDefinedDimension)
         {
@@ -150,27 +168,17 @@ public abstract class Box implements Iterable<Box>
                     + " kann die Breite nicht setzt werden. Sie wird automatische bestimmt.");
         }
         definedWidth = width;
-        return this;
+        return remeasure();
     }
 
-    /* widthMeter */
-
-    protected double definedWidthMeter;
-
-    @API
-    @Getter
-    public double widthMeter()
-    {
-        return definedWidthMeter;
-    }
-
+    /**
+     * @since 0.53.0
+     */
     @API
     @Setter
     public Box widthMeter(double widthMeter)
     {
-        this.definedWidthMeter = widthMeter;
-        this.definedWidth = round(widthMeter * pixelPerMeter);
-        return this;
+        return width(widthMeter * pixelPerMeter);
     }
 
     /* height */
@@ -180,14 +188,14 @@ public abstract class Box implements Iterable<Box>
      *
      * @since 0.40.0
      */
-    protected int height;
+    protected double height;
 
     /**
      * Die <b>gesetzte Höhe</b> in Pixel. Im Gegensatz zu {@link #height} wird
      * dieses Attribut gesetzt und nicht durch {@link #calculateDimension()}
      * berechnet.
      */
-    protected int definedHeight;
+    protected double definedHeight;
 
     /**
      * Gibt die <b>Höhe</b> der Box in Pixel zurück.
@@ -198,7 +206,17 @@ public abstract class Box implements Iterable<Box>
     @Getter
     public int height()
     {
-        return height;
+        return round(height);
+    }
+
+    /**
+     * @since 0.53.0
+     */
+    @API
+    @Getter
+    public double heightMeter()
+    {
+        return definedHeight / pixelPerMeter;
     }
 
     /**
@@ -213,7 +231,7 @@ public abstract class Box implements Iterable<Box>
      */
     @API
     @Setter
-    public Box height(int height)
+    public Box height(double height)
     {
         if (!supportsDefinedDimension)
         {
@@ -222,27 +240,17 @@ public abstract class Box implements Iterable<Box>
                     + " kann die Höhe nicht setzt werden. Sie wird automatische bestimmt.");
         }
         definedHeight = height;
-        return this;
+        return remeasure();
     }
 
-    /* heightMeter */
-
-    protected double definedHeightMeter;
-
-    @API
-    @Getter
-    public double heightMeter()
-    {
-        return definedHeightMeter;
-    }
-
+    /**
+     * @since 0.53.0
+     */
     @API
     @Setter
     public Box heightMeter(double heightMeter)
     {
-        this.definedHeightMeter = heightMeter;
-        this.definedHeight = round(heightMeter * pixelPerMeter);
-        return this;
+        return height(heightMeter * pixelPerMeter);
     }
 
     /**
@@ -291,7 +299,7 @@ public abstract class Box implements Iterable<Box>
      *
      * @since 0.38.0
      */
-    protected int x;
+    protected double x;
 
     /**
      * Gibt die <b>x</b>-Koordinate der linken unteren Ecke in Pixel zurück.
@@ -304,7 +312,17 @@ public abstract class Box implements Iterable<Box>
     @Getter
     public int x()
     {
-        return x;
+        return round(x);
+    }
+
+    /**
+     * @since 0.53.0
+     */
+    @API
+    @Getter
+    public double xMeter()
+    {
+        return x * pixelPerMeter;
     }
 
     /**
@@ -321,30 +339,19 @@ public abstract class Box implements Iterable<Box>
      */
     @API
     @Setter
-    public Box x(int x)
+    public Box x(double x)
     {
         this.x = x;
-        return this;
+        return remeasure();
     }
 
     /**
-     * Setzt die <b>x</b>-Koordinate der linken unteren Ecke in Meter.
-     *
-     * @param x Die <b>x</b>-Koordinate der linken unteren Ecke in Meter.
-     *
-     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z.B.
-     *     {@code box.x(..).y(..)}.
-     *
-     * @since 0.46.0
+     * @since 0.53.0
      */
-    @API
     @Setter
-    public Box x(double x, double pixelPerMeter)
+    public Box xMeter(double xMeter)
     {
-        this.x = round(x * pixelPerMeter);
-        return this;
+        return x(xMeter * pixelPerMeter);
     }
 
     /* y */
@@ -354,7 +361,7 @@ public abstract class Box implements Iterable<Box>
      *
      * @since 0.38.0
      */
-    protected int y;
+    protected double y;
 
     /**
      * Gibt die <b>y</b>-Koordinate der linken unteren Ecke in Pixel zurück.
@@ -366,7 +373,17 @@ public abstract class Box implements Iterable<Box>
     @Getter
     public int y()
     {
-        return y;
+        return round(y);
+    }
+
+    /**
+     * @since 0.53.0
+     */
+    @API
+    @Getter
+    public double yMeter()
+    {
+        return y * pixelPerMeter;
     }
 
     /**
@@ -382,30 +399,19 @@ public abstract class Box implements Iterable<Box>
      * @since 0.38.0
      */
     @Setter
-    public Box y(int y)
+    public Box y(double y)
     {
         this.y = y;
-        return this;
+        return remeasure();
     }
 
     /**
-     * Setzt die <b>y</b>-Koordinate der linken unteren Ecke in Meter.
-     *
-     * @param y Die <b>y</b>-Koordinate der linken unteren Ecke in Meter.
-     *
-     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z.B.
-     *     {@code box.x(..).y(..)}.
-     *
-     * @since 0.46.0
+     * @since 0.53.0
      */
-    @API
     @Setter
-    public Box y(double y, double pixelPerMeter)
+    public Box yMeter(double yMeter)
     {
-        this.y = round(y * pixelPerMeter);
-        return this;
+        return y(yMeter * pixelPerMeter);
     }
 
     /**
@@ -423,10 +429,21 @@ public abstract class Box implements Iterable<Box>
      * @since 0.38.0
      */
     @Setter
-    public Box anchor(int x, int y)
+    public Box anchor(double x, double y)
     {
         this.x = x;
         this.y = y;
+        return this;
+    }
+
+    /**
+     * @since 0.53.0
+     */
+    @Setter
+    public Box anchorMeter(double x, double y)
+    {
+        xMeter(x);
+        yMeter(y);
         return this;
     }
 
@@ -440,24 +457,32 @@ public abstract class Box implements Iterable<Box>
     @Setter
     public Box pixelPerMeter(double pixelPerMeter)
     {
+        if (this.pixelPerMeter == pixelPerMeter)
+        {
+            return this;
+        }
+
         if (pixelPerMeter <= 0)
         {
             throw new IllegalArgumentException(
                     "Der Wert für Pixel pro Meter darf nicht kleiner gleich 0 sein.");
         }
 
-        this.pixelPerMeter = pixelPerMeter;
-        if (definedHeightMeter > 0)
+        definedWidth = definedWidth / this.pixelPerMeter * pixelPerMeter;
+        width = width / this.pixelPerMeter * pixelPerMeter;
+        definedHeight = definedHeight / this.pixelPerMeter * pixelPerMeter;
+        height = height / this.pixelPerMeter * pixelPerMeter;
+        x = x / this.pixelPerMeter * pixelPerMeter;
+        y = y / this.pixelPerMeter * pixelPerMeter;
+
+        for (Box child : childs)
         {
-            definedHeight = round(definedHeightMeter * pixelPerMeter);
-            measured = false;
+            child.pixelPerMeter(pixelPerMeter);
         }
 
-        if (definedWidthMeter > 0)
-        {
-            definedWidth = round(definedWidthMeter * pixelPerMeter);
-            measured = false;
-        }
+        this.pixelPerMeter = pixelPerMeter;
+        measured = false;
+        measure();
         return this;
     }
 
@@ -753,11 +778,7 @@ public abstract class Box implements Iterable<Box>
 
     public Box render(Graphics2D g, double pixelPerMeter)
     {
-        if (this.pixelPerMeter != pixelPerMeter)
-        {
-            pixelPerMeter(pixelPerMeter);
-        }
-
+        pixelPerMeter(pixelPerMeter);
         if (!measured)
         {
             measure();

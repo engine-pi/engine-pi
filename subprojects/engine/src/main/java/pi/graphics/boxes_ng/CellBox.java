@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
+import static pi.util.MathUtil.round;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes/CellBoxDemo.java
 
@@ -41,7 +42,7 @@ public class CellBox extends ChildBox
     {
         if (child != null)
         {
-            return child.width;
+            return round(child.width);
         }
         return 0;
     }
@@ -51,7 +52,7 @@ public class CellBox extends ChildBox
     {
         if (child != null)
         {
-            return child.height;
+            return round(child.height);
         }
         return 0;
     }
@@ -64,7 +65,7 @@ public class CellBox extends ChildBox
      */
     @Setter
     @Override
-    public CellBox width(int width)
+    public CellBox width(double width)
     {
         definedWidth = width;
         return this;
@@ -78,7 +79,7 @@ public class CellBox extends ChildBox
      */
     @Setter
     @Override
-    public CellBox height(int height)
+    public CellBox height(double height)
     {
         definedHeight = height;
         return this;
@@ -135,8 +136,8 @@ public class CellBox extends ChildBox
     @Override
     protected void calculateAnchors()
     {
-        int freeH = width - child.width;
-        int freeV = height - child.height;
+        double freeH = width - child.width;
+        double freeV = height - child.height;
 
         switch (hAlign)
         {

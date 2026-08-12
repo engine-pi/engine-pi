@@ -52,7 +52,7 @@ public class VerticalBox<T extends Box> extends PaddingBox<T>
         // gesetzt ist.
         width = 0;
         height = 0;
-        int maxWidth = 0;
+        double maxWidth = 0;
         for (Box child : childs)
         {
             if (child.width > maxWidth)
@@ -74,7 +74,7 @@ public class VerticalBox<T extends Box> extends PaddingBox<T>
     @Override
     protected void calculateAnchors()
     {
-        int yCursor = y + padding;
+        double yCursor = y + padding;
         for (Box child : childs)
         {
             child.x = x + padding;
