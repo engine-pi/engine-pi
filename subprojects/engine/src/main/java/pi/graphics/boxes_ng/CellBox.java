@@ -136,7 +136,10 @@ public class CellBox extends ChildBox
     @Override
     protected void calculateAnchors()
     {
+        // Die Größe des horizontalen Freiraums
         double freeH = width - child.width;
+
+        // Die Größe des vertikalen Freiraums
         double freeV = height - child.height;
 
         switch (hAlign)
@@ -158,16 +161,16 @@ public class CellBox extends ChildBox
         switch (vAlign)
         {
         case TOP:
-            child.y = y;
+            child.y = y - freeV;
             break;
 
         case MIDDLE:
-            child.y = y + freeV / 2;
+            child.y = y - freeV / 2;
 
             break;
 
         case BOTTOM:
-            child.y = y + freeV;
+            child.y = y;
             break;
         }
     }

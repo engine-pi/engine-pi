@@ -33,7 +33,7 @@ public class VerticalBoxDemo extends Graphics2DComponent
         var box = new VerticalBox<>(new EllipseBox(100, 100).color("red"),
                 new EllipseBox(100, 200).color("green"),
                 new EllipseBox(200, 100).color("blue")).padding(10);
-        box.anchor(200, 100);
+        box.anchor(200, 500);
         box.render(g).debug();
     }
 

@@ -45,6 +45,12 @@ import pi.graphics.boxes.GridBox;
  * Eine <b>Box</b> beschreibt eine rechteckige grafische Fläche, die weitere
  * Kinder-Boxen enthalten kann.
  *
+ * <p>
+ * Eine <b>Box</b> hat ihren Anker im linken unteren Eck wie die Figuren der
+ * Engine Pi. Anderes als bei Figuren ist die grundlegende Einheit Pixel. Jedoch
+ * können die Positionen und Abmessungen auch als Meter gesetzt werden.
+ * </p>
+ *
  * @author Josef Friedrich
  *
  * @since 0.38.0

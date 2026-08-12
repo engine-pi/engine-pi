@@ -74,11 +74,11 @@ public class VerticalBox<T extends Box> extends PaddingBox<T>
     @Override
     protected void calculateAnchors()
     {
-        double yCursor = y + padding;
+        double yCursor = y - height + padding;
         for (Box child : childs)
         {
             child.x = x + padding;
-            child.y = yCursor;
+            child.y = yCursor + child.height;
             yCursor += child.height + padding;
         }
     }
