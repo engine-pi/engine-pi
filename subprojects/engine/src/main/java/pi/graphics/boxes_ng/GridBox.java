@@ -242,7 +242,7 @@ public class GridBox<T extends Box> extends PaddingBox<T>
     }
 
     /**
-     * Bestimmt die maximale Breite der angegebenen Spalte in Pixel..
+     * Bestimmt die maximale Breite der angegebenen Spalte in Pixel.
      *
      * @param column Der Index der Spalte.
      *
@@ -286,10 +286,11 @@ public class GridBox<T extends Box> extends PaddingBox<T>
     @Override
     protected void calculateAnchors()
     {
-        double yCursor = y + padding;
+        double yCursor = y - height;
         for (int row = 0; row < rowCount(); row++)
         {
             double xCursor = x + padding;
+            yCursor += getMaxHeightOfRow(row) + padding;
             for (int column = 0; column < columnCount(); column++)
             {
                 Box child = getChild(row, column);
@@ -300,7 +301,6 @@ public class GridBox<T extends Box> extends PaddingBox<T>
                 }
                 xCursor += getMaxWidthOfColumn(column) + padding;
             }
-            yCursor += getMaxHeightOfRow(row) + padding;
         }
     }
 

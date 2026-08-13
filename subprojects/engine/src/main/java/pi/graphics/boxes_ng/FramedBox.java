@@ -1,0 +1,68 @@
+/*
+ * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
+ *
+ * Copyright (c) 2025 Josef Friedrich and contributors.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+package pi.graphics.boxes_ng;
+
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes/FramedTextBoxDemo.java
+
+/**
+ * Legt einen <b>Rahmen</b> um eine enthaltene Kind-Box.
+ *
+ * <p>
+ * Die Konzeption der Klasse ist inspiriert von dem
+ * <a href="https://en.wikipedia.org/wiki/CSS_box_model">CSS-Box-Model</a>.
+ * </p>
+ *
+ * @author Josef Friedrich
+ *
+ * @since 0.40.0
+ */
+public class FramedBox extends CombinedChildBox
+{
+    public final InsetBox margin;
+
+    public final BorderBox border;
+
+    public final BackgroundBox background;
+
+    public final InsetBox padding;
+
+    public final CellBox container;
+
+    public final Box content;
+
+    public FramedBox(Box child)
+    {
+        content = child;
+        container = new CellBox(child);
+        padding = new InsetBox(container);
+        background = new BackgroundBox(padding);
+        border = new BorderBox(background);
+        margin = new InsetBox(border);
+        addChild(margin);
+    }
+
+    /**
+     * @hidden
+     */
+    @Override
+    public String toString()
+    {
+        return toStringFormatter().format();
+    }
+}
