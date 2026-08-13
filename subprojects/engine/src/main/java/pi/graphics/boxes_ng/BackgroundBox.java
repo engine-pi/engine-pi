@@ -108,7 +108,7 @@ public class BackgroundBox extends ChildBox
         {
             Color oldColor = g.getColor();
             g.setColor(color);
-            g.fillRect(x(), y(), width(), height());
+            g.fillRect(x(), yTop(), width(), height());
             g.setColor(oldColor);
         }
     }

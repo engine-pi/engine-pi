@@ -29,6 +29,32 @@
  * {@link java.awt.Component}-Klassen.
  * </p>
  *
+ *
+ * <ul>
+ * <li>{@link ChildsBox}: Box, die <b>mehrere</b> Kind-Boxen enthalten kann.
+ *
+ * <ul>
+ * <li>{@link VerticalBox}: Eine <b>vertikale</b> Box, die die enthaltenen
+ * Kinder-Boxen vertikal von oben nach unten anordnet.</li>
+ * </ul>
+ *
+ * </li>
+ *
+ * <li>{@link ChildBox}: Box, die nur <b>eine</b> einzige Kind-Box enthalten
+ * kann.
+ *
+ * <ul>
+ * <li>{@link BackgroundBox}: Unterlegt eine Kind-Box mit einer
+ * <b>Hintergrundfarbe</b>.</li>
+ * <li>{@link CellBox}: Eine äußere (größere) <b>Behälter</b>-Box, die eine
+ * kleinere (innere) Box enthält.</li>
+ * </ul>
+ *
+ * </li>
+ *
+ * <li>{@link LeafBox}: Box, die <b>keine</b> Kind-Box enthalten kann.</li>
+ * </ul>
+ *
  * <h2>Ähnliche Pakete</h2>
  *
  * <ul>

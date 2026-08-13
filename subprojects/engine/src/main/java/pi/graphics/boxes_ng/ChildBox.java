@@ -27,7 +27,7 @@ import java.awt.Graphics2D;
  *
  * @since 0.38.0
  */
-abstract class ChildBox extends Box
+public abstract class ChildBox extends Box
 {
     /**
      * Die <b>Kind-Box</b>, dieser übergeordneten Box.
