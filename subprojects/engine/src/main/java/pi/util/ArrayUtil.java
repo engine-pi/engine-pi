@@ -39,28 +39,33 @@ import java.util.logging.Logger;
  * Eine Sammlung von statischen Hilfsmethoden für <b>Feld/Array</b>-Operationen.
  *
  * <p>
- * This class provides various static methods for manipulating arrays, such as
- * concatenation, splitting, joining, and more.
+ * Diese Klasse stellt verschiedene Hilfsfunktionen zum Bearbeiten von Arrays
+ * zur Verfügung, unter anderem für Verkettung, Aufteilung, Verbindung und
+ * weitere Operationen.
  * </p>
  *
  * <p>
- * Note: This class cannot be instantiated.
+ * Hinweis: Diese Klasse kann nicht instanziiert werden.
  * </p>
  */
 public final class ArrayUtil
 {
+    /**
+     * Standardtrennzeichen für Zeichenketten, die in Arrays zerlegt oder aus
+     * Arrays zusammengesetzt werden.
+     */
     public static final String DEFAULT_STRING_DELIMITER = ",";
 
     private static final Logger log = Logger
         .getLogger(ArrayUtil.class.getName());
 
     /**
-     * Dieser private Konstruktor dient dazu, den öffentlichen Konstruktor zu
-     * verbergen. Dadurch ist es nicht möglich, Instanzen dieser Klasse zu
+     * Dieser private Konstruktor dient dazu, die Instanziierung der Klasse zu
+     * verhindern. Dadurch ist es nicht möglich, Instanzen dieser Klasse zu
      * erstellen.
      *
-     * @throws UnsupportedOperationException Falls eine Instanz der Klasse
-     *     erzeugt wird.
+     * @throws UnsupportedOperationException Falls versucht wird, eine Instanz
+     *     der Klasse zu erzeugen.
      */
     private ArrayUtil()
     {
@@ -68,12 +73,12 @@ public final class ArrayUtil
     }
 
     /**
-     * Concatenates the two specified byte arrays to a new array.
+     * Verkettet zwei Byte-Arrays zu einem neuen Array.
      *
-     * @param first The first array.
-     * @param second The second array.
+     * @param first Das erste Array.
+     * @param second Das zweite Array.
      *
-     * @return A new array with both specified arrays in sequence.
+     * @return Ein neues Array, das beide Argumente hintereinander enthält.
      */
     public static byte[] concat(byte[] first, byte[] second)
     {
@@ -83,12 +88,12 @@ public final class ArrayUtil
     }
 
     /**
-     * Concatenates the two specified int arrays to a new array.
+     * Verkettet zwei Integer-Arrays zu einem neuen Array.
      *
-     * @param first The first array.
-     * @param second The second array.
+     * @param first Das erste Array.
+     * @param second Das zweite Array.
      *
-     * @return A new array with both specified arrays in sequence.
+     * @return Ein neues Array, das beide Argumente hintereinander enthält.
      */
     public static int[] concat(int[] first, int[] second)
     {
@@ -98,12 +103,12 @@ public final class ArrayUtil
     }
 
     /**
-     * Concatenates the two specified long arrays to a new array.
+     * Verkettet zwei Long-Arrays zu einem neuen Array.
      *
-     * @param first The first array.
-     * @param second The second array.
+     * @param first Das erste Array.
+     * @param second Das zweite Array.
      *
-     * @return A new array with both specified arrays in sequence.
+     * @return Ein neues Array, das beide Argumente hintereinander enthält.
      */
     public static long[] concat(long[] first, long[] second)
     {
@@ -113,12 +118,12 @@ public final class ArrayUtil
     }
 
     /**
-     * Concatenates the two specified double arrays to a new array.
+     * Verkettet zwei Double-Arrays zu einem neuen Array.
      *
-     * @param first The first array.
-     * @param second The second array.
+     * @param first Das erste Array.
+     * @param second Das zweite Array.
      *
-     * @return A new array with both specified arrays in sequence.
+     * @return Ein neues Array, das beide Argumente hintereinander enthält.
      */
     public static double[] concat(double[] first, double[] second)
     {
@@ -128,13 +133,13 @@ public final class ArrayUtil
     }
 
     /**
-     * Concatenates the two specified double arrays to a new array.
+     * Verkettet zwei generische Arrays zu einem neuen Array.
      *
-     * @param <T> The type of the array elements.
-     * @param first The first array.
-     * @param second The second array.
+     * @param <T> Der Typ der Array-Elemente.
+     * @param first Das erste Array.
+     * @param second Das zweite Array.
      *
-     * @return A new array with both specified arrays in sequence.
+     * @return Ein neues Array, das beide Argumente hintereinander enthält.
      */
     public static <T> T[] concat(T[] first, T[] second)
     {
@@ -144,12 +149,13 @@ public final class ArrayUtil
     }
 
     /**
-     * Splits the specified string by the {@link #DEFAULT_STRING_DELIMITER} into
-     * an int array.
+     * Teilt die angegebene Zeichenkette mit dem
+     * {@link #DEFAULT_STRING_DELIMITER} in ein Integer-Array.
      *
-     * @param delimiterSeparatedString The string to split.
+     * @param delimiterSeparatedString Die zu trennende Zeichenkette.
      *
-     * @return An int array with all separated elements of the specified string.
+     * @return Ein Integer-Array mit allen getrennten Elementen der angegebenen
+     *     Zeichenkette.
      */
     public static int[] splitInt(String delimiterSeparatedString)
     {
@@ -157,12 +163,14 @@ public final class ArrayUtil
     }
 
     /**
-     * Splits the specified string by the defined delimiter into an int array.
+     * Teilt die angegebene Zeichenkette mit dem definierten Trennzeichen in ein
+     * Integer-Array.
      *
-     * @param delimiterSeparatedString The string to split.
-     * @param delimiter The delimiter by which to split the elements.
+     * @param delimiterSeparatedString Die zu trennende Zeichenkette.
+     * @param delimiter Das Trennzeichen, mit dem die Elemente getrennt werden.
      *
-     * @return An int array with all separated elements of the specified string.
+     * @return Ein Integer-Array mit allen getrennten Elementen der angegebenen
+     *     Zeichenkette.
      */
     public static int[] splitInt(String delimiterSeparatedString,
             String delimiter)
@@ -201,13 +209,13 @@ public final class ArrayUtil
     }
 
     /**
-     * Splits the specified string by the {@link #DEFAULT_STRING_DELIMITER} into
-     * a double array.
+     * Teilt die angegebene Zeichenkette mit dem
+     * {@link #DEFAULT_STRING_DELIMITER} in ein Double-Array.
      *
-     * @param delimiterSeparatedString The string to split.
+     * @param delimiterSeparatedString Die zu trennende Zeichenkette.
      *
-     * @return A double array with all separated elements of the specified
-     *     string.
+     * @return Ein Double-Array mit allen getrennten Elementen der angegebenen
+     *     Zeichenkette.
      */
     public static double[] splitDouble(String delimiterSeparatedString)
     {
@@ -215,13 +223,14 @@ public final class ArrayUtil
     }
 
     /**
-     * Splits the specified string by the defined delimiter into a double array.
+     * Teilt die angegebene Zeichenkette mit dem definierten Trennzeichen in ein
+     * Double-Array.
      *
-     * @param delimiterSeparatedString The string to split.
-     * @param delimiter The delimiter by which to split the elements.
+     * @param delimiterSeparatedString Die zu trennende Zeichenkette.
+     * @param delimiter Das Trennzeichen, mit dem die Elemente getrennt werden.
      *
-     * @return A double array with all separated elements of the specified
-     *     string.
+     * @return Ein Double-Array mit allen getrennten Elementen der angegebenen
+     *     Zeichenkette.
      */
     public static double[] splitDouble(String delimiterSeparatedString,
             String delimiter)
@@ -260,11 +269,13 @@ public final class ArrayUtil
     }
 
     /**
-     * Joins the specified array with the {@link #DEFAULT_STRING_DELIMITER}.
+     * Verbindet die Elemente eines Arrays mit dem
+     * {@link #DEFAULT_STRING_DELIMITER} zu einer Zeichenkette.
      *
-     * @param arr The array that provides the elements to be joined.
+     * @param arr Das Array, dessen Elemente verbunden werden sollen.
      *
-     * @return A string with all joined elements, separated by the delimiter.
+     * @return Eine Zeichenkette mit allen Elementen, getrennt durch das
+     *     Standardtrennzeichen.
      */
     public static String join(boolean[] arr)
     {
@@ -272,12 +283,14 @@ public final class ArrayUtil
     }
 
     /**
-     * Joins the specified array with the defined delimiter.
+     * Verbindet die Elemente eines Boolean-Arrays mit einem eigenen
+     * Trennzeichen.
      *
-     * @param arr The array that provides the elements to be joined.
-     * @param delimiter The delimiter used to separate the elements with.
+     * @param arr Das Array, dessen Elemente verbunden werden sollen.
+     * @param delimiter Das Trennzeichen zwischen den Elementen.
      *
-     * @return A string with all joined elements, separated by the delimiter.
+     * @return Eine Zeichenkette mit allen Elementen, getrennt durch das
+     *     angegebene Trennzeichen.
      */
     public static String join(boolean[] arr, String delimiter)
     {
@@ -285,11 +298,13 @@ public final class ArrayUtil
     }
 
     /**
-     * Joins the specified array with the {@link #DEFAULT_STRING_DELIMITER}.
+     * Verbindet die Elemente eines Integer-Arrays mit dem
+     * {@link #DEFAULT_STRING_DELIMITER} zu einer Zeichenkette.
      *
-     * @param arr The array that provides the elements to be joined.
+     * @param arr Das Array, dessen Elemente verbunden werden sollen.
      *
-     * @return A string with all joined elements, separated by the delimiter.
+     * @return Eine Zeichenkette mit allen Elementen, getrennt durch das
+     *     Standardtrennzeichen.
      */
     public static String join(int[] arr)
     {
@@ -297,12 +312,14 @@ public final class ArrayUtil
     }
 
     /**
-     * Joins the specified array with the defined delimiter.
+     * Verbindet die Elemente eines Integer-Arrays mit einem eigenen
+     * Trennzeichen.
      *
-     * @param arr The array that provides the elements to be joined.
-     * @param delimiter The delimiter used to separate the elements with.
+     * @param arr Das Array, dessen Elemente verbunden werden sollen.
+     * @param delimiter Das Trennzeichen zwischen den Elementen.
      *
-     * @return A string with all joined elements, separated by the delimiter.
+     * @return Eine Zeichenkette mit allen Elementen, getrennt durch das
+     *     angegebene Trennzeichen.
      */
     public static String join(int[] arr, String delimiter)
     {
@@ -310,11 +327,13 @@ public final class ArrayUtil
     }
 
     /**
-     * Joins the specified array with the {@link #DEFAULT_STRING_DELIMITER}.
+     * Verbindet die Elemente eines Double-Arrays mit dem
+     * {@link #DEFAULT_STRING_DELIMITER} zu einer Zeichenkette.
      *
-     * @param arr The array that provides the elements to be joined.
+     * @param arr Das Array, dessen Elemente verbunden werden sollen.
      *
-     * @return A string with all joined elements, separated by the delimiter.
+     * @return Eine Zeichenkette mit allen Elementen, getrennt durch das
+     *     Standardtrennzeichen.
      */
     public static String join(double[] arr)
     {
@@ -322,12 +341,14 @@ public final class ArrayUtil
     }
 
     /**
-     * Joins the specified array with the defined delimiter.
+     * Verbindet die Elemente eines Double-Arrays mit einem eigenen
+     * Trennzeichen.
      *
-     * @param arr The array that provides the elements to be joined.
-     * @param delimiter The delimiter used to separate the elements with.
+     * @param arr Das Array, dessen Elemente verbunden werden sollen.
+     * @param delimiter Das Trennzeichen zwischen den Elementen.
      *
-     * @return A string with all joined elements, separated by the delimiter.
+     * @return Eine Zeichenkette mit allen Elementen, getrennt durch das
+     *     angegebene Trennzeichen.
      */
     public static String join(double[] arr, String delimiter)
     {
@@ -335,11 +356,13 @@ public final class ArrayUtil
     }
 
     /**
-     * Joins the specified array with the {@link #DEFAULT_STRING_DELIMITER}.
+     * Verbindet die Elemente eines Float-Arrays mit dem
+     * {@link #DEFAULT_STRING_DELIMITER} zu einer Zeichenkette.
      *
-     * @param arr The array that provides the elements to be joined.
+     * @param arr Das Array, dessen Elemente verbunden werden sollen.
      *
-     * @return A string with all joined elements, separated by the delimiter.
+     * @return Eine Zeichenkette mit allen Elementen, getrennt durch das
+     *     Standardtrennzeichen.
      */
     public static String join(float[] arr)
     {
@@ -347,12 +370,13 @@ public final class ArrayUtil
     }
 
     /**
-     * Joins the specified array with the defined delimiter.
+     * Verbindet die Elemente eines Float-Arrays mit einem eigenen Trennzeichen.
      *
-     * @param arr The array that provides the elements to be joined.
-     * @param delimiter The delimiter used to separate the elements with.
+     * @param arr Das Array, dessen Elemente verbunden werden sollen.
+     * @param delimiter Das Trennzeichen zwischen den Elementen.
      *
-     * @return A string with all joined elements, separated by the delimiter.
+     * @return Eine Zeichenkette mit allen Elementen, getrennt durch das
+     *     angegebene Trennzeichen.
      */
     public static String join(float[] arr, String delimiter)
     {
@@ -360,28 +384,41 @@ public final class ArrayUtil
     }
 
     /**
-     * Joins the specified array with the {@link #DEFAULT_STRING_DELIMITER}.
+     * Verbindet die Elemente eines Short-Arrays mit dem
+     * {@link #DEFAULT_STRING_DELIMITER} zu einer Zeichenkette.
      *
-     * @param arr The array that provides the elements to be joined.
+     * @param arr Das Array, dessen Elemente verbunden werden sollen.
      *
-     * @return A string with all joined elements, separated by the delimiter.
+     * @return Eine Zeichenkette mit allen Elementen, getrennt durch das
+     *     Standardtrennzeichen.
      */
     public static String join(short[] arr)
     {
         return joinArray(arr, DEFAULT_STRING_DELIMITER);
     }
 
+    /**
+     * Verbindet die Elemente eines Short-Arrays mit einem eigenen Trennzeichen.
+     *
+     * @param arr Das Array, dessen Elemente verbunden werden sollen.
+     * @param delimiter Das Trennzeichen zwischen den Elementen.
+     *
+     * @return Eine Zeichenkette mit allen Elementen, getrennt durch das
+     *     angegebene Trennzeichen.
+     */
     public static String join(short[] arr, String delimiter)
     {
         return joinArray(arr, delimiter);
     }
 
     /**
-     * Joins the specified array with the {@link #DEFAULT_STRING_DELIMITER}.
+     * Verbindet die Elemente eines Long-Arrays mit dem
+     * {@link #DEFAULT_STRING_DELIMITER} zu einer Zeichenkette.
      *
-     * @param arr The array that provides the elements to be joined.
+     * @param arr Das Array, dessen Elemente verbunden werden sollen.
      *
-     * @return A string with all joined elements, separated by the delimiter.
+     * @return Eine Zeichenkette mit allen Elementen, getrennt durch das
+     *     Standardtrennzeichen.
      */
     public static String join(long[] arr)
     {
@@ -389,12 +426,13 @@ public final class ArrayUtil
     }
 
     /**
-     * Joins the specified array with the defined delimiter.
+     * Verbindet die Elemente eines Long-Arrays mit einem eigenen Trennzeichen.
      *
-     * @param arr The array that provides the elements to be joined.
-     * @param delimiter The delimiter used to separate the elements with.
+     * @param arr Das Array, dessen Elemente verbunden werden sollen.
+     * @param delimiter Das Trennzeichen zwischen den Elementen.
      *
-     * @return A string with all joined elements, separated by the delimiter.
+     * @return Eine Zeichenkette mit allen Elementen, getrennt durch das
+     *     angegebene Trennzeichen.
      */
     public static String join(long[] arr, String delimiter)
     {
@@ -402,11 +440,13 @@ public final class ArrayUtil
     }
 
     /**
-     * Joins the specified array with the {@link #DEFAULT_STRING_DELIMITER}.
+     * Verbindet die Elemente eines Byte-Arrays mit dem
+     * {@link #DEFAULT_STRING_DELIMITER} zu einer Zeichenkette.
      *
-     * @param arr The array that provides the elements to be joined.
+     * @param arr Das Array, dessen Elemente verbunden werden sollen.
      *
-     * @return A string with all joined elements, separated by the delimiter.
+     * @return Eine Zeichenkette mit allen Elementen, getrennt durch das
+     *     Standardtrennzeichen.
      */
     public static String join(byte[] arr)
     {
@@ -414,12 +454,13 @@ public final class ArrayUtil
     }
 
     /**
-     * Joins the specified array with the defined delimiter.
+     * Verbindet die Elemente eines Byte-Arrays mit einem eigenen Trennzeichen.
      *
-     * @param arr The array that provides the elements to be joined.
-     * @param delimiter The delimiter used to separate the elements with.
+     * @param arr Das Array, dessen Elemente verbunden werden sollen.
+     * @param delimiter Das Trennzeichen zwischen den Elementen.
      *
-     * @return A string with all joined elements, separated by the delimiter.
+     * @return Eine Zeichenkette mit allen Elementen, getrennt durch das
+     *     angegebene Trennzeichen.
      */
     public static String join(byte[] arr, String delimiter)
     {
@@ -427,11 +468,13 @@ public final class ArrayUtil
     }
 
     /**
-     * Joins the specified list with the {@link #DEFAULT_STRING_DELIMITER}.
+     * Verbindet die Elemente einer Collection mit dem
+     * {@link #DEFAULT_STRING_DELIMITER} zu einer Zeichenkette.
      *
-     * @param collection The list that provides the elements to be joined.
+     * @param collection Die Collection, deren Elemente verbunden werden sollen.
      *
-     * @return A string with all joined elements, separated by the delimiter.
+     * @return Eine Zeichenkette mit allen Elementen, getrennt durch das
+     *     Standardtrennzeichen.
      */
     public static String join(Collection<?> collection)
     {
@@ -439,12 +482,13 @@ public final class ArrayUtil
     }
 
     /**
-     * Joins the specified collection with the defined delimiter.
+     * Verbindet die Elemente einer Collection mit einem eigenen Trennzeichen.
      *
-     * @param collection The list that provides the elements to be joined.
-     * @param delimiter The delimiter used to separate the elements with.
+     * @param collection Die Collection, deren Elemente verbunden werden sollen.
+     * @param delimiter Das Trennzeichen zwischen den Elementen.
      *
-     * @return A string with all joined elements, separated by the delimiter.
+     * @return Eine Zeichenkette mit allen Elementen, getrennt durch das
+     *     angegebene Trennzeichen.
      */
     public static String join(Collection<?> collection, String delimiter)
     {
@@ -452,11 +496,13 @@ public final class ArrayUtil
     }
 
     /**
-     * Joins the specified array with the {@link #DEFAULT_STRING_DELIMITER}.
+     * Verbindet die Elemente eines Object-Arrays mit dem
+     * {@link #DEFAULT_STRING_DELIMITER} zu einer Zeichenkette.
      *
-     * @param arr The array that provides the elements to be joined.
+     * @param arr Das Array, dessen Elemente verbunden werden sollen.
      *
-     * @return A string with all joined elements, separated by the delimiter.
+     * @return Eine Zeichenkette mit allen Elementen, getrennt durch das
+     *     Standardtrennzeichen.
      */
     public static String join(Object[] arr)
     {
@@ -464,18 +510,29 @@ public final class ArrayUtil
     }
 
     /**
-     * Joins the specified array with the defined delimiter.
+     * Verbindet die Elemente eines Object-Arrays mit einem eigenen
+     * Trennzeichen.
      *
-     * @param arr The array that provides the elements to be joined.
-     * @param delimiter The delimiter used to separate the elements with.
+     * @param arr Das Array, dessen Elemente verbunden werden sollen.
+     * @param delimiter Das Trennzeichen zwischen den Elementen.
      *
-     * @return A string with all joined elements, separated by the delimiter.
+     * @return Eine Zeichenkette mit allen Elementen, getrennt durch das
+     *     angegebene Trennzeichen.
      */
     public static String join(Object[] arr, String delimiter)
     {
         return joinArray(arr, delimiter);
     }
 
+    /**
+     * Konvertiert ein zweidimensionales Array in eine flache Liste.
+     *
+     * @param <T> Der Typ der Array-Elemente.
+     * @param arr Das zweidimensionale Array, das in eine Liste konvertiert
+     *     werden soll.
+     *
+     * @return Eine Liste mit allen Elementen des Arrays in Reihenfolge.
+     */
     public static <T> List<T> toList(T[][] arr)
     {
         List<T> list = new ArrayList<>();
@@ -488,12 +545,13 @@ public final class ArrayUtil
     }
 
     /**
-     * Return true if the array contains the specified value.
+     * Prüft, ob das Array den angegebenen Wert enthält.
      *
-     * @param arr The array that is tested for the existence of the element.
-     * @param value The element to check for in the array.
+     * @param arr Das Array, das auf das Element geprüft werden soll.
+     * @param value Der zu suchende Wert.
      *
-     * @return True if the specified element is in the array; otherwise false.
+     * @return {@code true}, wenn das Element im Array enthalten ist, sonst
+     *     {@code false}.
      */
     public static boolean contains(Object[] arr, Object value)
     {
@@ -514,14 +572,15 @@ public final class ArrayUtil
     }
 
     /**
-     * Return true if the array contains the specified string argument.
+     * Prüft, ob das Array den angegebenen String-Wert enthält.
      *
-     * @param arr The array that is tested for the existence of the argument.
-     * @param argument The argument to check for in the array.
-     * @param ignoreCase A flag indicating whether the case should be ignored
-     *     when checking for equality.
+     * @param arr Das Array, das auf den String geprüft werden soll.
+     * @param argument Der zu suchende String-Wert.
+     * @param ignoreCase {@code true}, wenn die Groß-/Kleinschreibung beim
+     *     Vergleich ignoriert werden soll.
      *
-     * @return True if the specified argument is in the array; otherwise false.
+     * @return {@code true}, wenn der String im Array enthalten ist, sonst
+     *     {@code false}.
      */
     public static boolean contains(String[] arr, String argument,
             boolean ignoreCase)
@@ -545,15 +604,15 @@ public final class ArrayUtil
     }
 
     /**
-     * Removes the specified deleteItem from the input array and returns a
-     * trimmed new array instance without null entries. The resulting array will
-     * have a length -1;
+     * Entfernt das angegebene Element aus dem Eingabe-Array und gibt ein neues,
+     * bereinigtes Array ohne {@code null}-Einträge zurück.
      *
-     * @param <T> The element type of the array.
-     * @param input The original array
-     * @param deleteItem The item to delete
+     * @param <T> Der Typ der Array-Elemente.
+     * @param input Das ursprüngliche Array.
+     * @param deleteItem Das zu entfernende Element.
      *
-     * @return A new array with the length input.length - 1.
+     * @return Ein neues Array ohne das angegebene Element und ohne
+     *     {@code null}-Einträge.
      */
     @SuppressWarnings("unchecked")
     public static <T> T[] remove(T[] input, T deleteItem)
@@ -574,14 +633,14 @@ public final class ArrayUtil
     }
 
     /**
-     * Adds the specified item to the input array and returns a new array
-     * instance with the length of the input array +1.
+     * Fügt das angegebene Element am Ende des Eingabe-Arrays hinzu und liefert
+     * ein neues Array mit der Länge {@code input.length + 1} zurück.
      *
-     * @param <T> The element type of the array.
-     * @param input The original array.
-     * @param addItem The item to add.
+     * @param <T> Der Typ der Array-Elemente.
+     * @param input Das ursprüngliche Array.
+     * @param addItem Das am Ende hinzuzufügende Element.
      *
-     * @return A new array with the item to add appended at the end.
+     * @return Ein neues Array mit dem am Ende angehängten Element.
      */
     @SuppressWarnings("unchecked")
     public static <T> T[] append(T[] input, T addItem)
@@ -594,13 +653,13 @@ public final class ArrayUtil
     }
 
     /**
-     * Combines the two specified arrays by only keeping distinct values.
+     * Kombiniert zwei Arrays und behält dabei nur eindeutige Werte.
      *
-     * @param <T> The element type of the array.
-     * @param first The first array.
-     * @param second The second array.
+     * @param <T> Der Typ der Array-Elemente.
+     * @param first Das erste Array.
+     * @param second Das zweite Array.
      *
-     * @return A new array with every distinct value of the specified arrays.
+     * @return Ein neues Array mit allen eindeutigen Werten beider Arrays.
      */
     @SuppressWarnings("unchecked")
     public static <T> T[] distinct(T[] first, T[] second)
@@ -616,12 +675,12 @@ public final class ArrayUtil
     }
 
     /**
-     * Creates a copy of the specified array.
+     * Erstellt eine Kopie des angegebenen Arrays.
      *
-     * @param <T> the type of the array elements
-     * @param original the array to copy
+     * @param <T> Der Typ der Array-Elemente.
+     * @param original Das Array, das kopiert werden soll.
      *
-     * @return a new array that is a copy of the original array
+     * @return Eine neue Kopie des ursprünglichen Arrays.
      */
     public static <T> T[] arrayCopy(T[] original)
     {
@@ -629,11 +688,12 @@ public final class ArrayUtil
     }
 
     /**
-     * Converts a list of Integer objects to an array of primitive int values.
+     * Konvertiert eine Liste von Integer-Objekten in ein Array primitiver
+     * Integer-Werte.
      *
-     * @param intList the list of Integer objects to convert
+     * @param intList Die Liste von Integer-Objekten.
      *
-     * @return an array of primitive int values
+     * @return Ein Array mit primitiven Integer-Werten.
      */
     public static int[] toIntegerArray(List<Integer> intList)
     {
@@ -644,13 +704,14 @@ public final class ArrayUtil
     }
 
     /**
-     * General method for joining an array. Encapsulated for type safety.
+     * Allgemeine Methode zum Verbinden eines Arrays. Sie ist aus Gründen der
+     * Typsicherheit in eine eigene Methode ausgelagert.
      *
-     * @param arr The array to join.
-     * @param separator The separator to use between elements.
+     * @param arr Das Array, dessen Elemente verbunden werden sollen.
+     * @param separator Das Trennzeichen zwischen den Elementen.
      *
-     * @return A string with all joined elements, separated by the specified
-     *     separator.
+     * @return Eine Zeichenkette mit allen verbundenen Elementen, getrennt durch
+     *     das angegebene Trennzeichen.
      */
     private static String joinArray(Object arr, String separator)
     {

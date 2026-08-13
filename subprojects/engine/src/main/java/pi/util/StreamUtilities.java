@@ -60,6 +60,15 @@ public final class StreamUtilities
         throw new UnsupportedOperationException();
     }
 
+    /**
+     * Kopiert den Inhalt einer Datei in einen Ausgabestream.
+     *
+     * @param file Die zu lesende Datei.
+     * @param out Der Zielstream, in den die Daten geschrieben werden.
+     *
+     * @throws IOException Wenn beim Lesen oder Schreiben ein I/O-Fehler
+     *     auftritt.
+     */
     public static void copy(final File file, final OutputStream out)
             throws IOException
     {
@@ -69,6 +78,15 @@ public final class StreamUtilities
         }
     }
 
+    /**
+     * Kopiert den Inhalt eines InputStreams in eine Datei.
+     *
+     * @param in Der zu lesende InputStream.
+     * @param file Die Zieldatei, in die die Daten geschrieben werden.
+     *
+     * @throws IOException Wenn beim Lesen oder Schreiben ein I/O-Fehler
+     *     auftritt.
+     */
     public static void copy(final InputStream in, final File file)
             throws IOException
     {
@@ -78,6 +96,19 @@ public final class StreamUtilities
         }
     }
 
+    /**
+     * Kopiert den Inhalt eines InputStreams in einen OutputStream.
+     *
+     * Falls der Stream das Markieren unterstützt, wird der Lesepunkt vor dem
+     * Kopieren gespeichert und nach dem Kopieren wiederhergestellt, damit der
+     * ursprüngliche Zustand erhalten bleibt.
+     *
+     * @param in Der zu lesende InputStream.
+     * @param out Der Zielstream, in den die Daten geschrieben werden.
+     *
+     * @throws IOException Wenn beim Lesen oder Schreiben ein I/O-Fehler
+     *     auftritt.
+     */
     public static void copy(final InputStream in, final OutputStream out)
             throws IOException
     {
@@ -101,6 +132,15 @@ public final class StreamUtilities
         }
     }
 
+    /**
+     * Liest den kompletten Inhalt eines InputStreams und gibt ihn als
+     * Byte-Array zurück.
+     *
+     * @param in Der zu lesende InputStream.
+     *
+     * @return Ein Byte-Array mit dem vollständigen Inhalt des Streams oder ein
+     *     leeres Array, falls beim Lesen ein Fehler auftritt.
+     */
     public static byte[] getBytes(final InputStream in)
     {
         final ByteArrayOutputStream buffer = new ByteArrayOutputStream();
