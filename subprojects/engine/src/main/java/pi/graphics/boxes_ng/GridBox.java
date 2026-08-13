@@ -25,20 +25,52 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
+import pi.annotations.ChainableMethod;
+import pi.annotations.Getter;
+import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 
+/**
+ * Eine <b>Gitter</b>-Box, die mehrere untergeordnete Kinder-Boxen in Zeilen und
+ * Spalten anordnet.
+ *
+ * <p>
+ * Jede Zelle des Gitters wird in eine {@link CellBox} eingebettet, damit die
+ * Positionierung und Ausrichtung der einzelnen Kinder separat angepasst werden
+ * kann.
+ * </p>
+ *
+ * @author Josef Friedrich
+ */
 public class GridBox<T extends Box> extends PaddingBox<T>
 {
     int columns = 2;
 
     List<List<CellBox>> grid;
 
+    /**
+     * Erstellt eine neue Gitter-Box und baut das Gitter aus den angegebenen
+     * Kinder-Boxen auf.
+     *
+     * @param childs Die Kinder-Boxen, die im Gitter angeordnet werden sollen.
+     */
     public GridBox(Box... childs)
     {
         super(childs);
         buildGrid();
     }
 
+    /**
+     * Setzt die <b>Anzahl</b> der <b>Spalten</b> im Gitter.
+     *
+     * @param columns Die <b>Anzahl</b> der <b>Spalten</b> , die im Gitter
+     *     verwendet werden sollen.
+     *
+     * @return Eine Referenz auf diese Gitter-Box, damit Setter-Ketten möglich
+     *     sind.
+     */
+    @Setter
+    @ChainableMethod
     public GridBox<T> columns(int columns)
     {
         this.columns = columns;
@@ -47,25 +79,31 @@ public class GridBox<T extends Box> extends PaddingBox<T>
     }
 
     /**
-     * Gibt die <b>Spaltenanzahl</b> zurück.
+     * Gibt die <b>Spaltenanzahl</b> des Gitters zurück.
      *
      * @return Die <b>Spaltenanzahl</b>.
      */
+    @Getter
     public int columnCount()
     {
         return columns;
     }
 
     /**
-     * Gibt die <b>Reihenanzahl</b> zurück.
+     * Gibt die <b>Reihenanzahl</b> des Gitters zurück.
      *
      * @return Die <b>Reihenanzahl</b>.
      */
+    @Getter
     public int rowCount()
     {
         return (int) Math.ceil((double) numberOfChilds() / columns);
     }
 
+    /**
+     * Baut das interne Gitter anhand der aktuellen Kinder-Boxen und der
+     * konfigurierten Spaltenanzahl auf.
+     */
     protected void buildGrid()
     {
         grid = new ArrayList<>(rowCount());
@@ -90,11 +128,27 @@ public class GridBox<T extends Box> extends PaddingBox<T>
         return null;
     }
 
+    /**
+     * Liefert die {@link CellBox}-Zeile mit dem angegebenen Index zurück.
+     *
+     * @param row Der Index der gewünschten Zeile.
+     *
+     * @return Die Zellen der angegebenen Zeile.
+     */
     public List<CellBox> getRow(int row)
     {
         return grid.get(row);
     }
 
+    /**
+     * Wendet für jede Zelle einer Zeile einen Consumer an.
+     *
+     * @param row Der Index der Zeile.
+     * @param consumer Die Funktion, die für jede gefundene Zelle aufgerufen
+     *     wird.
+     *
+     * @return Eine Referenz auf diese Gitter-Box.
+     */
     public GridBox<T> forEachRowBox(int row,
             Consumer<PopulatedCell<T>> consumer)
     {
@@ -108,6 +162,13 @@ public class GridBox<T extends Box> extends PaddingBox<T>
         return this;
     }
 
+    /**
+     * Bestimmt die maximale Höhe der angegebenen Zeile.
+     *
+     * @param row Der Index der Zeile.
+     *
+     * @return Die größte Höhe aller Zellen in der Zeile.
+     */
     public double getMaxHeightOfRow(int row)
     {
         double maxHeight = 0;
@@ -121,6 +182,13 @@ public class GridBox<T extends Box> extends PaddingBox<T>
         return maxHeight;
     }
 
+    /**
+     * Liefert die {@link CellBox}-Spalte mit dem angegebenen Index zurück.
+     *
+     * @param column Der Index der gewünschten Spalte.
+     *
+     * @return Die Zellen der angegebenen Spalte.
+     */
     public List<CellBox> getColumn(int column)
     {
         List<CellBox> childs = new ArrayList<>(rowCount());
@@ -131,6 +199,15 @@ public class GridBox<T extends Box> extends PaddingBox<T>
         return childs;
     }
 
+    /**
+     * Wendet für jede Zelle einer Spalte einen Consumer an.
+     *
+     * @param column Der Index der Spalte.
+     * @param consumer Die Funktion, die für jede gefundene Zelle aufgerufen
+     *     wird.
+     *
+     * @return Eine Referenz auf diese Gitter-Box.
+     */
     public GridBox<T> forEachColumnBox(int column,
             Consumer<PopulatedCell<T>> consumer)
     {
@@ -144,6 +221,15 @@ public class GridBox<T extends Box> extends PaddingBox<T>
         return this;
     }
 
+    /**
+     * Wendet einen Consumer auf eine bestimmte Zelle im Gitter an.
+     *
+     * @param row Die Zeile der Zelle.
+     * @param column Die Spalte der Zelle.
+     * @param consumer Die Funktion, die für die Zelle aufgerufen wird.
+     *
+     * @return Eine Referenz auf diese Gitter-Box.
+     */
     public GridBox<T> forBox(int row, int column,
             Consumer<PopulatedCell<T>> consumer)
     {
@@ -155,6 +241,13 @@ public class GridBox<T extends Box> extends PaddingBox<T>
         return this;
     }
 
+    /**
+     * Bestimmt die maximale Breite der angegebenen Spalte in Pixel..
+     *
+     * @param column Der Index der Spalte.
+     *
+     * @return Die größte Breite in Pixel aller Zellen in der Spalte.
+     */
     public double getMaxWidthOfColumn(int column)
     {
         double maxWidth = 0;
