@@ -250,10 +250,18 @@ class BoxTest
             box.x(10).y(7).width(30).height(20);
             box.measure();
 
+            assertEquals(10, box.x());
+            assertEquals(7, box.y());
+            assertEquals(-13, box.yTop());
+            assertEquals(30, box.width());
+            assertEquals(20, box.height());
+
             assertSame(box, box.pixelPerMeter(2.0));
+
             assertEquals(2.0, box.pixelPerMeter(), 0.0);
             assertEquals(20, box.x());
             assertEquals(14, box.y());
+            assertEquals(-26, box.yTop());
             assertEquals(60, box.width());
             assertEquals(40, box.height());
         }

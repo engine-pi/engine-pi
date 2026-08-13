@@ -383,6 +383,21 @@ public abstract class Box implements Iterable<Box>
     }
 
     /**
+     * Gibt die <b>y</b>-Koordinate der linken <b>oberen</b> Ecke in Pixel
+     * zurück.
+     *
+     * @return Die <b>y</b>-Koordinate der linken <b>oberen</b> Ecke in Pixel.
+     *
+     * @since 0.53.0
+     */
+    @API
+    @Getter
+    public int yTop()
+    {
+        return y() - height();
+    }
+
+    /**
      * @since 0.53.0
      */
     @API
