@@ -1,0 +1,103 @@
+/*
+ * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
+ *
+ * Copyright (c) 2025 Josef Friedrich and contributors.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+package demos.classes.graphics.boxes_ng;
+
+import static pi.graphics.boxes_ng.HAlign.CENTER;
+import static pi.graphics.boxes_ng.HAlign.LEFT;
+import static pi.graphics.boxes_ng.HAlign.RIGHT;
+
+import java.awt.Graphics2D;
+import java.util.function.Consumer;
+
+import demos.graphics2d.Graphics2DComponent;
+import pi.graphics.boxes_ng.BorderBox;
+import pi.graphics.boxes_ng.Box;
+import pi.graphics.boxes_ng.GridBox;
+import pi.graphics.boxes_ng.TextBlockBox;
+
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/boxes/TextBlockBox.java
+
+public class TextBlockBoxDemo extends Graphics2DComponent
+{
+    String lorem = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore.";
+
+    private Box text(String content, Consumer<TextBlockBox> consumer)
+    {
+        var text = new TextBlockBox(content);
+        var b = new BorderBox(text).thickness(1);
+        if (consumer != null)
+        {
+            consumer.accept(text);
+        }
+        return b;
+    }
+
+    private Box text(String content)
+    {
+        return text(content, null);
+    }
+
+    public void render(Graphics2D g)
+    {
+        new GridBox<>(// width(300)
+                text("Breite: 300px: " + lorem, box -> box.width(300)),
+
+                // width(200)
+                text("Breite: 200px: " + lorem, box -> box.width(200)),
+
+                // \n
+                text("Manueller\nUmbruch\ndurch\n\\n"),
+
+                // LEFT
+                text("Linksbündig: " + lorem, box -> box.hAlign(LEFT)),
+
+                // CENTER
+                text("Zentriert: " + lorem, box -> box.hAlign(CENTER)),
+
+                // RIGHT
+                text("Rechtsbündig: " + lorem, box -> box.hAlign(RIGHT)),
+
+                // charsPerLine(10)
+                // text(".charsPerLine(10) " + lorem, box ->
+                // box.charsPerLine(10)),
+
+                // charsPerLine(20)
+                text(".charsPerLine(20) " + lorem, box -> box.charsPerLine(20)),
+
+                // charsPerLine(30)
+                text(".charsPerLine(30) " + lorem, box -> box.charsPerLine(30)),
+
+                // lineSpacing(0.5)
+                text(".lineSpacing(0.5) " + lorem, box -> box.lineSpacing(0.5)),
+
+                // lineSpacing(1.5)
+                text(".lineSpacing(1.5) " + lorem, box -> box.lineSpacing(1.5)),
+
+                // lineSpacing(2)
+                text(".lineSpacing(2) " + lorem, box -> box.lineSpacing(2))
+
+        // End
+        ).columns(3).padding(10).anchor(10, 10).render(g).debug();
+    }
+
+    public static void main(String[] args)
+    {
+        new TextBlockBoxDemo().open();
+    }
+}
