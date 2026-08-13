@@ -73,7 +73,14 @@ class EllipseBoxTest
     {
         Graphics2D g = mock(Graphics2D.class);
         ellipse.render(g);
+        verify(g).setColor(null);
         verify(g).fillOval(0, -50, 100, 50);
+        verify(g).setColor(Color.RED);
+
+        Graphics2D g2 = mock(Graphics2D.class);
+        ellipse.pixelPerMeter(2);
+        ellipse.render(g2);
+        verify(g2).fillOval(0, -100, 200, 100);
     }
 
     @Test

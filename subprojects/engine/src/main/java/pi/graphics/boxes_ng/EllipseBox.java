@@ -46,20 +46,12 @@ public class EllipseBox extends LeafBox
      *
      * @since 0.42.0
      */
-    public EllipseBox(int width, int height)
+    public EllipseBox(double width, double height)
     {
         super();
         supportsDefinedDimension = true;
         definedWidth = width;
         definedHeight = height;
-    }
-
-    public EllipseBox(double width, double height)
-    {
-        super();
-        supportsDefinedDimension = true;
-        widthMeter(width);
-        heightMeter(height);
     }
 
     /**
@@ -98,7 +90,6 @@ public class EllipseBox extends LeafBox
     public EllipseBox height(double height)
     {
         return (EllipseBox) super.height(height);
-
     }
 
     /**
