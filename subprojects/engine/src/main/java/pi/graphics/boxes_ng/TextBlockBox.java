@@ -39,7 +39,7 @@ import pi.util.TextUtil;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes/TextBlockBoxDemo.java
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/graphics/boxes/TextBlockBoxTest.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/graphics/boxes_ng/TextBlockBoxTest.java
 
 /**
  * Ein mehrzeiliger <b>Textblock</b>.

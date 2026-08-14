@@ -46,6 +46,8 @@
  * <ul>
  * <li>{@link BackgroundBox}: Unterlegt eine Kind-Box mit einer
  * <b>Hintergrundfarbe</b>.</li>
+ * <li>{@link BorderBox}: Legt einen <b>Rahmen</b> um eine enthaltene
+ * Kind-Box.</li>
  * <li>{@link CellBox}: Eine äußere (größere) <b>Behälter</b>-Box, die eine
  * kleinere (innere) Box enthält.</li>
  * </ul>

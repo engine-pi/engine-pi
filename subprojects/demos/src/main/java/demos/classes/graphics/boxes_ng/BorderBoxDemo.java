@@ -41,7 +41,8 @@ public class BorderBoxDemo extends Graphics2DComponent
         var lineColor = new BorderBox(new TextLineBox("lineColor"))
             .color(colors.get("blue"));
 
-        new VerticalBox<Box>(defaultSettings, lineWidth, lineColor).anchor(0, 0)
+        new VerticalBox<Box>(defaultSettings, lineWidth, lineColor)
+            .anchor(100, 400)
             .render(g)
             .debug();
     }

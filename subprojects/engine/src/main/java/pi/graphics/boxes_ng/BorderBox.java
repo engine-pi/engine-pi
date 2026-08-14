@@ -25,7 +25,7 @@ import java.awt.Graphics2D;
 
 import pi.annotations.Setter;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes/BorderBoxDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes_ng/BorderBoxDemo.java
 
 /**
  * Legt einen <b>Rahmen</b> um eine enthaltene Kind-Box.
@@ -137,7 +137,7 @@ public class BorderBox extends ChildBox
     protected void calculateAnchors()
     {
         child.x = x + thickness;
-        child.y = y + thickness;
+        child.y = y - thickness;
     }
 
     @Override
@@ -169,7 +169,7 @@ public class BorderBox extends ChildBox
             g.fillRect(// x
                 x(),
                 // y
-                y(),
+                yTop(),
                 // width
                 width(),
                 // height
@@ -178,7 +178,7 @@ public class BorderBox extends ChildBox
             g.fillRect(// x
                 x() + thickness + child.width(),
                 // y
-                y() + thickness,
+                yTop() + thickness,
                 // width
                 thickness,
                 // height
@@ -187,7 +187,7 @@ public class BorderBox extends ChildBox
             g.fillRect(// x
                 x(),
                 // y
-                y() + thickness + child.height(),
+                y() - thickness,
                 // width
                 width(),
                 // height
@@ -196,7 +196,7 @@ public class BorderBox extends ChildBox
             g.fillRect(// x
                 x(),
                 // y
-                y() + thickness,
+                yTop() + thickness,
                 // width
                 thickness,
                 // height
