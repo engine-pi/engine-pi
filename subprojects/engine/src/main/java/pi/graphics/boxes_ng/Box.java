@@ -544,7 +544,7 @@ public abstract class Box implements Iterable<Box>
 
     /* pixelPerMeter */
 
-    private double pixelPerMeter = 1;
+    protected double pixelPerMeter = 1;
 
     /**
      * Rechnet einen Wert anhand des aktuellen und eines neuen

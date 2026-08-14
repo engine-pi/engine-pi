@@ -28,6 +28,7 @@ import static org.mockito.Mockito.when;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -57,6 +58,38 @@ class BorderBoxTest
 
         assertSame(border, border.color(Color.BLUE));
         assertEquals(Color.BLUE, border.color);
+    }
+
+    @Nested
+    class ThicknessTest
+    {
+        @Test
+        void getterRoundsPixelValue()
+        {
+            BorderBox border = new BorderBox(new DimensionBox()).thickness(2.6);
+
+            assertEquals(3, border.thickness());
+        }
+
+        @Test
+        void meterUsesPixelPerMeterFactor()
+        {
+            BorderBox border = new BorderBox(new DimensionBox());
+            border.pixelPerMeter(2.0);
+
+            assertSame(border, border.thicknessMeter(1.5));
+            assertEquals(3, border.thickness());
+        }
+
+        @Test
+        void pixelPerMeterScales()
+        {
+            BorderBox border = new BorderBox(new DimensionBox()).thickness(3.0);
+
+            assertSame(border, border.pixelPerMeter(2.0));
+            assertEquals(6, border.thickness());
+        }
+
     }
 
     @Test

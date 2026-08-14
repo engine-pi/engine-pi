@@ -19,10 +19,12 @@
 package pi.graphics.boxes_ng;
 
 import static pi.Controller.colors;
+import static pi.util.MathUtil.round;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import pi.annotations.ChainableMethod;
 import pi.annotations.Setter;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes_ng/BorderBoxDemo.java
@@ -35,20 +37,6 @@ import pi.annotations.Setter;
 public class BorderBox extends ChildBox
 {
     /**
-     * Die <b>Dicke der Linie</b> in Pixel.
-     *
-     * @since 0.40.0
-     */
-    int thickness = 0;
-
-    /**
-     * Die <b>Farbe der Linie</b> in Pixel.
-     *
-     * @since 0.40.0
-     */
-    Color color = null;
-
-    /**
      * Erzeugt einen neuen Rahmen durch die Angabe der enthaltenen Kind-Box.
      *
      * @param child Die <b>Kind-Box</b>, die umrahmt werden soll.
@@ -60,7 +48,26 @@ public class BorderBox extends ChildBox
         super(child);
     }
 
-    /* Setter */
+    /* thickness */
+
+    /**
+     * Die <b>Dicke der Linie</b> in Pixel.
+     *
+     * @since 0.40.0
+     */
+    double thickness = 0;
+
+    /**
+     * Gibt die <b>Linienstärke</b> des Rahmens in Pixeln zurück.
+     *
+     * @return Die <b>Linienstärke</b> des Rahmens in Pixeln.
+     *
+     * @since 0.40.0
+     */
+    public int thickness()
+    {
+        return round(thickness);
+    }
 
     /**
      * Setzt die <b>Dicke der Linie</b> in Pixel. Ist die Linienfarbe noch nicht
@@ -75,7 +82,9 @@ public class BorderBox extends ChildBox
      *
      * @since 0.40.0
      */
-    public BorderBox thickness(int thickness)
+    @Setter
+    @ChainableMethod
+    public BorderBox thickness(double thickness)
     {
         if (color == null)
         {
@@ -86,8 +95,35 @@ public class BorderBox extends ChildBox
     }
 
     /**
-     * Setzt die <b>Farbe der Linie</b> in Pixel. Ist die Liniendicke noch nicht
-     * festgelegt worden, so wird sie auf 1 Pixel gesetzt.
+     * Setzt die <b>Linienstärke</b> des Rahmens in Metern.
+     *
+     * @param thickness Die <b>Linienstärke</b> des Rahmens in Metern.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Box.
+     *
+     * @since 0.53.0
+     */
+    public BorderBox thicknessMeter(double thickness)
+    {
+        return thickness(thickness * pixelPerMeter);
+    }
+
+    /* color */
+
+    /**
+     * Die <b>Farbe der Linie</b> in Pixel.
+     *
+     * @since 0.40.0
+     */
+    Color color = null;
+
+    /**
+     * Setzt die <b>Farbe der Linie</b> in Pixel.
+     *
+     * <p>
+     * Ist die Liniendicke noch nicht festgelegt worden, so wird sie auf 1 Pixel
+     * gesetzt.
+     * </p>
      *
      * @param color Die <b>Farbe der Linie</b> in Pixel.
      *
@@ -98,6 +134,8 @@ public class BorderBox extends ChildBox
      *
      * @since 0.40.0
      */
+    @Setter
+    @ChainableMethod
     public BorderBox color(Color color)
     {
         if (thickness == 0)
@@ -109,6 +147,13 @@ public class BorderBox extends ChildBox
     }
 
     /**
+     * Setzt die <b>Farbe der Linie</b> in Pixel.
+     *
+     * <p>
+     * Ist die Liniendicke noch nicht festgelegt worden, so wird sie auf 1 Pixel
+     * gesetzt.
+     * </p>
+     *
      * @param color Ein Farbname ({@link pi.resources.color.ColorContainer siehe
      *     Auflistung}) oder eine Farbe in hexadezimaler Codierung (z.B.
      *     {@code #ff0000}).
@@ -119,12 +164,32 @@ public class BorderBox extends ChildBox
      *     {@code box.x(..).y(..)}.
      */
     @Setter
+    @ChainableMethod
     public BorderBox color(String color)
     {
         return color(colors.get(color));
     }
 
-    /* Getter */
+    /**
+     * Setzt den Umrechnungsfaktor für die Darstellung von Metern in Pixel und
+     * passt zusätzlich die Rahmendicke an.
+     *
+     * @param pixelPerMeter Die Anzahl der Pixel pro Meter. Der Wert muss größer
+     *     als {@code 0} sein.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Box.
+     *
+     * @since 0.53.0
+     */
+    @Setter
+    @ChainableMethod
+    @Override
+    public Box pixelPerMeter(double pixelPerMeter)
+    {
+        thickness = updateValue(thickness, pixelPerMeter);
+        super.pixelPerMeter(pixelPerMeter);
+        return this;
+    }
 
     @Override
     protected void calculateDimension()
@@ -173,32 +238,32 @@ public class BorderBox extends ChildBox
                 // width
                 width(),
                 // height
-                thickness);
+                thickness());
             // rechts
             g.fillRect(// x
-                x() + thickness + child.width(),
+                x() + thickness() + child.width(),
                 // y
-                yTop() + thickness,
+                yTop() + thickness(),
                 // width
-                thickness,
+                thickness(),
                 // height
                 child.height());
             // unten
             g.fillRect(// x
                 x(),
                 // y
-                y() - thickness,
+                y() - thickness(),
                 // width
                 width(),
                 // height
-                thickness);
+                thickness());
             // links
             g.fillRect(// x
                 x(),
                 // y
-                yTop() + thickness,
+                yTop() + thickness(),
                 // width
-                thickness,
+                thickness(),
                 // height
                 child.height());
             g.setColor(oldColor);
