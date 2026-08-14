@@ -39,7 +39,6 @@ import pi.debug.ToStringFormatter;
  */
 public class InsetBox extends ChildBox
 {
-
     public InsetBox()
     {
     }

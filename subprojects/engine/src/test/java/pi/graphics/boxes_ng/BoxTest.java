@@ -244,6 +244,16 @@ class BoxTest
     class PixelPerMeterTest
     {
         @Test
+        void updateValueScalesFromCurrentFactor()
+        {
+            TestBox box = new TestBox();
+            box.pixelPerMeter(2.0);
+
+            assertEquals(12.5, box.updateValue(5.0, 5.0), 0.0);
+            assertEquals(-7.5, box.updateValue(-3.0, 5.0), 0.0);
+        }
+
+        @Test
         void scalesCoordinatesAndSize()
         {
             TestBox box = new TestBox();

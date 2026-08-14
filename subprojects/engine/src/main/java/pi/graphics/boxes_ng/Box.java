@@ -28,6 +28,7 @@ import static pi.util.MathUtil.round;
 import org.jspecify.annotations.Nullable;
 
 import pi.annotations.API;
+import pi.annotations.ChainableMethod;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
@@ -144,6 +145,10 @@ public abstract class Box implements Iterable<Box>
     }
 
     /**
+     * Gibt die <b>Breite</b> der Box in Metern zurück.
+     *
+     * @return Die <b>Breite</b> der Box in Metern.
+     *
      * @since 0.53.0
      */
     @API
@@ -165,6 +170,7 @@ public abstract class Box implements Iterable<Box>
      */
     @API
     @Setter
+    @ChainableMethod
     public Box width(double width)
     {
         if (!supportsDefinedDimension)
@@ -178,10 +184,20 @@ public abstract class Box implements Iterable<Box>
     }
 
     /**
+     * Setzt die <b>Breite</b> der Box in Metern.
+     *
+     * @param widthMeter Die <b>Breite</b> der Box in Metern.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch()
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code box.x(..).y(..)}.
+     *
      * @since 0.53.0
      */
     @API
     @Setter
+    @ChainableMethod
     public Box widthMeter(double widthMeter)
     {
         return width(widthMeter * pixelPerMeter);
@@ -216,6 +232,10 @@ public abstract class Box implements Iterable<Box>
     }
 
     /**
+     * Gibt die <b>Höhe</b> der Box in Metern zurück.
+     *
+     * @return Die <b>Höhe</b> der Box in Metern.
+     *
      * @since 0.53.0
      */
     @API
@@ -237,6 +257,7 @@ public abstract class Box implements Iterable<Box>
      */
     @API
     @Setter
+    @ChainableMethod
     public Box height(double height)
     {
         if (!supportsDefinedDimension)
@@ -250,10 +271,20 @@ public abstract class Box implements Iterable<Box>
     }
 
     /**
+     * Setzt die <b>Höhe</b> der Box in Metern.
+     *
+     * @param heightMeter Die <b>Höhe</b> der Box in Metern.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch()
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code box.x(..).y(..)}.
+     *
      * @since 0.53.0
      */
     @API
     @Setter
+    @ChainableMethod
     public Box heightMeter(double heightMeter)
     {
         return height(heightMeter * pixelPerMeter);
@@ -322,6 +353,10 @@ public abstract class Box implements Iterable<Box>
     }
 
     /**
+     * Gibt die <b>x</b>-Koordinate der linken unteren Ecke in Metern zurück.
+     *
+     * @return Die <b>x</b>-Koordinate der linken unteren Ecke in Metern.
+     *
      * @since 0.53.0
      */
     @API
@@ -345,6 +380,7 @@ public abstract class Box implements Iterable<Box>
      */
     @API
     @Setter
+    @ChainableMethod
     public Box x(double x)
     {
         this.x = x;
@@ -352,9 +388,19 @@ public abstract class Box implements Iterable<Box>
     }
 
     /**
+     * Setzt die <b>x</b>-Koordinate der linken unteren Ecke in Metern.
+     *
+     * @param xMeter Die <b>x</b>-Koordinate der linken unteren Ecke in Metern.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch()
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code box.x(..).y(..)}.
+     *
      * @since 0.53.0
      */
     @Setter
+    @ChainableMethod
     public Box xMeter(double xMeter)
     {
         return x(xMeter * pixelPerMeter);
@@ -398,6 +444,10 @@ public abstract class Box implements Iterable<Box>
     }
 
     /**
+     * Gibt die <b>y</b>-Koordinate der linken unteren Ecke in Metern zurück.
+     *
+     * @return Die <b>y</b>-Koordinate der linken unteren Ecke in Metern.
+     *
      * @since 0.53.0
      */
     @API
@@ -420,6 +470,7 @@ public abstract class Box implements Iterable<Box>
      * @since 0.38.0
      */
     @Setter
+    @ChainableMethod
     public Box y(double y)
     {
         this.y = y;
@@ -427,9 +478,19 @@ public abstract class Box implements Iterable<Box>
     }
 
     /**
+     * Setzt die <b>y</b>-Koordinate der linken unteren Ecke in Metern.
+     *
+     * @param yMeter Die <b>y</b>-Koordinate der linken unteren Ecke in Metern.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch()
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code box.x(..).y(..)}.
+     *
      * @since 0.53.0
      */
     @Setter
+    @ChainableMethod
     public Box yMeter(double yMeter)
     {
         return y(yMeter * pixelPerMeter);
@@ -450,6 +511,7 @@ public abstract class Box implements Iterable<Box>
      * @since 0.38.0
      */
     @Setter
+    @ChainableMethod
     public Box anchor(double x, double y)
     {
         this.x = x;
@@ -458,9 +520,21 @@ public abstract class Box implements Iterable<Box>
     }
 
     /**
+     * Setzt die <b>x</b>- und <b>y</b>-Koordinaten der linken unteren Ecke in
+     * Metern.
+     *
+     * @param x Die <b>x</b>-Koordinate der linken unteren Ecke in Metern.
+     * @param y Die <b>y</b>-Koordinate der linken unteren Ecke in Metern.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch()
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code box.x(..).y(..)}.
+     *
      * @since 0.53.0
      */
     @Setter
+    @ChainableMethod
     public Box anchorMeter(double x, double y)
     {
         xMeter(x);
@@ -473,9 +547,38 @@ public abstract class Box implements Iterable<Box>
     private double pixelPerMeter = 1;
 
     /**
+     * Rechnet einen Wert anhand des aktuellen und eines neuen
+     * Pixel-pro-Meter-Faktors um.
+     *
+     * @param value Der Wert in der aktuellen Pixel-pro-Meter-Skalierung.
+     * @param newPixelPerMeter Der neue Pixel-pro-Meter-Faktor.
+     *
+     * @return Der umgerechnete Wert für die neue Skalierung.
+     *
+     * @since 0.53.0
+     */
+    protected double updateValue(double value, double newPixelPerMeter)
+    {
+        return value / pixelPerMeter * newPixelPerMeter;
+    }
+
+    /**
+     * Setzt den Umrechnungsfaktor für die Darstellung von Metern in Pixel.
+     * Dabei werden die Abmessungen und Koordinaten der Box sowie ihrer Kinder
+     * an den neuen Faktor angepasst.
+     *
+     * @param pixelPerMeter Die Anzahl der Pixel pro Meter. Der Wert muss größer
+     *     als {@code 0} sein.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch()
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code box.x(..).y(..)}.
+     *
      * @since 0.53.0
      */
     @Setter
+    @ChainableMethod
     public Box pixelPerMeter(double pixelPerMeter)
     {
         if (this.pixelPerMeter == pixelPerMeter)
@@ -489,12 +592,12 @@ public abstract class Box implements Iterable<Box>
                     "Der Wert für Pixel pro Meter darf nicht kleiner gleich 0 sein.");
         }
 
-        definedWidth = definedWidth / this.pixelPerMeter * pixelPerMeter;
-        width = width / this.pixelPerMeter * pixelPerMeter;
-        definedHeight = definedHeight / this.pixelPerMeter * pixelPerMeter;
-        height = height / this.pixelPerMeter * pixelPerMeter;
-        x = x / this.pixelPerMeter * pixelPerMeter;
-        y = y / this.pixelPerMeter * pixelPerMeter;
+        definedWidth = updateValue(definedWidth, pixelPerMeter);
+        width = updateValue(width, pixelPerMeter);
+        definedHeight = updateValue(definedHeight, pixelPerMeter);
+        height = updateValue(height, pixelPerMeter);
+        x = updateValue(x, pixelPerMeter);
+        y = updateValue(y, pixelPerMeter);
 
         for (Box child : childs)
         {
@@ -508,6 +611,10 @@ public abstract class Box implements Iterable<Box>
     }
 
     /**
+     * Gibt den aktuellen Umrechnungsfaktor von Metern in Pixel zurück.
+     *
+     * @return Die Anzahl der Pixel pro Meter.
+     *
      * @since 0.53.0
      */
     @Getter
@@ -532,6 +639,7 @@ public abstract class Box implements Iterable<Box>
      * @since 0.42.0
      */
     @Setter
+    @ChainableMethod
     public Box disabled(boolean disabled)
     {
         this.disabled = disabled;
@@ -548,6 +656,7 @@ public abstract class Box implements Iterable<Box>
      *
      * @since 0.42.0
      */
+    @ChainableMethod
     public Box disable()
     {
         disabled = true;
@@ -564,6 +673,7 @@ public abstract class Box implements Iterable<Box>
      *
      * @since 0.42.0
      */
+    @ChainableMethod
     public Box enable()
     {
         disabled = false;
@@ -581,6 +691,7 @@ public abstract class Box implements Iterable<Box>
      *
      * @since 0.42.0
      */
+    @ChainableMethod
     public Box toggle()
     {
         disabled = !disabled;
@@ -691,6 +802,9 @@ public abstract class Box implements Iterable<Box>
      */
     protected abstract void calculateAnchors();
 
+    /**
+     * Aktualisiert die Ankerpunkte dieser Box und ihrer untergeordneten Boxen.
+     */
     protected void measureAnchors()
     {
         calculateAnchors();
@@ -768,6 +882,7 @@ public abstract class Box implements Iterable<Box>
      *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      */
+    @ChainableMethod
     public Box remeasure()
     {
         measured = false;
@@ -787,6 +902,7 @@ public abstract class Box implements Iterable<Box>
      *
      * @since 0.38.0
      */
+    @ChainableMethod
     public Box render(Graphics2D g)
     {
         if (!measured)
@@ -797,6 +913,21 @@ public abstract class Box implements Iterable<Box>
         return this;
     }
 
+    /**
+     * Berechnet die Box bei Bedarf neu und zeichnet sie mit dem angegebenen
+     * Pixel-pro-Meter-Faktor.
+     *
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     * @param pixelPerMeter Die Anzahl der Pixel pro Meter.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch()
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code box.x(..).y(..)}.
+     *
+     * @since 0.53.0
+     */
+    @ChainableMethod
     public Box render(Graphics2D g, double pixelPerMeter)
     {
         pixelPerMeter(pixelPerMeter);
@@ -855,6 +986,7 @@ public abstract class Box implements Iterable<Box>
      *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      */
+    @ChainableMethod
     public Box debug()
     {
         System.out.println("");
