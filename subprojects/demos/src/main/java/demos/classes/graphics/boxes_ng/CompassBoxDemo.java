@@ -26,8 +26,28 @@ import pi.graphics.boxes_ng.GridBox;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/boxes/CompassBox.java
 
+/**
+ * Demonstriert die Darstellung verschiedener <b>Kompasspfeile</b> in einer
+ * Rasteranordnung.
+ *
+ * <p>
+ * Die Demo zeigt unterschiedliche Größen und Richtungen, damit die Anzeige des
+ * Kompasspfeils in der Spiel- und Grafik-API nachvollziehbar ist.
+ * </p>
+ */
 public class CompassBoxDemo extends Graphics2DComponent
 {
+    /**
+     * Erstellt eine Gruppe von Kompasspfeilen mit einer festen Richtung und
+     * einem gleichmäßigen Abstand zwischen den einzelnen Elementen.
+     *
+     * @param numberOfCompasses Die Anzahl der zu erzeugenden Kompasspfeile.
+     * @param size Die Größe jedes Kompasspfeils in Pixel.
+     * @param directionDelta Die Winkeländerung zwischen den einzelnen
+     *     Kompasspfeilen in Grad.
+     *
+     * @return Ein Raster mit den erzeugten Kompasspfeilen.
+     */
     private GridBox<CompassBox> getCompasses(int numberOfCompasses, int size,
             int directionDelta)
     {
@@ -46,16 +66,19 @@ public class CompassBoxDemo extends Graphics2DComponent
 
     public void render(Graphics2D g)
     {
-        getCompasses(4, 100, 90).x(200).y(200).render(g).debug();
-
-        getCompasses(9, 20, 30).x(500).y(300).render(g).debug();
-
+        // Ein großer Kompass
         new CompassBox(200).direction(90)
             .showOuterCircle()
             .x(10)
-            .y(10)
+            .y(300)
             .render(g)
             .debug();
+
+        // 4 Kompasse mittlerer Größe
+        getCompasses(4, 100, 90).x(250).y(300).render(g).debug();
+
+        // 9 kleine Kompasse
+        getCompasses(9, 20, 30).x(500).y(250).render(g).debug();
     }
 
     public static void main(String[] args)

@@ -29,6 +29,10 @@
  * {@link java.awt.Component}-Klassen.
  * </p>
  *
+ * <p>
+ * Die Unterklassen lassen sich in drei Kategorien einteilen:
+ * </p>
+ *
  * <ul>
  * <li>{@link ChildsBox}: Box, die <b>mehrere</b> Kind-Boxen enthalten kann.
  *
@@ -59,7 +63,15 @@
  *
  * </li>
  *
- * <li>{@link LeafBox}: Box, die <b>keine</b> Kind-Box enthalten kann.</li>
+ * <li>{@link LeafBox}: Box, die <b>keine</b> Kind-Box enthalten kann.
+ *
+ * <ul>
+ * <li>{@link CompassBox}: Ein <b>Kompasspfeil</b>, der in der Mitte eines
+ * Quadrats angebracht ist.</li>
+ * </ul>
+ *
+ * </li>
+ *
  * </ul>
  *
  * <h2>Ähnliche Pakete</h2>

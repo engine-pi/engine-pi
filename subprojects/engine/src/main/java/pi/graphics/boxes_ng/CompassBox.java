@@ -1,12 +1,16 @@
 package pi.graphics.boxes_ng;
 
+import static pi.util.MathUtil.round;
+
 import java.awt.Graphics2D;
 
+import pi.annotations.ChainableMethod;
+import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.graphics.geom.Vector;
 import pi.util.Graphics2DUtil;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes/CompassBoxDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes_ng/CompassBoxDemo.java
 
 /**
  * Ein <b>Kompasspfeil</b>, der in der Mitte eines Quadrats angebracht ist.
@@ -17,19 +21,6 @@ import pi.util.Graphics2DUtil;
  */
 public class CompassBox extends LeafBox
 {
-    /**
-     * Die <b>Seitenlänge</b> des Quadrats, in das der Kompasspfeil eingepasst
-     * ist, bzw. der Durchmesser des Kreises, auf dem die beiden Endpunkte des
-     * Pfeils liegen.
-     */
-    int size;
-
-    /**
-     * Die Richtung in Grad, in der die Kompassnadel zeigt. 0 = nach rechts, 90
-     * = nach oben, 180 = nach links, 270 = nach unten.
-     */
-    double direction;
-
     /**
      * Die <b>Höhe</b> des gleichschenkligen Dreiecks, das die
      * <b>Pfeilspitze</b> bildet, im Verhältnis zu {@link #size}.
@@ -42,61 +33,179 @@ public class CompassBox extends LeafBox
      */
     static final double ARROW_WIDTH = 0.3;
 
-    boolean showCenter = true;
-
-    boolean showOuterCircle = false;
-
-    public CompassBox(int size)
+    /**
+     * Erstellt einen neuen Kompasspfeil mit der angegebenen Seitenlänge.
+     *
+     * @param size Die <b>Seitenlänge</b> des Quadrats in Pixel, in das der
+     *     Kompasspfeil eingepasst ist.
+     */
+    public CompassBox(double size)
     {
         super();
         this.size = size;
-        this.definedHeight = size;
-        this.definedWidth = size;
+        definedHeight = size;
+        definedWidth = size;
         supportsDefinedDimension = true;
     }
+
+    /* size */
+
+    /**
+     * Die <b>Seitenlänge</b> des Quadrats in Pixel, in das der Kompasspfeil
+     * eingepasst ist, bzw. der Durchmesser des Kreises, auf dem die beiden
+     * Endpunkte des Pfeils liegen.
+     */
+    double size;
+
+    /**
+     * Gibt die <b>Seitenlänge</b> des Quadrats in Pixel zurück.
+     *
+     * @return Die <b>Seitenlänge</b> des Quadrats in Pixel.
+     *
+     * @since 0.53.0
+     */
+    @Getter
+    public int size()
+    {
+        return round(size);
+    }
+
+    /**
+     * Setzt die <b>Seitenlänge</b> des Quadrats in Pixel.
+     *
+     * @param size Die neue <b>Seitenlänge</b> des Quadrats in Pixel.
+     *
+     * @return Eine Referenz auf die eigene Instanz des Kompasses, damit nach
+     *     dem Erbauer/Builder-Entwurfsmuster die Eigenschaften des Kompasses
+     *     durch aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code compass.size(..).showOuterCircle(..)}.
+     *
+     * @since 0.53.0
+     */
+    @Setter
+    @ChainableMethod
+    public CompassBox size(double size)
+    {
+        this.size = size;
+        return this;
+    }
+
+    /* direction */
+
+    /**
+     * Die Richtung in Grad, in der die Kompassnadel zeigt.
+     * <ul>
+     * <li>{@code 0} = nach rechts</li>
+     * <li>{@code 90} = nach oben</li>
+     * <li>{@code 180} = nach links</li>
+     * <li>{@code 270} = nach unten</li>
+     * </ul>
+     */
+    double direction;
 
     /**
      * Setzt die <b>Richtung</b> der Kompassnadel in Grad.
      *
      * @param direction Die <b>Richtung</b> in Grad, in der die Kompassnadel
-     *     zeigt. 0 = nach rechts, 90 = nach oben, 180 = nach links, 270 = nach
-     *     unten.
+     *     zeigt.
+     *     <ul>
+     *     <li>{@code 0} = nach rechts</li>
+     *     <li>{@code 90} = nach oben</li>
+     *     <li>{@code 180} = nach links</li>
+     *     <li>{@code 270} = nach unten</li>
+     *     </ul>
+     *
+     * @return Eine Referenz auf die eigene Instanz des Kompasses, damit nach
+     *     dem Erbauer/Builder-Entwurfsmuster die Eigenschaften des Kompasses
+     *     durch aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code compass.size(..).showOuterCircle(..)}.
      */
     @Setter
+    @ChainableMethod
     public CompassBox direction(double direction)
     {
-        //
         this.direction = direction;
         return this;
     }
 
+    /* showCenter */
+
+    /**
+     * Bestimmt, ob der Mittelpunkt des Kompasspfeils angezeigt wird.
+     */
+    boolean showCenter = true;
+
+    /**
+     * Legt fest, ob der Mittelpunkt des Kompasspfeils sichtbar ist.
+     *
+     * @param showCenter {@code true}, wenn der Mittelpunkt angezeigt werden
+     *     soll, sonst {@code false}.
+     *
+     * @return Eine Referenz auf die eigene Instanz des Kompasses, damit nach
+     *     dem Erbauer/Builder-Entwurfsmuster die Eigenschaften des Kompasses
+     *     durch aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code compass.size(..).showOuterCircle(..)}.
+     */
     @Setter
+    @ChainableMethod
     public CompassBox showCenter(boolean showCenter)
     {
         this.showCenter = showCenter;
         return this;
     }
 
+    /* showOuterCircle */
+
+    /**
+     * Bestimmt, ob der äußere Kreis um den Kompasspfeil angezeigt wird.
+     */
+    boolean showOuterCircle = false;
+
+    /**
+     * Legt fest, ob der äußere Kreis um den Kompasspfeil angezeigt wird.
+     *
+     * @param showOuterCircle {@code true}, wenn der äußere Kreis angezeigt
+     *     werden soll, sonst {@code false}.
+     *
+     * @return Eine Referenz auf die eigene Instanz des Kompasses, damit nach
+     *     dem Erbauer/Builder-Entwurfsmuster die Eigenschaften des Kompasses
+     *     durch aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code compass.size(..).showOuterCircle(..)}.
+     */
     @Setter
+    @ChainableMethod
     public CompassBox showOuterCircle(boolean showOuterCircle)
     {
         this.showOuterCircle = showOuterCircle;
         return this;
     }
 
+    /**
+     * Zeigt den äußeren Kreis an.
+     *
+     * @return Eine Referenz auf die eigene Instanz des Kompasses, damit nach
+     *     dem Erbauer/Builder-Entwurfsmuster die Eigenschaften des Kompasses
+     *     durch aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code compass.size(..).showOuterCircle(..)}.
+     */
     @Setter
+    @ChainableMethod
     public CompassBox showOuterCircle()
     {
         return showOuterCircle(true);
     }
 
     /**
-     * Der Radius des äußeren Kreises, also die Entfernung zur Mitte des
-     * Quadrats, also die Hälfte der Seitenlänge des Quadrats.
+     * Gibt den <b>Radius</b> des äußeren Kreises, also die Entfernung zur Mitte
+     * des Quadrats, also die Hälfte der Seitenlänge des Quadrats.
+     *
+     * @return Der <b>Radius</b> des äußeren Kreises, also die Entfernung zur
+     *     Mitte des Quadrats, also die Hälfte der Seitenlänge des Quadrats.
      */
-    private double radius()
+    @Getter
+    public double radius()
     {
-        return (double) size / 2;
+        return size / 2.0;
     }
 
     /**
@@ -104,11 +213,15 @@ public class CompassBox extends LeafBox
      *
      * @return Der <b>Mittelpunkt</b> des Rahmenquadrats.
      */
-    private Vector center()
+    @Getter
+    public Vector center()
     {
-        return new Vector(x + radius(), y + radius());
+        return new Vector(x() + radius(), y() - radius());
     }
 
+    /**
+     * @hidden
+     */
     @Override
     protected void calculateDimension()
     {
@@ -116,6 +229,9 @@ public class CompassBox extends LeafBox
         height = size;
     }
 
+    /**
+     * @hidden
+     */
     @Override
     void draw(Graphics2D g)
     {
@@ -128,7 +244,7 @@ public class CompassBox extends LeafBox
         if (showOuterCircle)
         {
             // Der äußere Kreis.
-            g.drawOval(x(), yTop(), size, size);
+            g.drawOval(x(), yTop(), size(), size());
         }
         if (showCenter)
         {

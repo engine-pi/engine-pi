@@ -150,7 +150,7 @@ nav:
           - manual/resources/sounds/index.md
           - manual/resources/config.md
 
-      - utils (Hilfsklassen):
+      - util (Hilfsklassen):
           - manual/util/index.md
           - manual/util/text.md
 
