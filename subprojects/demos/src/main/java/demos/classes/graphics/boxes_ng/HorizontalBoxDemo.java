@@ -37,7 +37,7 @@ public class HorizontalBoxDemo extends Graphics2DComponent
                 new HorizontalBox<>(demo("Text 1"), demo("Text 2", 100, 100),
                         demo("Text 3", 120, 90)).vAlign(VAlign.BOTTOM)
                             .padding(10));
-        box.anchor(200, 100);
+        box.anchor(200, 500);
         box.render(g).debug();
     }
 

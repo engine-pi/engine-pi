@@ -20,7 +20,7 @@ package pi.graphics.boxes_ng;
 
 import pi.annotations.Setter;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes/HorizontalBoxDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes_ng/HorizontalBoxDemo.java
 
 /**
  * Eine <b>horizontale</b> Box, die die enthaltenen Kinder-Boxen horizontal von
@@ -78,7 +78,7 @@ public class HorizontalBox<T extends Box> extends PaddingBox<T>
         for (Box child : childs)
         {
             child.x = xCursor;
-            child.y = y + padding;
+            child.y = y + padding - child.height;
             xCursor += child.width + padding;
         }
     }

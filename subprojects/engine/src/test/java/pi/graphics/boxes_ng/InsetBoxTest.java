@@ -21,7 +21,6 @@ package pi.graphics.boxes_ng;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -29,7 +28,6 @@ import org.junit.jupiter.api.Test;
  *
  * @since 0.42.0
  */
-@Disabled
 class InsetBoxTest
 {
     InsetBox inset;
@@ -110,7 +108,7 @@ class InsetBoxTest
 
         inset.measure();
         assertEquals(
-            "InsetBox [top=1, right=2, bottom=3, left=4, width=48, height=27]",
+            "InsetBox [top=1, right=2, bottom=3, left=4, width=48.0, height=27.0]",
             inset.toString(true));
     }
 }

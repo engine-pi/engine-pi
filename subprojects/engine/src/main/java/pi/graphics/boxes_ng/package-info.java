@@ -29,11 +29,14 @@
  * {@link java.awt.Component}-Klassen.
  * </p>
  *
- *
  * <ul>
  * <li>{@link ChildsBox}: Box, die <b>mehrere</b> Kind-Boxen enthalten kann.
  *
  * <ul>
+ * <li>{@link GridBox}: Eine <b>Gitter</b>-Box, die mehrere untergeordnete
+ * Kinder-Boxen in Zeilen und Spalten anordnet.</li>
+ * <li>{@link HorizontalBox}: Eine <b>horizontale</b> Box, die die enthaltenen
+ * Kinder-Boxen horizontal von links nach rechts anordnet.</li>
  * <li>{@link VerticalBox}: Eine <b>vertikale</b> Box, die die enthaltenen
  * Kinder-Boxen vertikal von oben nach unten anordnet.</li>
  * </ul>
@@ -50,6 +53,8 @@
  * Kind-Box.</li>
  * <li>{@link CellBox}: Eine äußere (größere) <b>Behälter</b>-Box, die eine
  * kleinere (innere) Box enthält.</li>
+ * <li>{@link InsetBox}: Ein <b>Außenabstand</b> um die enthaltene
+ * Kind-Box.</li>
  * </ul>
  *
  * </li>

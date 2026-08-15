@@ -89,7 +89,6 @@ class BorderBoxTest
             assertSame(border, border.pixelPerMeter(2.0));
             assertEquals(6, border.thickness());
         }
-
     }
 
     @Test

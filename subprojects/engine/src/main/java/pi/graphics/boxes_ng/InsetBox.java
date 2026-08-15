@@ -26,7 +26,7 @@ import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes/InsetBoxDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes_ng/InsetBoxDemo.java
 
 /**
  * Ein <b>Außenabstand</b> um die enthaltene Kind-Box.
@@ -245,7 +245,7 @@ public class InsetBox extends ChildBox
     protected void calculateAnchors()
     {
         child.x = x + left;
-        child.y = y + top;
+        child.y = y - bottom;
     }
 
     /**

@@ -74,7 +74,7 @@ public class InsetBoxDemo extends Graphics2DComponent
         allSides.margin.allSides(50);
         var different = box(".top(5).right(10).bottom(15).left(20)");
         different.margin.top(5).right(10).bottom(15).left(20);
-        new VerticalBox<>(defaultSettings, allSides, different).anchor(50, 50)
+        new VerticalBox<>(defaultSettings, allSides, different).anchor(50, 400)
             .render(g)
             .debug();
     }

@@ -29,7 +29,6 @@ import pi.graphics.boxes_ng.GridBox;
 
 public class GridBoxDemo extends Graphics2DComponent
 {
-
     private FramedTextBox box(int number)
     {
         var box = new FramedTextBox(number + "");
@@ -52,7 +51,7 @@ public class GridBoxDemo extends Graphics2DComponent
     {
         var box = new BorderBox(
                 new GridBox<>(boxes(10)).columns(3).padding(10));
-        box.anchor(200, 100);
+        box.anchor(200, 400);
         box.render(g).debug();
     }
 

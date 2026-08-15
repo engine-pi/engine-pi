@@ -7,7 +7,7 @@ import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 import static pi.util.MathUtil.round;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes/CellBoxDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes_ng/CellBoxDemo.java
 
 /**
  * Eine äußere (größere) <b>Behälter</b>-Box, die eine kleinere (innere) Box
