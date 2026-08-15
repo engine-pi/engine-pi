@@ -962,7 +962,7 @@ public class ImageText extends Image
             {
                 content = content.toLowerCase();
             }
-            int lineCount = TextUtil.getLineCount(content);
+            int lineCount = TextUtil.countLines(content);
 
             int imageHeight = glyphHeight * lineCount;
             int imageWidth = glyphWidth * lineWidth;

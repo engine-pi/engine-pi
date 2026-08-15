@@ -150,9 +150,14 @@ nav:
           - manual/resources/sounds/index.md
           - manual/resources/config.md
 
+      - utils (Hilfsklassen):
+          - manual/util/index.md
+          - manual/util/text.md
+
       - Projekte:
           - manual/projects/index.md
           - manual/projects/philosophers.md
+
       - Java:
           - manual/java/index.md
 

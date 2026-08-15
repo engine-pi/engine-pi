@@ -28,7 +28,7 @@ import static pi.graphics.boxes.HAlign.RIGHT;
 import static pi.util.TextUtil.align;
 import static pi.util.TextUtil.convertToMultilineString;
 import static pi.util.TextUtil.convertToString;
-import static pi.util.TextUtil.getLineCount;
+import static pi.util.TextUtil.countLines;
 import static pi.util.TextUtil.getLineWidth;
 import static pi.util.TextUtil.wrap;
 import static pi.util.TextUtil.normalizeLineSeparator;
@@ -45,6 +45,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import pi.EnLocale;
+
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/util/text.md
 
 class TextUtilTest
 {
@@ -72,10 +74,44 @@ class TextUtilTest
         assertEquals(9, getLineWidth("Lorem\nipsum\ndolor sit"));
     }
 
-    @Test
-    void getLineCountMethod()
+    @Nested
+    class CountLinesTest
     {
-        assertEquals(3, getLineCount("Lorem\nipsum\ndolor sit"));
+        @Test
+        void emptyStringReturnsZero()
+        {
+            assertEquals(0, countLines(""));
+        }
+
+        @Test
+        void singleLineReturnsOne()
+        {
+            assertEquals(1, countLines("Lorem ipsum"));
+        }
+
+        @Test
+        void multipleLinesAreCounted()
+        {
+            assertEquals(3, countLines("a\nb\nc"));
+        }
+
+        @Test
+        void trailingNewlineDoesNotCreateEmptyLine()
+        {
+            assertEquals(2, countLines("a\nb\n"));
+        }
+
+        @Test
+        void windowsLineEndingsAreCounted()
+        {
+            assertEquals(3, countLines("a\r\nb\r\nc"));
+        }
+
+        @Test
+        void classicMacLineEndingsAreCounted()
+        {
+            assertEquals(3, countLines("a\rb\rc"));
+        }
     }
 
     @Nested

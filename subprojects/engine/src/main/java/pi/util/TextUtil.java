@@ -36,6 +36,7 @@ import pi.debug.AnsiColor;
 import pi.graphics.boxes.HAlign;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/util/TextUtilTest.java
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/util/text.md
 
 /**
  * Eine Sammlung von statischen Hilfsmethoden um <b>Text</b> und
@@ -78,8 +79,11 @@ public class TextUtil
 
     /**
      * Formatiert eine übergebene Zahl auf die angegebene Anzahl
-     * Nachkommastellen und gibt das Ergebnis als String zurück. Es werden
-     * fehlende Nachkommastellen mit Nullen aufgefüllt.
+     * Nachkommastellen und gibt das Ergebnis als String zurück.
+     *
+     * <p>
+     * Es werden fehlende Nachkommastellen mit Nullen aufgefüllt.
+     * </p>
      *
      * @param number Eine darstellbare Zahl (Instanz von
      *     {@link java.lang.Number} oder kompatibel). Wenn das Objekt kein
@@ -136,15 +140,34 @@ public class TextUtil
     }
 
     /**
-     * Gibt die Anzahl der Zeilen zurück.
+     * Gibt die <b>Anzahl</b> der <b>Zeilen</b> in einem Text zurück.
      *
-     * @param text Der Text, von dem die Anzahl der Zeilen bestimmt werden soll.
+     * <p>
+     * Die Zeilen werden anhand der Zeilenumbrüche in der Zeichenkette
+     * ermittelt. Ein leerer Text wird als {@code 0} Zeilen gezählt.
+     * </p>
      *
-     * @return Die Anzahl der Zeilen.
+     * <p>
+     * Ein Zeilenendezeichen ist eines der folgenden Zeichen: ein
+     * Zeilenvorschubzeichen {@code \n} (U+000A), ein Wagenrücklaufzeichen
+     * {@code \r} (U+000D) oder ein Wagenrücklauf, auf den unmittelbar ein
+     * Zeilenvorschub folgt: {@code \r\n} (U+000D U+000A).
+     * </p>
+     *
+     * <p>
+     * Eine Zeile ist entweder eine Folge von null oder mehr Zeichen, gefolgt
+     * von einem Zeilenendezeichen, oder eine Folge von einem oder mehr Zeichen,
+     * gefolgt vom Ende der Zeichenkette. Ein Zeilenendezeichen ist nicht Teil
+     * der Zeile.
+     * </p>
+     *
+     * @param text Der Text, dessen Anzahl an Zeilen bestimmt werden soll.
+     *
+     * @return Die Anzahl der Zeilen im Text.
      *
      * @since 0.23.0
      */
-    public static int getLineCount(@NonNull String text)
+    public static int countLines(@NonNull String text)
     {
         return (int) text.lines().count();
     }
