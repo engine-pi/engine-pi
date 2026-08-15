@@ -21,12 +21,11 @@ package pi.graphics.boxes_ng;
 import static pi.Controller.images;
 
 import java.awt.Graphics2D;
-import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
 import pi.annotations.Setter;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes/ImageBoxDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes_ng/ImageBoxDemo.java
 
 public class ImageBox extends LeafBox
 {
@@ -138,14 +137,12 @@ public class ImageBox extends LeafBox
     @Override
     void draw(Graphics2D g)
     {
-        AffineTransform oldTransfer = g.getTransform();
         g.drawImage(image,
             flippedHorizontally ? x() + width() : x(),
-            flippedVertically ? y() + height() : y(),
+            flippedVertically ? y() : yTop(),
             (flippedHorizontally ? -1 : 1) * width(),
             (flippedVertically ? -1 : 1) * height(),
             null);
-        g.setTransform(oldTransfer);
     }
 
     /**

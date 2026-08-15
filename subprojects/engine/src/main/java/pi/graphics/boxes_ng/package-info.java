@@ -68,6 +68,10 @@
  * <ul>
  * <li>{@link CompassBox}: Ein <b>Kompasspfeil</b>, der in der Mitte eines
  * Quadrats angebracht ist.</li>
+ * <li>{@link DimensionBox}: Eine leere Box, die auf eine bestimmte
+ * <b>Abmessung</b> gesetzt werden kann.</li>
+ * <li>{@link EllipseBox}: Eine <b>Ellipse</b>, bei der die <b>Breite</b> und
+ * die <b>Höhe</b> angegeben werden kann.</li>
  * </ul>
  *
  * </li>

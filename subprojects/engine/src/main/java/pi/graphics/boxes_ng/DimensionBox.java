@@ -21,25 +21,43 @@ package pi.graphics.boxes_ng;
 import java.awt.Graphics2D;
 
 /**
- * Eine leere Box, die auf bestimmte Abmessungen gesetzt werden kann.
+ * Eine leere Box, die auf eine bestimmte <b>Abmessung</b> gesetzt werden kann.
  *
  * @since 0.40.0
  */
 public class DimensionBox extends LeafBox
 {
+    /**
+     * Erstellt eine leere Box, deren Abmessungen später explizit gesetzt werden
+     * können.
+     */
     public DimensionBox()
     {
         super();
         supportsDefinedDimension = true;
     }
 
-    public DimensionBox(int width, int height)
+    /**
+     * Erstellt eine Box mit einer festen Breite und Höhe.
+     *
+     * @param width Die <b>Breite</b> der Box in Pixel.
+     * @param height Die <b>Höhe</b> der Box in Pixel.
+     */
+    public DimensionBox(double width, double height)
     {
         this();
-        this.definedWidth = width;
-        this.definedHeight = height;
+        definedWidth = width;
+        definedHeight = height;
     }
 
+    /**
+     * Erstellt ein Array mit der angegebenen Anzahl leerer
+     * {@link DimensionBox}-Instanzen.
+     *
+     * @param number Die Anzahl der zu erstellenden Boxen.
+     *
+     * @return Ein Array mit der gewünschten Anzahl neuer Boxen.
+     */
     public static DimensionBox[] create(int number)
     {
         DimensionBox[] boxes = new DimensionBox[number];

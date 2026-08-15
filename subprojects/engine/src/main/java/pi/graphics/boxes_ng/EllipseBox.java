@@ -29,7 +29,8 @@ import pi.debug.ToStringFormatter;
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Ellipse.java
 
 /**
- * Eine <b>Ellipse</b>.
+ * Eine <b>Ellipse</b>, bei der die <b>Breite</b> und die <b>Höhe</b> angegeben
+ * werden kann.
  *
  * @author Josef Friedrich
  *
