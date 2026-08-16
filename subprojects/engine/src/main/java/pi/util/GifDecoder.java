@@ -71,6 +71,8 @@ import pi.resources.ResourceLoader;
  *     ImageMagick.
  *
  * @version 1.03 November 2003
+ *
+ * @hidden
  */
 @SuppressWarnings("all")
 public class GifDecoder

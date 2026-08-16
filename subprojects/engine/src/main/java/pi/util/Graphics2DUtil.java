@@ -13,8 +13,8 @@ import pi.annotations.Setter;
 import pi.graphics.geom.Vector;
 
 /**
- * Eine Sammlung von statischen Hilfsmethoden um auf dem
- * {@link Graphics2D}-Objekt zu zeichnen.
+ * Eine Sammlung von statischen Hilfsmethoden, um mit der {@link Graphics2D}-API
+ * zu zeichnen.
  *
  * @author Josef Friedrich
  */

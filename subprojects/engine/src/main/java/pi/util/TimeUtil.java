@@ -21,8 +21,7 @@ package pi.util;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Eine Sammlung von statischen Hilfsmethoden für <b>zeitbezogene</b>
- * Operationen.
+ * Eine Sammlung von statischen Hilfsmethoden für <b>zeitbezogene</b> Aufgabe.
  *
  * @author Josef Friedrich
  *

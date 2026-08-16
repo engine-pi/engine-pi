@@ -36,7 +36,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Eine Sammlung von statischen Hilfsmethoden für <b>Feld/Array</b>-Operationen.
+ * Eine Sammlung von statischen Hilfsmethoden für <b>Feld/Array</b>-Aufgaben.
  *
  * <p>
  * Diese Klasse stellt verschiedene Hilfsfunktionen zum Bearbeiten von Arrays

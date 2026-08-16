@@ -39,7 +39,7 @@ import pi.annotations.Getter;
 import pi.debug.ToStringFormatter;
 import pi.resources.ResourceLoader;
 import pi.util.FileUtil;
-import pi.util.StreamUtilities;
+import pi.util.StreamUtil;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/resources/sound/SoundDemo.java
 
@@ -80,7 +80,7 @@ public final class Sound
     {
         this.filePath = filePath;
         this.name = FileUtil.getFileName(filePath);
-        data = StreamUtilities.getBytes(is);
+        data = StreamUtil.getBytes(is);
 
         try
         {
@@ -94,7 +94,7 @@ public final class Sound
                 // VorbisSPI dekodiert wird.
                 in = AudioSystem.getAudioInputStream(decodedFormat, in);
                 stream = in;
-                streamData = StreamUtilities.getBytes(stream);
+                streamData = StreamUtil.getBytes(stream);
                 format = stream.getFormat();
             }
         }

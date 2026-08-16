@@ -52,7 +52,7 @@ class FileUtilException extends RuntimeException
 
 /**
  * Eine Sammlung von statischen Hilfsmethoden für <b>Datei</b>- und
- * Verzeichnisverwaltungsoperationen.
+ * Verzeichnisverwaltungsaufgaben.
  *
  * <p>
  * Diese Klasse bietet statische Methoden zum Löschen von Verzeichnissen, Suchen

@@ -1,4 +1,4 @@
-# `text` (Hilfsmethoden um Text und Zeichenketten zu bearbeiten)
+# `TextUtil` (Hilfsmethoden um Text und Zeichenketten zu bearbeiten)
 
 ## `TextUtil.countLines(String text)`
 

@@ -29,8 +29,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 /**
- * Eine Sammlung von statischen Hilfsmethoden um <b>mathematische</b> Operation
- * auszuführen.
+ * Eine Sammlung von statischen Hilfsmethoden, um <b>mathematische</b>
+ * Berechnungen durchzuführen.
  *
  * @author Steffen Wilke
  * @author Matthias Wilke

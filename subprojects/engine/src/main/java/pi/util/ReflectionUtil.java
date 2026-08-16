@@ -43,8 +43,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Eine Sammlung von statischen Hilfsmethoden, um mit <b>Reflection</b> zu
- * arbeiten.
+ * Eine Sammlung von statischen Hilfsmethoden, die den Umgang mit der
+ * <b>Reflection</b>-API erleichtern.
  *
  * @author Steffen Wilke
  * @author Matthias Wilke
@@ -323,11 +323,11 @@ public final class ReflectionUtil
     }
 
     /**
-     * Liefert alle oeffentlichen Setter-Methoden eines Typs.
+     * Liefert alle öffentlichen Setter-Methoden eines Typs.
      *
      * @param cls Der Typ, dessen Setter ermittelt werden.
      *
-     * @return Eine unveraenderliche Sammlung aller gefundenen Setter.
+     * @return Eine unveränderliche Sammlung aller gefundenen Setter.
      */
     public static <T> Collection<Method> getSetters(Class<T> cls)
     {
@@ -348,10 +348,10 @@ public final class ReflectionUtil
     }
 
     /**
-     * Prueft, ob ein Typ der Wrapper-Typ eines primitiven Typs ist.
+     * Prüft, ob ein Typ der Wrapper-Typ eines primitiven Typs ist.
      *
      * @param primitive Der primitive Typ.
-     * @param potentialWrapper Der moegliche Wrapper-Typ.
+     * @param potentialWrapper Der mögliche Wrapper-Typ.
      *
      * @return {@code true}, wenn {@code potentialWrapper} der passende
      *     Wrapper-Typ zu {@code primitive} ist, andernfalls {@code false}.

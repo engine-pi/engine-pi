@@ -42,10 +42,10 @@ import java.util.logging.Logger;
  * @author Steffen Wilke
  * @author Matthias Wilke
  */
-public final class StreamUtilities
+public final class StreamUtil
 {
     private static final Logger log = Logger
-        .getLogger(StreamUtilities.class.getName());
+        .getLogger(StreamUtil.class.getName());
 
     /**
      * Dieser private Konstruktor dient dazu, den öffentlichen Konstruktor zu
@@ -55,7 +55,7 @@ public final class StreamUtilities
      * @throws UnsupportedOperationException Falls eine Instanz der Klasse
      *     erzeugt wird.
      */
-    private StreamUtilities()
+    private StreamUtil()
     {
         throw new UnsupportedOperationException();
     }
@@ -146,7 +146,7 @@ public final class StreamUtilities
         final ByteArrayOutputStream buffer = new ByteArrayOutputStream();
         try
         {
-            StreamUtilities.copy(in, buffer);
+            StreamUtil.copy(in, buffer);
             return buffer.toByteArray();
         }
         catch (final IOException e)
