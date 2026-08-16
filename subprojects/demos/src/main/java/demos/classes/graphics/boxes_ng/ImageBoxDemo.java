@@ -22,6 +22,7 @@ import java.awt.Graphics2D;
 
 import demos.graphics2d.Graphics2DComponent;
 import pi.graphics.boxes_ng.BorderBox;
+import pi.graphics.boxes_ng.Box;
 import pi.graphics.boxes_ng.ImageBox;
 import pi.graphics.boxes_ng.VerticalBox;
 
@@ -60,7 +61,7 @@ public class ImageBoxDemo extends Graphics2DComponent
      *
      * @return Eine neue {@link BorderBox} mit dem Bild als Inhalt.
      */
-    private BorderBox b(ImageBox image)
+    private BorderBox b(Box image)
     {
         return new BorderBox(image).thickness(1);
     }
@@ -82,7 +83,9 @@ public class ImageBoxDemo extends Graphics2DComponent
                 // Höhe angegeben
                 b(box().height(32)),
                 // Höhe und Breite angegeben
-                b(box().width(150).height(50))
+                b(box().width(150).height(50)),
+                // Breite in Meter gesetzt
+                b(box().widthMeter(2).pixelPerMeter(32))
         // Ende Konstruktor
         ).padding(5).y(400).render(g).debug();
 

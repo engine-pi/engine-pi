@@ -28,6 +28,9 @@ import pi.annotations.Setter;
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes_ng/ImageBoxDemo.java
 
 /**
+ * Ein <b>Bild</b>, dessen Abmessungen gesetzt werden können und das gespiegelt
+ * werden kann.
+ *
  * @author Josef Friedrich
  */
 public class ImageBox extends LeafBox

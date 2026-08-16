@@ -72,6 +72,8 @@
  * <b>Abmessung</b> gesetzt werden kann.</li>
  * <li>{@link EllipseBox}: Eine <b>Ellipse</b>, bei der die <b>Breite</b> und
  * die <b>Höhe</b> angegeben werden kann.</li>
+ * <li>{@link ImageBox}: Ein <b>Bild</b>, dessen Abmessungen gesetzt werden
+ * können und das gespiegelt werden kann.text</li>
  * </ul>
  *
  * </li>
