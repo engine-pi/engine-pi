@@ -7,10 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="engine-pi-tetris" />
+        <module name="jbox2d-testbed" />
         <module name="engine-pi-demos" />
         <module name="engine-pi-blockly-robot" />
         <module name="engine-pi" />
+        <module name="jbox2d-library" />
         <module name="engine-pi-cli" />
+        <module name="jbox2d-serialization" />
         <module name="engine-pi-build-tools" />
         <module name="engine-pi-pacman" />
       </profile>

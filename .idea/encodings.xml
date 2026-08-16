@@ -38,5 +38,11 @@
     <file url="file://$PROJECT_DIR$/subprojects/games/pacman/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/subprojects/games/tetris/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/subprojects/games/tetris/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subprojects/jbox2d/library/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subprojects/jbox2d/library/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subprojects/jbox2d/serialization/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subprojects/jbox2d/serialization/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subprojects/jbox2d/testbed/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subprojects/jbox2d/testbed/src/main/resources" charset="UTF-8" />
   </component>
 </project>
