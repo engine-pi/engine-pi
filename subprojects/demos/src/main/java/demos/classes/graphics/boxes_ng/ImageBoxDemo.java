@@ -82,7 +82,7 @@ public class ImageBoxDemo extends Graphics2DComponent
                 // Höhe angegeben
                 b(box().height(32)),
                 // Höhe und Breite angegeben
-                b(box().width(150).height(100))
+                b(box().width(150).height(50))
         // Ende Konstruktor
         ).padding(5).y(400).render(g).debug();
 
@@ -90,11 +90,11 @@ public class ImageBoxDemo extends Graphics2DComponent
                 // nicht gespiegelt
                 b(car()),
                 // vertikal gespiegelt
-                b(car().flippedVertically()),
+                b(car().vFlip()),
                 // horizontal gespiegelt
-                b(car().flippedHorizontally()),
+                b(car().hFlip()),
                 // vertikal und horizontal gespiegelt
-                b(car().flippedVertically().flippedHorizontally())
+                b(car().vFlip().hFlip())
         // Ende Konstruktor
         ).padding(5).anchor(400, 500).render(g).debug();
     }

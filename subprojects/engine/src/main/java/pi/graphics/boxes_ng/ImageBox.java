@@ -80,57 +80,63 @@ public class ImageBox extends LeafBox
     /**
      * Gibt an, ob das Objekt horizontal gespiegelt ist.
      */
-    boolean flippedHorizontally = false;
+    boolean hFlip = false;
 
     @Setter
-    public ImageBox flippedHorizontally(boolean flippedHorizontally)
+    public ImageBox hFlip(boolean hFlip)
     {
-        this.flippedHorizontally = flippedHorizontally;
+        this.hFlip = hFlip;
         return this;
     }
 
     @Setter
-    public ImageBox flippedHorizontally()
+    public ImageBox hFlip()
     {
-        return flippedHorizontally(true);
+        return hFlip(true);
     }
 
     /**
      * Gibt an, ob das Objekt vertikal gespiegelt ist.
      */
-    boolean flippedVertically = false;
+    boolean vFlip = false;
 
     @Setter
-    public ImageBox flippedVertically(boolean flippedVertically)
+    public ImageBox vFlip(boolean vFlip)
     {
-        this.flippedVertically = flippedVertically;
+        this.vFlip = vFlip;
         return this;
     }
 
     @Setter
-    public ImageBox flippedVertically()
+    public ImageBox vFlip()
     {
-        return flippedVertically(true);
+        return vFlip(true);
     }
 
     @Override
     protected void calculateDimension()
     {
-        if (definedWidth > 0)
-        {
-            width = definedWidth;
-        }
-        else
+        if (definedWidth == 0 && definedHeight == 0)
         {
             width = image.getWidth();
+            height = image.getHeight();
         }
-        if (definedHeight > 0)
+        else if (definedWidth > 0 && definedHeight == 0)
         {
+            width = definedWidth;
+            height = (double) image.getHeight() / image.getWidth()
+                    * definedWidth;
+        }
+        else if (definedWidth == 0 && definedHeight > 0)
+        {
+            width = (double) image.getWidth() / image.getHeight()
+                    * definedHeight;
             height = definedHeight;
         }
         else
         {
-            height = image.getHeight();
+            width = definedWidth;
+            height = definedHeight;
         }
     }
 
@@ -138,10 +144,10 @@ public class ImageBox extends LeafBox
     void draw(Graphics2D g)
     {
         g.drawImage(image,
-            flippedHorizontally ? x() + width() : x(),
-            flippedVertically ? y() : yTop(),
-            (flippedHorizontally ? -1 : 1) * width(),
-            (flippedVertically ? -1 : 1) * height(),
+            hFlip ? x() + width() : x(),
+            vFlip ? y() : yTop(),
+            (hFlip ? -1 : 1) * width(),
+            (vFlip ? -1 : 1) * height(),
             null);
     }
 
@@ -152,13 +158,13 @@ public class ImageBox extends LeafBox
     public String toString()
     {
         var formatter = toStringFormatter();
-        if (flippedHorizontally)
+        if (hFlip)
         {
-            formatter.prepend("flippedHorizontally", true);
+            formatter.prepend("hFlip", true);
         }
-        if (flippedVertically)
+        if (vFlip)
         {
-            formatter.prepend("flippedVertically", true);
+            formatter.prepend("vFlip", true);
         }
         return formatter.format();
     }
