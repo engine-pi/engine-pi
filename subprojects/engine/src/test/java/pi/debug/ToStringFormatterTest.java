@@ -24,6 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.awt.Color;
+import java.awt.image.BufferedImage;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -497,6 +498,262 @@ class ToStringFormatterTest
             assertEquals(formatter, result);
             String formattedOutput = formatter.format();
             assertTrue(formattedOutput.contains("Object"));
+        }
+    }
+
+    @Nested
+    class FieldTest
+    {
+        @Nested
+        class ConstructorTests
+        {
+            @Test
+            void stringValue()
+            {
+                ToStringFormatter.Field field = new ToStringFormatter.Field(
+                        "name", "John", null);
+
+                assertEquals("name", field.name());
+                assertEquals("John", field.value());
+                assertEquals(null, field.unit());
+            }
+
+            @Test
+            void doubleValue()
+            {
+                ToStringFormatter.Field field = new ToStringFormatter.Field(
+                        "height", 5.5, "m");
+
+                assertEquals("height", field.name());
+                assertEquals(5.5, field.value());
+                assertEquals("m", field.unit());
+            }
+
+            @Test
+            void integerValue()
+            {
+                ToStringFormatter.Field field = new ToStringFormatter.Field(
+                        "count", 42, null);
+
+                assertEquals("count", field.name());
+                assertEquals(42, field.value());
+                assertEquals(null, field.unit());
+            }
+
+            @Test
+            void nullValue()
+            {
+                ToStringFormatter.Field field = new ToStringFormatter.Field(
+                        "nullable", null, null);
+
+                assertEquals("nullable", field.name());
+                assertEquals(null, field.value());
+                assertEquals(null, field.unit());
+            }
+
+            @Test
+            void booleanValue()
+            {
+                ToStringFormatter.Field field = new ToStringFormatter.Field(
+                        "active", true, null);
+
+                assertEquals("active", field.name());
+                assertEquals(true, field.value());
+                assertEquals(null, field.unit());
+            }
+
+            @Test
+            void colorValue()
+            {
+                Color color = new Color(255, 0, 0);
+                ToStringFormatter.Field field = new ToStringFormatter.Field(
+                        "backgroundColor", color, null);
+
+                assertEquals("backgroundColor", field.name());
+                assertEquals(color, field.value());
+                assertEquals(null, field.unit());
+            }
+
+            @Test
+            void characterValue()
+            {
+                ToStringFormatter.Field field = new ToStringFormatter.Field(
+                        "letter", 'A', null);
+
+                assertEquals("letter", field.name());
+                assertEquals('A', field.value());
+                assertEquals(null, field.unit());
+            }
+
+            @Test
+            void bufferedImageValue()
+            {
+                BufferedImage image = new BufferedImage(10, 20,
+                        BufferedImage.TYPE_INT_RGB);
+                ToStringFormatter.Field field = new ToStringFormatter.Field(
+                        "image", image, null);
+
+                assertEquals("image", field.name());
+                assertEquals(image, field.value());
+                assertEquals(null, field.unit());
+
+                assertEquals("image=BufferedImage 10x20", field.format());
+            }
+
+            @Test
+            void nullNameDoesNotThrow()
+            {
+                // Note: @NonNull annotation is not enforced at runtime by the
+                // compiler
+                // It's only checked by static analysis tools like JSpecify
+                // So the record allows null names at runtime
+                ToStringFormatter.Field field = new ToStringFormatter.Field(
+                        null, "value", null);
+                assertEquals(null, field.name());
+            }
+        }
+
+        @Nested
+        class StringTests
+        {
+            @Test
+            void withQuotes()
+            {
+                ToStringFormatter.Field field = new ToStringFormatter.Field(
+                        "message", "Hello World", null);
+                String result = field.format();
+
+                assertTrue(result.contains("\"Hello World\""));
+            }
+
+            @Test
+            void withNewlines()
+            {
+                ToStringFormatter.Field field = new ToStringFormatter.Field(
+                        "multiline", "Line1\nLine2", null);
+                String result = field.format();
+
+                assertTrue(result.contains("Line1\\n"));
+            }
+
+            @Test
+            void withSpecialCharacters()
+            {
+                ToStringFormatter.Field field = new ToStringFormatter.Field(
+                        "special", "Test!@#$%", null);
+                String result = field.format();
+
+                assertTrue(result.contains("Test!@#$%"));
+            }
+
+            @Test
+            void emptyString()
+            {
+                ToStringFormatter.Field field = new ToStringFormatter.Field(
+                        "empty", "", null);
+                String result = field.format();
+
+                assertTrue(result.contains("empty="));
+                assertTrue(result.contains("\"\""));
+            }
+
+            @Test
+            void withSpaces()
+            {
+                ToStringFormatter.Field field = new ToStringFormatter.Field(
+                        "name", "John Doe", null);
+                String result = field.format();
+
+                assertTrue(result.contains("\"John Doe\""));
+            }
+        }
+
+        @Nested
+        class UnitTests
+        {
+            @Test
+            void formatWithUnit()
+            {
+                ToStringFormatter.Field field = new ToStringFormatter.Field(
+                        "weight", 75.0, "kg");
+                String result = field.format();
+
+                assertTrue(result.contains("weight="));
+                assertTrue(result.contains("kg"));
+            }
+
+            @Test
+            void formatWithoutUnit()
+            {
+                ToStringFormatter.Field field = new ToStringFormatter.Field(
+                        "value", 42, null);
+                String result = field.format();
+
+                assertTrue(result.contains("value=42"));
+                assertTrue(!result.contains("null"));
+            }
+        }
+
+        @Nested
+        class RecordAccessorTests
+        {
+            @Test
+            void nameAccessor()
+            {
+                ToStringFormatter.Field field = new ToStringFormatter.Field(
+                        "fieldName", "value", "unit");
+                assertEquals("fieldName", field.name());
+            }
+
+            @Test
+            void valueAccessor()
+            {
+                ToStringFormatter.Field field = new ToStringFormatter.Field(
+                        "name", 42, "unit");
+                assertEquals(42, field.value());
+            }
+
+            @Test
+            void unitAccessor()
+            {
+                ToStringFormatter.Field field = new ToStringFormatter.Field(
+                        "name", "value", "meters");
+                assertEquals("meters", field.unit());
+            }
+
+            @Test
+            void unitAccessorWithNull()
+            {
+                ToStringFormatter.Field field = new ToStringFormatter.Field(
+                        "name", "value", null);
+                assertEquals(null, field.unit());
+            }
+        }
+
+        @Nested
+        class ColorObjectTests
+        {
+            @Test
+            void withoutAlpha()
+            {
+                Color blue = new Color(0, 0, 255);
+                ToStringFormatter.Field field = new ToStringFormatter.Field(
+                        "color", blue, null);
+                String result = field.format();
+
+                assertTrue(result.contains("color=#0000ff"));
+            }
+
+            @Test
+            void withAlpha()
+            {
+                Color colorWithAlpha = new Color(255, 0, 0, 128);
+                ToStringFormatter.Field field = new ToStringFormatter.Field(
+                        "color", colorWithAlpha, null);
+                String result = field.format();
+
+                assertTrue(result.contains("color=#ff000080"));
+            }
         }
     }
 }

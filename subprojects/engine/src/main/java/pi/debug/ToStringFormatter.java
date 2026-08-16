@@ -19,6 +19,7 @@
 package pi.debug;
 
 import java.awt.Color;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -104,8 +105,7 @@ public class ToStringFormatter
      * Initialisiert einen neuen {@link ToStringFormatter} mit dem gegebenen
      * <b>Klassenname</b>.
      *
-     * <pre>
-     * {@code
+     * <pre> {@code
      * @Override
      * public String toString()
      * {
@@ -122,8 +122,7 @@ public class ToStringFormatter
      *     }
      *     return formatter.format();
      * }
-     * }
-     * </pre>
+     * } </pre>
      *
      * @param className Der <b>Klassenname</b>.
      */
@@ -355,6 +354,11 @@ public class ToStringFormatter
             else if (value instanceof Color color)
             {
                 return ColorUtil.encode(color);
+            }
+            else if (value instanceof BufferedImage image)
+            {
+                return "BufferedImage " + image.getWidth() + "x"
+                        + image.getHeight();
             }
             return TextUtil.convertToString(value);
         }
