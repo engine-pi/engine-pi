@@ -350,7 +350,7 @@ public class ToStringFormatter
             }
             else if (value instanceof Character character)
             {
-                return "\'" + character + "'";
+                return "'" + character + "'";
             }
             else if (value instanceof Color color)
             {

@@ -27,15 +27,30 @@ import pi.annotations.Setter;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes_ng/ImageBoxDemo.java
 
+/**
+ * @author Josef Friedrich
+ */
 public class ImageBox extends LeafBox
 {
     BufferedImage image;
 
+    /**
+     * Erstellt eine neue ImageBox mit dem gegebenen BufferedImage.
+     *
+     * @param image Das {@link BufferedImage}, das dargestellt werden soll.
+     */
     public ImageBox(BufferedImage image)
     {
         this.image = image;
     }
 
+    /**
+     * Erstellt eine neue ImageBox mit dem Bild, das unter dem angegebenen Namen
+     * registriert ist.
+     *
+     * @param image Der Name des Bildes, das in {@link pi.Controller#images}
+     *     registriert ist.
+     */
     public ImageBox(String image)
     {
         this(images.get(image));
@@ -82,6 +97,17 @@ public class ImageBox extends LeafBox
      */
     boolean hFlip = false;
 
+    /**
+     * Spiegelt das Bild horizontal oder gibt den aktuellen Spiegelungszustand
+     * ein.
+     *
+     * @param hFlip {@code true} zum Spiegeln des Bildes horizontal,
+     *     {@code false} zum Aufheben der Spiegelung.
+     *
+     * @return Eine Referenz auf die eigene Instanz des Bildes, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Bildes durch
+     *     aneinander gekettete Setter festgelegt werden können.
+     */
     @Setter
     public ImageBox hFlip(boolean hFlip)
     {
@@ -89,6 +115,13 @@ public class ImageBox extends LeafBox
         return this;
     }
 
+    /**
+     * Spiegelt das Bild horizontal (aktiviert die horizontale Spiegelung).
+     *
+     * @return Eine Referenz auf die eigene Instanz des Bildes, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Bildes durch
+     *     aneinander gekettete Setter festgelegt werden können.
+     */
     @Setter
     public ImageBox hFlip()
     {
@@ -100,6 +133,17 @@ public class ImageBox extends LeafBox
      */
     boolean vFlip = false;
 
+    /**
+     * Spiegelt das Bild vertikal oder gibt den aktuellen Spiegelungszustand
+     * ein.
+     *
+     * @param vFlip {@code true} zum Spiegeln des Bildes vertikal, {@code false}
+     *     zum Aufheben der Spiegelung.
+     *
+     * @return Eine Referenz auf die eigene Instanz des Bildes, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Bildes durch
+     *     aneinander gekettete Setter festgelegt werden können.
+     */
     @Setter
     public ImageBox vFlip(boolean vFlip)
     {
@@ -107,6 +151,13 @@ public class ImageBox extends LeafBox
         return this;
     }
 
+    /**
+     * Spiegelt das Bild vertikal (aktiviert die vertikale Spiegelung).
+     *
+     * @return Eine Referenz auf die eigene Instanz des Bildes, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Bildes durch
+     *     aneinander gekettete Setter festgelegt werden können.
+     */
     @Setter
     public ImageBox vFlip()
     {
@@ -158,6 +209,7 @@ public class ImageBox extends LeafBox
     public String toString()
     {
         var formatter = toStringFormatter();
+
         if (hFlip)
         {
             formatter.prepend("hFlip", true);
@@ -166,6 +218,8 @@ public class ImageBox extends LeafBox
         {
             formatter.prepend("vFlip", true);
         }
+
+        formatter.prepend("image", image);
         return formatter.format();
     }
 }
